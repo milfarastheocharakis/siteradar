@@ -244,6 +244,21 @@ body[data-tab="leads"] .only-results { display: none !important; }
 .badge.st-contacted { background: var(--social-soft); color: var(--social); }
 .badge.st-customer { background: var(--site-soft); color: var(--site); }
 .badge.st-no, .badge.st-hassite { background: var(--surface-3); color: var(--muted); }
+.list > li.item { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; border-radius: 10px; }
+.list > li.item.done .row-name { color: var(--muted); }
+@supports selector(:has(*)) {
+  .list > li.item:has(> .row:hover) { background: var(--surface-2); }
+  .list > li.item:has(> .row[aria-current="true"]) { background: var(--accent-soft); }
+  .list > li.item > .row:hover, .list > li.item > .row[aria-current="true"] { background: none; }
+}
+.quick { display: flex; gap: 5px; padding-right: 7px; }
+.qbtn { width: 34px; height: 34px; padding: 0; display: grid; place-items: center; border: 1px solid var(--line); border-radius: 9px; background: var(--surface); color: var(--muted); }
+.qbtn:hover { color: var(--text); background: var(--surface-2); }
+.qbtn svg { width: 17px; height: 17px; }
+.qbtn.yes:hover { color: var(--site); }
+.qbtn.yes[aria-pressed="true"] { background: var(--site); border-color: var(--site); color: var(--bg); }
+.qbtn.no[aria-pressed="true"] { background: var(--muted); border-color: var(--muted); color: var(--bg); }
+.done-line { margin: 0; font-size: 13px; color: var(--muted); display: flex; gap: 4px 8px; align-items: center; flex-wrap: wrap; }
 .empty { padding: 22px 14px; color: var(--muted); font-size: 14px; }
 .empty h2 { color: var(--text); font-size: 17px; margin: 0 0 10px; letter-spacing: -.01em; }
 .empty ol { margin: 0 0 12px; padding-left: 20px; display: grid; gap: 4px; }
@@ -474,6 +489,7 @@ textarea.note:focus-visible { outline: 2px solid var(--accent); outline-offset: 
       <div id="status" class="status" role="status" aria-live="polite" hidden></div>
       <div id="centreLine" class="centre-line only-results" hidden></div>
       <p id="summary" class="summary only-results" hidden></p>
+      <p id="doneLine" class="done-line only-results" hidden></p>
       <div id="muniLine" class="muni-line only-results" hidden></div>
       <div id="filters" class="filters" hidden>
         <div class="chips only-results" role="group" aria-label="Web presence">
@@ -501,8 +517,8 @@ textarea.note:focus-visible { outline: 2px solid var(--accent); outline-offset: 
               <option value="new">Not checked</option>
               <option value="lead">Good lead</option>
               <option value="contacted">Contacted</option>
-              <option value="customer">Customer</option>
-              <option value="no">Not interested</option>
+              <option value="customer">Accepted work</option>
+              <option value="no">Didn&#39;t want a site</option>
               <option value="hassite">Has a good site</option>
             </select>
           </label>
@@ -628,7 +644,9 @@ const VALUE_WHY = {
   other: 'Other type of business',
 };
 const BUCKET = { none: 'No website listed', social: 'Only social or booking pages', site: 'Has a website' };
-const STATUSES = [['new', 'Not checked'], ['lead', 'Good lead'], ['contacted', 'Contacted'], ['customer', 'Customer'], ['no', 'Not interested'], ['hassite', 'Has a good site']];
+const STATUSES = [['new', 'Not checked'], ['lead', 'Good lead'], ['contacted', 'Contacted'], ['customer', 'Accepted work'], ['no', "Didn't want a site"], ['hassite', 'Has a good site']];
+// Finished with: these stay out of the list the next time the same area is searched.
+const DONE = new Set(['customer', 'no', 'hassite']);
 const STATUS_LABEL = Object.fromEntries(STATUSES);
 const VERDICT = { broken: "Doesn't load", weak: 'Weak site', ok: 'Good site', unknown: "Couldn't check" };
 /* Error codes from Google's checker that mean the website itself is down. */
@@ -768,6 +786,7 @@ function icon(path) {
 }
 const ICON = {
   close: 'M6 6l12 12M18 6 6 18',
+  check: 'M5 12.5l4.5 4.5L19 7.5',
   pin: 'M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21zM12 12a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z',
   search: 'M11 18a7 7 0 1 0 0-14 7 7 0 0 0 0 14zM20 20l-3.6-3.6',
   route: 'M5 19a2 2 0 1 0 0-4 2 2 0 0 0 0 4zM19 9a2 2 0 1 0 0-4 2 2 0 0 0 0 4zM7 17h7a3 3 0 0 0 0-6h-4a3 3 0 0 1 0-6h7',
@@ -963,15 +982,28 @@ function normalize(e, c) {
   b.hay = makeHay(b);
   return b;
 }
+const phoneKey = p => { const d = String(p).replace(/\D/g, ''); return d.length >= 8 ? d.slice(-10) : ''; };
+/* Two entries with the same name are one business when they are within 40 m of each other,
+   or within 500 m and share a phone number or a street address with a house number. */
+function sameBusiness(a, b) {
+  const km = haversine(a.lat, a.lon, b.lat, b.lon);
+  if (km < 0.04) return true;
+  if (km > 0.5) return false;
+  if (a.street && a.street === b.street && /\d/.test(a.street)) return true;
+  const phones = new Set(a.phones.map(phoneKey).filter(Boolean));
+  return b.phones.some(p => phones.has(phoneKey(p)));
+}
 function dedupe(list) {
   const byName = new Map();
   const kept = new Set();
+  // Keep the copy that holds your status or note, otherwise the one with the most details.
+  const weight = x => (state.leads[x.id] ? 1e6 : 0) + x.richness;
   for (const b of list) {
     const k = nameKey(b.name);
     const same = byName.get(k) || [];
-    const twin = same.find(o => haversine(o.lat, o.lon, b.lat, b.lon) < 0.04);
+    const twin = same.find(o => sameBusiness(o, b));
     if (twin) {
-      if (b.richness > twin.richness) { kept.delete(twin); kept.add(b); same[same.indexOf(twin)] = b; }
+      if (weight(b) > weight(twin)) { kept.delete(twin); kept.add(b); same[same.indexOf(twin)] = b; }
       continue;
     }
     same.push(b); byName.set(k, same); kept.add(b);
@@ -1358,6 +1390,8 @@ const state = {
   buckets: new Set(Array.isArray(saved.buckets) && saved.buckets.length ? saved.buckets : ['none', 'social']),
   group: 'all', text: '', terms: [], status: 'any',
   leadStatus: 'any',         // the My leads tab keeps its own status filter
+  hiddenDone: new Set(),     // marked businesses left out of the list on screen
+  showDone: false,           // "Show them" for the current list
   sort: saved.sort || 'score',
   phoneOnly: !!saved.phoneOnly,
   hideChains: saved.hideChains !== false,
@@ -1574,6 +1608,7 @@ async function loadBusinesses(signal) {
   // Same centre and a smaller or equal radius: the list on screen already has everything.
   if (!muni && L0 && L0.mode === 'radius' && L0.lat === c.lat && L0.lon === c.lon && state.radiusKm <= L0.radiusKm && state.results.length) {
     setStatus(null);
+    rememberDone();
     applyFilters(true);
     return;
   }
@@ -1591,6 +1626,7 @@ async function loadBusinesses(signal) {
   stopBatch(); // the websites it was checking belong to the old list
   state.results = dedupe(list);
   state.byId = new Map(state.results.map(b => [b.id, b]));
+  rememberDone();
   state.loaded = { lat: c.lat, lon: c.lon, radiusKm: state.radiusKm, mode: muni ? 'muni' : 'radius', muniId: muni ? muni.id : null };
   state.insideOnly = false; $('#insideOnly').checked = false;
   if (muni) for (const b of state.results) b.inMuni = true;
@@ -1668,6 +1704,7 @@ function passes(b, skip) {
   if (state.hideChains && b.chain) return false;
   if (state.phoneOnly && !b.phones.length) return false;
   if (state.insideOnly && state.muni && b.inMuni === false) return false;
+  if (leftOut(b)) return false;
   if (!statusPasses(state.leads[b.id], state.status)) return false;
   if (!skips('check') && !checkPasses(b)) return false;
   if (state.terms.length && !matchTerms(b.hay)) return false;
@@ -1678,6 +1715,17 @@ function statusPasses(l, f) {
   if (f === 'due') return isDue(l);
   return ((l && l.status) || 'new') === f;
 }
+const statusOf = id => (state.leads[id] && state.leads[id].status) || 'new';
+/* A search leaves out the businesses that were already marked as finished when it ran, so running
+   the same search again only lists the ones still to work on. Marks made on this list keep their row
+   until the next search, so a wrong tap can be undone. */
+function rememberDone() {
+  state.hiddenDone = new Set(state.results.filter(b => DONE.has(statusOf(b.id))).map(b => b.id));
+  state.showDone = false;
+}
+const markedBefore = b => state.hiddenDone.has(b.id) && DONE.has(statusOf(b.id));
+// Picking one of those statuses in the Status filter shows them anyway.
+const leftOut = b => !state.showDone && state.status === 'any' && markedBefore(b);
 function checkPasses(b) {
   const f = state.checkFilter;
   const v = b.check ? b.check.verdict : null;
@@ -1778,7 +1826,8 @@ function renderHead() {
   const sum = $('#summary');
   if (state.loaded) {
     sum.hidden = false;
-    const inArea = whole ? state.results : state.results.filter(b => !(state.radiusKm < state.loaded.radiusKm && b.distance > state.radiusKm));
+    const areaAll = whole ? state.results : state.results.filter(b => !(state.radiusKm < state.loaded.radiusKm && b.distance > state.radiusKm));
+    const inArea = areaAll.filter(b => !leftOut(b));
     let none = 0, social = 0, broken = 0, weak = 0;
     for (const b of inArea) {
       if (b.bucket === 'none') none++; else if (b.bucket === 'social') social++;
@@ -1791,7 +1840,8 @@ function renderHead() {
       h('b', { text: fmtInt(social) }), weak ? ' with only a social or booking page, ' : ' with only a social or booking page.',
       ...(weak ? [h('b', { text: fmtInt(weak) }), ' with a weak website.'] : []),
     ]);
-  } else sum.hidden = true;
+    renderDoneLine(areaAll);
+  } else { sum.hidden = true; $('#doneLine').hidden = true; }
 
   const ml = $('#muniLine');
   if (state.muni && state.loaded) {
@@ -1832,6 +1882,19 @@ function renderHead() {
   renderCheckRow();
 }
 
+function renderDoneLine(areaAll) {
+  const el = $('#doneLine');
+  const n = state.status === 'any' ? areaAll.filter(markedBefore).length : 0;
+  if (!n) { el.hidden = true; el.replaceChildren(); return; }
+  el.hidden = false;
+  const what = n === 1 ? 'business' : 'businesses';
+  el.replaceChildren(
+    h('span', { text: state.showDone
+      ? `Also showing ${fmtInt(n)} ${what} you had already marked.`
+      : `${fmtInt(n)} ${what} you already marked (accepted work, didn't want a site, has a good site) ${n === 1 ? 'is' : 'are'} left out.` }),
+    h('button', { type: 'button', class: 'link-btn', id: 'doneBtn', text: state.showDone ? 'Hide them' : 'Show them',
+      onclick: () => { state.showDone = !state.showDone; applyFilters(true); } }));
+}
 function recentList() { const r = store.get(KEYS.recent, []); return Array.isArray(r) ? r.filter(x => x && x.address) : []; }
 function emptyWelcome() {
   const recent = recentList().slice(0, 5);
@@ -1894,22 +1957,32 @@ function rowFor(b) {
     b.check ? h('span', { class: `vbadge ${b.check.verdict}`, text: VERDICT[b.check.verdict], title: checkText(b.check) })
       : state.checking.has(b.id) ? h('span', { class: 'vbadge unknown', text: 'Checking…' }) : null,
   ].filter(Boolean);
-  return h('li', {}, h('button', { type: 'button', class: 'row', 'data-id': b.id, 'aria-current': b.id === state.selectedId ? 'true' : null },
-    h('span', { class: `dot ${b.bucket}`, title: presenceLabel(b) }),
-    h('span', { class: 'row-main' },
-      h('span', { class: 'row-name', text: b.name }),
-      h('span', { class: 'row-sub', text: sub }),
-      tags.length ? h('span', { class: 'row-tags' }, tags) : null),
-    right));
+  const st = (lead && lead.status) || 'new';
+  const qbtn = (status, cls, path) => h('button', {
+    type: 'button', class: `qbtn ${cls}`, 'data-id': b.id, 'data-status': status,
+    'aria-pressed': st === status ? 'true' : 'false', 'aria-label': STATUS_LABEL[status], title: STATUS_LABEL[status],
+  }, icon(path));
+  return h('li', { class: `item${DONE.has(st) ? ' done' : ''}` },
+    h('button', { type: 'button', class: 'row', 'data-id': b.id, 'aria-current': b.id === state.selectedId ? 'true' : null },
+      h('span', { class: `dot ${b.bucket}`, title: presenceLabel(b) }),
+      h('span', { class: 'row-main' },
+        h('span', { class: 'row-name', text: b.name }),
+        h('span', { class: 'row-sub', text: sub }),
+        tags.length ? h('span', { class: 'row-tags' }, tags) : null),
+      right),
+    h('div', { class: 'quick', role: 'group', 'aria-label': `Mark ${b.name}` },
+      qbtn('customer', 'yes', ICON.check), qbtn('no', 'no', ICON.close)));
 }
 function refreshRow(id) {
   const old = $(`#list .row[data-id="${CSS.escape(id)}"]`);
   const b = state.byId.get(id) || fromSnap(id, state.leads[id]);
   if (!old || !b) return;
-  const focused = document.activeElement === old;
+  const item = old.parentElement, act = document.activeElement;
+  // Keep the keyboard focus on the same button when the row is redrawn.
+  const keep = act && item.contains(act) ? (act.classList.contains('qbtn') ? `.qbtn[data-status="${act.dataset.status}"]` : '.row') : null;
   const li = rowFor(b);
-  old.parentElement.replaceWith(li);
-  if (focused) li.firstChild.focus({ preventScroll: true });
+  item.replaceWith(li);
+  if (keep) $(keep, li).focus({ preventScroll: true });
 }
 function clearFilters() {
   state.buckets = new Set(['none', 'social', 'site']);
@@ -2156,12 +2229,35 @@ function setLead(b, patch, quiet) {
   if (state.status !== 'any' || state.tab === 'leads') { applyFilters(false); }
   else { refreshRow(b.id); renderHead(); }
   const sel = $(`#list .row[data-id="${CSS.escape(b.id)}"]`);
-  if (sel) sel.setAttribute('aria-current', 'true');
+  if (sel && b.id === state.selectedId) sel.setAttribute('aria-current', 'true');
 }
 function showCallList() {
   state.leadStatus = 'due';
   if (state.tab !== 'leads') setTab('leads');
   else { $('#statusSel').value = 'due'; renderList(); renderMarkers(); }
+}
+/* The tick and cross on each row. A second tap takes the mark off again. */
+function quickMark(id, status) {
+  const b = state.byId.get(id) || fromSnap(id, state.leads[id]);
+  if (!b) return;
+  const cur = state.leads[id] || {};
+  const was = { status: cur.status || 'new', before: cur.before };
+  const off = was.status === status;
+  const patch = off
+    ? { status: cur.before && !DONE.has(cur.before) ? cur.before : 'new', before: undefined }
+    : { status, before: DONE.has(was.status) ? cur.before : was.status };
+  // A note still being typed for this business goes along, so it isn't lost.
+  const note = $('#note');
+  if (note && note.dataset.id === id) patch.note = note.value;
+  setLead(b, patch);
+  // When the whole list was redrawn (My leads), put the focus back on the same button.
+  const again = $(`#list .qbtn[data-id="${CSS.escape(id)}"][data-status="${status}"]`);
+  if (again && (!document.activeElement || document.activeElement === document.body)) again.focus({ preventScroll: true });
+  if (state.busy) return;
+  setStatus('info', off
+    ? `“${b.name}” is no longer marked “${STATUS_LABEL[status]}”.`
+    : `“${b.name}” marked “${STATUS_LABEL[status]}”. The next search of this area will leave it out.`,
+  [['Undo', () => { setLead(b, { status: was.status, before: was.before }); setStatus(null); }]]);
 }
 
 /* =========================================================
@@ -2561,7 +2657,12 @@ function init() {
   $('#checkAllBtn').addEventListener('click', () => { if (state.batch) stopBatch(); else checkAll(); });
 
   const list = $('#list');
-  list.addEventListener('click', e => { const row = e.target.closest('.row'); if (row) select(row.dataset.id, { from: 'list' }); });
+  list.addEventListener('click', e => {
+    const q = e.target.closest('.qbtn');
+    if (q) { quickMark(q.dataset.id, q.dataset.status); return; }
+    const row = e.target.closest('.row');
+    if (row) select(row.dataset.id, { from: 'list' });
+  });
   list.addEventListener('keydown', e => {
     if (e.key !== 'ArrowDown' && e.key !== 'ArrowUp') return;
     const rows = $$('#list .row');

@@ -9,8 +9,9 @@ Find local businesses in Greece that have no website, only a Facebook or booking
 1. Pick the municipality, type an address (in Greek or English letters) and a radius, and press **Search**.
 2. The list puts the best leads first. Click a business to see why it scored, its phone and address, and links to Google Maps.
 3. Mark leads, write notes and set follow-up dates. They show under **My leads**, and the **Follow-up due** filter is your call list.
-4. Press **Check websites** to test the businesses' websites with Google's free PageSpeed check. This needs your own free Google key (see below).
-5. Export the list to Excel or CSV.
+4. Tap ✓ on a row when a business **accepted work**, or ✗ when it **didn't want a site**. The next time you search the same area, the businesses you marked (and any marked **Has a good site**) are left out, so the list only shows the ones still to work on. **Show them** brings them back, and they always stay under **My leads**.
+5. Press **Check websites** to test the businesses' websites with Google's free PageSpeed check. This needs your own free Google key (see below).
+6. Export the list to Excel or CSV.
 
 After a search you can also load every business in the whole municipality.
 
