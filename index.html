@@ -613,8 +613,8 @@ const CHECK_SECONDS = 25;          // rough time one check takes, for the time e
 const CHECKS_KEPT = 1500;
 const OVERPASS = [
   'https://overpass-api.de/api/interpreter',
-  'https://overpass.kumi.systems/api/interpreter',
   'https://overpass.private.coffee/api/interpreter',
+  'https://overpass.kumi.systems/api/interpreter',
 ];
 const XLSX_SRC = 'https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js';
 const XLSX_SRI = 'sha384-vtjasyidUo0kW94K5MXDXntzOJpQgBKXmE7e2Ga4LG0skTTLeBi97eFAXsqewJjw';
@@ -1018,27 +1018,56 @@ function dedupe(list) {
 class ServiceError extends Error { constructor(msg, status) { super(msg); this.status = status; } }
 class GeoUnavailable extends Error {}
 
-async function overpass(query, signal) {
-  let lastError = null, partial = null;
-  for (const url of OVERPASS) {
-    if (signal && signal.aborted) throw signal.reason || new DOMException('Aborted', 'AbortError');
-    try {
-      const res = await fetch(url, { method: 'POST', body: new URLSearchParams({ data: query }), signal });
-      if (!res.ok) { lastError = new ServiceError(`Map data server answered ${res.status}`, res.status); continue; }
+/* Ask the first server. If it has not answered after `patience` ms, ask the next one as well, and so on.
+   The first full answer wins and the other requests are stopped. A server that answers with an error
+   makes way for the next one at once. */
+function overpass(query, signal, { patience = 12000, onWait } = {}) {
+  return new Promise((resolve, reject) => {
+    if (signal && signal.aborted) { reject(signal.reason || new DOMException('Aborted', 'AbortError')); return; }
+    const ctrls = [];
+    let next = 0, running = 0, settled = false, timer = null, lastError = null, partial = null;
+    const finish = (ok, value) => {
+      if (settled) return;
+      settled = true;
+      clearTimeout(timer);
+      if (signal) signal.removeEventListener('abort', onAbort);
+      for (const c of ctrls) c.abort(new DOMException('Not needed any more', 'AbortError'));
+      (ok ? resolve : reject)(value);
+    };
+    const onAbort = () => finish(false, signal.reason || new DOMException('Aborted', 'AbortError'));
+    if (signal) signal.addEventListener('abort', onAbort, { once: true });
+    const ask = async (url, ctrl) => {
+      const res = await fetch(url, { method: 'POST', body: new URLSearchParams({ data: query }), signal: ctrl.signal });
+      if (!res.ok) throw new ServiceError(`Map data server answered ${res.status}`, res.status);
       const json = await res.json();
       if (json.remark && /runtime error|timed out|out of memory/i.test(json.remark)) {
-        lastError = new ServiceError(json.remark, 504);
         if (json.elements && json.elements.length && (!partial || json.elements.length > partial.elements.length)) partial = json;
-        continue;
+        throw new ServiceError(json.remark, 504);
       }
       return json;
-    } catch (e) {
-      if (isAbort(e) || (signal && signal.aborted)) throw e;
-      lastError = e;
-    }
-  }
-  if (partial) { partial.partial = true; return partial; }
-  throw lastError || new ServiceError('No map data server answered');
+    };
+    const launch = () => {
+      clearTimeout(timer);
+      if (settled || next >= OVERPASS.length) return;
+      const n = next++;
+      const ctrl = new AbortController();
+      ctrls.push(ctrl);
+      running++;
+      if (n && onWait) onWait(n);
+      ask(OVERPASS[n], ctrl).then(json => finish(true, json), e => {
+        running--;
+        if (settled) return;
+        lastError = e;
+        if (next < OVERPASS.length) launch();
+        else if (!running) {
+          if (partial) { partial.partial = true; finish(true, partial); }
+          else finish(false, lastError || new ServiceError('No map data server answered'));
+        }
+      });
+      if (next < OVERPASS.length) timer = setTimeout(launch, patience);
+    };
+    launch();
+  });
 }
 function queryFor(filter, prefix, timeout) {
   return [
@@ -1056,8 +1085,10 @@ function queryFor(filter, prefix, timeout) {
     'out center qt;',
   ].join('\n');
 }
+/* A small area asks the server for less time, which a busy server accepts more readily. */
 function businessQuery(lat, lon, metres) {
-  return queryFor(`(around:${Math.round(metres)},${lat.toFixed(6)},${lon.toFixed(6)})`, [], 120);
+  const timeout = Math.min(120, Math.max(25, Math.round(metres / 100)));
+  return queryFor(`(around:${Math.round(metres)},${lat.toFixed(6)},${lon.toFixed(6)})`, [], timeout);
 }
 /* Every business inside a municipality. Overpass numbers the area of relation N as 3600000000 + N. */
 function muniBusinessQuery(relId) {
@@ -1116,17 +1147,26 @@ async function geocode(text, areaKey, signal) {
   const noNumber = text.replace(/[\s,]+\d+[a-zα-ω]?\s*$/i, '').trim();
   const variants = [...new Set([withArea(text), text, noNumber && noNumber !== text ? withArea(noNumber) : null].filter(Boolean))];
 
+  // Each address server gets 10 seconds, so a stuck one can't hold up the search.
+  const timed = async (ask, q) => {
+    const t = withTimeout(signal, 10000);
+    try { return await ask(q, area, t.signal); }
+    catch (e) {
+      if (signal && signal.aborted) throw signal.reason || e;
+      throw isAbort(e) ? new ServiceError('Address search took too long') : e;
+    } finally { t.done(); }
+  };
   let found = [], nominatimDown = false;
   for (let i = 0; i < variants.length; i++) {
     if (i) await sleep(1100); // Nominatim asks for at most one request a second
-    try { found = await nominatim(variants[i], area, signal); }
+    try { found = await timed(nominatim, variants[i]); }
     catch (e) { if (isAbort(e)) throw e; nominatimDown = true; break; }
     if (found.length) break;
   }
   let photonDown = false;
   if (!found.length) {
     for (const q of [withArea(text), noNumber && noNumber !== text ? withArea(noNumber) : null].filter(Boolean)) {
-      try { found = await photon(q, area, signal); photonDown = false; }
+      try { found = await timed(photon, q); photonDown = false; }
       catch (e) { if (isAbort(e)) throw e; photonDown = true; }
       if (found.length) break;
     }
@@ -1548,7 +1588,9 @@ function notFoundText(text, areaKey) {
 function errorText(e, mode) {
   if (e && e.name === 'TimeoutError') return mode === 'muni'
     ? 'Loading the whole municipality took too long. Try again in a minute, or search a radius instead.'
-    : 'The map-data servers took too long. Try a smaller radius, or try again in a minute.';
+    : state.radiusKm > 3
+      ? 'The map-data servers took too long. Try a smaller radius, or try again in a minute.'
+      : "The free map-data servers are busy and didn't answer in time. Try again in a few minutes.";
   if (!navigator.onLine) return "You're offline. Connect to the internet and press Search again.";
   if (e instanceof GeoUnavailable) return "The address search isn't answering right now. Click the map to set the centre instead, or try again in a minute.";
   if (e && e.status === 429) return 'The free map-data servers are busy (too many requests). Wait a minute and press Search again.';
@@ -1620,7 +1662,14 @@ async function loadBusinesses(signal) {
   const cacheKey = muni ? `muni:${muni.id}` : `${c.lat.toFixed(5)},${c.lon.toFixed(5)},${state.radiusKm}`;
   let json = overpassCache.get(cacheKey);
   if (!json) {
-    json = await overpass(muni ? muniBusinessQuery(muni.id) : businessQuery(c.lat, c.lon, state.radiusKm * 1000), signal);
+    // A server that hasn't answered after this long gets company: the next server is asked as well.
+    const patience = muni ? 60000 : Math.min(45000, Math.max(10000, 8000 + 2000 * state.radiusKm));
+    const onWait = n => setStatus('busy', `Still loading… the map-data server is slow, so SiteRadar is also asking ${['a second', 'a third'][n - 1] || 'another'} server.`, [['Cancel', cancelSearch]]);
+    // A small area that no server answers within about a minute is not worth waiting longer for.
+    const limit = muni ? null : withTimeout(signal, Math.min(140000, 60000 + 4000 * state.radiusKm));
+    try {
+      json = await overpass(muni ? muniBusinessQuery(muni.id) : businessQuery(c.lat, c.lon, state.radiusKm * 1000), limit ? limit.signal : signal, { patience, onWait });
+    } finally { if (limit) limit.done(); }
     overpassCache.set(cacheKey, json);
   }
   const list = [];
