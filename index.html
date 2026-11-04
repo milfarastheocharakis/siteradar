@@ -471,9 +471,9 @@ textarea.note:focus-visible { outline: 2px solid var(--accent); outline-offset: 
       <input id="address" class="input" type="text" enterkeyhint="search" spellcheck="false" placeholder="e.g. 62 Martyron 182 or Λεωφόρος 62 Μαρτύρων 182" value="62 Martyron 182" list="recentAddr">
     </label>
     <label class="field"><span class="cap">Radius</span>
-      <span class="radius"><input id="radius" class="input" type="number" min="0.2" max="25" step="0.1" value="11" list="radiusPresets" inputmode="decimal" aria-describedby="radiusUnit"><span class="unit" id="radiusUnit">km</span></span>
+      <span class="radius"><input id="radius" class="input" type="number" min="0.2" max="25" step="0.1" value="0.6" list="radiusPresets" inputmode="decimal" aria-describedby="radiusUnit"><span class="unit" id="radiusUnit">km</span></span>
     </label>
-    <datalist id="radiusPresets"><option value="1"></option><option value="2"></option><option value="3"></option><option value="5"></option><option value="8"></option><option value="11"></option><option value="15"></option><option value="20"></option><option value="25"></option></datalist>
+    <datalist id="radiusPresets"><option value="0.3"></option><option value="0.6"></option><option value="1"></option><option value="2"></option><option value="3"></option><option value="5"></option><option value="8"></option><option value="11"></option><option value="15"></option><option value="20"></option><option value="25"></option></datalist>
     <datalist id="recentAddr"></datalist>
     <button id="searchBtn" class="btn primary" type="submit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.6-3.6"/></svg><span id="searchLabel">Search</span></button>
   </form>
@@ -1379,11 +1379,12 @@ function withTimeout(parent, ms) {
 /* =========================================================
    State
    ========================================================= */
+const DEFAULT_RADIUS_KM = 0.6;
 const saved = store.get(KEYS.form, {}) || {};
 const state = {
   tab: 'results',
   centre: null, centreKey: '', alternatives: [],
-  radiusKm: 11,
+  radiusKm: DEFAULT_RADIUS_KM,
   loaded: null,              // { lat, lon, radiusKm } of the list on screen
   results: [], byId: new Map(), filtered: [], shown: PAGE,
   selectedId: null,
@@ -1535,7 +1536,7 @@ function setStatus(kind, text, actions) {
 }
 function saveForm() {
   store.set(KEYS.form, {
-    area: $('#area').value, address: $('#address').value, radius: $('#radius').value,
+    v: 2, area: $('#area').value, address: $('#address').value, radius: $('#radius').value,
     buckets: [...state.buckets], sort: state.sort, phoneOnly: state.phoneOnly, hideChains: state.hideChains,
   });
 }
@@ -1911,7 +1912,7 @@ function emptyWelcome() {
     recent.length
       ? [h('p', { text: 'Your recent searches:' }), h('div', { class: 'recent' }, recent.map(r => h('button', { type: 'button', class: 'btn small', onclick: () => runRecent(r), title: `Search again: ${r.address}` },
         h('span', { text: `${r.address} · ${AREAS[r.area] && r.area !== 'other' ? AREAS[r.area].label + ' · ' : ''}${r.radius} km` }))))]
-      : h('p', { text: 'The example 62 Martyron 182, Heraklion, 11 km is already filled in, so you can press Search right away.' }),
+      : h('p', { text: 'The example 62 Martyron 182, Heraklion, 0.6 km is already filled in, so you can press Search right away.' }),
     h('p', { text: 'You can also click the map to set the centre, and after a search load the whole municipality.' }));
 }
 function renderList() {
@@ -2585,7 +2586,10 @@ function restoreForm() {
   if (area && AREAS[area]) $('#area').value = area;
   const address = params.get('address') ?? saved.address;
   if (typeof address === 'string' && address.trim()) $('#address').value = address;
-  const radius = params.get('radius') ?? saved.radius;
+  const fromLink = params.get('radius');
+  let radius = fromLink ?? saved.radius;
+  // 11 km was the starting radius before 0.6 km. A browser that still remembers it gets the new start once.
+  if (fromLink == null && saved.v !== 2 && String(radius) === '11') radius = String(DEFAULT_RADIUS_KM);
   if (radius != null && radius !== '') $('#radius').value = radius;
   $('#sortSel').value = state.sort;
   $('#phoneOnly').checked = state.phoneOnly;
