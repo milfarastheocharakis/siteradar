@@ -287,6 +287,7 @@ body[data-tab="leads"] .only-results { display: none !important; }
 .leaflet-tooltip { font-family: var(--font); font-weight: 600; font-size: 12.5px; border-radius: 7px; padding: 4px 8px; }
 .leaflet-control-attribution { font-size: 11px; }
 @media (prefers-color-scheme: dark) {
+  .osm-tiles { filter: invert(1) hue-rotate(180deg) brightness(.95) contrast(.85) saturate(.5); }
   .leaflet-control-attribution, .leaflet-bar a { background: var(--surface) !important; color: var(--muted) !important; }
   .leaflet-control-attribution a { color: var(--accent) !important; }
   .leaflet-bar a { border-bottom-color: var(--line) !important; }
@@ -588,7 +589,7 @@ textarea.note:focus-visible { outline: 2px solid var(--accent); outline-offset: 
 </dialog>
 
 <footer class="foot">
-  <span>Business data © <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener noreferrer">OpenStreetMap contributors</a> (ODbL). Map © CARTO.</span>
+  <span>Business data and map © <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener noreferrer">OpenStreetMap contributors</a> (ODbL).</span>
   <span>OpenStreetMap misses some businesses and websites, so check on Google before you call.</span>
   <span>Website checks by Google PageSpeed Insights.</span>
   <span>Your notes, follow-ups, checks and Google key stay in this browser only.</span>
@@ -1439,13 +1440,13 @@ function initMap() {
   const mq = matchMedia('(prefers-color-scheme: dark)');
   if (mq.addEventListener) mq.addEventListener('change', () => { readColors(); setTiles(); drawSearchArea(false); drawMuni(); renderMarkers(); });
 }
+/* OpenStreetMap's own tiles: free, no key, fine for light use (operations.osmfoundation.org/policies/tiles).
+   One layer serves both themes; dark mode darkens it with a CSS filter. */
 function setTiles() {
-  if (!map) return;
-  const dark = matchMedia('(prefers-color-scheme: dark)').matches;
-  if (tiles) tiles.remove();
-  tiles = L.tileLayer(`https://{s}.basemaps.cartocdn.com/${dark ? 'dark_all' : 'rastertiles/voyager'}/{z}/{x}/{y}{r}.png`, {
-    subdomains: 'abcd', maxZoom: 20,
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions" target="_blank" rel="noopener">CARTO</a>',
+  if (!map || tiles) return;
+  tiles = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 19, className: 'osm-tiles',
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> contributors',
   }).addTo(map);
 }
 function drawSearchArea(fit) {

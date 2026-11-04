@@ -29,7 +29,7 @@ Optional: limit the key to the PageSpeed Insights API, and to the website `https
 
 - Businesses: [OpenStreetMap](https://www.openstreetmap.org/copyright) (© OpenStreetMap contributors, ODbL), loaded live through the Overpass API. OpenStreetMap misses some businesses and websites, so check on Google before you call.
 - Addresses: Nominatim, with Photon as a backup.
-- Map: CARTO basemaps.
+- Map: OpenStreetMap's own map tiles (free, no key). In dark mode the app darkens them.
 - Website checks: Google PageSpeed Insights.
 
 ## Privacy
