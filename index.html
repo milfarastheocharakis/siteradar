@@ -1,0 +1,2613 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>SiteRadar</title>
+<meta name="description" content="Find local businesses with no website or a weak one, on a map, with details, notes and export.">
+<meta name="color-scheme" content="light dark">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='15' fill='%230d6a64'/%3E%3Ccircle cx='16' cy='16' r='9' fill='none' stroke='%23fff' stroke-opacity='.55' stroke-width='2'/%3E%3Cpath d='M16 16 27 9' stroke='%23fff' stroke-width='2.6' stroke-linecap='round'/%3E%3Ccircle cx='16' cy='16' r='2.6' fill='%23fff'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Commissioner:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+<script defer src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+<style>
+:root {
+  --bg: #f3f1ec;
+  --surface: #ffffff;
+  --surface-2: #f7f5f1;
+  --surface-3: #ece8e1;
+  --line: #e4dfd6;
+  --line-strong: #cdc6ba;
+  --text: #1c1a17;
+  --muted: #655f56;
+  --faint: #8b857b;
+  --accent: #0d6a64;
+  --accent-strong: #09504b;
+  --accent-ink: #ffffff;
+  --accent-soft: #dcefec;
+  --none: #cc3d27;
+  --social: #c47312;
+  --site: #2e8750;
+  --none-soft: #fbe6e1;
+  --social-soft: #fbeedc;
+  --site-soft: #e2f2e7;
+  --warn-soft: #fff3d6;
+  --warn-ink: #7a5300;
+  --danger: #b42318;
+  --danger-soft: #fdecea;
+  --shadow: 0 1px 2px rgba(28, 26, 23, .06), 0 10px 30px rgba(28, 26, 23, .10);
+  --font: 'Commissioner', system-ui, -apple-system, 'Segoe UI', Roboto, 'Noto Sans', sans-serif;
+  --mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #121211;
+    --surface: #1b1a18;
+    --surface-2: #222120;
+    --surface-3: #2c2a27;
+    --line: #33302c;
+    --line-strong: #4a4640;
+    --text: #f2efe9;
+    --muted: #b3aca1;
+    --faint: #8c857a;
+    --accent: #3fb3a8;
+    --accent-strong: #63c9bf;
+    --accent-ink: #062320;
+    --accent-soft: #15403c;
+    --none: #ff7a62;
+    --social: #f2a648;
+    --site: #5cc684;
+    --none-soft: #3d1e18;
+    --social-soft: #3b2a14;
+    --site-soft: #173320;
+    --warn-soft: #3a2e12;
+    --warn-ink: #f6d58a;
+    --danger: #ff8f80;
+    --danger-soft: #3d1c19;
+    --shadow: 0 1px 2px rgba(0, 0, 0, .5), 0 12px 32px rgba(0, 0, 0, .45);
+  }
+}
+
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font: 15px/1.45 var(--font);
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr) auto;
+  height: 100vh;
+  height: 100dvh;
+  -webkit-font-smoothing: antialiased;
+}
+button, input, select, textarea { font: inherit; color: inherit; }
+button { cursor: pointer; }
+a { color: var(--accent); }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+[hidden] { display: none !important; }
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+.muted { color: var(--muted); }
+.num { font-family: var(--mono); font-variant-numeric: tabular-nums; }
+
+/* ---------- top bar ---------- */
+.top {
+  display: flex;
+  align-items: flex-end;
+  gap: 14px 24px;
+  flex-wrap: wrap;
+  padding: 12px 16px 14px;
+  background: var(--surface);
+  border-bottom: 1px solid var(--line);
+  position: relative;
+  z-index: 20;
+}
+.brand { display: flex; align-items: center; gap: 10px; padding-bottom: 3px; }
+.brand-mark { width: 34px; height: 34px; flex: none; }
+.brand-name { font-weight: 700; font-size: 18px; letter-spacing: -.015em; line-height: 1.1; }
+.brand-tag { color: var(--muted); font-size: 12.5px; line-height: 1.2; }
+.search { display: flex; align-items: flex-end; gap: 10px; flex: 1 1 560px; flex-wrap: wrap; margin: 0; }
+.field { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+.field > .cap { font-size: 12px; font-weight: 600; color: var(--muted); }
+.field.grow { flex: 1 1 240px; }
+.input {
+  height: 40px;
+  border: 1px solid var(--line-strong);
+  background: var(--surface);
+  border-radius: 9px;
+  padding: 0 12px;
+  min-width: 0;
+  width: 100%;
+}
+select.input { padding-right: 30px; appearance: none; background-image: linear-gradient(45deg, transparent 50%, var(--muted) 50%), linear-gradient(135deg, var(--muted) 50%, transparent 50%); background-position: calc(100% - 16px) 52%, calc(100% - 11px) 52%; background-size: 5px 5px; background-repeat: no-repeat; }
+.input:focus-visible { outline: 2px solid var(--accent); outline-offset: 0; border-color: var(--accent); }
+.input.sm { height: 34px; font-size: 14px; padding: 0 10px; border-radius: 8px; }
+select.input.sm { padding-right: 28px; }
+.radius { display: flex; align-items: stretch; }
+.radius .input { width: 82px; border-radius: 9px 0 0 9px; }
+.radius .unit { display: grid; place-items: center; padding: 0 11px; border: 1px solid var(--line-strong); border-left: 0; border-radius: 0 9px 9px 0; background: var(--surface-2); color: var(--muted); font-size: 14px; }
+#area { min-width: 196px; }
+
+.btn {
+  height: 40px;
+  padding: 0 16px;
+  border-radius: 9px;
+  border: 1px solid var(--line-strong);
+  background: var(--surface);
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  text-decoration: none;
+  color: var(--text);
+  white-space: nowrap;
+  transition: background-color .15s ease, border-color .15s ease;
+}
+.btn:hover { background: var(--surface-2); }
+.btn.primary { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+.btn.primary:hover { background: var(--accent-strong); border-color: var(--accent-strong); }
+.btn.small { height: 32px; padding: 0 12px; font-size: 13.5px; border-radius: 8px; }
+.btn svg { width: 17px; height: 17px; flex: none; }
+.btn[disabled] { opacity: .55; cursor: default; }
+.link-btn { border: 0; background: none; padding: 0; color: var(--accent); font-weight: 600; text-decoration: underline; text-underline-offset: 2px; }
+.icon-btn { width: 36px; height: 36px; border-radius: 9px; border: 1px solid var(--line); background: var(--surface); display: inline-grid; place-items: center; color: var(--muted); }
+.icon-btn:hover { color: var(--text); background: var(--surface-2); }
+.icon-btn svg { width: 18px; height: 18px; }
+
+/* ---------- layout ---------- */
+.layout {
+  display: grid;
+  grid-template-columns: minmax(340px, 400px) minmax(0, 1fr) minmax(340px, 410px);
+  min-height: 0;
+  position: relative;
+}
+.panel { background: var(--surface); min-height: 0; display: flex; flex-direction: column; }
+.results { border-right: 1px solid var(--line); overflow-y: auto; overscroll-behavior: contain; }
+.details { border-left: 1px solid var(--line); overflow-y: auto; overscroll-behavior: contain; }
+.mapwrap { position: relative; min-height: 0; z-index: 0; }
+#map { position: absolute; inset: 0; background: var(--surface-3); }
+.map-off { position: absolute; inset: 0; display: grid; place-items: center; padding: 24px; text-align: center; color: var(--muted); }
+
+/* ---------- results panel ---------- */
+.tabs { display: flex; gap: 2px; padding: 6px 10px 0; border-bottom: 1px solid var(--line); flex: none; position: sticky; top: 0; z-index: 3; background: var(--surface); }
+.tab { border: 0; background: none; padding: 9px 10px 10px; font-weight: 600; color: var(--muted); border-bottom: 2px solid transparent; margin-bottom: -1px; display: inline-flex; align-items: center; gap: 6px; }
+.tab:hover { color: var(--text); }
+.tab[aria-selected="true"] { color: var(--text); border-bottom-color: var(--accent); }
+.count { font-family: var(--mono); font-size: 12px; background: var(--surface-3); color: var(--muted); padding: 0 6px; border-radius: 999px; line-height: 18px; }
+.count:empty { display: none; }
+.results-head { padding: 12px 14px 10px; display: grid; gap: 10px; flex: none; border-bottom: 1px solid var(--line); }
+.results-head:empty { display: none; }
+.status { display: flex; align-items: flex-start; gap: 10px; padding: 9px 12px; border-radius: 10px; font-size: 14px; background: var(--surface-2); border: 1px solid var(--line); }
+.status.busy { background: var(--accent-soft); border-color: transparent; }
+.status.error { background: var(--danger-soft); border-color: transparent; color: var(--text); }
+.status.warn { background: var(--warn-soft); border-color: transparent; }
+.status-text { flex: 1; min-width: 0; }
+.status-actions { display: inline-flex; gap: 12px; flex-wrap: wrap; margin-left: auto; }
+.status.error .status-text::before { content: ''; display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: var(--danger); margin-right: 8px; vertical-align: 1px; }
+.spinner { width: 16px; height: 16px; border-radius: 50%; border: 2px solid var(--accent); border-right-color: transparent; animation: spin .8s linear infinite; flex: none; margin-top: 2px; }
+@keyframes spin { to { transform: rotate(360deg); } }
+@media (prefers-reduced-motion: reduce) { .spinner { animation-duration: 2.4s; } }
+.centre-line { font-size: 14px; color: var(--muted); display: grid; gap: 6px; }
+.centre-line strong { color: var(--text); font-weight: 600; }
+.summary { margin: 0; font-size: 14px; color: var(--muted); }
+.summary b { color: var(--text); font-family: var(--mono); font-weight: 600; font-size: 13.5px; }
+.muni-line { font-size: 13px; color: var(--muted); display: flex; gap: 6px 8px; align-items: center; flex-wrap: wrap; }
+.muni-line::before { content: ''; width: 22px; height: 0; border-top: 2px dashed var(--accent); flex: none; }
+.filters { display: grid; gap: 10px; }
+.chips { display: flex; gap: 6px; flex-wrap: wrap; }
+.chip { display: inline-flex; align-items: center; gap: 7px; height: 32px; padding: 0 11px; border-radius: 999px; border: 1px solid var(--line-strong); background: var(--surface); font-size: 13.5px; font-weight: 600; color: var(--muted); }
+.chip:hover { color: var(--text); }
+.chip[aria-pressed="true"] { color: var(--text); background: var(--surface-3); border-color: var(--text); }
+.chip[aria-pressed="false"] .dot { opacity: .45; }
+.chip .n { font-family: var(--mono); font-size: 12px; font-weight: 500; color: var(--muted); }
+.dot { width: 10px; height: 10px; border-radius: 50%; flex: none; display: inline-block; box-shadow: 0 0 0 1.5px var(--surface); }
+.dot.none { background: var(--none); }
+.dot.social { background: var(--social); }
+.dot.site { background: var(--site); }
+.filter-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.mini { display: grid; gap: 3px; min-width: 0; }
+.mini > span { font-size: 11.5px; font-weight: 600; color: var(--muted); }
+.mini.wide { grid-column: 1 / -1; }
+.checks { display: flex; flex-wrap: wrap; gap: 6px 16px; font-size: 13.5px; }
+.checks label { display: inline-flex; align-items: center; gap: 6px; cursor: pointer; }
+.checks input { accent-color: var(--accent); width: 15px; height: 15px; margin: 0; }
+body[data-tab="leads"] .only-results { display: none !important; }
+
+.list { list-style: none; margin: 0; padding: 6px 8px 10px; flex: 1 0 auto; }
+.row {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 10px minmax(0, 1fr) auto;
+  gap: 11px;
+  align-items: center;
+  padding: 9px 9px;
+  border: 0;
+  background: none;
+  text-align: left;
+  border-radius: 10px;
+}
+.row:hover { background: var(--surface-2); }
+.row[aria-current="true"] { background: var(--accent-soft); }
+.row-main { min-width: 0; display: grid; gap: 1px; }
+.row-name { font-weight: 600; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.row-sub { color: var(--muted); font-size: 13px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.row-meta { display: grid; justify-items: end; gap: 3px; }
+.score { font-family: var(--mono); font-weight: 600; font-size: 12.5px; min-width: 30px; text-align: center; padding: 1px 6px; border-radius: 6px; background: var(--surface-3); color: var(--muted); }
+.score.hi { background: var(--accent); color: var(--accent-ink); }
+.score.mid { background: var(--accent-soft); color: var(--text); }
+.dist { font-family: var(--mono); font-size: 11.5px; color: var(--muted); white-space: nowrap; }
+.badge { justify-self: start; font-size: 11.5px; font-weight: 600; padding: 0 7px; border-radius: 999px; line-height: 19px; margin-top: 3px; background: var(--surface-3); color: var(--text); }
+.badge.st-lead { background: var(--accent-soft); color: var(--accent-strong); }
+.badge.st-contacted { background: var(--social-soft); color: var(--social); }
+.badge.st-customer { background: var(--site-soft); color: var(--site); }
+.badge.st-no, .badge.st-hassite { background: var(--surface-3); color: var(--muted); }
+.empty { padding: 22px 14px; color: var(--muted); font-size: 14px; }
+.empty h2 { color: var(--text); font-size: 17px; margin: 0 0 10px; letter-spacing: -.01em; }
+.empty ol { margin: 0 0 12px; padding-left: 20px; display: grid; gap: 4px; }
+.empty p { margin: 0 0 10px; }
+.list-foot { flex: none; display: flex; align-items: center; gap: 8px; padding: 9px 14px; border-top: 1px solid var(--line); flex-wrap: wrap; position: sticky; bottom: 0; z-index: 3; background: var(--surface); }
+.list-foot .grow { flex: 1; font-size: 13px; color: var(--muted); min-width: 120px; }
+.export { display: inline-flex; gap: 6px; align-items: center; }
+.export > span { font-size: 12.5px; color: var(--muted); margin-right: 2px; }
+
+/* ---------- map overlays ---------- */
+.map-legend, .map-hint {
+  position: absolute;
+  z-index: 1001;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow);
+  font-size: 12.5px;
+  border-radius: 10px;
+}
+.map-legend { left: 12px; bottom: 26px; padding: 8px 11px; display: grid; gap: 4px; }
+.map-legend span { display: flex; align-items: center; gap: 7px; }
+.map-hint { left: 50%; top: 12px; transform: translateX(-50%); padding: 6px 12px; color: var(--muted); white-space: nowrap; pointer-events: none; }
+.centre-pin span { display: block; width: 26px; height: 26px; border-radius: 50%; background: var(--accent); border: 3px solid var(--surface); box-shadow: 0 0 0 2px var(--accent), 0 4px 12px rgba(0, 0, 0, .3); cursor: grab; position: relative; }
+.centre-pin span::after { content: ''; position: absolute; inset: 7px; border-radius: 50%; background: var(--surface); }
+.leaflet-container { font-family: var(--font); background: var(--surface-3); }
+.leaflet-tooltip { font-family: var(--font); font-weight: 600; font-size: 12.5px; border-radius: 7px; padding: 4px 8px; }
+.leaflet-control-attribution { font-size: 11px; }
+@media (prefers-color-scheme: dark) {
+  .leaflet-control-attribution, .leaflet-bar a { background: var(--surface) !important; color: var(--muted) !important; }
+  .leaflet-control-attribution a { color: var(--accent) !important; }
+  .leaflet-bar a { border-bottom-color: var(--line) !important; }
+  .leaflet-tooltip { background: var(--surface); color: var(--text); border-color: var(--line); }
+  .leaflet-tooltip-top::before { border-top-color: var(--surface); }
+}
+
+/* ---------- details panel ---------- */
+.d-empty { padding: 30px 24px; color: var(--muted); display: grid; gap: 12px; align-content: start; }
+.d-empty h2 { margin: 0; color: var(--text); font-size: 17px; }
+.d-empty p { margin: 0; }
+.key { display: grid; gap: 8px; margin-top: 4px; }
+.key div { display: grid; grid-template-columns: 14px 1fr; gap: 10px; align-items: baseline; font-size: 14px; }
+.key .dot { margin-top: 3px; }
+.d-body { padding: 18px 20px 30px; display: grid; gap: 20px; align-content: start; }
+.d-head { display: grid; gap: 6px; position: relative; }
+.d-top { display: flex; align-items: flex-start; gap: 10px; }
+.d-top .d-kicker { flex: 1; }
+.d-close { display: none; flex: none; }
+.d-kicker { margin: 0; color: var(--muted); font-size: 13px; }
+.d-name { margin: 0; font-size: 23px; line-height: 1.18; font-weight: 700; letter-spacing: -.015em; overflow-wrap: anywhere; }
+.d-alt { margin: 0; color: var(--muted); font-size: 14.5px; }
+.d-pills { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px; }
+.pill { display: inline-flex; align-items: center; gap: 7px; padding: 3px 10px; border-radius: 999px; font-size: 13px; font-weight: 600; background: var(--surface-3); color: var(--text); }
+.pill.none { background: var(--none-soft); color: var(--none); }
+.pill.social { background: var(--social-soft); color: var(--social); }
+.pill.site { background: var(--site-soft); color: var(--site); }
+.pill .dot { box-shadow: none; width: 8px; height: 8px; }
+.d-score { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 16px; padding: 14px 16px; border-radius: 12px; background: var(--surface-2); border: 1px solid var(--line); align-items: start; }
+.ring { display: grid; justify-items: center; gap: 2px; min-width: 64px; }
+.ring strong { font-family: var(--mono); font-size: 30px; line-height: 1; font-weight: 600; }
+.ring span { font-size: 11.5px; color: var(--muted); text-align: center; line-height: 1.2; }
+.ring.hi strong { color: var(--accent); }
+.reasons { list-style: none; margin: 0; padding: 0; display: grid; gap: 4px; font-size: 13.5px; }
+.reasons li { display: grid; grid-template-columns: 34px minmax(0, 1fr); gap: 4px; }
+.reasons .pts { font-family: var(--mono); font-size: 12.5px; color: var(--muted); padding-top: 1px; }
+.reasons .neg { color: var(--danger); }
+.facts { display: grid; grid-template-columns: 104px minmax(0, 1fr); gap: 9px 12px; margin: 0; font-size: 14.5px; }
+.facts dt { color: var(--muted); font-size: 13px; padding-top: 1px; }
+.facts dd { margin: 0; overflow-wrap: anywhere; display: flex; flex-wrap: wrap; gap: 4px 10px; align-items: baseline; }
+.facts .none-txt { color: var(--faint); }
+.facts .flag { font-size: 12.5px; font-weight: 600; color: var(--social); }
+.mini-btn { border: 1px solid var(--line); background: var(--surface); border-radius: 6px; font-size: 12px; padding: 1px 7px; color: var(--muted); }
+.mini-btn:hover { color: var(--text); }
+.d-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.d-actions .btn { width: 100%; height: 38px; font-size: 14px; padding: 0 10px; }
+.d-actions .btn.primary { grid-column: 1 / -1; height: 42px; }
+.d-lead { display: grid; gap: 10px; padding-top: 16px; border-top: 1px solid var(--line); }
+.d-lead h3 { margin: 0; font-size: 15px; }
+.d-lead .sub { margin: -6px 0 0; font-size: 12.5px; color: var(--muted); }
+.status-btns { display: flex; flex-wrap: wrap; gap: 6px; }
+.st-btn { height: 32px; padding: 0 11px; border-radius: 999px; border: 1px solid var(--line-strong); background: var(--surface); font-size: 13.5px; font-weight: 600; color: var(--muted); }
+.st-btn:hover { color: var(--text); }
+.st-btn[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+textarea.note { width: 100%; min-height: 92px; border: 1px solid var(--line-strong); border-radius: 10px; padding: 10px 12px; background: var(--surface); resize: vertical; font-size: 14.5px; line-height: 1.45; }
+textarea.note:focus-visible { outline: 2px solid var(--accent); outline-offset: 0; border-color: var(--accent); }
+.saved { margin: 0; font-size: 12.5px; color: var(--muted); min-height: 18px; }
+.d-source { margin: 0; font-size: 12.5px; color: var(--muted); line-height: 1.5; }
+
+/* ---------- website check, follow-ups, settings ---------- */
+.check-row { display: flex; align-items: center; gap: 6px 10px; flex-wrap: wrap; font-size: 13px; color: var(--muted); }
+.vbadge { display: inline-flex; align-items: center; font-size: 11.5px; font-weight: 600; padding: 0 7px; border-radius: 999px; line-height: 19px; white-space: nowrap; }
+.vbadge.broken { background: var(--none-soft); color: var(--none); }
+.vbadge.weak { background: var(--social-soft); color: var(--social); }
+.vbadge.ok { background: var(--site-soft); color: var(--site); }
+.vbadge.unknown { background: var(--surface-3); color: var(--muted); }
+.row-tags { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 3px; }
+.row-tags .badge { margin-top: 0; }
+.badge.due { background: var(--danger-soft); color: var(--danger); }
+.badge.soon { background: var(--surface-3); color: var(--text); }
+.d-check { display: grid; gap: 12px; padding: 14px 16px; border: 1px solid var(--line); border-radius: 12px; }
+.d-check h3 { margin: 0; font-size: 15px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.d-check p { margin: 0; font-size: 13.5px; color: var(--muted); }
+.d-check .err { color: var(--danger); }
+.d-check .busy { display: flex; gap: 10px; align-items: flex-start; }
+.check-shot { display: grid; grid-template-columns: 128px minmax(0, 1fr); gap: 14px; align-items: end; }
+.check-shot .check-foot { flex-direction: column; align-items: flex-start; gap: 4px; margin-top: 8px; }
+.check-facts { display: grid; grid-template-columns: max-content minmax(0, 1fr); gap: 6px 14px; margin: 0; font-size: 13.5px; }
+.check-facts dt { color: var(--muted); }
+.check-facts dd { margin: 0; font-weight: 600; overflow-wrap: anywhere; }
+.check-facts .bad { color: var(--none); }
+.check-facts .good { color: var(--site); }
+.check-foot { display: flex; flex-wrap: wrap; gap: 6px 14px; align-items: center; font-size: 12.5px; color: var(--muted); }
+.shot { width: 128px; height: auto; border-radius: 10px; border: 1px solid var(--line); background: var(--surface-3); display: block; }
+.shot-ph { width: 128px; min-height: 160px; border-radius: 10px; border: 1px dashed var(--line-strong); display: grid; place-items: center; text-align: center; font-size: 11.5px; color: var(--faint); padding: 8px; }
+.follow { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; font-size: 13.5px; }
+.follow .input { width: auto; height: 32px; font-size: 14px; padding: 0 8px; }
+.due-count { font-family: var(--mono); font-size: 11.5px; background: var(--danger); color: #fff; padding: 0 6px; border-radius: 999px; line-height: 18px; }
+.due-count:empty { display: none; }
+.recent { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 4px; }
+.settings-btn { width: 40px; height: 40px; flex: none; }
+.dlg { border: 1px solid var(--line); border-radius: 14px; padding: 0; width: min(560px, calc(100vw - 32px)); max-height: calc(100dvh - 32px); background: var(--surface); color: var(--text); box-shadow: var(--shadow); }
+.dlg::backdrop { background: rgba(20, 18, 15, .45); }
+.dlg-body { padding: 20px 22px 22px; display: grid; gap: 14px; margin: 0; }
+.dlg h2 { margin: 0; font-size: 19px; letter-spacing: -.01em; }
+.dlg h3 { margin: 2px 0 0; font-size: 15px; }
+.dlg p, .dlg li { font-size: 14px; color: var(--muted); margin: 0; }
+.dlg ol { margin: 0; padding-left: 20px; display: grid; gap: 6px; }
+.dlg .reason { color: var(--text); background: var(--accent-soft); padding: 8px 12px; border-radius: 9px; }
+.dlg .row-btns { display: flex; gap: 8px; justify-content: flex-end; flex-wrap: wrap; }
+.key-row { display: flex; gap: 8px; }
+.key-row .input { font-family: var(--mono); font-size: 13.5px; }
+
+#checkHint { display: inline-flex; align-items: center; gap: 4px 6px; flex-wrap: wrap; }
+#checkHint .spinner { margin-top: 0; }
+#checkHint .err { color: var(--danger); }
+.follow .badge { margin-top: 0; }
+.dlg .err { color: var(--danger); }
+.recent .btn { max-width: 100%; }
+.recent .btn span { overflow: hidden; text-overflow: ellipsis; min-width: 0; }
+.empty .status { margin: 0 0 14px; align-items: center; flex-wrap: wrap; }
+.dot.ringed { background: transparent; box-shadow: inset 0 0 0 2px var(--accent); }
+.d-check .check-foot .btn { height: 32px; }
+
+/* ---------- footer ---------- */
+.foot { display: flex; flex-wrap: wrap; gap: 4px 18px; padding: 7px 16px; font-size: 12px; color: var(--muted); background: var(--surface); border-top: 1px solid var(--line); }
+.foot a { color: inherit; }
+
+/* ---------- medium screens: details slide over the map ---------- */
+@media (max-width: 1180px) {
+  .layout { grid-template-columns: minmax(320px, 390px) minmax(0, 1fr); }
+  .details {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: min(420px, 100%);
+    z-index: 30;
+    box-shadow: var(--shadow);
+    transform: translateX(104%);
+    visibility: hidden;
+    transition: transform .22s cubic-bezier(.2, .8, .2, 1), visibility 0s linear .22s;
+  }
+  body.details-open .details { transform: none; visibility: visible; transition: transform .22s cubic-bezier(.2, .8, .2, 1); }
+  .d-close { display: inline-grid; }
+}
+@media (prefers-reduced-motion: reduce) { .details { transition: none !important; } }
+
+/* ---------- phones: map on top, list below, details as a sheet ---------- */
+@media (max-width: 760px) {
+  body { display: block; height: auto; min-height: 100vh; }
+  .top { padding: 10px 16px 12px; gap: 10px; }
+  .brand-tag { display: none; }
+  .search { gap: 8px; flex-basis: 100%; }
+  .field.area-field { flex: 1 1 150px; }
+  #area { min-width: 0; }
+  .field.grow { flex: 1 1 100%; order: -1; }
+  .search .btn.primary { flex: 1 1 120px; }
+  .layout { display: flex; flex-direction: column; }
+  .mapwrap { order: -1; height: 46vh; min-height: 260px; flex: none; }
+  .results { border-right: 0; }
+  .results { overflow: visible; }
+  .settings-btn { position: absolute; top: 10px; right: 16px; }
+  .map-hint { top: 10px; left: 10px; transform: none; font-size: 12px; padding: 5px 10px; }
+  .map-legend { display: none; }
+  .details { position: fixed; inset: 0; width: 100%; z-index: 2000; border-left: 0; }
+  body.details-open { overflow: hidden; }
+  .d-body { padding: 14px 16px calc(28px + env(safe-area-inset-bottom)); }
+  .list-foot { padding: 10px 16px calc(12px + env(safe-area-inset-bottom)); }
+}
+</style>
+</head>
+<body data-tab="results">
+<header class="top">
+  <div class="brand">
+    <svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="15" fill="#0d6a64"/><circle cx="16" cy="16" r="9" fill="none" stroke="#fff" stroke-opacity=".55" stroke-width="2"/><path d="M16 16 27 9" stroke="#fff" stroke-width="2.6" stroke-linecap="round"/><circle cx="16" cy="16" r="2.6" fill="#fff"/></svg>
+    <div>
+      <div class="brand-name">SiteRadar</div>
+      <div class="brand-tag">Find businesses that need a website</div>
+    </div>
+  </div>
+  <form id="searchForm" class="search" autocomplete="off" novalidate>
+    <label class="field area-field"><span class="cap">Municipality</span>
+      <select id="area" class="input">
+        <option value="heraklion">Heraklion · Ηράκλειο</option>
+        <option value="rethymno">Rethymno · Ρέθυμνο</option>
+        <option value="other">Other place in Greece</option>
+      </select>
+    </label>
+    <label class="field grow"><span class="cap">Address</span>
+      <input id="address" class="input" type="text" enterkeyhint="search" spellcheck="false" placeholder="e.g. 62 Martyron 182 or Λεωφόρος 62 Μαρτύρων 182" value="62 Martyron 182" list="recentAddr">
+    </label>
+    <label class="field"><span class="cap">Radius</span>
+      <span class="radius"><input id="radius" class="input" type="number" min="0.2" max="25" step="0.1" value="11" list="radiusPresets" inputmode="decimal" aria-describedby="radiusUnit"><span class="unit" id="radiusUnit">km</span></span>
+    </label>
+    <datalist id="radiusPresets"><option value="1"></option><option value="2"></option><option value="3"></option><option value="5"></option><option value="8"></option><option value="11"></option><option value="15"></option><option value="20"></option><option value="25"></option></datalist>
+    <datalist id="recentAddr"></datalist>
+    <button id="searchBtn" class="btn primary" type="submit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.6-3.6"/></svg><span id="searchLabel">Search</span></button>
+  </form>
+  <button type="button" id="settingsBtn" class="icon-btn settings-btn" aria-label="Settings" title="Settings"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg></button>
+</header>
+
+<main class="layout" id="layout">
+  <section class="panel results" aria-label="Businesses">
+    <div class="tabs" role="tablist" aria-label="Lists">
+      <button type="button" class="tab" role="tab" id="tabResults" aria-selected="true" aria-controls="list">Search results <span class="count" id="resultCount"></span></button>
+      <button type="button" class="tab" role="tab" id="tabLeads" aria-selected="false" aria-controls="list">My leads <span class="count" id="leadCount"></span><span class="due-count" id="dueCount" title="Follow-ups due"></span></button>
+    </div>
+    <div class="results-head" id="resultsHead">
+      <div id="status" class="status" role="status" aria-live="polite" hidden></div>
+      <div id="centreLine" class="centre-line only-results" hidden></div>
+      <p id="summary" class="summary only-results" hidden></p>
+      <div id="muniLine" class="muni-line only-results" hidden></div>
+      <div id="filters" class="filters" hidden>
+        <div class="chips only-results" role="group" aria-label="Web presence">
+          <button type="button" class="chip" data-bucket="none" aria-pressed="true"><span class="dot none"></span>No site <span class="n"></span></button>
+          <button type="button" class="chip" data-bucket="social" aria-pressed="true"><span class="dot social"></span>Social only <span class="n"></span></button>
+          <button type="button" class="chip" data-bucket="site" aria-pressed="false"><span class="dot site"></span>Has site <span class="n"></span></button>
+        </div>
+        <div class="check-row only-results" id="checkRow" hidden>
+          <button type="button" id="checkAllBtn" class="btn small">Check websites</button>
+          <span id="checkHint"></span>
+        </div>
+        <div class="filter-grid">
+          <label class="mini only-results"><span>Type</span><select id="groupSel" class="input sm"></select></label>
+          <label class="mini only-results"><span>Sort</span>
+            <select id="sortSel" class="input sm">
+              <option value="score">Best leads first</option>
+              <option value="distance">Nearest first</option>
+              <option value="name">Name A–Z</option>
+            </select>
+          </label>
+          <label class="mini"><span>Status</span>
+            <select id="statusSel" class="input sm">
+              <option value="any">Any status</option>
+              <option value="due">Follow-up due</option>
+              <option value="new">Not checked</option>
+              <option value="lead">Good lead</option>
+              <option value="contacted">Contacted</option>
+              <option value="customer">Customer</option>
+              <option value="no">Not interested</option>
+              <option value="hassite">Has a good site</option>
+            </select>
+          </label>
+          <label class="mini only-results"><span>Website check</span>
+            <select id="checkSel" class="input sm">
+              <option value="any">Any</option>
+              <option value="weak">Broken or weak sites</option>
+              <option value="unchecked">Sites not checked yet</option>
+              <option value="ok">Good sites</option>
+            </select>
+          </label>
+          <label class="mini wide"><span>Filter</span><input id="textFilter" class="input sm" type="search" placeholder="Name, street or type" spellcheck="false"></label>
+        </div>
+        <div class="checks only-results">
+          <label><input type="checkbox" id="phoneOnly"> Has a phone</label>
+          <label><input type="checkbox" id="hideChains" checked> Hide chains</label>
+          <label id="insideWrap" hidden><input type="checkbox" id="insideOnly"> <span id="insideLabel">Only inside the municipality</span></label>
+        </div>
+      </div>
+    </div>
+    <ol id="list" class="list" aria-label="Businesses"></ol>
+    <div class="list-foot" id="listFoot" hidden>
+      <span class="grow" id="shownCount"></span>
+      <button type="button" id="moreBtn" class="btn small" hidden>Show more</button>
+      <span class="export"><span>Export</span><button type="button" id="csvBtn" class="btn small" title="CSV file for Google Sheets and other tools">CSV</button><button type="button" id="xlsxBtn" class="btn small" title="Excel file (keeps Greek letters and columns right)">Excel</button></span>
+    </div>
+  </section>
+
+  <section class="mapwrap" aria-label="Map">
+    <div id="map"></div>
+    <div class="map-legend" aria-hidden="true">
+      <span><i class="dot none"></i>No website, or it doesn't load</span>
+      <span><i class="dot social"></i>Social or booking page only</span>
+      <span><i class="dot site"></i>Has a website</span>
+      <span><i class="dot ringed"></i>Ringed: your leads</span>
+    </div>
+    <div class="map-hint" id="mapHint">Click the map or drag the pin to move the centre</div>
+  </section>
+
+  <aside id="details" class="panel details" aria-label="Business details" tabindex="-1">
+    <div id="detailsBody"></div>
+  </aside>
+</main>
+
+<dialog id="settingsDlg" class="dlg" aria-labelledby="settingsTitle">
+  <form method="dialog" class="dlg-body" id="settingsForm">
+    <h2 id="settingsTitle">Settings</h2>
+    <p id="settingsReason" class="reason" hidden></p>
+    <h3>Google key for the website check</h3>
+    <p>The website check uses Google's free PageSpeed service, which needs your own key. It costs nothing and needs no card. The key is saved only in this browser.</p>
+    <ol>
+      <li><a href="https://console.cloud.google.com/apis/library/pagespeedonline.googleapis.com" target="_blank" rel="noopener noreferrer">Open the PageSpeed Insights API page</a>, sign in with Google, pick or create a project, and press Enable.</li>
+      <li><a href="https://console.cloud.google.com/apis/credentials" target="_blank" rel="noopener noreferrer">Open Credentials</a>, press Create credentials, then API key.</li>
+      <li>Optional: edit the key and, under API restrictions, allow only the PageSpeed Insights API.</li>
+      <li>Copy the key and paste it below.</li>
+    </ol>
+    <label class="mini"><span>API key</span>
+      <span class="key-row"><input id="keyInput" class="input" type="password" autocomplete="off" spellcheck="false" placeholder="AIza…"><button type="button" id="keyShow" class="btn small">Show</button></span>
+    </label>
+    <p id="keyMsg" role="status"></p>
+    <div class="row-btns">
+      <button type="button" id="keyRemove" class="btn small">Remove key</button>
+      <button type="button" id="keyClose" class="btn small">Close</button>
+      <button type="submit" id="keySave" class="btn small primary">Save key</button>
+    </div>
+  </form>
+</dialog>
+
+<footer class="foot">
+  <span>Business data © <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener noreferrer">OpenStreetMap contributors</a> (ODbL). Map © CARTO.</span>
+  <span>OpenStreetMap misses some businesses and websites, so check on Google before you call.</span>
+  <span>Website checks by Google PageSpeed Insights.</span>
+  <span>Your notes, follow-ups, checks and Google key stay in this browser only.</span>
+</footer>
+
+<noscript><p style="padding:16px">SiteRadar needs JavaScript turned on.</p></noscript>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+'use strict';
+
+/* =========================================================
+   Settings
+   ========================================================= */
+const PAGE = 200;
+const KEYS = { form: 'siteradar.v1.form', leads: 'siteradar.v1.leads', geo: 'siteradar.v1.geo', settings: 'siteradar.v1.settings', checks: 'siteradar.v1.checks', recent: 'siteradar.v1.recent' };
+const PSI = 'https://www.googleapis.com/pagespeedonline/v5/runPagespeed';
+const CHECK_MAX_AGE = 30 * 864e5;  // a website check stays valid for 30 days
+const CHECK_WORKERS = 3;           // websites checked at the same time
+const CHECK_SECONDS = 25;          // rough time one check takes, for the time estimate
+const CHECKS_KEPT = 1500;
+const OVERPASS = [
+  'https://overpass-api.de/api/interpreter',
+  'https://overpass.kumi.systems/api/interpreter',
+  'https://overpass.private.coffee/api/interpreter',
+];
+const XLSX_SRC = 'https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js';
+const XLSX_SRI = 'sha384-vtjasyidUo0kW94K5MXDXntzOJpQgBKXmE7e2Ga4LG0skTTLeBi97eFAXsqewJjw';
+
+const AREAS = {
+  heraklion: { label: 'Heraklion', el: 'Ηράκλειο', query: 'Heraklion', centre: [35.3387, 25.1442], zoom: 12, viewbox: '24.95,35.45,25.40,35.15' },
+  rethymno: { label: 'Rethymno', el: 'Ρέθυμνο', query: 'Rethymno', centre: [35.3660, 24.4820], zoom: 13, viewbox: '24.25,35.45,24.75,35.15' },
+  other: { label: 'Greece', el: '', query: '', centre: [35.24, 24.85], zoom: 9, viewbox: '' },
+};
+
+const GROUPS = {
+  stay: 'Stay', food: 'Eat and drink', experiences: 'Experiences', producers: 'Local producers',
+  beauty: 'Beauty and wellness', health: 'Health', trades: 'Trades and repairs',
+  offices: 'Offices and services', shops: 'Shops', other: 'Other',
+};
+const GROUP_ORDER = Object.keys(GROUPS);
+const VALUE = { stay: 30, experiences: 26, food: 24, health: 24, producers: 24, beauty: 22, trades: 20, offices: 18, shops: 14, other: 10 };
+const VALUE_WHY = {
+  stay: 'Hotels and rooms earn the most from their own website',
+  experiences: 'Tours and rentals sell online',
+  food: 'Restaurants and cafés need menus, photos and a map',
+  health: 'Patients look for clinics online first',
+  producers: 'Producers can sell online and to visitors',
+  beauty: 'Salons win clients with photos and booking',
+  trades: 'Trades get customers from search',
+  offices: 'Offices need a site people can trust',
+  shops: 'Shops need search, opening hours and photos',
+  other: 'Other type of business',
+};
+const BUCKET = { none: 'No website listed', social: 'Only social or booking pages', site: 'Has a website' };
+const STATUSES = [['new', 'Not checked'], ['lead', 'Good lead'], ['contacted', 'Contacted'], ['customer', 'Customer'], ['no', 'Not interested'], ['hassite', 'Has a good site']];
+const STATUS_LABEL = Object.fromEntries(STATUSES);
+const VERDICT = { broken: "Doesn't load", weak: 'Weak site', ok: 'Good site', unknown: "Couldn't check" };
+/* Error codes from Google's checker that mean the website itself is down. */
+const BROKEN = {
+  DNS_FAILURE: "the domain doesn't exist any more (it may have expired)",
+  FAILED_DOCUMENT_REQUEST: "the page doesn't load",
+  NO_DOCUMENT_REQUEST: "the page doesn't load",
+  ERRORED_DOCUMENT_REQUEST: 'the page returns an error',
+  NO_FCP: 'the page stays blank',
+  NOT_HTML: "it isn't a web page",
+  INSECURE_DOCUMENT_REQUEST: 'its security certificate is broken',
+  CHROME_INTERSTITIAL_ERROR: 'browsers show a security warning instead of the page',
+};
+const KEY_TROUBLE = {
+  missing: 'The website check uses your own free Google key. Getting one takes about two minutes.',
+  invalid: "Google says this key isn't valid. Copy it again from Credentials and paste it below.",
+  disabled: "The PageSpeed Insights API isn't turned on for this key yet. Do step 1 below, press Enable, wait a minute and try again.",
+  referrer: "This key is limited to certain websites. In Credentials, edit the key and add this page's address, or remove the website limit.",
+  blocked: "This key isn't allowed to use PageSpeed Insights. In Credentials, edit the key and allow the PageSpeed Insights API.",
+  denied: 'Google refused this key. Check it in Credentials, or create a new one.',
+  quota: "Google's limit for this key is used up for now. Wait a few minutes, or try again tomorrow.",
+};
+const PARKED_HOST = /(^|\.)(sedo\.com|sedoparking\.com|parkingcrew\.net|bodis\.com|dan\.com|afternic\.com|hugedomains\.com|above\.com|undeveloped\.com|parklogic\.com)$/;
+
+/* What the map-data query asks for. Each list is matched exactly. */
+const Q_AMENITY = 'restaurant|cafe|bar|pub|fast_food|ice_cream|biergarten|food_court|nightclub|dentist|doctors|clinic|pharmacy|veterinary|car_rental|car_wash|boat_rental|bicycle_rental|motorcycle_rental|dive_centre|driving_school|language_school|music_school|dancing_school|prep_school|training|childcare|cinema|theatre|arts_centre|events_venue|coworking_space|internet_cafe|bureau_de_change|studio';
+const Q_TOURISM = 'hotel|motel|guest_house|hostel|apartment|chalet|camp_site|caravan_site|gallery|wine_cellar';
+const Q_LEISURE = 'fitness_centre|sports_centre|dance|spa|sauna|water_park|escape_game|horse_riding|golf_course|miniature_golf|bowling_alley|amusement_arcade|tanning_salon|trampoline_park';
+
+const RX = {
+  stay: /^(hotel|motel|guest_house|hostel|apartment|chalet|camp_site|caravan_site)$/,
+  food: /^(restaurant|cafe|bar|pub|fast_food|ice_cream|biergarten|food_court|nightclub)$/,
+  prodCraft: /^(winery|brewery|distillery|cheese|beekeeper|confectionery|pottery|bakery|olive_oil|oil_mill|cider|dairy)$/,
+  prodShop: /^(farm|cheese|honey|olive_oil|dairy)$/,
+  expAmenity: /^(car_rental|boat_rental|bicycle_rental|motorcycle_rental|dive_centre|cinema|theatre|arts_centre|events_venue)$/,
+  expLeisure: /^(sports_centre|dance|water_park|escape_game|horse_riding|golf_course|miniature_golf|bowling_alley|amusement_arcade|trampoline_park)$/,
+  expOffice: /^(travel_agent|guide|tourism)$/,
+  beautyShop: /^(hairdresser|beauty|cosmetics|massage|tattoo|perfumery|piercing|nail_salon|barber)$/,
+  beautyLeisure: /^(fitness_centre|spa|sauna|tanning_salon)$/,
+  healthAmenity: /^(dentist|doctors|clinic|pharmacy|veterinary)$/,
+  healthShop: /^(optician|medical_supply|hearing_aids|chemist|herbalist|nutrition_supplements)$/,
+  tradeShop: /^(car_repair|car|car_parts|tyres|motorcycle|motorcycle_repair|hardware|doityourself|trade|electrical|glaziery|paint|bathroom_furnishing|kitchen|flooring|tiles|security|locksmith|building_materials|appliance|boat|fireplace|swimming_pool|energy|agrarian|garden_centre|electronics_repair|computer_repair)$/,
+  officeAmenity: /^(driving_school|language_school|music_school|dancing_school|prep_school|training|childcare|coworking_space|internet_cafe|bureau_de_change|studio)$/,
+  serviceShop: /^(estate_agent|insurance|copyshop|funeral_directors|laundry|dry_cleaning|tailor|shoe_repair|pawnbroker|money_lender|rental|photo_studio|printing|storage_rental|mobile_phone_repair|repair|pet_grooming|ticket)$/,
+};
+
+const LABELS = {
+  tourism: { hotel: 'Hotel', motel: 'Motel', guest_house: 'Rooms / guest house', hostel: 'Hostel', apartment: 'Holiday apartments', chalet: 'Holiday home', camp_site: 'Campsite', caravan_site: 'Caravan site', gallery: 'Art gallery', wine_cellar: 'Wine cellar' },
+  amenity: { restaurant: 'Restaurant', cafe: 'Café', bar: 'Bar', pub: 'Pub', fast_food: 'Fast food', ice_cream: 'Ice cream', biergarten: 'Beer garden', food_court: 'Food court', nightclub: 'Nightclub', dentist: 'Dentist', doctors: 'Doctor', clinic: 'Clinic', pharmacy: 'Pharmacy', veterinary: 'Vet', car_rental: 'Car rental', car_wash: 'Car wash', boat_rental: 'Boat rental', bicycle_rental: 'Bike rental', motorcycle_rental: 'Motorbike rental', dive_centre: 'Diving centre', driving_school: 'Driving school', language_school: 'Language school', music_school: 'Music school', dancing_school: 'Dance school', prep_school: 'Tutoring centre', training: 'Training centre', childcare: 'Childcare', cinema: 'Cinema', theatre: 'Theatre', arts_centre: 'Arts centre', events_venue: 'Events venue', coworking_space: 'Coworking space', internet_cafe: 'Internet café', bureau_de_change: 'Currency exchange', studio: 'Studio' },
+  healthcare: { doctor: 'Doctor', dentist: 'Dentist', physiotherapist: 'Physiotherapist', psychotherapist: 'Psychotherapist', laboratory: 'Medical lab', optometrist: 'Optometrist', alternative: 'Alternative medicine', clinic: 'Clinic', pharmacy: 'Pharmacy', centre: 'Medical centre', audiologist: 'Hearing clinic', podiatrist: 'Podiatrist', speech_therapist: 'Speech therapist', nutrition_counselling: 'Dietitian', occupational_therapist: 'Occupational therapist', rehabilitation: 'Rehabilitation centre' },
+  leisure: { fitness_centre: 'Gym', sports_centre: 'Sports centre', dance: 'Dance studio', spa: 'Spa', sauna: 'Sauna', water_park: 'Water park', escape_game: 'Escape room', horse_riding: 'Horse riding', golf_course: 'Golf course', miniature_golf: 'Mini golf', bowling_alley: 'Bowling', amusement_arcade: 'Arcade', tanning_salon: 'Tanning salon', trampoline_park: 'Trampoline park' },
+  craft: { carpenter: 'Carpenter', electrician: 'Electrician', plumber: 'Plumber', painter: 'Painter', builder: 'Builder', metal_construction: 'Metalwork', winery: 'Winery', brewery: 'Brewery', distillery: 'Distillery', beekeeper: 'Beekeeper', cheese: 'Cheese maker', confectionery: 'Confectionery', pottery: 'Pottery', jeweller: 'Jeweller', tailor: 'Tailor', shoemaker: 'Shoemaker', photographer: 'Photographer', upholsterer: 'Upholsterer', window_construction: 'Windows and doors', hvac: 'Heating and cooling', tiler: 'Tiler', stonemason: 'Stonemason', roofer: 'Roofer', glaziery: 'Glazier', key_cutter: 'Key cutter', bakery: 'Bakery (maker)', olive_oil: 'Olive oil producer', oil_mill: 'Olive mill', blacksmith: 'Blacksmith', sculptor: 'Sculptor', handicraft: 'Handicrafts', caterer: 'Caterer', gardener: 'Gardener', locksmith: 'Locksmith' },
+  office: { lawyer: 'Lawyer', accountant: 'Accountant', estate_agent: 'Estate agent', insurance: 'Insurance', architect: 'Architect', engineer: 'Engineering office', it: 'IT company', company: 'Company office', travel_agent: 'Travel agent', tax_advisor: 'Tax advisor', notary: 'Notary', financial: 'Financial services', consulting: 'Consultancy', advertising_agency: 'Advertising agency', employment_agency: 'Recruitment agency', logistics: 'Logistics', telecommunication: 'Telecoms', guide: 'Tour guide', surveyor: 'Surveyor', property_management: 'Property management', coworking: 'Coworking', graphic_design: 'Graphic design', newspaper: 'Newspaper', moving_company: 'Removals', courier: 'Courier', tourism: 'Tour operator' },
+  shop: { supermarket: 'Supermarket', convenience: 'Mini market', bakery: 'Bakery', pastry: 'Pastry shop', butcher: 'Butcher', clothes: 'Clothes', shoes: 'Shoes', jewelry: 'Jewellery', hairdresser: 'Hairdresser', barber: 'Barber', beauty: 'Beauty salon', optician: 'Optician', car_repair: 'Car repair', car: 'Car dealer', car_parts: 'Car parts', tyres: 'Tyres', hardware: 'Hardware', doityourself: 'DIY store', furniture: 'Furniture', electronics: 'Electronics', mobile_phone: 'Mobile phones', computer: 'Computers', florist: 'Florist', gift: 'Gifts', books: 'Bookshop', stationery: 'Stationery', kiosk: 'Kiosk', greengrocer: 'Greengrocer', deli: 'Deli', wine: 'Wine shop', alcohol: 'Drinks shop', beverages: 'Drinks shop', travel_agency: 'Travel agency', estate_agent: 'Estate agent', laundry: 'Laundry', dry_cleaning: 'Dry cleaner', tattoo: 'Tattoo studio', massage: 'Massage', cosmetics: 'Cosmetics', perfumery: 'Perfumery', pet: 'Pet shop', toys: 'Toys', sports: 'Sports shop', bicycle: 'Bike shop', motorcycle: 'Motorbikes', copyshop: 'Copy shop', photo: 'Photo shop', art: 'Art shop', confectionery: 'Sweets', coffee: 'Coffee shop', tobacco: 'Tobacco', lottery: 'Lottery', bag: 'Bags', boutique: 'Boutique', fashion_accessories: 'Accessories', variety_store: 'Variety store', department_store: 'Department store', mall: 'Shopping centre', chemist: 'Chemist', medical_supply: 'Medical supplies', funeral_directors: 'Funeral director', farm: 'Farm shop', cheese: 'Cheese shop', honey: 'Honey', seafood: 'Fishmonger', interior_decoration: 'Interior decoration', kitchen: 'Kitchens', bathroom_furnishing: 'Bathrooms', tiles: 'Tiles', flooring: 'Flooring', paint: 'Paint', trade: 'Trade supplies', electrical: 'Electrical supplies', locksmith: 'Locksmith', tailor: 'Tailor', fabric: 'Fabrics', houseware: 'Homeware', appliance: 'Appliances', garden_centre: 'Garden centre', craft: 'Craft supplies', music: 'Music shop', musical_instrument: 'Musical instruments', frame: 'Picture framing', glaziery: 'Glazier', security: 'Security', boat: 'Boats', outdoor: 'Outdoor shop', insurance: 'Insurance', rental: 'Rentals', printing: 'Printing', olive_oil: 'Olive oil shop', spices: 'Spices', nuts: 'Nuts and dried fruit', water: 'Water', ice_cream: 'Ice cream', e_cigarette: 'E-cigarettes', hearing_aids: 'Hearing aids', herbalist: 'Herbalist', nutrition_supplements: 'Supplements', agrarian: 'Farm supplies', building_materials: 'Building materials', doors: 'Doors', lighting: 'Lighting', bed: 'Beds', curtain: 'Curtains', carpet: 'Carpets', watches: 'Watches', erotic: 'Adult shop', photo_studio: 'Photo studio', pawnbroker: 'Pawnbroker', ticket: 'Tickets', repair: 'Repairs', mobile_phone_repair: 'Phone repair', computer_repair: 'Computer repair', electronics_repair: 'Electronics repair', energy: 'Energy', swimming_pool: 'Pool supplies', fireplace: 'Fireplaces', pet_grooming: 'Pet grooming', shoe_repair: 'Shoe repair', money_lender: 'Money lender', storage_rental: 'Storage', piercing: 'Piercing', nail_salon: 'Nail salon' },
+};
+const KEY_ORDER = ['tourism', 'amenity', 'healthcare', 'leisure', 'craft', 'office', 'shop'];
+const CUISINE = { greek: 'Greek', regional: 'Cretan / regional', seafood: 'seafood', fish: 'fish', pizza: 'pizza', italian: 'Italian', coffee_shop: 'coffee', burger: 'burgers', kebab: 'kebab', souvlaki: 'souvlaki', gyros: 'gyros', grill: 'grill', crepe: 'crêpes', chinese: 'Chinese', japanese: 'Japanese', sushi: 'sushi', mediterranean: 'Mediterranean', international: 'international', vegan: 'vegan', vegetarian: 'vegetarian', breakfast: 'breakfast', bakery: 'bakery', meze: 'meze', cretan: 'Cretan', asian: 'Asian', indian: 'Indian', mexican: 'Mexican', steak_house: 'steak house', sandwich: 'sandwiches', ice_cream: 'ice cream', cake: 'cakes', chicken: 'chicken', local: 'local', tavern: 'taverna' };
+
+/* Web presence: which addresses count as an own website */
+const DEAD_HOST = /(^|\.)business\.site$/;
+const FREE_HOST = /(^|\.)(wixsite\.com|wix\.com|weebly\.com|webnode\.[a-z.]+|blogspot\.[a-z.]+|wordpress\.com|site123\.me|jimdo(site|free)?\.com|godaddysites\.com|square\.site|carrd\.co|sites\.google\.com|webflow\.io|mozello\.[a-z]+|tilda\.ws|strikingly\.com|canva\.site|ueniweb\.com|yolasite\.com|business\.page)$/;
+const SOCIAL_HOSTS = [
+  [/(^|\.)(facebook\.com|fb\.com|fb\.me)$/, 'Facebook'],
+  [/(^|\.)instagram\.com$/, 'Instagram'],
+  [/(^|\.)tiktok\.com$/, 'TikTok'],
+  [/(^|\.)(twitter\.com|x\.com)$/, 'X'],
+  [/(^|\.)linkedin\.com$/, 'LinkedIn'],
+  [/(^|\.)(youtube\.com|youtu\.be)$/, 'YouTube'],
+  [/(^|\.)booking\.com$/, 'Booking.com'],
+  [/(^|\.)airbnb\.[a-z.]+$/, 'Airbnb'],
+  [/(^|\.)tripadvisor\.[a-z.]+$/, 'Tripadvisor'],
+  [/(^|\.)(e-food\.gr|efood\.gr)$/, 'efood'],
+  [/(^|\.)wolt\.com$/, 'Wolt'],
+  [/(^|\.)box\.gr$/, 'BOX'],
+  [/(^|\.)linktr\.ee$/, 'Linktree'],
+  [/(^|\.)(vrbo\.com|expedia\.[a-z.]+|hotels\.com|agoda\.com|trivago\.[a-z.]+)$/, 'a booking site'],
+  [/(^|\.)(thefork\.[a-z.]+|yelp\.[a-z.]+|foursquare\.com|vrisko\.gr|xo\.gr|11888\.gr)$/, 'a directory'],
+  [/(^|\.)(google\.[a-z.]+|goo\.gl|g\.page)$/, 'Google Maps'],
+  [/(^|\.)(wa\.me|whatsapp\.com|viber\.com)$/, 'WhatsApp'],
+];
+const SOCIAL_TAGS = [
+  ['contact:facebook', 'Facebook', 'https://www.facebook.com/'], ['facebook', 'Facebook', 'https://www.facebook.com/'],
+  ['contact:instagram', 'Instagram', 'https://www.instagram.com/'], ['instagram', 'Instagram', 'https://www.instagram.com/'],
+  ['contact:tiktok', 'TikTok', 'https://www.tiktok.com/@'], ['contact:twitter', 'X', 'https://x.com/'],
+  ['contact:youtube', 'YouTube', 'https://www.youtube.com/'], ['contact:linkedin', 'LinkedIn', null],
+  ['contact:tripadvisor', 'Tripadvisor', null], ['contact:booking', 'Booking.com', null], ['contact:airbnb', 'Airbnb', null],
+];
+
+/* =========================================================
+   Small helpers
+   ========================================================= */
+const $ = (s, r = document) => r.querySelector(s);
+const $$ = (s, r = document) => [...r.querySelectorAll(s)];
+const sleep = ms => new Promise(r => setTimeout(r, ms));
+const isAbort = e => e && (e.name === 'AbortError' || e.name === 'TimeoutError');
+const fmtInt = n => Number(n).toLocaleString('en-GB');
+const fmtKm = km => km < 1 ? `${Math.max(10, Math.round(km * 100) * 10)} m` : `${km.toFixed(km < 10 ? 1 : 0)} km`;
+const fmtRadius = km => `${Number.isInteger(km) ? km : km.toFixed(1)} km`;
+const cssVar = name => getComputedStyle(document.documentElement).getPropertyValue(name).trim();
+const today = () => new Date().toISOString().slice(0, 10);
+const localDate = (d = new Date()) => `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+const addDays = n => { const d = new Date(); d.setDate(d.getDate() + n); return localDate(d); };
+const fmtDay = iso => new Date(iso + 'T12:00:00').toLocaleDateString('en-GB', { weekday: 'short', day: 'numeric', month: 'short' });
+const fmtBytes = n => n >= 1e6 ? `${(n / 1e6).toFixed(1)} MB` : `${Math.max(1, Math.round(n / 1e3))} KB`;
+function fmtMinutes(checks) {
+  const m = Math.max(1, Math.round(checks * CHECK_SECONDS / CHECK_WORKERS / 60));
+  return m < 60 ? `${m} min` : `${Math.floor(m / 60)} h ${m % 60} min`;
+}
+function dueInfo(due) {
+  if (!due) return null;
+  const t = localDate();
+  if (due < t) return { cls: 'due', short: 'Overdue', long: `Follow-up was due ${fmtDay(due)}` };
+  if (due === t) return { cls: 'due', short: 'Due today', long: 'Follow up today' };
+  return { cls: 'soon', short: fmtDay(due), long: `Follow up on ${fmtDay(due)}` };
+}
+const isDue = l => !!(l && l.due && l.due <= localDate());
+
+function h(tag, attrs, ...kids) {
+  const n = document.createElement(tag);
+  if (attrs) for (const [k, v] of Object.entries(attrs)) {
+    if (v == null || v === false) continue;
+    if (k === 'class') n.className = v;
+    else if (k === 'text') n.textContent = v;
+    else if (k.startsWith('on') && typeof v === 'function') n.addEventListener(k.slice(2), v);
+    else n.setAttribute(k, v === true ? '' : String(v));
+  }
+  for (const kid of kids.flat(Infinity)) if (kid != null && kid !== false && kid !== '') n.append(kid.nodeType ? kid : String(kid));
+  return n;
+}
+function icon(path) {
+  const ns = 'http://www.w3.org/2000/svg';
+  const svg = document.createElementNS(ns, 'svg');
+  svg.setAttribute('viewBox', '0 0 24 24'); svg.setAttribute('fill', 'none'); svg.setAttribute('stroke', 'currentColor');
+  svg.setAttribute('stroke-width', '2'); svg.setAttribute('stroke-linecap', 'round'); svg.setAttribute('stroke-linejoin', 'round'); svg.setAttribute('aria-hidden', 'true');
+  const p = document.createElementNS(ns, 'path'); p.setAttribute('d', path); svg.append(p);
+  return svg;
+}
+const ICON = {
+  close: 'M6 6l12 12M18 6 6 18',
+  pin: 'M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21zM12 12a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z',
+  search: 'M11 18a7 7 0 1 0 0-14 7 7 0 0 0 0 14zM20 20l-3.6-3.6',
+  route: 'M5 19a2 2 0 1 0 0-4 2 2 0 0 0 0 4zM19 9a2 2 0 1 0 0-4 2 2 0 0 0 0 4zM7 17h7a3 3 0 0 0 0-6h-4a3 3 0 0 1 0-6h7',
+  map: 'M9 4 3 6v14l6-2 6 2 6-2V4l-6 2-6-2zM9 4v14M15 6v14',
+  gauge: 'M12 14l4-4M3.5 15a9 9 0 1 1 17 0',
+  clock: 'M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18zM12 7v5l3 2',
+};
+
+const store = {
+  get(k, d) { try { const v = localStorage.getItem(k); return v == null ? d : JSON.parse(v); } catch { return d; } },
+  set(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); return true; } catch { return false; } },
+};
+
+/* Greek-friendly text matching: accents ignored, and Greek also matched in Latin letters. */
+const GR = { α: 'a', β: 'v', γ: 'g', δ: 'd', ε: 'e', ζ: 'z', η: 'i', θ: 'th', ι: 'i', κ: 'k', λ: 'l', μ: 'm', ν: 'n', ξ: 'x', ο: 'o', π: 'p', ρ: 'r', σ: 's', τ: 't', υ: 'y', φ: 'f', χ: 'ch', ψ: 'ps', ω: 'o' };
+const DIGRAPHS = [['ου', 'ou'], ['αι', 'ai'], ['ει', 'ei'], ['οι', 'oi'], ['μπ', 'mp'], ['ντ', 'nt'], ['γκ', 'gk'], ['γγ', 'ng'], ['αυ', 'av'], ['ευ', 'ev'], ['τσ', 'ts'], ['τζ', 'tz']];
+const fold = s => String(s || '').normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase().replace(/ς/g, 'σ');
+function latin(s) {
+  let f = fold(s);
+  for (const [g, l] of DIGRAPHS) f = f.split(g).join(l);
+  return f.replace(/[α-ω]/g, c => GR[c] || c);
+}
+const nameKey = s => fold(s).replace(/[^\p{L}\p{N}]+/gu, '');
+
+function haversine(lat1, lon1, lat2, lon2) {
+  const R = 6371.0088, rad = Math.PI / 180;
+  const dLat = (lat2 - lat1) * rad, dLon = (lon2 - lon1) * rad;
+  const a = Math.sin(dLat / 2) ** 2 + Math.cos(lat1 * rad) * Math.cos(lat2 * rad) * Math.sin(dLon / 2) ** 2;
+  return 2 * R * Math.asin(Math.min(1, Math.sqrt(a)));
+}
+function splitVals(...vals) {
+  const out = [];
+  for (const v of vals) if (v) for (const p of String(v).split(/\s*;\s*/)) { const s = p.trim(); if (s && !out.includes(s)) out.push(s); }
+  return out;
+}
+function toUrl(value, base) {
+  let s = String(value || '').trim();
+  if (!s) return null;
+  if (!/^https?:\/\//i.test(s)) {
+    const bare = s.replace(/^@/, '');
+    s = base && !/[./]/.test(bare) ? base + bare : 'http://' + s.replace(/^\/+/, '');
+  }
+  try {
+    const u = new URL(s);
+    if (u.protocol !== 'http:' && u.protocol !== 'https:') return null;
+    if (!u.hostname.includes('.')) return null;
+    return u;
+  } catch { return null; }
+}
+const hostOf = u => u.hostname.toLowerCase().replace(/^www\./, '');
+const pretty = v => String(v).split(';')[0].replace(/_/g, ' ').replace(/^./, c => c.toUpperCase());
+
+/* =========================================================
+   Turning map data into businesses
+   ========================================================= */
+function excluded(t) {
+  if (t['operator:type'] && /^(public|government|municipal|military|religious)$/.test(t['operator:type'])) return true;
+  if (t.office && /^(government|ngo|association|political_party|religion|diplomatic|educational_institution|union|foundation|charity|quango|administrative|politician|parish|military|vacant|no|research)$/.test(t.office)) return true;
+  if (t.shop && /^(vacant|no|disused|abandoned|closed)$/.test(t.shop)) return true;
+  if (t.healthcare && /^(hospital|blood_donation|blood_bank|vaccination_centre|sample_collection)$/.test(t.healthcare)) return true;
+  if (t.amenity && /^(hospital|kindergarten|school|university|college|townhall|police|courthouse|social_facility|community_centre|library|place_of_worship)$/.test(t.amenity)) return true;
+  if (t.disused === 'yes' || t.abandoned === 'yes' || t.opening_hours === 'closed') return true;
+  return false;
+}
+function groupOf(t) {
+  const { amenity: a, shop: s, tourism: tr, office: o, craft: c, healthcare: hc, leisure: l } = t;
+  if (tr && RX.stay.test(tr)) return 'stay';
+  if (a && RX.food.test(a)) return 'food';
+  if ((c && RX.prodCraft.test(c)) || (s && RX.prodShop.test(s)) || tr === 'wine_cellar') return 'producers';
+  if ((a && RX.expAmenity.test(a)) || (l && RX.expLeisure.test(l)) || (o && RX.expOffice.test(o)) || s === 'travel_agency' || tr === 'gallery') return 'experiences';
+  if ((s && RX.beautyShop.test(s)) || (l && RX.beautyLeisure.test(l))) return 'beauty';
+  if ((a && RX.healthAmenity.test(a)) || hc || (s && RX.healthShop.test(s))) return 'health';
+  if (c || (s && RX.tradeShop.test(s)) || a === 'car_wash') return 'trades';
+  if (o || (a && RX.officeAmenity.test(a)) || (s && RX.serviceShop.test(s))) return 'offices';
+  if (s) return 'shops';
+  return 'other';
+}
+function categoryOf(t) {
+  for (const k of KEY_ORDER) {
+    const raw = t[k];
+    if (!raw) continue;
+    const v = String(raw).split(';')[0];
+    if (v === 'yes') return { office: 'Office', shop: 'Shop', craft: 'Craft business', healthcare: 'Health practice', amenity: 'Business', tourism: 'Tourism business', leisure: 'Leisure business' }[k];
+    return (LABELS[k] && LABELS[k][v]) || pretty(v);
+  }
+  return 'Business';
+}
+function cuisineOf(v) {
+  if (!v) return '';
+  return splitVals(v).slice(0, 2).map(c => CUISINE[c] || c.replace(/_/g, ' ')).join(', ');
+}
+function webOf(t) {
+  const sites = [], socials = [];
+  let dead = false;
+  for (const v of splitVals(t.website, t['contact:website'], t.url)) {
+    const u = toUrl(v);
+    if (!u) continue;
+    const host = hostOf(u);
+    if (DEAD_HOST.test(host)) { dead = true; continue; }
+    const http = /^http:\/\//i.test(v);
+    if (FREE_HOST.test(host)) { sites.push({ url: u.href, host, free: true, http }); continue; }
+    const social = SOCIAL_HOSTS.find(([re]) => re.test(host));
+    if (social) { socials.push({ url: u.href, label: social[1] }); continue; }
+    sites.push({ url: u.href, host, free: false, http });
+  }
+  for (const [key, label, base] of SOCIAL_TAGS) {
+    for (const v of splitVals(t[key])) {
+      const u = toUrl(v, base);
+      if (u && !socials.some(s => s.url === u.href)) socials.push({ url: u.href, label });
+    }
+  }
+  const site = sites.find(s => !s.free) || sites[0] || null;
+  return { site, sites, socials, dead, bucket: site ? 'site' : socials.length ? 'social' : 'none' };
+}
+function socialNames(list) {
+  const names = [...new Set(list.map(s => s.label))];
+  if (names.length <= 1) return names[0] || 'social';
+  return names.slice(0, -1).join(', ') + ' and ' + names[names.length - 1];
+}
+function scoreOf(b) {
+  const reasons = [];
+  let s = 0;
+  const add = (pts, why) => { s += pts; reasons.push([pts, why]); };
+  const ck = b.check;
+  if (ck && ck.verdict === 'broken') add(50, `Website doesn't work: ${ck.reason}`);
+  else if (ck && ck.redirect) add(40, `Website only forwards to ${ck.redirect}, no real website`);
+  else if (b.bucket === 'none') add(50, b.deadSite ? 'Only an old Google business.site page, which shut down in 2024' : 'No website listed');
+  else if (b.bucket === 'social') add(40, `Only a ${socialNames(b.socials)} page, no own website`);
+  else {
+    // Each problem with the website adds points, up to 50 in all.
+    let gap = 0;
+    const flaw = (pts, why) => { const p = Math.max(0, Math.min(pts, 50 - gap)); gap += p; add(p, why); };
+    const tested = !!ck && (ck.verdict === 'weak' || ck.verdict === 'ok');
+    if (tested && ck.mobile === false) flaw(30, 'Website has no mobile layout, so it is hard to use on phones');
+    else if (tested && ck.smallText) flaw(10, 'Text on the website is too small to read on phones');
+    if (b.site.free) flaw(20, `Website on a free builder address (${b.site.host})`);
+    if (tested && ck.https != null ? ck.https === false : b.site.http) flaw(15, 'Website is not secure (no https)');
+    if (tested && ck.perf != null && ck.perf < 50) flaw(ck.perf < 30 ? 15 : 8, `Slow on phones: Google speed score ${ck.perf}/100`);
+    if (tested && ck.old && ck.old.length) flaw(10, `Built with old code (${ck.old.join(', ')})`);
+    if (!gap) add(0, tested ? `Website checked: works on phones, speed ${ck.perf == null ? 'unknown' : ck.perf + '/100'}`
+      : ck && ck.verdict === 'unknown' ? `Website check didn't finish (${ck.reason}), so open the site to judge it`
+      : 'Has its own website: check how old it looks');
+  }
+  add(VALUE[b.group], VALUE_WHY[b.group]);
+  if (b.phones.length) add(6, 'Has a phone number');
+  if (b.email) add(2, 'Has an email address');
+  if (b.street) add(2, 'Has a street address');
+  if (b.hours) add(5, 'Opening hours listed, so likely still trading');
+  if (b.visitors) add(5, 'Serves visitors (English name or tourism listing)');
+  if (b.chain) add(-40, `Part of a chain or brand (${b.brand}), websites are usually made centrally`);
+  return { score: Math.max(0, Math.min(100, s)), reasons };
+}
+function makeHay(b) {
+  const base = [b.name, b.nameEn, b.category, b.cuisine, b.street, b.city, GROUPS[b.group]].filter(Boolean).join(' ');
+  return fold(base) + ' ' + latin(base);
+}
+function normalize(e, c) {
+  const t = e.tags;
+  if (!t || !t.name) return null;
+  const lat = e.lat ?? (e.center && e.center.lat);
+  const lon = e.lon ?? (e.center && e.center.lon);
+  if (!Number.isFinite(lat) || !Number.isFinite(lon)) return null;
+  if (excluded(t)) return null;
+  const web = webOf(t);
+  const street = [t['addr:street'], t['addr:housenumber']].filter(Boolean).join(' ') || t['addr:place'] || '';
+  const city = t['addr:city'] || t['addr:town'] || t['addr:village'] || t['addr:suburb'] || t['addr:hamlet'] || '';
+  const postcode = t['addr:postcode'] || '';
+  const brand = t.brand || t['brand:el'] || t['brand:en'] || '';
+  // A brand tag that differs from the name ("Coffee Island" on "Coffee Island Ηρακλείου") or a brand Wikidata id means a chain.
+  const chain = !!(t['brand:wikidata'] || (brand && nameKey(brand) !== nameKey(t.name)));
+  const b = {
+    id: `${e.type}/${e.id}`, osmType: e.type, osmId: e.id,
+    name: String(t.name).trim(),
+    nameEn: t['name:en'] && fold(t['name:en']) !== fold(t.name) ? t['name:en'] : '',
+    lat, lon,
+    group: groupOf(t), category: categoryOf(t), cuisine: cuisineOf(t.cuisine),
+    street, city, postcode,
+    address: [street, [postcode, city].filter(Boolean).join(' ')].filter(Boolean).join(', '),
+    phones: splitVals(t.phone, t['contact:phone'], t.mobile, t['contact:mobile']).slice(0, 4),
+    email: splitVals(t.email, t['contact:email'])[0] || '',
+    hours: t.opening_hours || '',
+    site: web.site, sites: web.sites, socials: web.socials, bucket: web.bucket, deadSite: web.dead,
+    chain, brand: chain ? (brand || 'brand') : '',
+    stars: t.stars || '', rooms: t.rooms || '', operator: t.operator || '',
+    description: (t.description || '').slice(0, 300),
+    visitors: !!t['name:en'] || !!t.tourism,
+    distance: haversine(c.lat, c.lon, lat, lon),
+    richness: Object.keys(t).length,
+    inMuni: null,
+    webBucket: web.bucket,
+  };
+  attachCheck(b, b.site ? storedCheck(b.site.url) : null);
+  b.hay = makeHay(b);
+  return b;
+}
+function dedupe(list) {
+  const byName = new Map();
+  const kept = new Set();
+  for (const b of list) {
+    const k = nameKey(b.name);
+    const same = byName.get(k) || [];
+    const twin = same.find(o => haversine(o.lat, o.lon, b.lat, b.lon) < 0.04);
+    if (twin) {
+      if (b.richness > twin.richness) { kept.delete(twin); kept.add(b); same[same.indexOf(twin)] = b; }
+      continue;
+    }
+    same.push(b); byName.set(k, same); kept.add(b);
+  }
+  return [...kept];
+}
+
+/* =========================================================
+   Talking to the free map services
+   ========================================================= */
+class ServiceError extends Error { constructor(msg, status) { super(msg); this.status = status; } }
+class GeoUnavailable extends Error {}
+
+async function overpass(query, signal) {
+  let lastError = null, partial = null;
+  for (const url of OVERPASS) {
+    if (signal && signal.aborted) throw signal.reason || new DOMException('Aborted', 'AbortError');
+    try {
+      const res = await fetch(url, { method: 'POST', body: new URLSearchParams({ data: query }), signal });
+      if (!res.ok) { lastError = new ServiceError(`Map data server answered ${res.status}`, res.status); continue; }
+      const json = await res.json();
+      if (json.remark && /runtime error|timed out|out of memory/i.test(json.remark)) {
+        lastError = new ServiceError(json.remark, 504);
+        if (json.elements && json.elements.length && (!partial || json.elements.length > partial.elements.length)) partial = json;
+        continue;
+      }
+      return json;
+    } catch (e) {
+      if (isAbort(e) || (signal && signal.aborted)) throw e;
+      lastError = e;
+    }
+  }
+  if (partial) { partial.partial = true; return partial; }
+  throw lastError || new ServiceError('No map data server answered');
+}
+function queryFor(filter, prefix, timeout) {
+  return [
+    `[out:json][timeout:${timeout}];`,
+    ...prefix,
+    '(',
+    `  nwr["shop"]["name"]${filter};`,
+    `  nwr["amenity"~"^(${Q_AMENITY})$"]["name"]${filter};`,
+    `  nwr["tourism"~"^(${Q_TOURISM})$"]["name"]${filter};`,
+    `  nwr["office"]["name"]${filter};`,
+    `  nwr["craft"]["name"]${filter};`,
+    `  nwr["healthcare"]["name"]${filter};`,
+    `  nwr["leisure"~"^(${Q_LEISURE})$"]["name"]${filter};`,
+    ');',
+    'out center qt;',
+  ].join('\n');
+}
+function businessQuery(lat, lon, metres) {
+  return queryFor(`(around:${Math.round(metres)},${lat.toFixed(6)},${lon.toFixed(6)})`, [], 120);
+}
+/* Every business inside a municipality. Overpass numbers the area of relation N as 3600000000 + N. */
+function muniBusinessQuery(relId) {
+  return queryFor('(area.m)', [`area(id:${3600000000 + relId})->.m;`], 180);
+}
+function municipalityQuery(lat, lon) {
+  return [
+    '[out:json][timeout:60];',
+    `is_in(${lat.toFixed(6)},${lon.toFixed(6)})->.a;`,
+    'area.a["boundary"="administrative"]["name"~"^Δήμος"];',
+    'rel(pivot);',
+    'out geom;',
+  ].join('\n');
+}
+
+async function nominatim(q, area, signal) {
+  const p = new URLSearchParams({ format: 'jsonv2', q, countrycodes: 'gr', limit: '5', addressdetails: '1', 'accept-language': 'en,el' });
+  if (area.viewbox) p.set('viewbox', area.viewbox);
+  const res = await fetch('https://nominatim.openstreetmap.org/search?' + p, { signal });
+  if (!res.ok) throw new ServiceError('Address search answered ' + res.status, res.status);
+  const arr = await res.json();
+  return (Array.isArray(arr) ? arr : []).map(r => {
+    const a = r.address || {};
+    const road = [a.road || a.pedestrian || a.square || a.neighbourhood || r.name, a.house_number].filter(Boolean).join(' ');
+    const town = a.city || a.town || a.village || a.municipality || a.county || '';
+    const label = [road, a.suburb && a.suburb !== town ? a.suburb : null, town].filter(Boolean).join(', ') || r.display_name;
+    return { lat: Number(r.lat), lon: Number(r.lon), label };
+  }).filter(r => Number.isFinite(r.lat) && Number.isFinite(r.lon));
+}
+async function photon(q, area, signal) {
+  const p = new URLSearchParams({ q, limit: '6', lang: 'en', lat: String(area.centre[0]), lon: String(area.centre[1]) });
+  const res = await fetch('https://photon.komoot.io/api/?' + p, { signal });
+  if (!res.ok) throw new ServiceError('Address search answered ' + res.status, res.status);
+  const data = await res.json();
+  return (data.features || []).filter(f => String((f.properties || {}).countrycode || '').toUpperCase() === 'GR' && f.geometry && Array.isArray(f.geometry.coordinates)).map(f => {
+    const pr = f.properties || {};
+    const [lon, lat] = f.geometry.coordinates;
+    const road = [pr.street || pr.name, pr.housenumber].filter(Boolean).join(' ');
+    return { lat: Number(lat), lon: Number(lon), label: [road, pr.city || pr.county].filter(Boolean).join(', ') || pr.name || 'Found place' };
+  }).filter(r => Number.isFinite(r.lat) && Number.isFinite(r.lon));
+}
+function parseLatLon(text) {
+  const m = /^\s*(-?\d{1,2}\.\d+)\s*[,;\s]\s*(-?\d{1,3}\.\d+)\s*$/.exec(text);
+  if (!m) return null;
+  const lat = Number(m[1]), lon = Number(m[2]);
+  return Math.abs(lat) <= 90 && Math.abs(lon) <= 180 ? [lat, lon] : null;
+}
+async function geocode(text, areaKey, signal) {
+  const area = AREAS[areaKey] || AREAS.other;
+  const cacheKey = areaKey + '|' + fold(text);
+  const cache = store.get(KEYS.geo, {}) || {};
+  if (Array.isArray(cache[cacheKey]) && cache[cacheKey].length) return cache[cacheKey];
+
+  const mentionsArea = s => !area.query || fold(s).includes(fold(area.query)) || (area.el && fold(s).includes(fold(area.el)));
+  const withArea = s => mentionsArea(s) ? s : `${s}, ${area.query}`;
+  const noNumber = text.replace(/[\s,]+\d+[a-zα-ω]?\s*$/i, '').trim();
+  const variants = [...new Set([withArea(text), text, noNumber && noNumber !== text ? withArea(noNumber) : null].filter(Boolean))];
+
+  let found = [], nominatimDown = false;
+  for (let i = 0; i < variants.length; i++) {
+    if (i) await sleep(1100); // Nominatim asks for at most one request a second
+    try { found = await nominatim(variants[i], area, signal); }
+    catch (e) { if (isAbort(e)) throw e; nominatimDown = true; break; }
+    if (found.length) break;
+  }
+  let photonDown = false;
+  if (!found.length) {
+    for (const q of [withArea(text), noNumber && noNumber !== text ? withArea(noNumber) : null].filter(Boolean)) {
+      try { found = await photon(q, area, signal); photonDown = false; }
+      catch (e) { if (isAbort(e)) throw e; photonDown = true; }
+      if (found.length) break;
+    }
+  }
+  if (!found.length && nominatimDown && photonDown) throw new GeoUnavailable('Address search is not answering');
+
+  if (area.query) {
+    // Places far from the chosen municipality go last.
+    found.sort((a, b) => (haversine(a.lat, a.lon, ...area.centre) > 40) - (haversine(b.lat, b.lon, ...area.centre) > 40));
+  }
+  const unique = [];
+  for (const f of found) if (!unique.some(u => u.label === f.label && haversine(u.lat, u.lon, f.lat, f.lon) < 0.3)) unique.push(f);
+  const result = unique.slice(0, 5);
+  if (result.length) {
+    cache[cacheKey] = result;
+    const keys = Object.keys(cache);
+    if (keys.length > 60) for (const k of keys.slice(0, keys.length - 60)) delete cache[k];
+    store.set(KEYS.geo, cache);
+  }
+  return result;
+}
+
+/* Municipality boundary: even-odd test over every boundary segment, so ring order does not matter. */
+function parseMunicipality(json) {
+  const rels = (json.elements || []).filter(e => e.type === 'relation' && e.tags && e.tags.name && Array.isArray(e.members));
+  if (!rels.length) return null;
+  const rel = rels.find(r => /^(6|7)$/.test(r.tags.admin_level || '')) || rels[0];
+  const lines = [];
+  for (const m of rel.members) {
+    if (m.type !== 'way' || !Array.isArray(m.geometry) || (m.role && !/^(outer|inner)$/.test(m.role))) continue;
+    const pts = m.geometry.filter(p => p && Number.isFinite(p.lat) && Number.isFinite(p.lon)).map(p => [p.lat, p.lon]);
+    if (pts.length > 1) lines.push(pts);
+  }
+  if (!lines.length) return null;
+  let n = 0;
+  for (const l of lines) n += l.length - 1;
+  const seg = new Float64Array(n * 4);
+  let i = 0, minLat = 90, maxLat = -90, minLon = 180, maxLon = -180;
+  for (const l of lines) {
+    for (let j = 0; j < l.length - 1; j++) {
+      seg[i++] = l[j][0]; seg[i++] = l[j][1]; seg[i++] = l[j + 1][0]; seg[i++] = l[j + 1][1];
+    }
+    for (const [la, lo] of l) { if (la < minLat) minLat = la; if (la > maxLat) maxLat = la; if (lo < minLon) minLon = lo; if (lo > maxLon) maxLon = lo; }
+  }
+  return { id: rel.id, name: rel.tags.name, nameEn: rel.tags['name:en'] || '', lines, seg, box: [minLat, minLon, maxLat, maxLon] };
+}
+function insideMuni(m, lat, lon) {
+  if (lat < m.box[0] || lat > m.box[2] || lon < m.box[1] || lon > m.box[3]) return false;
+  let inside = false;
+  const s = m.seg;
+  for (let i = 0; i < s.length; i += 4) {
+    const y1 = s[i], x1 = s[i + 1], y2 = s[i + 2], x2 = s[i + 3];
+    if ((y1 > lat) !== (y2 > lat) && lon < (x2 - x1) * (lat - y1) / (y2 - y1) + x1) inside = !inside;
+  }
+  return inside;
+}
+
+/* =========================================================
+   Website check: Google PageSpeed Insights, free with the user's own key
+   ========================================================= */
+class KeyProblem extends Error {}
+
+function checkKey(url) {
+  try {
+    const u = new URL(url);
+    return (u.hostname.replace(/^www\./i, '') + u.pathname.replace(/\/+$/, '')).toLowerCase();
+  } catch { return String(url || '').toLowerCase(); }
+}
+function storedCheck(url) {
+  const ck = url ? state.checks[checkKey(url)] : null;
+  if (!ck || !ck.at) return null;
+  // A site that blocked the checker may let it in another day, so that answer is kept for 3 days only.
+  return Date.now() - ck.at < (ck.verdict === 'unknown' ? 3 * 864e5 : CHECK_MAX_AGE) ? ck : null;
+}
+function attachCheck(b, ck) {
+  if (!b.webBucket) b.webBucket = b.bucket;
+  b.check = ck || null;
+  // A website that doesn't load counts as no website; one that only forwards to Facebook counts as social only.
+  b.bucket = ck && ck.verdict === 'broken' ? 'none' : ck && ck.redirect ? 'social' : b.webBucket;
+  const sc = scoreOf(b);
+  b.score = sc.score; b.reasons = sc.reasons;
+}
+
+async function runPsi(url, key, signal) {
+  const p = new URLSearchParams({ url, strategy: 'mobile', key });
+  for (const c of ['performance', 'best-practices', 'seo']) p.append('category', c);
+  let res;
+  try { res = await fetch(`${PSI}?${p}`, { signal, cache: 'no-store' }); }
+  catch (e) {
+    if (isAbort(e) || (signal && signal.aborted)) throw e;
+    throw new ServiceError("Couldn't reach Google's website checker", 0);
+  }
+  let json = null;
+  try { json = await res.json(); } catch (e) { if (signal && signal.aborted) throw e; }
+  const lr = json && json.lighthouseResult;
+  if (res.ok && lr) {
+    const rt = lr.runtimeError;
+    if (rt && rt.code && rt.code !== 'NO_ERROR') return { error: rt.code, message: String(rt.message || '') };
+    return { data: lr };
+  }
+  const err = (json && json.error) || {};
+  const msg = String(err.message || '');
+  const lh = /Lighthouse returned error: ([A-Z_]+)/.exec(msg);
+  if (lh) return { error: lh[1], message: msg };
+  const why = [msg, ...(err.details || []).map(d => d && d.reason), ...(err.errors || []).map(d => d && d.reason)].filter(Boolean).join(' ');
+  if (res.status === 429 || /RATE_LIMIT|rateLimitExceeded|quota/i.test(why)) throw new KeyProblem('quota');
+  if (/API_KEY_INVALID|API key not valid|API_KEY_EXPIRED|key expired/i.test(why)) throw new KeyProblem('invalid');
+  if (/SERVICE_DISABLED|accessNotConfigured|has not been used|is disabled/i.test(why)) throw new KeyProblem('disabled');
+  if (/REFERRER|referer/i.test(why)) throw new KeyProblem('referrer');
+  if (/API_KEY_SERVICE_BLOCKED|API_KEY_API_BLOCKED|are blocked/i.test(why)) throw new KeyProblem('blocked');
+  if (res.status === 403) throw new KeyProblem('denied');
+  throw new ServiceError(msg || `Google's website checker answered ${res.status}`, res.status);
+}
+function oldLibraries(items) {
+  const out = [];
+  for (const it of Array.isArray(items) ? items : []) {
+    const name = String((it && it.name) || ''), v = String((it && it.version) || ''), major = parseInt(v, 10);
+    if ((/^jquery$/i.test(name) && major < 3) || (/^bootstrap$/i.test(name) && major < 4) || /^(mootools|prototype|scriptaculous|script\.aculo\.us|yui|dojo)$/i.test(name)) out.push(v ? `${name} ${v}` : name);
+  }
+  return out.slice(0, 3);
+}
+function parseCheck(url, r) {
+  const at = Date.now();
+  if (r.error) {
+    const status = Number((/Status code: (\d{3})/.exec(r.message) || [])[1]) || 0;
+    const base = { url, at, code: r.error, status };
+    // A server that blocks robots or is busy tells us nothing about the website itself.
+    if (r.error === 'ERRORED_DOCUMENT_REQUEST' && [401, 403, 429, 503].includes(status)) return { ck: { ...base, verdict: 'unknown', reason: `the site blocked Google's checker (error ${status})` } };
+    if (BROKEN[r.error]) {
+      let reason = BROKEN[r.error];
+      if (r.error === 'ERRORED_DOCUMENT_REQUEST' && status) reason = status === 404 || status === 410 ? `the page is missing (error ${status})` : `the server returns error ${status}`;
+      if (/ERR_CERT/i.test(r.message)) reason = 'its security certificate is broken or expired';
+      return { ck: { ...base, verdict: 'broken', reason } };
+    }
+    return { ck: { ...base, verdict: 'unknown', reason: "Google's checker couldn't load it this time" } };
+  }
+  const lr = r.data, audits = lr.audits || {}, cats = lr.categories || {};
+  const pct = c => cats[c] && typeof cats[c].score === 'number' ? Math.round(cats[c].score * 100) : null;
+  const score = id => audits[id] && typeof audits[id].score === 'number' ? audits[id].score : null;
+  const finalUrl = lr.finalDisplayedUrl || lr.finalUrl || lr.mainDocumentUrl || url;
+  let host = '', listed = '', https = null;
+  try { const u = new URL(finalUrl); host = hostOf(u); https = u.protocol === 'https:'; } catch { /* leave unknown */ }
+  try { listed = hostOf(new URL(url)); } catch { /* leave empty */ }
+  const moved = !!host && host !== listed && !FREE_HOST.test(host);
+  if (moved && PARKED_HOST.test(host)) return { ck: { url, at, finalUrl, verdict: 'broken', reason: 'the domain is parked or for sale' } };
+  const social = moved ? SOCIAL_HOSTS.find(([re]) => re.test(host)) : null;
+  const vp = score('viewport');
+  const lib = audits['js-libraries'] && audits['js-libraries'].details;
+  const ck = {
+    url, at, finalUrl,
+    perf: pct('performance'), seo: pct('seo'),
+    mobile: vp == null ? null : vp >= 0.9,
+    smallText: score('font-size') === 0,
+    https,
+    lcp: String((audits['largest-contentful-paint'] && audits['largest-contentful-paint'].displayValue) || '').replace(/\s+/g, ' '),
+    weight: Number(audits['total-byte-weight'] && audits['total-byte-weight'].numericValue) || 0,
+    old: oldLibraries(lib && lib.items),
+    redirect: social ? social[1] : '',
+  };
+  if (score('doctype') === 0) ck.old.push('no doctype');
+  ck.verdict = checkIssues(ck).length ? 'weak' : 'ok';
+  const shot = audits['final-screenshot'] && audits['final-screenshot'].details && audits['final-screenshot'].details.data;
+  return { ck, shot: typeof shot === 'string' && /^data:image\/(jpeg|png|webp);base64,/.test(shot) ? shot : null };
+}
+function checkIssues(ck) {
+  const out = [];
+  if (ck.redirect) out.push(`only forwards to ${ck.redirect}`);
+  if (ck.mobile === false) out.push('no mobile layout');
+  else if (ck.smallText) out.push('text too small on phones');
+  if (ck.perf != null && ck.perf < 50) out.push(`slow on phones (${ck.perf}/100)`);
+  if (ck.https === false) out.push('not secure');
+  if (ck.old && ck.old.length) out.push(`old code (${ck.old.join(', ')})`);
+  return out;
+}
+function checkText(ck) {
+  if (!ck) return '';
+  if (ck.verdict === 'broken' || ck.verdict === 'unknown') return `${VERDICT[ck.verdict]}: ${ck.reason}`;
+  const issues = checkIssues(ck);
+  return issues.length ? `${VERDICT[ck.verdict]}: ${issues.join(', ')}` : `${VERDICT.ok}: speed ${ck.perf == null ? '?' : ck.perf}/100`;
+}
+
+/* Screenshots are too big for localStorage, so they go to IndexedDB, with memory as the fallback. */
+const shots = (() => {
+  const mem = new Map();
+  let dbp = null;
+  const open = () => dbp || (dbp = new Promise(resolve => {
+    try {
+      const r = indexedDB.open('siteradar', 1);
+      r.onupgradeneeded = () => r.result.createObjectStore('shots');
+      r.onsuccess = () => resolve(r.result);
+      r.onerror = r.onblocked = () => resolve(null);
+    } catch { resolve(null); }
+  }));
+  const run = async (mode, fn) => {
+    const db = await open();
+    if (!db) return null;
+    return new Promise(resolve => {
+      try {
+        const tx = db.transaction('shots', mode);
+        const req = fn(tx.objectStore('shots'));
+        tx.oncomplete = () => resolve(req ? req.result : null);
+        tx.onerror = tx.onabort = () => resolve(null);
+      } catch { resolve(null); }
+    });
+  };
+  const remember = (k, v) => { mem.delete(k); mem.set(k, v); if (mem.size > 40) mem.delete(mem.keys().next().value); };
+  return {
+    async get(k) {
+      if (mem.has(k)) return mem.get(k);
+      const v = await run('readonly', st => st.get(k));
+      if (typeof v === 'string') { remember(k, v); return v; }
+      return null;
+    },
+    put(k, v) { remember(k, v); run('readwrite', st => st.put(v, k)); },
+    del(k) { mem.delete(k); run('readwrite', st => st.delete(k)); },
+  };
+})();
+
+function saveCheck(ck, shot) {
+  const k = checkKey(ck.url);
+  state.checks[k] = ck;
+  const keys = Object.keys(state.checks);
+  if (keys.length > CHECKS_KEPT) {
+    keys.sort((a, b) => state.checks[a].at - state.checks[b].at);
+    for (const old of keys.slice(0, keys.length - CHECKS_KEPT)) { delete state.checks[old]; shots.del(old); }
+  }
+  store.set(KEYS.checks, state.checks);
+  if (shot) shots.put(k, shot); else shots.del(k);
+}
+async function checkBusiness(b, signal) {
+  const key = state.settings.psiKey;
+  if (!key) throw new KeyProblem('missing');
+  const r = await runPsi(b.site.url, key, signal);
+  const { ck, shot } = parseCheck(b.site.url, r);
+  saveCheck(ck, shot);
+  // Every business on screen that shares this website gets the result.
+  const k = checkKey(ck.url);
+  for (const x of state.results) if (x.site && checkKey(x.site.url) === k) attachCheck(x, ck);
+  if (!state.byId.has(b.id)) attachCheck(b, ck);
+  return ck;
+}
+function withTimeout(parent, ms) {
+  const ctrl = new AbortController();
+  const timer = setTimeout(() => ctrl.abort(new DOMException('Timed out', 'TimeoutError')), ms);
+  const follow = () => ctrl.abort(parent.reason);
+  if (parent) { if (parent.aborted) follow(); else parent.addEventListener('abort', follow, { once: true }); }
+  return { signal: ctrl.signal, done() { clearTimeout(timer); if (parent) parent.removeEventListener('abort', follow); } };
+}
+
+/* =========================================================
+   State
+   ========================================================= */
+const saved = store.get(KEYS.form, {}) || {};
+const state = {
+  tab: 'results',
+  centre: null, centreKey: '', alternatives: [],
+  radiusKm: 11,
+  loaded: null,              // { lat, lon, radiusKm } of the list on screen
+  results: [], byId: new Map(), filtered: [], shown: PAGE,
+  selectedId: null,
+  muni: null,
+  buckets: new Set(Array.isArray(saved.buckets) && saved.buckets.length ? saved.buckets : ['none', 'social']),
+  group: 'all', text: '', terms: [], status: 'any',
+  leadStatus: 'any',         // the My leads tab keeps its own status filter
+  sort: saved.sort || 'score',
+  phoneOnly: !!saved.phoneOnly,
+  hideChains: saved.hideChains !== false,
+  insideOnly: false,
+  busy: null, undo: null,
+  leads: store.get(KEYS.leads, {}) || {},
+  mode: 'radius',            // 'radius' around the address, or 'muni' for the whole municipality
+  checkFilter: 'any',
+  settings: store.get(KEYS.settings, {}) || {},
+  checks: store.get(KEYS.checks, {}) || {},
+  checking: new Set(),       // businesses whose website is being checked right now
+  checkErrors: new Map(),    // business id -> why its last check failed
+  batch: null, lastBatch: null,
+};
+let afterKey = null;         // what to do once the user has saved a Google key
+const overpassCache = new Map();
+const muniCache = new Map();
+let muniToken = 0;
+
+/* =========================================================
+   Map
+   ========================================================= */
+let map = null, tiles = null, circle = null, centreMarker = null, markerLayer = null, pinLayer = null, muniLayer = null, hlMarker = null;
+const markerById = new Map();
+let colors = {};
+
+function readColors() {
+  colors = { none: cssVar('--none'), social: cssVar('--social'), site: cssVar('--site'), halo: cssVar('--surface'), ring: cssVar('--text'), accent: cssVar('--accent') };
+}
+function initMap() {
+  readColors();
+  if (!window.L) {
+    $('#map').append(h('div', { class: 'map-off', text: "The map couldn't load. Check your internet connection and reload the page. The list still works." }));
+    $('#mapHint').hidden = true;
+    return;
+  }
+  const area = AREAS[$('#area').value] || AREAS.heraklion;
+  map = L.map('map', { preferCanvas: true, zoomControl: false }).setView(area.centre, area.zoom);
+  L.control.zoom({ position: 'topright' }).addTo(map);
+  setTiles();
+  muniLayer = L.layerGroup().addTo(map);
+  markerLayer = L.layerGroup().addTo(map);
+  pinLayer = L.layerGroup().addTo(map);
+  map.on('click', ev => moveCentre(ev.latlng.lat, ev.latlng.lng));
+  const mq = matchMedia('(prefers-color-scheme: dark)');
+  if (mq.addEventListener) mq.addEventListener('change', () => { readColors(); setTiles(); drawSearchArea(false); drawMuni(); renderMarkers(); });
+}
+function setTiles() {
+  if (!map) return;
+  const dark = matchMedia('(prefers-color-scheme: dark)').matches;
+  if (tiles) tiles.remove();
+  tiles = L.tileLayer(`https://{s}.basemaps.cartocdn.com/${dark ? 'dark_all' : 'rastertiles/voyager'}/{z}/{x}/{y}{r}.png`, {
+    subdomains: 'abcd', maxZoom: 20,
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions" target="_blank" rel="noopener">CARTO</a>',
+  }).addTo(map);
+}
+function drawSearchArea(fit) {
+  if (!map || !state.centre) return;
+  const ll = [state.centre.lat, state.centre.lon];
+  const whole = state.mode === 'muni' && !!state.muni;
+  // For the whole municipality the dashed boundary is the search area, so the circle hides.
+  const style = { color: colors.accent, fillColor: colors.accent, opacity: whole ? 0 : .9, fillOpacity: whole ? 0 : .05 };
+  if (!circle) circle = L.circle(ll, { radius: state.radiusKm * 1000, weight: 2, interactive: false, ...style }).addTo(map);
+  else { circle.setLatLng(ll); circle.setRadius(state.radiusKm * 1000); circle.setStyle(style); }
+  if (!centreMarker) {
+    centreMarker = L.marker(ll, {
+      draggable: true, keyboard: true, title: 'Search centre (drag to move)', zIndexOffset: 1000,
+      icon: L.divIcon({ className: 'centre-pin', html: '<span></span>', iconSize: [26, 26], iconAnchor: [13, 13] }),
+    }).addTo(map);
+    centreMarker.on('dragend', () => { const p = centreMarker.getLatLng(); moveCentre(p.lat, p.lng); });
+  } else centreMarker.setLatLng(ll);
+  if (fit) {
+    if (whole) { const m = state.muni.box; map.fitBounds([[m[0], m[1]], [m[2], m[3]]], { padding: [20, 20] }); }
+    else map.fitBounds(circle.getBounds(), { padding: [20, 20] });
+  }
+}
+/* Your leads get a ring on the map; businesses you ruled out fade. */
+function markerStyle(b, selected) {
+  const st = (state.leads[b.id] && state.leads[b.id].status) || 'new';
+  const fill = colors[b.bucket];
+  if (selected) return { radius: 9, weight: 3, color: colors.ring, opacity: 1, fillColor: fill, fillOpacity: 1 };
+  if (st === 'lead' || st === 'contacted') return { radius: 7, weight: 2.6, color: colors.accent, opacity: 1, fillColor: fill, fillOpacity: .95 };
+  if (st === 'customer') return { radius: 7, weight: 2.6, color: colors.site, opacity: 1, fillColor: fill, fillOpacity: .95 };
+  if (st === 'no' || st === 'hassite') return { radius: 4.5, weight: 1, color: colors.halo, opacity: .5, fillColor: fill, fillOpacity: .3 };
+  return { radius: 5.5, weight: 1.3, color: colors.halo, opacity: 1, fillColor: fill, fillOpacity: .92 };
+}
+function renderMarkers() {
+  if (!map) return;
+  markerLayer.clearLayers(); markerById.clear(); hlMarker = null;
+  const items = state.tab === 'results' ? state.filtered : leadItems();
+  for (const b of items) {
+    const m = L.circleMarker([b.lat, b.lon], { ...markerStyle(b, false), bubblingMouseEvents: false });
+    // A function returning an element keeps map data out of innerHTML.
+    m.bindTooltip(() => h('span', { text: b.name }), { direction: 'top', offset: [0, -6] });
+    m.on('click', () => select(b.id, { from: 'map' }));
+    m.addTo(markerLayer);
+    markerById.set(b.id, m);
+  }
+  const sel = currentBusiness();
+  if (sel) highlightMarker(sel, false);
+}
+function highlightMarker(b, pan) {
+  if (!map) return;
+  if (hlMarker && hlMarker.__b) hlMarker.setStyle(markerStyle(hlMarker.__b, false));
+  hlMarker = null;
+  pinLayer.clearLayers();
+  const m = markerById.get(b.id);
+  if (m) { m.__b = b; m.setStyle(markerStyle(b, true)); m.bringToFront(); hlMarker = m; }
+  else L.circleMarker([b.lat, b.lon], { ...markerStyle(b, true), interactive: false }).addTo(pinLayer);
+  if (pan) {
+    if (map.getZoom() < 15) map.setView([b.lat, b.lon], 16);
+    else if (!map.getBounds().pad(-0.15).contains([b.lat, b.lon])) map.panTo([b.lat, b.lon]);
+  }
+}
+function drawMuni() {
+  if (!map || !muniLayer) return;
+  muniLayer.clearLayers();
+  if (!state.muni) return;
+  L.polyline(state.muni.lines, { color: colors.accent, weight: 2, opacity: .85, dashArray: '6 6', interactive: false }).addTo(muniLayer);
+}
+
+/* =========================================================
+   Search
+   ========================================================= */
+function readRadius() {
+  const v = Number(String($('#radius').value).replace(',', '.'));
+  return Number.isFinite(v) && v >= 0.2 && v <= 25 ? Math.round(v * 10) / 10 : null;
+}
+function setSearchLabel(text) { $('#searchLabel').textContent = text; }
+function setStatus(kind, text, actions) {
+  const box = $('#status');
+  if (!kind) { box.hidden = true; box.replaceChildren(); return; }
+  box.hidden = false;
+  box.className = `status ${kind}`;
+  box.replaceChildren(...[
+    kind === 'busy' ? h('span', { class: 'spinner', 'aria-hidden': 'true' }) : null,
+    h('span', { class: 'status-text', text }),
+    actions && actions.length ? h('span', { class: 'status-actions' }, actions.map(([label, fn]) => h('button', { type: 'button', class: 'link-btn', onclick: fn, text: label }))) : null,
+  ].filter(Boolean));
+}
+function saveForm() {
+  store.set(KEYS.form, {
+    area: $('#area').value, address: $('#address').value, radius: $('#radius').value,
+    buckets: [...state.buckets], sort: state.sort, phoneOnly: state.phoneOnly, hideChains: state.hideChains,
+  });
+}
+function cancelSearch() { if (state.busy) state.busy.abort(new DOMException('Cancelled', 'AbortError')); }
+function notFoundText(text, areaKey) {
+  const where = areaKey === 'other' ? 'Greece' : AREAS[areaKey].label;
+  return `I couldn't find “${text}” in ${where}. Try the Greek spelling (for example Λεωφόρος 62 Μαρτύρων 182), add the neighbourhood, or click the map to set the centre.`;
+}
+function errorText(e, mode) {
+  if (e && e.name === 'TimeoutError') return mode === 'muni'
+    ? 'Loading the whole municipality took too long. Try again in a minute, or search a radius instead.'
+    : 'The map-data servers took too long. Try a smaller radius, or try again in a minute.';
+  if (!navigator.onLine) return "You're offline. Connect to the internet and press Search again.";
+  if (e instanceof GeoUnavailable) return "The address search isn't answering right now. Click the map to set the centre instead, or try again in a minute.";
+  if (e && e.status === 429) return 'The free map-data servers are busy (too many requests). Wait a minute and press Search again.';
+  return "The free map-data servers didn't answer (they may be busy). Wait a minute and press Search again. A smaller radius also helps.";
+}
+/* A failed or stopped load leaves the old list on screen, so show that list's area again. */
+function keepModeOfList() {
+  if (state.loaded && state.mode !== state.loaded.mode) { state.mode = state.loaded.mode; drawSearchArea(false); renderHead(); }
+}
+
+async function search(evt) {
+  if (evt) evt.preventDefault();
+  const areaKey = $('#area').value;
+  const text = $('#address').value.trim();
+  const km = readRadius();
+  if (km == null) { setStatus('error', 'Enter a radius between 0.2 and 25 km.'); $('#radius').focus(); return; }
+  if (!text) { setStatus('error', 'Type an address, or click the map to choose the centre.'); $('#address').focus(); return; }
+  saveForm();
+  if (state.tab !== 'results') setTab('results');
+  if (state.busy) state.busy.abort(new DOMException('Replaced', 'AbortError'));
+  const ctrl = new AbortController();
+  state.busy = ctrl;
+  const timer = setTimeout(() => ctrl.abort(new DOMException('Timed out', 'TimeoutError')), 150000);
+  setSearchLabel('Searching…');
+  try {
+    const key = areaKey + '|' + fold(text);
+    if (!(state.centre && state.centreKey === key)) {
+      setStatus('busy', 'Finding the address…', [['Cancel', cancelSearch]]);
+      const point = parseLatLon(text);
+      const matches = point ? [{ lat: point[0], lon: point[1], label: `Map point ${point[0].toFixed(5)}, ${point[1].toFixed(5)}` }] : await geocode(text, areaKey, ctrl.signal);
+      if (!matches.length) { setStatus('error', notFoundText(text, areaKey)); return; }
+      state.alternatives = matches;
+      state.centre = matches[0];
+      state.centreKey = key;
+    }
+    state.radiusKm = km;
+    state.undo = null;
+    state.mode = 'radius';
+    drawSearchArea(true);
+    await loadBusinesses(ctrl.signal);
+    rememberSearch();
+  } catch (e) {
+    if (ctrl.signal.aborted && !(ctrl.signal.reason && ctrl.signal.reason.name === 'TimeoutError')) {
+      if (state.busy === ctrl) setStatus('info', 'Search stopped.');
+    } else {
+      setStatus('error', errorText(ctrl.signal.reason && ctrl.signal.reason.name === 'TimeoutError' ? ctrl.signal.reason : e), [['Try again', () => search()]]);
+    }
+    if (state.busy === ctrl) keepModeOfList();
+  } finally {
+    clearTimeout(timer);
+    if (state.busy === ctrl) { state.busy = null; setSearchLabel('Search'); }
+  }
+}
+
+async function loadBusinesses(signal) {
+  const c = state.centre;
+  const L0 = state.loaded;
+  const muni = state.mode === 'muni' ? state.muni : null;
+  // Same centre and a smaller or equal radius: the list on screen already has everything.
+  if (!muni && L0 && L0.mode === 'radius' && L0.lat === c.lat && L0.lon === c.lon && state.radiusKm <= L0.radiusKm && state.results.length) {
+    setStatus(null);
+    applyFilters(true);
+    return;
+  }
+  setStatus('busy', muni
+    ? `Loading every business in ${muni.name}… this can take a minute or two.`
+    : `Loading businesses within ${fmtRadius(state.radiusKm)}… a big area can take up to a minute.`, [['Cancel', cancelSearch]]);
+  const cacheKey = muni ? `muni:${muni.id}` : `${c.lat.toFixed(5)},${c.lon.toFixed(5)},${state.radiusKm}`;
+  let json = overpassCache.get(cacheKey);
+  if (!json) {
+    json = await overpass(muni ? muniBusinessQuery(muni.id) : businessQuery(c.lat, c.lon, state.radiusKm * 1000), signal);
+    overpassCache.set(cacheKey, json);
+  }
+  const list = [];
+  for (const e of json.elements || []) { const b = normalize(e, c); if (b) list.push(b); }
+  stopBatch(); // the websites it was checking belong to the old list
+  state.results = dedupe(list);
+  state.byId = new Map(state.results.map(b => [b.id, b]));
+  state.loaded = { lat: c.lat, lon: c.lon, radiusKm: state.radiusKm, mode: muni ? 'muni' : 'radius', muniId: muni ? muni.id : null };
+  state.insideOnly = false; $('#insideOnly').checked = false;
+  if (muni) for (const b of state.results) b.inMuni = true;
+  else state.muni = null;
+  drawMuni();
+  if (state.selectedId && !state.byId.has(state.selectedId) && !state.leads[state.selectedId]) state.selectedId = null;
+  if (json.partial) setStatus('warn', muni
+    ? `The map-data server stopped early, so this list may be missing some businesses in ${muni.name}.`
+    : 'The map-data server stopped early, so this list may be missing some businesses. A smaller radius gives a full list.');
+  else setStatus(null);
+  applyFilters(true);
+  renderDetails();
+  if (!muni) loadMunicipality();
+}
+
+async function loadMunicipality() {
+  const c = state.centre;
+  if (!c) return;
+  const token = ++muniToken;
+  const key = `${c.lat.toFixed(4)},${c.lon.toFixed(4)}`;
+  try {
+    let muni = muniCache.get(key);
+    if (muni === undefined) {
+      const json = await overpass(municipalityQuery(c.lat, c.lon));
+      muni = parseMunicipality(json);
+      muniCache.set(key, muni);
+    }
+    if (token !== muniToken || !muni) return;
+    state.muni = muni;
+    for (const b of state.results) b.inMuni = insideMuni(muni, b.lat, b.lon);
+    drawMuni();
+    applyFilters(false);
+    renderDetails();
+  } catch { /* The boundary is a bonus; the list works without it. */ }
+}
+
+function moveCentre(lat, lon) {
+  if (!state.undo) state.undo = { centre: state.centre, key: state.centreKey, text: $('#address').value, alts: state.alternatives, mode: state.mode };
+  state.mode = 'radius';
+  state.centre = { lat, lon, label: `Map point ${lat.toFixed(5)}, ${lon.toFixed(5)}` };
+  $('#address').value = `${lat.toFixed(5)}, ${lon.toFixed(5)}`;
+  state.centreKey = $('#area').value + '|' + fold($('#address').value);
+  state.alternatives = [state.centre];
+  const km = readRadius();
+  if (km != null) state.radiusKm = km;
+  drawSearchArea(false);
+  setSearchLabel('Search here');
+  setStatus('info', 'Centre moved. Press “Search here” to load the businesses around it.', [['Search here', () => search()], ['Undo', undoMove]]);
+  saveForm();
+}
+function undoMove() {
+  const u = state.undo;
+  if (!u) return;
+  state.undo = null;
+  state.centre = u.centre; state.centreKey = u.key; state.alternatives = u.alts || [];
+  state.mode = u.mode || 'radius';
+  $('#address').value = u.text;
+  setSearchLabel('Search');
+  setStatus(null);
+  if (state.centre) drawSearchArea(false);
+  else if (map) { circle && circle.remove(); centreMarker && centreMarker.remove(); circle = null; centreMarker = null; }
+  saveForm();
+}
+
+/* =========================================================
+   Filtering, sorting, counting
+   ========================================================= */
+function termsOf(text) { return fold(text).split(/\s+/).filter(Boolean).map(t => [t, latin(t)]); }
+const matchTerms = hay => state.terms.every(([f, l]) => hay.includes(f) || hay.includes(l));
+function passes(b, skip) {
+  const skips = k => !!skip && skip.split(' ').includes(k);
+  if (state.loaded && state.loaded.mode !== 'muni' && state.radiusKm < state.loaded.radiusKm && b.distance > state.radiusKm) return false;
+  if (!skips('bucket') && !state.buckets.has(b.bucket)) return false;
+  if (!skips('group') && state.group !== 'all' && b.group !== state.group) return false;
+  if (state.hideChains && b.chain) return false;
+  if (state.phoneOnly && !b.phones.length) return false;
+  if (state.insideOnly && state.muni && b.inMuni === false) return false;
+  if (!statusPasses(state.leads[b.id], state.status)) return false;
+  if (!skips('check') && !checkPasses(b)) return false;
+  if (state.terms.length && !matchTerms(b.hay)) return false;
+  return true;
+}
+function statusPasses(l, f) {
+  if (f === 'any') return true;
+  if (f === 'due') return isDue(l);
+  return ((l && l.status) || 'new') === f;
+}
+function checkPasses(b) {
+  const f = state.checkFilter;
+  const v = b.check ? b.check.verdict : null;
+  if (f === 'weak') return v === 'broken' || v === 'weak';
+  if (f === 'ok') return v === 'ok';
+  if (f === 'unchecked') return !!b.site && !b.check;
+  return true;
+}
+function sortItems(items) {
+  if (state.sort === 'distance') items.sort((a, b) => a.distance - b.distance);
+  else if (state.sort === 'name') items.sort((a, b) => a.name.localeCompare(b.name, 'el', { sensitivity: 'base' }));
+  else items.sort((a, b) => b.score - a.score || a.distance - b.distance);
+}
+function applyFilters(resetPage) {
+  state.terms = termsOf(state.text);
+  const items = state.results.filter(b => passes(b));
+  sortItems(items);
+  state.filtered = items;
+  if (resetPage) state.shown = PAGE;
+  renderHead();
+  renderList();
+  renderMarkers();
+}
+/* A saved lead that isn't in the current search comes back from its saved copy, with any fresh website check. */
+function fromSnap(id, l) {
+  if (!l || !l.snap) return null;
+  const b = { ...l.snap, id };
+  if (b.site) attachCheck(b, storedCheck(b.site.url));
+  if (!b.hay) b.hay = makeHay(b);
+  return b;
+}
+function leadItems() {
+  const items = [];
+  for (const [id, l] of Object.entries(state.leads)) {
+    const b = state.byId.get(id) || fromSnap(id, l);
+    if (!b || !statusPasses(l, state.leadStatus)) continue;
+    if (state.terms.length && !matchTerms(b.hay)) continue;
+    items.push(b);
+  }
+  // Follow-ups first, the soonest first, then the most recently changed.
+  const due = b => state.leads[b.id].due || '9999-99-99';
+  return items.sort((a, b) => due(a).localeCompare(due(b)) || (state.leads[b.id].updated || 0) - (state.leads[a.id].updated || 0));
+}
+function currentBusiness() {
+  const id = state.selectedId;
+  if (!id) return null;
+  return state.byId.get(id) || fromSnap(id, state.leads[id]);
+}
+
+/* =========================================================
+   Rendering: results head, list
+   ========================================================= */
+function scoreClass(s) { return s >= 70 ? 'hi' : s >= 45 ? 'mid' : 'lo'; }
+function presenceLabel(b) {
+  const ck = b.check;
+  if (ck && ck.verdict === 'broken') return "Website doesn't load";
+  if (ck && ck.redirect) return `Website only forwards to ${ck.redirect}`;
+  return BUCKET[b.bucket];
+}
+function renderLeadCounts() {
+  const leads = Object.values(state.leads);
+  $('#leadCount').textContent = leads.length ? fmtInt(leads.length) : '';
+  const due = leads.filter(isDue).length;
+  const dc = $('#dueCount');
+  dc.textContent = due ? fmtInt(due) : '';
+  dc.title = due ? `${fmtInt(due)} follow-up${due === 1 ? '' : 's'} due` : '';
+}
+function renderHead() {
+  const has = state.results.length > 0 || !!state.loaded;
+  $('#resultCount').textContent = state.loaded ? fmtInt(state.results.length) : '';
+  renderLeadCounts();
+  const whole = !!(state.loaded && state.loaded.mode === 'muni' && state.muni);
+
+  const cl = $('#centreLine');
+  if (state.centre && state.loaded) {
+    cl.hidden = false;
+    const parts = whole
+      ? [h('span', {}, 'All of ', h('strong', { text: state.muni.name }), ' · distances from ', h('strong', { text: state.centre.label })),
+        h('span', {}, h('button', { type: 'button', class: 'link-btn', onclick: () => search(), text: `Back to ${fmtRadius(readRadius() || state.radiusKm)} around the address` }))]
+      : [h('span', {}, 'Around ', h('strong', { text: state.centre.label }), ` · ${fmtRadius(state.radiusKm)}`)];
+    if (state.alternatives.length > 1) {
+      const sel = h('select', { class: 'input sm', 'aria-label': 'Not the right place? Pick another match' },
+        state.alternatives.map((a, i) => h('option', { value: i, text: i === 0 ? `Not the right place? ${state.alternatives.length - 1} other match${state.alternatives.length > 2 ? 'es' : ''}` : a.label })));
+      sel.value = String(Math.max(0, state.alternatives.findIndex(a => a === state.centre)));
+      if (state.alternatives[0] !== state.centre) sel.options[0].textContent = state.alternatives[0].label;
+      sel.addEventListener('change', () => {
+        const pick = state.alternatives[Number(sel.value)];
+        if (!pick || pick === state.centre) return;
+        state.centre = pick;
+        drawSearchArea(true);
+        runLoad();
+      });
+      parts.push(sel);
+    }
+    cl.replaceChildren(...parts);
+  } else cl.hidden = true;
+
+  const sum = $('#summary');
+  if (state.loaded) {
+    sum.hidden = false;
+    const inArea = whole ? state.results : state.results.filter(b => !(state.radiusKm < state.loaded.radiusKm && b.distance > state.radiusKm));
+    let none = 0, social = 0, broken = 0, weak = 0;
+    for (const b of inArea) {
+      if (b.bucket === 'none') none++; else if (b.bucket === 'social') social++;
+      if (b.check && b.check.verdict === 'broken') broken++;
+      else if (b.bucket === 'site' && b.check && b.check.verdict === 'weak') weak++;
+    }
+    sum.replaceChildren(...[
+      h('b', { text: fmtInt(inArea.length) }), ' businesses found. ',
+      h('b', { text: fmtInt(none) }), broken ? ' with no working website, ' : ' with no website listed, ',
+      h('b', { text: fmtInt(social) }), weak ? ' with only a social or booking page, ' : ' with only a social or booking page.',
+      ...(weak ? [h('b', { text: fmtInt(weak) }), ' with a weak website.'] : []),
+    ]);
+  } else sum.hidden = true;
+
+  const ml = $('#muniLine');
+  if (state.muni && state.loaded) {
+    ml.hidden = false;
+    const name = `${state.muni.name}${state.muni.nameEn ? ` (${state.muni.nameEn})` : ''}`;
+    if (whole) {
+      ml.replaceChildren(h('span', { text: `Dashed line: ${name}. The list covers the whole municipality.` }));
+      $('#insideWrap').hidden = true;
+    } else {
+      const inside = state.results.filter(b => b.inMuni).length;
+      ml.replaceChildren(
+        h('span', { text: `Dashed line: ${name}. ${fmtInt(inside)} inside, ${fmtInt(state.results.length - inside)} in neighbouring areas.` }),
+        h('button', { type: 'button', class: 'link-btn', id: 'muniBtn', onclick: searchMuni, text: `Search all of ${state.muni.name}` }));
+      $('#insideWrap').hidden = false;
+      $('#insideLabel').textContent = `Only inside ${state.muni.name}`;
+    }
+  } else { ml.hidden = true; $('#insideWrap').hidden = true; }
+
+  $('#filters').hidden = !(state.tab === 'leads' || has);
+
+  if (state.loaded) {
+    const bc = { none: 0, social: 0, site: 0 };
+    const gc = {};
+    let all = 0;
+    for (const b of state.results) {
+      if (passes(b, 'bucket')) bc[b.bucket]++;
+      if (passes(b, 'group')) { gc[b.group] = (gc[b.group] || 0) + 1; all++; }
+    }
+    for (const chip of $$('.chip')) {
+      chip.setAttribute('aria-pressed', state.buckets.has(chip.dataset.bucket) ? 'true' : 'false');
+      $('.n', chip).textContent = fmtInt(bc[chip.dataset.bucket]);
+    }
+    const gs = $('#groupSel');
+    gs.replaceChildren(h('option', { value: 'all', text: `All types (${fmtInt(all)})` }),
+      ...GROUP_ORDER.map(g => h('option', { value: g, text: `${GROUPS[g]} (${fmtInt(gc[g] || 0)})` })));
+    gs.value = state.group;
+  }
+  renderCheckRow();
+}
+
+function recentList() { const r = store.get(KEYS.recent, []); return Array.isArray(r) ? r.filter(x => x && x.address) : []; }
+function emptyWelcome() {
+  const recent = recentList().slice(0, 5);
+  const due = Object.values(state.leads).filter(isDue).length;
+  return h('li', { class: 'empty' },
+    due ? h('p', { class: 'status warn' }, h('span', { class: 'status-text', text: `${fmtInt(due)} follow-up${due === 1 ? ' is' : 's are'} due.` }),
+      h('button', { type: 'button', class: 'link-btn', onclick: showCallList, text: 'Open my call list' })) : null,
+    h('h2', { text: 'Find businesses that need a website' }),
+    h('ol', {},
+      h('li', { text: 'Pick the municipality.' }),
+      h('li', { text: 'Type an address, in Greek or English letters.' }),
+      h('li', { text: 'Set the radius and press Search.' })),
+    recent.length
+      ? [h('p', { text: 'Your recent searches:' }), h('div', { class: 'recent' }, recent.map(r => h('button', { type: 'button', class: 'btn small', onclick: () => runRecent(r), title: `Search again: ${r.address}` },
+        h('span', { text: `${r.address} · ${AREAS[r.area] && r.area !== 'other' ? AREAS[r.area].label + ' · ' : ''}${r.radius} km` }))))]
+      : h('p', { text: 'The example 62 Martyron 182, Heraklion, 11 km is already filled in, so you can press Search right away.' }),
+    h('p', { text: 'You can also click the map to set the centre, and after a search load the whole municipality.' }));
+}
+function renderList() {
+  const list = $('#list');
+  const items = state.tab === 'results' ? state.filtered : leadItems();
+  const foot = $('#listFoot');
+  if (state.tab === 'results' && !state.loaded) {
+    list.replaceChildren(emptyWelcome());
+    foot.hidden = true;
+    return;
+  }
+  if (!items.length) {
+    const msg = state.tab === 'leads'
+      ? (!Object.keys(state.leads).length ? 'No saved leads yet. Open a business and mark it as a good lead, or write a note, and it will show up here.'
+        : state.leadStatus === 'due' ? 'No follow-ups are due. Set a follow-up date when you open a business.' : 'No saved leads match this filter.')
+      : (state.results.length ? 'No businesses match these filters.'
+        : state.loaded.mode === 'muni' ? 'OpenStreetMap has no businesses in this municipality.' : `OpenStreetMap has no businesses within ${fmtRadius(state.radiusKm)} of this point. Try a bigger radius.`);
+    list.replaceChildren(h('li', { class: 'empty' }, h('p', { text: msg }),
+      state.tab === 'results' && state.results.length ? h('button', { type: 'button', class: 'btn small', onclick: clearFilters, text: 'Clear filters' }) : null));
+  } else {
+    const frag = document.createDocumentFragment();
+    const n = Math.min(state.shown, items.length);
+    for (let i = 0; i < n; i++) frag.append(rowFor(items[i]));
+    list.replaceChildren(frag);
+  }
+  foot.hidden = false;
+  const n = Math.min(state.shown, items.length);
+  $('#shownCount').textContent = items.length ? (n < items.length ? `Showing ${fmtInt(n)} of ${fmtInt(items.length)}` : `${fmtInt(items.length)} ${items.length === 1 ? 'business' : 'businesses'}`) : '';
+  const more = $('#moreBtn');
+  more.hidden = n >= items.length;
+  more.textContent = `Show ${fmtInt(Math.min(PAGE, items.length - n))} more`;
+  $('#csvBtn').disabled = $('#xlsxBtn').disabled = !items.length;
+}
+function rowFor(b) {
+  const lead = state.leads[b.id];
+  const sub = [b.category, b.street || b.city, state.muni && b.inMuni === false && state.tab === 'results' ? 'outside the municipality' : null].filter(Boolean).join(' · ');
+  const right = state.tab === 'leads'
+    ? h('span', { class: 'row-meta' }, h('span', { class: `score ${scoreClass(b.score)}`, text: b.score, title: 'Lead score' }), h('span', { class: 'dist', text: lead && lead.updated ? new Date(lead.updated).toLocaleDateString('en-GB', { day: 'numeric', month: 'short' }) : '' }))
+    : h('span', { class: 'row-meta' }, h('span', { class: `score ${scoreClass(b.score)}`, text: b.score, title: 'Lead score' }), h('span', { class: 'dist', text: fmtKm(b.distance) }));
+  const due = lead && lead.due ? dueInfo(lead.due) : null;
+  const tags = [
+    lead && lead.status && lead.status !== 'new' ? h('span', { class: `badge st-${lead.status}`, text: STATUS_LABEL[lead.status] }) : null,
+    due ? h('span', { class: `badge ${due.cls}`, text: due.short, title: due.long }) : null,
+    b.check ? h('span', { class: `vbadge ${b.check.verdict}`, text: VERDICT[b.check.verdict], title: checkText(b.check) })
+      : state.checking.has(b.id) ? h('span', { class: 'vbadge unknown', text: 'Checking…' }) : null,
+  ].filter(Boolean);
+  return h('li', {}, h('button', { type: 'button', class: 'row', 'data-id': b.id, 'aria-current': b.id === state.selectedId ? 'true' : null },
+    h('span', { class: `dot ${b.bucket}`, title: presenceLabel(b) }),
+    h('span', { class: 'row-main' },
+      h('span', { class: 'row-name', text: b.name }),
+      h('span', { class: 'row-sub', text: sub }),
+      tags.length ? h('span', { class: 'row-tags' }, tags) : null),
+    right));
+}
+function refreshRow(id) {
+  const old = $(`#list .row[data-id="${CSS.escape(id)}"]`);
+  const b = state.byId.get(id) || fromSnap(id, state.leads[id]);
+  if (!old || !b) return;
+  const focused = document.activeElement === old;
+  const li = rowFor(b);
+  old.parentElement.replaceWith(li);
+  if (focused) li.firstChild.focus({ preventScroll: true });
+}
+function clearFilters() {
+  state.buckets = new Set(['none', 'social', 'site']);
+  state.group = 'all'; state.text = ''; state.status = 'any'; state.phoneOnly = false; state.hideChains = false; state.insideOnly = false; state.checkFilter = 'any';
+  $('#textFilter').value = ''; $('#statusSel').value = 'any'; $('#phoneOnly').checked = false; $('#hideChains').checked = false; $('#insideOnly').checked = false; $('#checkSel').value = 'any';
+  saveForm();
+  applyFilters(true);
+}
+
+/* =========================================================
+   Selection and details
+   ========================================================= */
+const overlayLayout = () => matchMedia('(max-width: 1180px)').matches;
+function select(id, opts = {}) {
+  const b = state.byId.get(id) || fromSnap(id, state.leads[id]);
+  if (!b) return;
+  if (state.selectedId !== id) $('#details').scrollTop = 0;
+  state.selectedId = id;
+  for (const r of $$('#list .row[aria-current="true"]')) r.removeAttribute('aria-current');
+  let row = $(`#list .row[data-id="${CSS.escape(id)}"]`);
+  if (!row && state.tab === 'results') {
+    const idx = state.filtered.findIndex(x => x.id === id);
+    if (idx >= 0) { state.shown = Math.max(state.shown, Math.ceil((idx + 1) / PAGE) * PAGE); renderList(); row = $(`#list .row[data-id="${CSS.escape(id)}"]`); }
+  }
+  if (row) { row.setAttribute('aria-current', 'true'); if (opts.from !== 'list') row.scrollIntoView({ block: 'nearest' }); }
+  highlightMarker(b, opts.from !== 'map');
+  renderDetails();
+  if (opts.open !== false) openDetails();
+}
+function openDetails() {
+  document.body.classList.add('details-open');
+  if (overlayLayout()) {
+    const d = $('#details');
+    d.scrollTop = 0;
+    const close = $('.d-close', d);
+    if (close) close.focus({ preventScroll: true });
+  }
+}
+function closeDetails() {
+  document.body.classList.remove('details-open');
+  const row = state.selectedId && $(`#list .row[data-id="${CSS.escape(state.selectedId)}"]`);
+  if (row && overlayLayout()) row.focus({ preventScroll: true });
+}
+function link(href, label, cls, iconPath) {
+  return h('a', { class: cls || 'btn', href, target: '_blank', rel: 'noopener noreferrer' }, iconPath ? icon(iconPath) : null, label);
+}
+const urls = {
+  gmaps: b => `https://www.google.com/maps/search/${encodeURIComponent(String(b.name).replace(/\//g, ' '))}/@${b.lat.toFixed(6)},${b.lon.toFixed(6)},18z`,
+  google: b => `https://www.google.com/search?q=${encodeURIComponent(`"${b.name}" ${b.city || (AREAS[$('#area').value] || {}).query || ''}`.trim())}`,
+  directions: b => `https://www.google.com/maps/dir/?api=1&destination=${b.lat.toFixed(6)},${b.lon.toFixed(6)}`,
+  osm: b => `https://www.openstreetmap.org/${b.osmType}/${b.osmId}`,
+  speed: u => `https://pagespeed.web.dev/report?url=${encodeURIComponent(u)}`,
+  history: host => `https://web.archive.org/web/*/${host}`,
+};
+async function copyText(text, btn) {
+  let ok = false;
+  try { await navigator.clipboard.writeText(text); ok = true; } catch {
+    const ta = h('textarea', { style: 'position:fixed;opacity:0;top:0;left:0' }); ta.value = text; document.body.append(ta); ta.select();
+    try { ok = document.execCommand('copy'); } catch { ok = false; }
+    ta.remove();
+  }
+  if (btn) { const was = btn.textContent; btn.textContent = ok ? 'Copied' : 'Copy failed'; setTimeout(() => { btn.textContent = was; }, 1400); }
+}
+function emptyDetails() {
+  return h('div', { class: 'd-empty' },
+    h('h2', { text: 'Business details' }),
+    h('p', { text: 'Click a business in the list or on the map to see its contact details, why it scored as a lead, and links to check it on Google.' }),
+    h('div', { class: 'key' },
+      h('div', {}, h('span', { class: 'dot none' }), h('span', { text: 'No website listed: the best leads. Check on Google first, OpenStreetMap misses some sites.' })),
+      h('div', {}, h('span', { class: 'dot social' }), h('span', { text: 'Only a Facebook, Instagram or booking page: they are online but own nothing.' })),
+      h('div', {}, h('span', { class: 'dot site' }), h('span', { text: 'Has a website: press “Check websites” to find the ones that are broken, slow or not made for phones.' }))));
+}
+function checkSection(b) {
+  if (!b.site) return null;
+  const ck = b.check;
+  const running = state.checking.has(b.id);
+  const head = h('h3', {}, 'Website check', ck && !running ? h('span', { class: `vbadge ${ck.verdict}`, text: VERDICT[ck.verdict] }) : null);
+  const report = link(urls.speed(b.site.url), 'Full report on Google', 'link-btn');
+  const err = state.checkErrors.get(b.id);
+  const errBox = err ? h('p', { class: 'err', role: 'alert', text: err }) : null;
+  if (running) return h('section', { class: 'd-check', 'aria-busy': 'true' }, head,
+    h('div', { class: 'busy' }, h('span', { class: 'spinner', 'aria-hidden': 'true' }), h('p', { text: 'Google is opening the website on a phone. This takes about 20 seconds.' })));
+  if (!ck) return h('section', { class: 'd-check' }, head,
+    h('p', { text: "See if the website works on phones, how fast it is and what it looks like, with Google's free PageSpeed check." }),
+    errBox,
+    h('div', { class: 'check-foot' }, h('button', { type: 'button', class: 'btn small primary', id: 'checkOneBtn', onclick: () => checkOne(b.id), text: 'Check this website' }), report));
+  const when = new Date(ck.at).toLocaleDateString('en-GB', { day: 'numeric', month: 'short' });
+  const foot = h('div', { class: 'check-foot' }, h('span', { text: `Checked ${when}` }),
+    h('button', { type: 'button', class: 'link-btn', onclick: () => checkOne(b.id), text: 'Check again' }), report);
+  if (ck.verdict === 'broken' || ck.verdict === 'unknown') return h('section', { class: 'd-check' }, head,
+    h('p', { text: ck.verdict === 'broken' ? `The website doesn't work: ${ck.reason}. That is a strong reason to call them.` : `Google's checker couldn't test it: ${ck.reason}. Open the website yourself to judge it.` }),
+    errBox, foot);
+  const rows = [];
+  const fact = (label, value, good) => rows.push(h('dt', { text: label }), h('dd', { class: good == null ? null : good ? 'good' : 'bad', text: value }));
+  if (ck.redirect) fact('Forwards to', ck.redirect, false);
+  fact('Works on phones', ck.mobile == null ? 'Unknown' : !ck.mobile ? 'No mobile layout' : ck.smallText ? 'Yes, but the text is small' : 'Yes', ck.mobile == null ? null : ck.mobile && !ck.smallText);
+  fact('Speed on phones', ck.perf == null ? 'Unknown' : `${ck.perf}/100, ${ck.perf >= 90 ? 'good' : ck.perf >= 50 ? 'needs work' : 'poor'}`, ck.perf == null || (ck.perf >= 50 && ck.perf < 90) ? null : ck.perf >= 90);
+  if (ck.lcp) fact('Main content shows in', ck.lcp, null);
+  fact('Secure (https)', ck.https == null ? 'Unknown' : ck.https ? 'Yes' : 'No', ck.https == null ? null : ck.https);
+  if (ck.weight) fact('Page size', fmtBytes(ck.weight), ck.weight < 3e6);
+  if (ck.old && ck.old.length) fact('Old code', ck.old.join(', '), false);
+  if (ck.seo != null) fact('Search basics', `${ck.seo}/100`, ck.seo >= 80);
+  const shotBox = h('div', { class: 'shot-ph', text: 'Loading screenshot…' });
+  shots.get(checkKey(ck.url)).then(data => {
+    if (!shotBox.isConnected) return;
+    if (data) shotBox.replaceWith(h('img', { class: 'shot', src: data, alt: `${b.site.host} on a phone`, width: 128 }));
+    else shotBox.textContent = 'No screenshot kept. Press “Check again” to see one.';
+  });
+  return h('section', { class: 'd-check' }, head,
+    h('dl', { class: 'check-facts' }, rows),
+    errBox,
+    h('div', { class: 'check-shot' }, shotBox, h('div', {}, h('p', { text: 'How the home page looks on a phone, from Google.' }), foot)));
+}
+function renderDetails() {
+  const box = $('#detailsBody');
+  const b = currentBusiness();
+  // Keep what the user is typing when the panel redraws, for example when a website check finishes.
+  const prevNote = $('#note');
+  const typing = b && prevNote && document.activeElement === prevNote && prevNote.dataset.id === b.id
+    ? { value: prevNote.value, start: prevNote.selectionStart, end: prevNote.selectionEnd } : null;
+  if (!b) { box.replaceChildren(emptyDetails()); return; }
+  const lead = state.leads[b.id] || { status: 'new', note: '' };
+  const live = state.byId.has(b.id);
+  const ck = b.check;
+  const kicker = [b.category, b.cuisine, live && state.centre ? `${fmtKm(b.distance)} from the centre` : null].filter(Boolean).join(' · ');
+  const insecure = !!b.site && (ck && ck.https != null ? ck.https === false : b.site.http);
+
+  const pills = h('div', { class: 'd-pills' },
+    h('span', { class: `pill ${b.bucket}` }, h('span', { class: `dot ${b.bucket}` }), presenceLabel(b)),
+    ck && ck.verdict === 'weak' && !ck.redirect ? h('span', { class: 'pill social', text: 'Weak website' }) : null,
+    b.site && b.site.free ? h('span', { class: 'pill', text: 'Free site builder' }) : null,
+    insecure && !(ck && ck.verdict === 'broken') ? h('span', { class: 'pill', text: 'Not secure (http)' }) : null,
+    b.chain ? h('span', { class: 'pill', text: `Chain: ${b.brand}` }) : null,
+    live && state.muni && b.inMuni === false ? h('span', { class: 'pill', text: `Outside ${state.muni.name}` }) : null,
+    b.stars ? h('span', { class: 'pill', text: `${b.stars} ★` }) : null);
+
+  const head = h('div', { class: 'd-head' },
+    h('div', { class: 'd-top' },
+      h('p', { class: 'd-kicker', text: kicker }),
+      h('button', { type: 'button', class: 'icon-btn d-close', 'aria-label': 'Close details', onclick: closeDetails }, icon(ICON.close))),
+    h('h2', { class: 'd-name', id: 'dName', text: b.name }),
+    b.nameEn ? h('p', { class: 'd-alt', text: b.nameEn }) : null,
+    pills);
+
+  const score = h('div', { class: 'd-score' },
+    h('div', { class: `ring ${scoreClass(b.score)}` }, h('strong', { text: b.score }), h('span', { text: 'lead score out of 100' })),
+    h('ul', { class: 'reasons', 'aria-label': 'Why this score' },
+      (b.reasons || []).map(([p, why]) => h('li', {}, h('span', { class: `pts${p < 0 ? ' neg' : ''}`, text: p > 0 ? `+${p}` : String(p) }), h('span', { text: why })))));
+
+  const rows = [];
+  const fact = (label, ...content) => { rows.push(h('dt', { text: label }), h('dd', {}, ...content)); };
+  fact('Address', b.address || h('span', { class: 'none-txt', text: 'No street address listed' }));
+  if (b.phones && b.phones.length) {
+    fact(b.phones.length > 1 ? 'Phones' : 'Phone', b.phones.map(p => [
+      h('a', { href: `tel:${p.replace(/[^\d+]/g, '')}`, text: p }),
+      h('button', { type: 'button', class: 'mini-btn', onclick: ev => copyText(p, ev.currentTarget), text: 'Copy', 'aria-label': `Copy ${p}` })]));
+  } else fact('Phone', h('span', { class: 'none-txt', text: 'No phone listed: find it on Google Maps' }));
+  if (b.email) fact('Email', h('a', { href: `mailto:${b.email}`, text: b.email }));
+  if (b.site) {
+    fact('Website', link(b.site.url, b.site.host, ' '),
+      b.site.free ? h('span', { class: 'flag', text: 'free builder' }) : null,
+      b.site.http ? h('span', { class: 'flag', text: 'http only' }) : null,
+      ck ? h('span', { class: `vbadge ${ck.verdict}`, text: VERDICT[ck.verdict] }) : null);
+  } else fact('Website', h('span', { class: 'none-txt', text: b.deadSite ? 'Only an old business.site page (shut down)' : 'None listed' }));
+  if (b.socials && b.socials.length) fact('Online pages', b.socials.slice(0, 6).map(s => link(s.url, s.label.replace(/^a /, ''), ' ')));
+  if (b.hours) fact('Opening hours', b.hours);
+  if (b.rooms) fact('Rooms', b.rooms);
+  if (b.operator) fact('Operator', b.operator);
+  if (b.description) fact('Description', b.description);
+  const facts = h('dl', { class: 'facts' }, rows);
+
+  const actions = h('div', { class: 'd-actions' },
+    link(urls.gmaps(b), 'Open in Google Maps', 'btn primary', ICON.pin),
+    link(urls.google(b), 'Check on Google', 'btn', ICON.search),
+    link(urls.directions(b), 'Directions', 'btn', ICON.route),
+    b.site ? link(urls.speed(b.site.url), 'Test site speed', 'btn', ICON.gauge) : null,
+    b.site ? link(urls.history(b.site.host), 'Site history', 'btn', ICON.clock) : null,
+    link(urls.osm(b), 'OpenStreetMap', 'btn', ICON.map));
+
+  const statusBtns = h('div', { class: 'status-btns', role: 'group', 'aria-label': 'Lead status' },
+    STATUSES.map(([k, label]) => h('button', {
+      type: 'button', class: 'st-btn', 'data-status': k, 'aria-pressed': (lead.status || 'new') === k ? 'true' : 'false', text: label,
+      // Send the note along so a status click never drops text still waiting to save.
+      onclick: () => { clearTimeout(t); setLead(b, { status: k, note: note.value }); },
+    })));
+  const note = h('textarea', { class: 'note', id: 'note', 'data-id': b.id, placeholder: 'e.g. Spoke to the owner, call back in March. Wants online booking.', 'aria-label': 'Your note about this business' });
+  note.value = lead.note || '';
+  let t = null;
+  note.addEventListener('input', () => { clearTimeout(t); $('#savedMsg').textContent = ''; t = setTimeout(() => setLead(b, { note: note.value }, true), 400); });
+  note.addEventListener('blur', () => { clearTimeout(t); if ((state.leads[b.id] || {}).note !== note.value && !(note.value === '' && !state.leads[b.id])) setLead(b, { note: note.value }, true); });
+
+  const setDue = v => { clearTimeout(t); setLead(b, { due: v || '', note: note.value }); };
+  const dueInput = h('input', { type: 'date', class: 'input', id: 'dueInput', 'aria-label': 'Follow-up date' });
+  dueInput.value = lead.due || '';
+  dueInput.addEventListener('change', () => setDue(dueInput.value));
+  const di = dueInfo(lead.due);
+  const follow = h('div', { class: 'follow', role: 'group', 'aria-label': 'Follow-up' },
+    h('span', { text: 'Follow up' }), dueInput,
+    h('button', { type: 'button', class: 'mini-btn', onclick: () => setDue(addDays(1)), text: 'Tomorrow' }),
+    h('button', { type: 'button', class: 'mini-btn', onclick: () => setDue(addDays(7)), text: 'In a week' }),
+    lead.due ? h('button', { type: 'button', class: 'mini-btn', onclick: () => setDue(''), text: 'Clear' }) : null,
+    di ? h('span', { class: `badge ${di.cls}`, id: 'dueBadge', text: di.long }) : null);
+
+  const leadBox = h('section', { class: 'd-lead', 'aria-labelledby': 'leadTitle' },
+    h('h3', { id: 'leadTitle', text: 'Your notes' }),
+    h('p', { class: 'sub', text: state.leads[b.id] && state.leads[b.id].updated ? `Saved ${new Date(state.leads[b.id].updated).toLocaleString('en-GB', { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' })}` : 'Mark it, add a note or set a follow-up date. It shows up under My leads.' }),
+    statusBtns, follow, note, h('p', { class: 'saved', id: 'savedMsg', 'aria-live': 'polite' }));
+
+  const source = h('p', { class: 'd-source' },
+    'From OpenStreetMap', live ? '' : ' (saved copy)', '. It misses some websites and phones, so use “Check on Google” before you call. Wrong details? ',
+    link(urls.osm(b), 'Fix them on OpenStreetMap', ' '), '.');
+
+  box.replaceChildren(h('div', { class: 'd-body' }, head, score, facts, actions, checkSection(b), leadBox, source));
+  if (typing) {
+    const n = $('#note');
+    n.value = typing.value;
+    n.focus({ preventScroll: true });
+    try { n.setSelectionRange(typing.start, typing.end); } catch { /* not every browser allows it */ }
+  }
+}
+
+function snapshot(b) {
+  const { hay, check, ...rest } = b;
+  return rest;
+}
+function setLead(b, patch, quiet) {
+  const cur = state.leads[b.id] || { status: 'new', note: '' };
+  const next = { ...cur, ...patch, updated: Date.now(), snap: snapshot(b) };
+  if (!next.due) delete next.due;
+  if ((next.status || 'new') === 'new' && !String(next.note || '').trim() && !next.due) delete state.leads[b.id];
+  else state.leads[b.id] = next;
+  const ok = store.set(KEYS.leads, state.leads);
+  const m = markerById.get(b.id);
+  if (m) m.setStyle(markerStyle(b, b.id === state.selectedId));
+  if (quiet) {
+    const msg = $('#savedMsg');
+    if (msg) msg.textContent = ok ? 'Saved in this browser' : "Couldn't save: this browser blocks storage";
+    renderLeadCounts();
+    if (state.tab === 'leads') renderList();
+    return;
+  }
+  renderDetails();
+  if (!ok) { const msg = $('#savedMsg'); if (msg) msg.textContent = "Couldn't save: this browser blocks storage"; }
+  if (state.status !== 'any' || state.tab === 'leads') { applyFilters(false); }
+  else { refreshRow(b.id); renderHead(); }
+  const sel = $(`#list .row[data-id="${CSS.escape(b.id)}"]`);
+  if (sel) sel.setAttribute('aria-current', 'true');
+}
+function showCallList() {
+  state.leadStatus = 'due';
+  if (state.tab !== 'leads') setTab('leads');
+  else { $('#statusSel').value = 'due'; renderList(); renderMarkers(); }
+}
+
+/* =========================================================
+   Website check: buttons, progress and the settings dialog
+   ========================================================= */
+function showCheckResult(b) {
+  const k = b.site && checkKey(b.site.url);
+  for (const x of state.results) {
+    if (!x.site || checkKey(x.site.url) !== k) continue;
+    refreshRow(x.id);
+    const m = markerById.get(x.id);
+    if (m) m.setStyle(markerStyle(x, x.id === state.selectedId));
+  }
+  if (state.tab === 'leads') refreshRow(b.id);
+  const cur = currentBusiness();
+  if (cur && cur.site && checkKey(cur.site.url) === k) renderDetails();
+}
+async function checkOne(id) {
+  const b = state.byId.get(id) || fromSnap(id, state.leads[id]);
+  if (!b || !b.site || state.checking.has(id)) return;
+  if (!state.settings.psiKey) { openSettings('missing', () => checkOne(id)); return; }
+  state.checking.add(id);
+  state.checkErrors.delete(id);
+  showCheckResult(b);
+  const t = withTimeout(null, 100000);
+  try {
+    await checkBusiness(b, t.signal);
+  } catch (e) {
+    if (e instanceof KeyProblem) { state.checkErrors.set(id, KEY_TROUBLE[e.message] || KEY_TROUBLE.denied); openSettings(e.message, () => checkOne(id)); }
+    else state.checkErrors.set(id, isAbort(e) ? "Google's checker took too long. Try again, or open the full report on Google." : "Google's checker didn't answer. Check your internet connection and try again.");
+  } finally {
+    t.done();
+    state.checking.delete(id);
+    showCheckResult(b);
+    renderHead();
+  }
+}
+function checkPool() { return state.results.filter(b => b.site && passes(b, 'bucket check')); }
+function checkQueue() {
+  const seen = new Set(), queue = [];
+  const pool = checkPool().filter(b => !b.check).sort((a, b) => b.score - a.score || a.distance - b.distance);
+  // One check per website, even when several businesses share it.
+  for (const b of pool) { const k = checkKey(b.site.url); if (!seen.has(k)) { seen.add(k); queue.push(b); } }
+  return queue;
+}
+async function checkAll() {
+  if (state.batch) return;
+  if (!state.settings.psiKey) { openSettings('missing', checkAll); return; }
+  const queue = checkQueue();
+  if (!queue.length) return;
+  const ctrl = new AbortController();
+  const batch = state.batch = { ctrl, total: queue.length, done: 0, inRow: 0, stop: null };
+  state.lastBatch = null;
+  renderCheckRow();
+  let next = 0;
+  const worker = async () => {
+    while (!ctrl.signal.aborted && next < queue.length) {
+      const b = queue[next++];
+      if (b.check) { batch.done++; continue; } // checked meanwhile from the details panel
+      state.checking.add(b.id);
+      showCheckResult(b);
+      const t = withTimeout(ctrl.signal, 100000);
+      try {
+        await checkBusiness(b, t.signal);
+        batch.inRow = 0;
+      } catch (e) {
+        if (e instanceof KeyProblem) { batch.stop = e.message; ctrl.abort(new DOMException('Key problem', 'AbortError')); }
+        else if (!ctrl.signal.aborted && ++batch.inRow >= 6) {
+          // Many failures in a row means Google or the connection is down, so pause instead of failing every website.
+          batch.stop = 'down'; ctrl.abort(new DOMException('Checker down', 'AbortError'));
+        }
+      } finally {
+        t.done();
+        state.checking.delete(b.id);
+        if (b.check || !ctrl.signal.aborted) batch.done++;
+        showCheckResult(b);
+        renderCheckRow();
+      }
+    }
+  };
+  await Promise.all(Array.from({ length: Math.min(CHECK_WORKERS, queue.length) }, worker));
+  if (state.batch === batch) state.batch = null;
+  state.lastBatch = batch;
+  applyFilters(false);
+  renderDetails();
+  if (KEY_TROUBLE[batch.stop]) openSettings(batch.stop, checkAll);
+}
+function stopBatch() {
+  if (state.batch) state.batch.ctrl.abort(new DOMException('Stopped', 'AbortError'));
+}
+function showWeak() {
+  state.buckets = new Set(['none', 'social', 'site']);
+  state.checkFilter = 'weak';
+  $('#checkSel').value = 'weak';
+  saveForm();
+  applyFilters(true);
+}
+function renderCheckRow() {
+  const row = $('#checkRow');
+  if (!state.loaded) { row.hidden = true; return; }
+  const batch = state.batch;
+  const pool = checkPool();
+  if (!pool.length && !batch) { row.hidden = true; return; }
+  row.hidden = false;
+  const queued = batch ? 0 : checkQueue().length;
+  let broken = 0, weak = 0;
+  for (const b of pool) if (b.check) { if (b.check.verdict === 'broken') broken++; else if (b.check.verdict === 'weak') weak++; }
+  const btn = $('#checkAllBtn');
+  btn.hidden = !batch && !queued;
+  btn.textContent = batch ? 'Stop' : `Check ${fmtInt(queued)} website${queued === 1 ? '' : 's'}`;
+  btn.title = batch ? 'Stop checking. Finished checks are kept.' : "Checks the websites of the businesses in this search with Google's free PageSpeed check";
+  const bits = [];
+  if (batch) bits.push(h('span', { class: 'spinner', 'aria-hidden': 'true' }), h('span', { text: `Checking websites: ${fmtInt(batch.done)} of ${fmtInt(batch.total)} done…` }));
+  else if (queued) bits.push(h('span', { text: `Finds broken, slow and old ones · about ${fmtMinutes(queued)}${state.settings.psiKey ? '' : ' · needs a free Google key'}` }));
+  if (broken || weak) bits.push(h('span', { text: `${batch || queued ? '· ' : ''}${fmtInt(broken)} don't load, ${fmtInt(weak)} weak.` }), h('button', { type: 'button', class: 'link-btn', id: 'showWeakBtn', onclick: showWeak, text: 'Show them' }));
+  else if (!batch && !queued) bits.push(h('span', { text: 'Every website here is checked and looks fine.' }));
+  const last = state.lastBatch;
+  if (!batch && last && last.stop === 'down') bits.push(h('span', { class: 'err', text: "Google's checker stopped answering, so checking paused. Try again in a few minutes." }));
+  $('#checkHint').replaceChildren(...bits);
+}
+
+function keyMsg(text, bad) {
+  const m = $('#keyMsg');
+  m.textContent = text;
+  m.className = bad ? 'err' : '';
+}
+function openSettings(reason, then) {
+  afterKey = then || null;
+  const r = $('#settingsReason');
+  r.hidden = !reason;
+  r.textContent = reason ? (KEY_TROUBLE[reason] || reason) : '';
+  const input = $('#keyInput');
+  input.value = state.settings.psiKey || '';
+  input.type = 'password';
+  $('#keyShow').textContent = 'Show';
+  keyMsg(state.settings.psiKey ? 'A key is saved in this browser.' : 'No key saved yet.');
+  $('#keyRemove').hidden = !state.settings.psiKey;
+  const dlg = $('#settingsDlg');
+  if (!dlg.open) { if (typeof dlg.showModal === 'function') dlg.showModal(); else dlg.setAttribute('open', ''); }
+  setTimeout(() => input.focus(), 0);
+}
+function closeSettings() {
+  const dlg = $('#settingsDlg');
+  if (!dlg.open) return;
+  if (typeof dlg.close === 'function') dlg.close(); else dlg.removeAttribute('open');
+}
+function saveKey(e) {
+  if (e) e.preventDefault();
+  const v = $('#keyInput').value.replace(/^["'\s]+|["'\s]+$/g, '');
+  if (!/^[A-Za-z0-9_-]{20,80}$/.test(v)) {
+    keyMsg("That doesn't look like a Google API key. It usually starts with AIza and is about 39 letters and numbers long.", true);
+    $('#keyInput').focus();
+    return;
+  }
+  state.settings.psiKey = v;
+  const ok = store.set(KEYS.settings, state.settings);
+  if (!ok) { keyMsg("This browser blocks storage, so the key can't be saved.", true); return; }
+  const then = afterKey;
+  afterKey = null;
+  closeSettings();
+  renderCheckRow();
+  if (then) then();
+}
+function removeKey() {
+  delete state.settings.psiKey;
+  store.set(KEYS.settings, state.settings);
+  $('#keyInput').value = '';
+  keyMsg('Key removed from this browser.');
+  $('#keyRemove').hidden = true;
+  renderCheckRow();
+}
+
+/* =========================================================
+   Recent searches and the whole municipality
+   ========================================================= */
+function rememberSearch() {
+  const address = $('#address').value.trim();
+  if (!address || parseLatLon(address)) return; // map points aren't worth keeping
+  const entry = { area: $('#area').value, address, radius: $('#radius').value };
+  const list = recentList().filter(r => !(r.area === entry.area && fold(r.address) === fold(address)));
+  list.unshift(entry);
+  store.set(KEYS.recent, list.slice(0, 8));
+  renderRecent();
+}
+function renderRecent() {
+  $('#recentAddr').replaceChildren(...recentList().map(r => h('option', { value: r.address })));
+}
+function runRecent(r) {
+  if (AREAS[r.area]) $('#area').value = r.area;
+  $('#address').value = r.address;
+  if (r.radius) $('#radius').value = r.radius;
+  setSearchLabel('Search');
+  search();
+}
+function searchMuni() {
+  if (!state.muni || !state.centre) return;
+  state.mode = 'muni';
+  state.undo = null;
+  drawSearchArea(true);
+  runLoad();
+}
+
+/* =========================================================
+   Tabs
+   ========================================================= */
+function setTab(tab, render = true) {
+  if (state.tab === tab && render) return;
+  state.tab = tab;
+  state.shown = PAGE;
+  document.body.dataset.tab = tab;
+  $('#statusSel').value = tab === 'leads' ? state.leadStatus : state.status;
+  $('#tabResults').setAttribute('aria-selected', String(tab === 'results'));
+  $('#tabLeads').setAttribute('aria-selected', String(tab === 'leads'));
+  if (render) { renderHead(); renderList(); renderMarkers(); }
+}
+
+/* =========================================================
+   Export
+   ========================================================= */
+function exportRows() {
+  const items = state.tab === 'results' ? state.filtered : leadItems();
+  const muniName = state.muni ? state.muni.name : '';
+  const header = ['Name', 'English name', 'Type', 'Group', 'Web presence', 'Website', 'Website check', 'Speed (phone)', 'Online pages', 'Lead score', 'Distance (km)', 'Phone', 'Email', 'Address', 'Opening hours', 'Municipality', 'Status', 'Follow up', 'Note', 'Google Maps', 'OpenStreetMap', 'Latitude', 'Longitude'];
+  const rows = items.map(b => {
+    const l = state.leads[b.id] || {};
+    const live = state.byId.has(b.id);
+    return [
+      b.name, b.nameEn || '', b.category, GROUPS[b.group] || '', presenceLabel(b), b.site ? b.site.url : '',
+      checkText(b.check), b.check && b.check.perf != null ? b.check.perf : '',
+      (b.socials || []).map(s => s.url).join(' '), b.score, live ? Math.round(b.distance * 100) / 100 : '',
+      (b.phones || []).join(', '), b.email || '', b.address || '', b.hours || '',
+      live && state.muni ? (b.inMuni ? muniName : `Outside ${muniName}`) : '',
+      STATUS_LABEL[l.status || 'new'], l.due || '', l.note || '', urls.gmaps(b), urls.osm(b), b.lat, b.lon,
+    ];
+  });
+  return { header, rows };
+}
+function exportName(ext) {
+  let area;
+  if (state.tab === 'leads') area = 'my-leads';
+  else if (state.loaded && state.loaded.mode === 'muni' && state.muni) area = `${latin(state.muni.nameEn || state.muni.name).replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '') || 'municipality'}-all`;
+  else area = `${$('#area').value}-${String(state.radiusKm).replace('.', '_')}km`;
+  return `siteradar-${area}-${today()}.${ext}`;
+}
+function download(blob, name) {
+  const a = h('a', { href: URL.createObjectURL(blob), download: name });
+  document.body.append(a); a.click();
+  setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 2000);
+}
+function csvCell(v) {
+  let s = v == null ? '' : String(v);
+  // Stop spreadsheet formulas sneaking in from map data, but leave phone numbers alone.
+  if (/^[=@\t\r]/.test(s) || (/^[+-]/.test(s) && !/^[+-]?[\d\s().\/-]+$/.test(s))) s = "'" + s;
+  return /[",\n\r;]/.test(s) ? `"${s.replace(/"/g, '""')}"` : s;
+}
+function exportCsv() {
+  const { header, rows } = exportRows();
+  const text = [header, ...rows].map(r => r.map(csvCell).join(',')).join('\r\n');
+  download(new Blob(['﻿' + text], { type: 'text/csv;charset=utf-8' }), exportName('csv'));
+}
+let xlsxPromise = null;
+function loadXlsx() {
+  if (window.XLSX) return Promise.resolve(window.XLSX);
+  if (!xlsxPromise) xlsxPromise = new Promise((resolve, reject) => {
+    const s = document.createElement('script');
+    s.src = XLSX_SRC; s.integrity = XLSX_SRI; s.crossOrigin = 'anonymous';
+    s.onload = () => window.XLSX ? resolve(window.XLSX) : reject(new Error('Excel library missing'));
+    s.onerror = () => { xlsxPromise = null; reject(new Error('Excel library failed to load')); };
+    document.head.append(s);
+  });
+  return xlsxPromise;
+}
+async function exportXlsx() {
+  const btn = $('#xlsxBtn');
+  const was = btn.textContent;
+  btn.textContent = 'Preparing…'; btn.disabled = true;
+  try {
+    const X = await loadXlsx();
+    const { header, rows } = exportRows();
+    const ws = X.utils.aoa_to_sheet([header, ...rows]);
+    const widths = [34, 26, 20, 18, 26, 32, 40, 12, 32, 10, 12, 20, 26, 38, 26, 24, 16, 12, 40, 22, 22, 11, 11];
+    ws['!cols'] = widths.map(w => ({ wch: w }));
+    if (ws['!ref']) ws['!autofilter'] = { ref: ws['!ref'] };
+    const linkCols = [header.indexOf('Website'), header.indexOf('Google Maps'), header.indexOf('OpenStreetMap')];
+    rows.forEach((r, i) => {
+      for (const c of linkCols) {
+        if (!r[c]) continue;
+        const ref = X.utils.encode_cell({ r: i + 1, c });
+        if (ws[ref]) ws[ref].l = { Target: r[c] };
+      }
+    });
+    const wb = X.utils.book_new();
+    X.utils.book_append_sheet(wb, ws, state.tab === 'leads' ? 'My leads' : 'Businesses');
+    X.writeFile(wb, exportName('xlsx'));
+  } catch {
+    setStatus('error', "The Excel export needs the internet to load. Try again, or use CSV instead.", [['Use CSV', exportCsv]]);
+  } finally { btn.textContent = was; btn.disabled = false; }
+}
+
+/* =========================================================
+   Wiring
+   ========================================================= */
+function runLoad() {
+  if (state.busy) state.busy.abort(new DOMException('Replaced', 'AbortError'));
+  const ctrl = new AbortController();
+  state.busy = ctrl;
+  const mode = state.mode;
+  const timer = setTimeout(() => ctrl.abort(new DOMException('Timed out', 'TimeoutError')), mode === 'muni' ? 240000 : 150000);
+  setSearchLabel('Searching…');
+  loadBusinesses(ctrl.signal)
+    .catch(e => {
+      if (state.busy !== ctrl) return; // a newer search took over
+      const reason = ctrl.signal.reason;
+      const timedOut = !!reason && reason.name === 'TimeoutError';
+      if (ctrl.signal.aborted && !timedOut) setStatus('info', 'Search stopped.');
+      else setStatus('error', errorText(timedOut ? reason : e, mode), [['Try again', () => { state.mode = mode; drawSearchArea(true); runLoad(); }]]);
+      keepModeOfList();
+    })
+    .finally(() => { clearTimeout(timer); if (state.busy === ctrl) { state.busy = null; setSearchLabel('Search'); } });
+}
+function restoreForm() {
+  const params = new URLSearchParams(location.search);
+  const area = params.get('area') || saved.area;
+  if (area && AREAS[area]) $('#area').value = area;
+  const address = params.get('address') ?? saved.address;
+  if (typeof address === 'string' && address.trim()) $('#address').value = address;
+  const radius = params.get('radius') ?? saved.radius;
+  if (radius != null && radius !== '') $('#radius').value = radius;
+  $('#sortSel').value = state.sort;
+  $('#phoneOnly').checked = state.phoneOnly;
+  $('#hideChains').checked = state.hideChains;
+}
+
+function init() {
+  restoreForm();
+  initMap();
+  renderRecent();
+  renderHead();
+  renderList();
+  renderDetails();
+
+  $('#searchForm').addEventListener('submit', search);
+  $('#address').addEventListener('input', () => { setSearchLabel('Search'); if (state.undo) state.undo = null; });
+  $('#area').addEventListener('change', () => {
+    saveForm();
+    if (!state.loaded && map && !parseLatLon($('#address').value)) {
+      const a = AREAS[$('#area').value];
+      map.setView(a.centre, a.zoom);
+    }
+  });
+  $('#radius').addEventListener('input', () => {
+    const km = readRadius();
+    if (km == null) return;
+    state.radiusKm = km;
+    if (state.mode !== 'muni') drawSearchArea(false);
+    if (!state.loaded) return;
+    if (state.loaded.mode === 'muni') {
+      renderHead();
+      setStatus('info', `This list covers the whole municipality. Press Search to go back to ${fmtRadius(km)} around the address.`, [['Search', () => search()]]);
+      return;
+    }
+    if (km <= state.loaded.radiusKm) applyFilters(true);
+    else setStatus('info', `Press Search to load the businesses out to ${fmtRadius(km)}.`, [['Search', () => search()]]);
+  });
+  $('#radius').addEventListener('change', saveForm);
+
+  $('#tabResults').addEventListener('click', () => setTab('results'));
+  $('#tabLeads').addEventListener('click', () => setTab('leads'));
+  $('.tabs').addEventListener('keydown', e => {
+    if (e.key !== 'ArrowLeft' && e.key !== 'ArrowRight') return;
+    const next = state.tab === 'results' ? 'leads' : 'results';
+    setTab(next);
+    $(next === 'results' ? '#tabResults' : '#tabLeads').focus();
+  });
+
+  for (const chip of $$('.chip')) chip.addEventListener('click', () => {
+    const k = chip.dataset.bucket;
+    if (state.buckets.has(k)) state.buckets.delete(k); else state.buckets.add(k);
+    saveForm();
+    applyFilters(true);
+  });
+  $('#groupSel').addEventListener('change', e => { state.group = e.target.value; applyFilters(true); });
+  $('#sortSel').addEventListener('change', e => { state.sort = e.target.value; saveForm(); applyFilters(true); });
+  $('#statusSel').addEventListener('change', e => {
+    if (state.tab === 'results') { state.status = e.target.value; applyFilters(true); }
+    else { state.leadStatus = e.target.value; renderList(); renderMarkers(); }
+  });
+  $('#checkSel').addEventListener('change', e => { state.checkFilter = e.target.value; applyFilters(true); });
+  let tf = null;
+  $('#textFilter').addEventListener('input', e => {
+    clearTimeout(tf);
+    tf = setTimeout(() => { state.text = e.target.value; state.terms = termsOf(state.text); state.tab === 'results' ? applyFilters(true) : (renderList(), renderMarkers()); }, 140);
+  });
+  $('#phoneOnly').addEventListener('change', e => { state.phoneOnly = e.target.checked; saveForm(); applyFilters(true); });
+  $('#hideChains').addEventListener('change', e => { state.hideChains = e.target.checked; saveForm(); applyFilters(true); });
+  $('#insideOnly').addEventListener('change', e => { state.insideOnly = e.target.checked; applyFilters(true); });
+  $('#checkAllBtn').addEventListener('click', () => { if (state.batch) stopBatch(); else checkAll(); });
+
+  const list = $('#list');
+  list.addEventListener('click', e => { const row = e.target.closest('.row'); if (row) select(row.dataset.id, { from: 'list' }); });
+  list.addEventListener('keydown', e => {
+    if (e.key !== 'ArrowDown' && e.key !== 'ArrowUp') return;
+    const rows = $$('#list .row');
+    const i = rows.indexOf(document.activeElement);
+    if (i < 0) return;
+    e.preventDefault();
+    const next = rows[i + (e.key === 'ArrowDown' ? 1 : -1)];
+    if (next) { next.focus(); select(next.dataset.id, { from: 'list', open: !overlayLayout() }); }
+  });
+  $('#moreBtn').addEventListener('click', () => { state.shown += PAGE; renderList(); });
+  $('#csvBtn').addEventListener('click', exportCsv);
+  $('#xlsxBtn').addEventListener('click', exportXlsx);
+
+  $('#settingsBtn').addEventListener('click', () => openSettings(null));
+  $('#settingsForm').addEventListener('submit', saveKey);
+  $('#keyClose').addEventListener('click', () => { afterKey = null; closeSettings(); });
+  $('#keyRemove').addEventListener('click', removeKey);
+  $('#keyShow').addEventListener('click', () => {
+    const input = $('#keyInput');
+    const show = input.type === 'password';
+    input.type = show ? 'text' : 'password';
+    $('#keyShow').textContent = show ? 'Hide' : 'Show';
+  });
+  $('#settingsDlg').addEventListener('cancel', () => { afterKey = null; });
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && !$('#settingsDlg').open && document.body.classList.contains('details-open') && overlayLayout()) closeDetails();
+  });
+  window.addEventListener('storage', e => {
+    if (e.key === KEYS.leads) {
+      state.leads = store.get(KEYS.leads, {}) || {};
+      renderHead(); renderList(); renderMarkers(); renderDetails();
+    } else if (e.key === KEYS.settings) {
+      state.settings = store.get(KEYS.settings, {}) || {};
+      renderCheckRow();
+    } else if (e.key === KEYS.checks) {
+      state.checks = store.get(KEYS.checks, {}) || {};
+      for (const b of state.results) if (b.site) attachCheck(b, storedCheck(b.site.url));
+      applyFilters(false); renderDetails();
+    }
+  });
+  window.addEventListener('resize', () => { if (map) map.invalidateSize(); });
+}
+
+init();
+});
+</script>
+</body>
+</html>
