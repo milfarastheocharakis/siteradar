@@ -1,5 +1,6 @@
 {"elements":[
 {"type":"node","id":4296616590,"lat":35.30951,"lon":25.11013,"tags":{"name":"Aleksakis Winery","shop":"wine"}},
+{"type":"node","id":4902163172,"lat":35.31684,"lon":25.10601,"tags":{"amenity":"cafe","name":"Καφετέρια Αγροκτήματος ΕΛΜΕΠΑ"}},
 {"type":"node","id":10015291834,"lat":35.31981,"lon":25.10198,"tags":{"addr:street":"Μυλονογιάννη Γ.","name":"Wash & Dry 24/7","opening_hours":"24/7","shop":"laundry"}},
 {"type":"node","id":12303976419,"lat":35.31742,"lon":25.11328,"tags":{"name":"Skuba","name:en":"Skuba","opening_hours":"Mo-Fr 09:00-17:30; Sa 09:00-14:00","phone":"+30 281 029 9499","shop":"truck","website":"https://www.skuba.gr/"}},
 {"type":"node","id":13672053447,"lat":35.31982,"lon":25.10183,"tags":{"addr:city":"Ηράκλειο","addr:housenumber":"4","addr:postcode":"714 10","addr:street":"Μυλονογιάννη Γ.","name":"COPYFIX - Το Φοιτητικό","name:en":"COPYFIX - To Foititiko","opening_hours":"Mo-Fr 08:00-21:00, Sa 10:00-15:00","phone":"+30 281 025 9030","shop":"books","website":"http://www.copyfix.gr/","contact:facebook":"https://www.facebook.com/107000168819871","email":"copyfix18@gmail.com","overture:id":"1c606dc6-f20b-4d16-99d7-965abb13ed57"}},
