@@ -750,6 +750,7 @@ const cssVar = name => getComputedStyle(document.documentElement).getPropertyVal
 const today = () => new Date().toISOString().slice(0, 10);
 const localDate = (d = new Date()) => `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
 const addDays = n => { const d = new Date(); d.setDate(d.getDate() + n); return localDate(d); };
+const fmtDataDate = iso => new Date(iso).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' });
 const fmtDay = iso => new Date(iso + 'T12:00:00').toLocaleDateString('en-GB', { weekday: 'short', day: 'numeric', month: 'short' });
 const fmtBytes = n => n >= 1e6 ? `${(n / 1e6).toFixed(1)} MB` : `${Math.max(1, Math.round(n / 1e3))} KB`;
 function fmtMinutes(checks) {
@@ -1102,6 +1103,100 @@ function municipalityQuery(lat, lon) {
     'rel(pivot);',
     'out geom;',
   ].join('\n');
+}
+
+/* =========================================================
+   Stored business data: data/ next to the app holds Crete's businesses and municipality
+   boundaries, rebuilt every Monday from OpenStreetMap. A search inside it needs no map-data server.
+   ========================================================= */
+const DATA_DIR = 'data/';
+let dataIndex;                 // undefined: not loaded yet; null: no stored data here; otherwise the index
+let dataIndexAsk = null;
+const dataFiles = new Map();   // path -> promise of the parsed file
+
+async function fetchJson(url, ms) {
+  const t = withTimeout(null, ms);
+  try {
+    const res = await fetch(url, { signal: t.signal });
+    if (!res.ok) throw new ServiceError(`${url} answered ${res.status}`, res.status);
+    return await res.json();
+  } finally { t.done(); }
+}
+/* Waits for a shared promise, but gives up as soon as this search is stopped. */
+function untilAbort(p, signal) {
+  if (!signal) return p;
+  return new Promise((resolve, reject) => {
+    const stop = () => reject(signal.reason || new DOMException('Aborted', 'AbortError'));
+    if (signal.aborted) { stop(); return; }
+    signal.addEventListener('abort', stop, { once: true });
+    p.then(v => { signal.removeEventListener('abort', stop); resolve(v); },
+      e => { signal.removeEventListener('abort', stop); reject(e); });
+  });
+}
+function storedIndex() {
+  if (dataIndex !== undefined) return Promise.resolve(dataIndex);
+  if (location.protocol === 'file:') return Promise.resolve(dataIndex = null);
+  if (!dataIndexAsk) {
+    dataIndexAsk = fetchJson(DATA_DIR + 'index.json', 15000)
+      .then(j => (dataIndex = j && j.v === 1 && j.cell > 0 && j.cells && Array.isArray(j.bbox) && Array.isArray(j.munis) ? j : null))
+      .catch(e => { if (e && e.status === 404) dataIndex = null; return null; }) // anything else: try again next search
+      .finally(() => { dataIndexAsk = null; });
+  }
+  return dataIndexAsk;
+}
+function storedFile(path) {
+  let p = dataFiles.get(path);
+  if (!p) {
+    p = fetchJson(DATA_DIR + path, 30000);
+    dataFiles.set(path, p);
+    p.catch(() => dataFiles.delete(path));
+  }
+  return p;
+}
+const pointOf = el => [el.lat ?? (el.center && el.center.lat), el.lon ?? (el.center && el.center.lon)];
+function storedCells(idx, s, w, n, e) {
+  const f = Math.round(1 / idx.cell), keys = [];
+  for (let a = Math.floor(s * f); a <= Math.floor(n * f); a++) {
+    for (let o = Math.floor(w * f); o <= Math.floor(e * f); o++) if (idx.cells[`${a}_${o}`]) keys.push(`${a}_${o}`);
+  }
+  return keys;
+}
+async function storedElements(idx, box, keep, signal) {
+  const files = await untilAbort(Promise.all(storedCells(idx, ...box).map(k => storedFile(`cells/${k}.json`))), signal);
+  const elements = [];
+  for (const j of files) for (const el of j.elements || []) { const [lat, lon] = pointOf(el); if (keep(lat, lon)) elements.push(el); }
+  return { elements, osmDate: idx.osmDate || '' };
+}
+/* The stored businesses within `km` of `c`, or null when the circle isn't fully inside the stored area. */
+async function storedCircle(c, km, signal) {
+  const idx = await untilAbort(storedIndex(), signal);
+  if (!idx) return null;
+  const dLat = km / 110.5, dLon = km / (110.5 * Math.cos(c.lat * Math.PI / 180));
+  const box = [c.lat - dLat, c.lon - dLon, c.lat + dLat, c.lon + dLon];
+  const [S, W, N, E] = idx.bbox;
+  if (box[0] < S || box[1] < W || box[2] > N || box[3] > E) return null;
+  return storedElements(idx, box, (lat, lon) => haversine(c.lat, c.lon, lat, lon) <= km, signal);
+}
+/* Every stored business inside a municipality, or null when its boundary isn't stored. */
+async function storedMuni(muni, signal) {
+  const idx = await untilAbort(storedIndex(), signal);
+  if (!idx || !idx.munis.some(m => m.id === muni.id)) return null;
+  return storedElements(idx, muni.box, (lat, lon) => insideMuni(muni, lat, lon), signal);
+}
+/* The municipality around a point from the stored boundaries: null when it is in none of them,
+   undefined when the point is outside the stored area. */
+async function storedMuniAt(lat, lon) {
+  const idx = await storedIndex();
+  if (!idx) return undefined;
+  const [S, W, N, E] = idx.bbox;
+  if (lat < S || lat > N || lon < W || lon > E) return undefined;
+  const level = m => (/^(6|7)$/.test(m.adminLevel || '') ? 0 : 1);
+  const near = idx.munis.filter(m => lat >= m.box[0] && lat <= m.box[2] && lon >= m.box[1] && lon <= m.box[3]).sort((a, b) => level(a) - level(b));
+  for (const m of near) {
+    const muni = parseMunicipality(await storedFile(`munis/${m.id}.json`));
+    if (muni && insideMuni(muni, lat, lon)) return muni;
+  }
+  return null;
 }
 
 async function nominatim(q, area, signal) {
@@ -1662,14 +1757,19 @@ async function loadBusinesses(signal) {
   const cacheKey = muni ? `muni:${muni.id}` : `${c.lat.toFixed(5)},${c.lon.toFixed(5)},${state.radiusKm}`;
   let json = overpassCache.get(cacheKey);
   if (!json) {
-    // A server that hasn't answered after this long gets company: the next server is asked as well.
-    const patience = muni ? 60000 : Math.min(45000, Math.max(10000, 8000 + 2000 * state.radiusKm));
-    const onWait = n => setStatus('busy', `Still loading… the map-data server is slow, so SiteRadar is also asking ${['a second', 'a third'][n - 1] || 'another'} server.`, [['Cancel', cancelSearch]]);
-    // A small area that no server answers within about a minute is not worth waiting longer for.
-    const limit = muni ? null : withTimeout(signal, Math.min(140000, 60000 + 4000 * state.radiusKm));
-    try {
-      json = await overpass(muni ? muniBusinessQuery(muni.id) : businessQuery(c.lat, c.lon, state.radiusKm * 1000), limit ? limit.signal : signal, { patience, onWait });
-    } finally { if (limit) limit.done(); }
+    // Crete is stored next to the app (data/), so a search there needs no map-data server.
+    try { json = muni ? await storedMuni(muni, signal) : await storedCircle(c, state.radiusKm, signal); }
+    catch (e) { if (signal && signal.aborted) throw e; json = null; } // a stored file that won't load: ask the servers
+    if (!json) {
+      // A server that hasn't answered after this long gets company: the next server is asked as well.
+      const patience = muni ? 60000 : Math.min(45000, Math.max(10000, 8000 + 2000 * state.radiusKm));
+      const onWait = n => setStatus('busy', `Still loading… the map-data server is slow, so SiteRadar is also asking ${['a second', 'a third'][n - 1] || 'another'} server.`, [['Cancel', cancelSearch]]);
+      // A small area that no server answers within about a minute is not worth waiting longer for.
+      const limit = muni ? null : withTimeout(signal, Math.min(140000, 60000 + 4000 * state.radiusKm));
+      try {
+        json = await overpass(muni ? muniBusinessQuery(muni.id) : businessQuery(c.lat, c.lon, state.radiusKm * 1000), limit ? limit.signal : signal, { patience, onWait });
+      } finally { if (limit) limit.done(); }
+    }
     overpassCache.set(cacheKey, json);
   }
   const list = [];
@@ -1678,7 +1778,7 @@ async function loadBusinesses(signal) {
   state.results = dedupe(list);
   state.byId = new Map(state.results.map(b => [b.id, b]));
   rememberDone();
-  state.loaded = { lat: c.lat, lon: c.lon, radiusKm: state.radiusKm, mode: muni ? 'muni' : 'radius', muniId: muni ? muni.id : null };
+  state.loaded = { lat: c.lat, lon: c.lon, radiusKm: state.radiusKm, mode: muni ? 'muni' : 'radius', muniId: muni ? muni.id : null, dataDate: json.osmDate || '' };
   state.insideOnly = false; $('#insideOnly').checked = false;
   if (muni) for (const b of state.results) b.inMuni = true;
   else state.muni = null;
@@ -1701,8 +1801,8 @@ async function loadMunicipality() {
   try {
     let muni = muniCache.get(key);
     if (muni === undefined) {
-      const json = await overpass(municipalityQuery(c.lat, c.lon));
-      muni = parseMunicipality(json);
+      const stored = await storedMuniAt(c.lat, c.lon).catch(() => undefined);
+      muni = stored !== undefined ? stored : parseMunicipality(await overpass(municipalityQuery(c.lat, c.lon)));
       muniCache.set(key, muni);
     }
     if (token !== muniToken || !muni) return;
@@ -1890,6 +1990,7 @@ function renderHead() {
       h('b', { text: fmtInt(none) }), broken ? ' with no working website, ' : ' with no website listed, ',
       h('b', { text: fmtInt(social) }), weak ? ' with only a social or booking page, ' : ' with only a social or booking page.',
       ...(weak ? [h('b', { text: fmtInt(weak) }), ' with a weak website.'] : []),
+      ...(state.loaded.dataDate ? [h('span', { class: 'data-date', text: ` OpenStreetMap data of ${fmtDataDate(state.loaded.dataDate)}.` })] : []),
     ]);
     renderDoneLine(areaAll);
   } else { sum.hidden = true; $('#doneLine').hidden = true; }

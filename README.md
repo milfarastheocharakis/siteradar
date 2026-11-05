@@ -27,11 +27,13 @@ Optional: limit the key to the PageSpeed Insights API, and to the website `https
 
 ## Where the data comes from
 
-- Businesses: [OpenStreetMap](https://www.openstreetmap.org/copyright) (© OpenStreetMap contributors, ODbL), loaded live through the Overpass API. OpenStreetMap misses some businesses and websites, so check on Google before you call.
+- Businesses: [OpenStreetMap](https://www.openstreetmap.org/copyright) (© OpenStreetMap contributors, ODbL). OpenStreetMap misses some businesses and websites, so check on Google before you call.
+  - Crete is stored in `data/` next to the app, so searches there are instant and don't depend on the busy public map-data servers. A GitHub Actions workflow (`.github/workflows/data.yml`, free for a public repo) rebuilds it every Monday from the [Geofabrik](https://download.geofabrik.de/europe/greece.html) extract of Greece. The search summary shows the date of the data. To rebuild now: Actions → Refresh business data → Run workflow.
+  - Outside Crete, the app asks the Overpass API live (three public servers; if one is slow, it asks the next).
 - Addresses: Nominatim, with Photon as a backup.
 - Map: OpenStreetMap's own map tiles (free, no key). In dark mode the app darkens them.
 - Website checks: Google PageSpeed Insights.
 
 ## Privacy
 
-SiteRadar is a single HTML file with no server of its own. Your notes, statuses, follow-up dates, website checks and Google key are saved only in your own browser. Nothing is uploaded, so they don't move between your computer and your phone.
+SiteRadar is a single HTML file plus its stored business data, with no server of its own. Your notes, statuses, follow-up dates, website checks and Google key are saved only in your own browser. Nothing is uploaded, so they don't move between your computer and your phone.
