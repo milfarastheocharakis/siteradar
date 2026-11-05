@@ -866,19 +866,18 @@ function groupOf(t) {
   if (s) return 'shops';
   return 'other';
 }
+/* Overture's own kind of business ("donut_shop"), which the weekly build keeps only when it says more than the tag. */
+const ovLabel = v => v === 'shopping' ? 'Shop' : pretty(v).replace(/\b(?:wo)?mens\b|\bchildrens\b/gi, m => m.slice(0, -1) + "'s");
 function categoryOf(t) {
-  // Businesses from Overture Maps carry its own kind ("wedding_planning"), which says more than a broad tag.
-  const ov = t['overture:category'];
+  if (t['overture:category']) return ovLabel(t['overture:category']);
   for (const k of KEY_ORDER) {
     const raw = t[k];
     if (!raw) continue;
     const v = String(raw).split(';')[0];
-    const known = LABELS[k] && LABELS[k][v];
-    if (ov && (!known || v === 'company')) return ov === 'shopping' ? 'Shop' : pretty(ov);
     if (v === 'yes') return { office: 'Office', shop: 'Shop', craft: 'Craft business', healthcare: 'Health practice', amenity: 'Business', tourism: 'Tourism business', leisure: 'Leisure business' }[k];
-    return known || pretty(v);
+    return (LABELS[k] && LABELS[k][v]) || pretty(v);
   }
-  return ov ? pretty(ov) : 'Business';
+  return 'Business';
 }
 function cuisineOf(v) {
   if (!v) return '';

@@ -130,6 +130,18 @@ PRIMARY = {
     'event_venue': 'amenity=events_venue', 'music_venue': 'amenity=events_venue', 'theatre_venue': 'amenity=theatre',
     'performing_arts_venue': 'amenity=theatre', 'movie_theater': 'amenity=cinema', 'arcade': 'leisure=amusement_arcade',
     'gaming_venue': 'amenity=internet_cafe', 'golf_course': 'leisure=golf_course', 'art_gallery': 'tourism=gallery',
+    # kinds Crete has many of that the broad categories label badly
+    'clothing_store': 'shop=clothes', 'fashion_boutique': 'shop=boutique', 'fashion_accessories_store': 'shop=fashion_accessories',
+    'eyewear_store': 'shop=optician', 'bike_store': 'shop=bicycle', 'toy_store': 'shop=toys', 'fabric_store': 'shop=fabric',
+    'carpet_store': 'shop=carpet', 'nursery_and_gardening_store': 'shop=garden_centre', 'musical_instrument_store': 'shop=musical_instrument',
+    'auto_parts_store': 'shop=car_parts', 'beauty_supply_store': 'shop=cosmetics', 'antique_store': 'shop=antiques', 'pawn_shop': 'shop=pawnbroker',
+    'laundromat': 'shop=laundry', 'property_management': 'office=property_management', 'taxi_service': 'office=taxi',
+    'dance_studio': 'leisure=dance', 'escape_room': 'leisure=escape_game', 'miniature_golf_course': 'leisure=miniature_golf',
+    'horseback_riding_service': 'leisure=horse_riding', 'equestrian_facility': 'leisure=horse_riding',
+    'scuba_diving_center': 'amenity=dive_centre', 'scuba_diving_instruction': 'amenity=dive_centre', 'diving_center': 'amenity=dive_centre',
+    'doctors_office': 'amenity=doctors', 'family_practice': 'amenity=doctors', 'orthodontics': 'amenity=dentist', 'cosmetic_dentistry': 'amenity=dentist',
+    'speech_therapy': 'healthcare=speech_therapist', 'occupational_therapy': 'healthcare=occupational_therapist', 'podiatry': 'healthcare=podiatrist',
+    'psychology': 'healthcare=psychotherapist', 'psychotherapy': 'healthcare=psychotherapist', 'counseling': 'healthcare=psychotherapist',
 }
 # Broad category (basic_category) -> tag, when the detailed one isn't listed above.
 BASIC = {
@@ -155,7 +167,7 @@ SKIP = {
     'lighthouse', 'marina', 'public_utility', 'water_utility_provider', 'electric_utility_provider', 'condominium', 'apartment',
     'shopping_mall', 'farmers_market', 'casino', 'adult_entertainment_venue', 'zoo', 'aquarium', 'animal_attraction', 'animal_shelter',
     'adoption_service', 'amusement_park', 'psychic_advising', 'radio_station', 'visitor_center', 'arts_and_entertainment',
-    'sports_and_recreation', 'travel_and_transportation', 'school', 'laboratory',
+    'sports_and_recreation', 'travel_and_transportation', 'school', 'laboratory', 'package_locker', 'post_office', 'recycling_center',
 }
 # Public schools, kindergartens, councils and associations that slip in under business kinds.
 PUBLIC_NAME = re.compile(
@@ -165,13 +177,16 @@ PUBLIC_NAME = re.compile(
 
 
 def tags_for(basic, primary, name):
-    """OpenStreetMap tags for an Overture place, or None when it isn't a business SiteRadar lists."""
+    """OpenStreetMap tags for an Overture place, or None when it isn't a business SiteRadar lists.
+    The tags carry "overture:category" when the OpenStreetMap tag says less than Overture's own kind,
+    so the app can show "Donut shop" instead of "Restaurant"."""
     if basic in SKIP or primary in SKIP or not basic or PUBLIC_NAME.search(name or ''):
         return None
     tag = PRIMARY.get(primary)
+    exact = bool(tag)
     tags = {}
     if not tag and primary and primary.endswith('_restaurant'):
-        tag = 'amenity=restaurant'
+        tag, exact = 'amenity=restaurant', True
         cuisine = primary[:-len('_restaurant')]
         if cuisine not in ('casual', 'family', 'fine_dining', 'buffet', 'theme'):
             tags['cuisine'] = cuisine
@@ -181,6 +196,8 @@ def tags_for(basic, primary, name):
         return None
     k, v = tag.split('=')
     tags[k] = v
+    if primary and (not exact or v in ('yes', 'company')):
+        tags['overture:category'] = primary
     return tags
 
 
@@ -253,8 +270,6 @@ def element_from(place):
         return None
     out = {'name': name}
     out.update(tags)
-    if tax.get('primary'):
-        out['overture:category'] = tax['primary']
     phones = [p for p in (place.get('phones') or []) if p][:3]
     if phones:
         out['phone'] = ';'.join(phones)
