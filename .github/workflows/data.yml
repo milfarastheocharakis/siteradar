@@ -8,7 +8,7 @@ on:
   workflow_dispatch:
   push:
     branches: [main]
-    paths: ['tools/**', '.github/workflows/data.yml']
+    paths: ['tools/**', '.github/workflows/data.yml', 'index.html']   # the build reads the app's lists from index.html
 
 permissions:
   contents: write

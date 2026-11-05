@@ -15,6 +15,14 @@ Find local businesses in Greece that have no website, only a Facebook or booking
 
 After a search you can also load every business in the whole municipality.
 
+## What it lists
+
+Only companies. Public offices and municipal facilities, state schools and universities, churches and monasteries, clubs and associations, banks and ATMs, ports and airports are left out. They are spotted by their kind of place, by their name (for example "Κέντρο Υγείας", "ΚΕΠ", "Ιερός Ναός" or "2ο ΓΕΛ") or by a public website such as gov.gr or sch.gr. Private schools, tutoring centres, private nurseries, church-supply shops and the like stay. The rules are the `NOT_COMPANY`, `STILL_COMPANY` and `NOT_COMPANY_SITES` lists in `index.html`, and the weekly data build reads them from there too.
+
+- A page on a booking site, a directory or town portal, a food-ordering site, Facebook or Instagram is not the business's own website, so that business is still a lead. An email address given as the website counts as no website.
+- Chains and brands are hidden while **Hide chains** is on. Besides known brands, this covers one website shared by the same business name in several towns of Crete (a supermarket chain, for example) and holiday homes let through a rental company such as Belvilla.
+- The same distinctive name listed twice within 150 m is shown once.
+
 ## Google key for the website check
 
 The website check uses Google PageSpeed Insights. It is free, but it needs a key:

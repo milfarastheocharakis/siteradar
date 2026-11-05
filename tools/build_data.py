@@ -10,7 +10,12 @@ Writes, replacing what was there:
   <out>/LICENSE.txt         where the data comes from and its licences (the Overture licence must travel with the data)
 
 The kinds of places kept are read from the app itself (Q_AMENITY, Q_TOURISM, Q_LEISURE), so the
-files hold exactly what the app's live map-data query would return.
+files hold exactly what the app's live map-data query would return. So are the rules that leave out places
+that are not companies (NOT_COMPANY, STILL_COMPANY and NOT_COMPANY_SITES): public bodies, state schools,
+churches, clubs, banks, ports.
+
+Businesses that share a website with branches all over the area get "siteradar:chain" (the name most of
+them use), so the app counts them as a chain even without a brand tag.
 
 With an Overture Maps places file (see fetch_overture.py), its businesses are added too: those OpenStreetMap
 already has give it their missing website, social pages and phone, and the rest are added as "overture" elements.
@@ -21,9 +26,12 @@ import os
 import re
 import shutil
 import sys
+import unicodedata
+from collections import Counter, defaultdict
 from datetime import datetime, timezone
+from urllib.parse import parse_qsl, urlencode, urlsplit, urlunsplit
 
-from overture import licence_text
+from overture import km, licence_text, name_key
 
 CELL = 0.02                         # degrees; the app reads it from index.json
 FACTOR = round(1 / CELL)
@@ -32,7 +40,11 @@ SIMPLIFY = 0.0001                   # degrees (about 10 m) for municipality boun
 # Only the tags the app reads, to keep the files small.
 KEEP_TAG = re.compile(r'^(name(:en|:el)?|shop|amenity|tourism|office|craft|healthcare|leisure|cuisine|addr:.*|phone|mobile|email|website|url'
                       r'|facebook|instagram|contact:.*|brand(:wikidata|:en|:el)?|operator(:type)?|opening_hours|stars|rooms|description'
-                      r'|disused|abandoned|overture:.*)$')
+                      r'|disused|abandoned|overture:.*|siteradar:chain)$')
+URL_TAGS = ('website', 'contact:website', 'url')
+# Query parameters that only track where a click came from.
+TRACKING = re.compile(r'^(utm_[a-z_]+|fbclid|gclid|dclid|gbraid|wbraid|msclkid|mc_cid|mc_eid|mcid|yclid|igshid|_ga|_gl|y_source|srsltid)$', re.I)
+DIGITS = 5                          # decimals kept in coordinates: about 1 m
 
 
 def app_lists(html):
@@ -42,7 +54,94 @@ def app_lists(html):
         if not m:
             sys.exit(f'{key} not found in the app')
         lists[key] = set(m.group(1).split('|'))
+    for key in ('NOT_COMPANY', 'STILL_COMPANY', 'NOT_COMPANY_SITES'):
+        m = re.search(r'const %s = (\[\n.*?\n\]);' % key, html, re.S)
+        if not m:
+            sys.exit(f'{key} not found in the app')
+        lists[key] = json.loads(m.group(1))
+    # The app matches these on whole words, like this.
+    lists['not_company'] = re.compile(r'(?:^| )(?:%s)(?= |$)' % '|'.join(lists['NOT_COMPANY']))
+    lists['still_company'] = re.compile(r'(?:^| )(?:%s)(?= |$)' % '|'.join(lists['STILL_COMPANY']))
     return lists
+
+
+def name_words(name):
+    """The name as the app matches it: lower case, no accents, ς as σ, other characters as single spaces."""
+    s = unicodedata.normalize('NFD', str(name or ''))
+    s = ''.join(c for c in s if not '\u0300' <= c <= '\u036f').lower().replace('ς', 'σ')
+    return re.sub(r'[\W_]+', ' ', s).strip()
+
+
+def host_of(url):
+    url = str(url or '').strip()
+    if not url:
+        return ''
+    if not re.match(r'^https?://', url, re.I):
+        url = 'http://' + url.lstrip('/')
+    try:
+        host = (urlsplit(url).hostname or '').lower()
+    except ValueError:
+        return ''
+    return host[4:] if host.startswith('www.') else host
+
+
+def hosts_of(tags):
+    return [h for k in URL_TAGS for v in str(tags.get(k) or '').split(';') for h in [host_of(v)] if h]
+
+
+def not_company(tags, q):
+    """True for a public body, state school, church, club, bank or port, by name or by website, as the app decides."""
+    words = name_words(tags.get('name'))
+    if q['not_company'].search(words) and not q['still_company'].search(words):
+        return True
+    return any(h == d or h.endswith('.' + d) for h in hosts_of(tags) for d in q['NOT_COMPANY_SITES'])
+
+
+def clean_url(url):
+    """The address without the parameters that only track clicks (utm_source and the like)."""
+    try:
+        parts = urlsplit(url)
+    except ValueError:
+        return url
+    if not parts.query:
+        return url
+    kept = [(k, v) for k, v in parse_qsl(parts.query, keep_blank_values=True) if not TRACKING.match(k)]
+    if len(kept) == len(parse_qsl(parts.query, keep_blank_values=True)):
+        return url
+    return urlunsplit(parts._replace(query=urlencode(kept)))
+
+
+def point(el):
+    return el.get('lat', el.get('center', {}).get('lat')), el.get('lon', el.get('center', {}).get('lon'))
+
+
+def mark_chains(elements):
+    """Mark the businesses that share a website with branches all over the area: at least three with the same name
+    2 km or more apart, or two 20 km or more apart. Directories and booking sites list businesses with all different
+    names, so they don't count. Returns {website host: chain name}."""
+    by_host = defaultdict(list)
+    for el in elements:
+        hosts = hosts_of(el['tags'])
+        if hosts:
+            by_host[hosts[0]].append(el)
+    chains = {}
+    for host, els in by_host.items():
+        if len(els) < 3:
+            continue
+        groups = defaultdict(list)
+        for el in els:
+            groups[name_key(el['tags'].get('name'))].append(el)
+        same = max(groups.values(), key=len)
+        if len(same) < 2 or len(same) < 0.3 * len(els):
+            continue
+        pts = [point(el) for el in same]
+        spread = max(km(*a, *b) for i, a in enumerate(pts) for b in pts[i + 1:])
+        if not ((len(same) >= 3 and spread >= 2) or spread >= 20):
+            continue
+        chains[host] = Counter(el['tags']['name'] for el in same).most_common(1)[0][0]
+        for el in els:
+            el['tags']['siteradar:chain'] = chains[host]
+    return chains
 
 
 def is_business(t, q):
@@ -131,6 +230,9 @@ def trim_tags(tags):
     out = {k: v for k, v in tags.items() if KEEP_TAG.match(k)}
     if 'description' in out:
         out['description'] = str(out['description'])[:300]
+    for k in URL_TAGS:
+        if k in out:
+            out[k] = ';'.join(clean_url(v.strip()) for v in str(out[k]).split(';'))
     return out
 
 
@@ -165,12 +267,12 @@ def main():
                 polys = [geom['coordinates']] if geom['type'] == 'Polygon' else geom['coordinates']
                 munis[ref[1]] = (tags, polys)
                 continue
-            if ref in businesses or not is_business(tags, q):
+            if ref in businesses or not is_business(tags, q) or not_company(tags, q):
                 continue
             c = centre(geom)
             if not c:
                 continue
-            lat, lon = round(c[0], 7), round(c[1], 7)
+            lat, lon = round(c[0], DIGITS), round(c[1], DIGITS)
             if not (south <= lat <= north and west <= lon <= east):
                 continue
             el = {'type': ref[0], 'id': ref[1]}
@@ -188,8 +290,8 @@ def main():
         from overture import datasets_of
         found, datasets = [], set()
         for place in pq.read_table(overture_file).to_pylist():
-            el = element_from(place)
-            if el and south <= el['lat'] <= north and west <= el['lon'] <= east and is_business(el['tags'], q):
+            el = element_from(place, DIGITS)
+            if el and south <= el['lat'] <= north and west <= el['lon'] <= east and is_business(el['tags'], q) and not not_company(el['tags'], q):
                 el['tags'] = trim_tags(el['tags'])
                 found.append(el)
                 datasets |= datasets_of(place)
@@ -200,6 +302,9 @@ def main():
             businesses[('overture', el['id'])] = el
         overture_info = {'release': overture_release, 'kept': len(found), 'added': len(fresh), 'merged': merged}
         print(f'Overture {overture_release}: {len(found)} businesses, {merged} already in OpenStreetMap, {len(fresh)} added')
+
+    chains = mark_chains(list(businesses.values()))
+    print(f'{len(chains)} websites shared by chains: {sum(1 for el in businesses.values() if "siteradar:chain" in el["tags"])} businesses marked')
 
     for sub in ('cells', 'munis'):
         shutil.rmtree(os.path.join(out, sub), ignore_errors=True)

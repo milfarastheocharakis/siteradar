@@ -677,6 +677,60 @@ const Q_AMENITY = 'restaurant|cafe|bar|pub|fast_food|ice_cream|biergarten|food_c
 const Q_TOURISM = 'hotel|motel|guest_house|hostel|apartment|chalet|camp_site|caravan_site|gallery|wine_cellar';
 const Q_LEISURE = 'fitness_centre|sports_centre|dance|spa|sauna|water_park|escape_game|horse_riding|golf_course|miniature_golf|bowling_alley|amusement_arcade|tanning_salon|trampoline_park';
 
+/* Names of places that are not companies to sell a website to: public offices and services, state schools and
+   universities, churches, clubs and associations, banks, ports. Each entry is a regular expression on the name in
+   lower case without accents (ς as σ), with every run of other characters made one space, and it must match whole
+   words. The weekly data build reads these lists and the one below, so keep them plain JSON. */
+const NOT_COMPANY = [
+  "^(?:[^ ]+ )?δημοτικ[^ ]* (?:σχολει|γυμναστηρι|θεατρ|πινακοθηκ|κινηματογραφ|κολυμβητηρι|γηπεδ|ωδει|φιλαρμονικ|αθλητικ|ναυταθλητικ|λιμενικ|βρεφονηπιακ|παιδικ|νηπιαγωγει|επιχειρησ|ανωνυμ|θεατρικ|κοινοτητ|καταστημα|βιβλιοθηκ|μουσει|πολιτιστικ|ραδιοφων|σταδι|ενοτητ|συμβουλι|ιατρει|οργανισμ|πνευματικ)[^ ]*",
+  "^δημοτικ[^ ]* (?:λαικ[^ ]* )?αγορα[^ ]*(?: [^ ]+){0,2}$", "^(?:λαικ[^ ]*|δημοτικ[^ ]*) αγορα[^ ]*(?: [^ ]+){0,2}$",
+  "municipal (?:art gallery|gallery|theat[^ ]*|cinema|market|swimming pool|pool|stadium|gym[^ ]*|library|museum|conservatory|kindergarten|nursery|school)",
+  "^municipality of", "^δημοσ [^ ]+(?:ου|ων|ησ|ιασ)", "^δημοσ πλατανια", "δημου [^ ]+(?:ου|ων|ησ|ασ|ια)", "^δημαρχει[^ ]*",
+  "^νομαρχι[^ ]*", "^περιφερεια [^ ]+(?:ησ|ασ|ου|ων)", "^περιφερειακ[^ ]* (?:ενοτητ|διευθυνσ|υπηρεσι|ταμει|τμημα|γραφει)[^ ]*",
+  "περιφερειακ[^ ]* ιατρει[^ ]*", "περιφερει(?:ασ|α) κρητησ", "διευθυνσ[^ ]* (?:πρωτοβαθμι|δευτεροβαθμι|εκπαιδευσ|υγειασ|δασων|γεωργι|αγροτικ|κτηνιατρικ|μεταφορων)[^ ]*",
+  "^δημοσι[^ ]* (?:ινστιτουτ|ιεκ|ι ε κ|σχολ|υπηρεσι|νοσοκομει|βιβλιοθηκ|κεντρ|ταμει)[^ ]*", "δευα", "δ ε υ α", "deya", "κεντρ[^ ]* υγει(?:ασ|α)",
+  "τομυ", "τ ο μ υ", "μοναδ[^ ]* υγει[^ ]*", "πεδυ", "π ε δ υ", "εκαβ", "ε κ α β", "εοπυυ", "πολυδυναμ[^ ]* (?:περιφερειακ[^ ]* )?ιατρει[^ ]*",
+  "^αγροτικ[^ ]* ιατρει[^ ]*", "κεντρ[^ ]* ψυχικ[^ ]* υγει[^ ]*", "(?:γενικ[^ ]* )?νοσοκομει[^ ]*", "κοινωφελ[^ ]*", "καπη",
+  "κ α π η", "ικα", "ι κ α", "εφκα", "ε φ κ α", "οαεδ", "ο α ε δ", "δυπα", "δ υ π α", "οπεκα", "οαεε", "κεπ", "δου", "δ ο υ", "εφορια", "ελτα", "ταχυδρομει[^ ]*",
+  "υποθηκοφυλακει[^ ]*", "τελωνει[^ ]*", "ληξιαρχει[^ ]*", "^αστυνομ[^ ]*", "αστυνομικ[^ ]* (?:τμημα|σταθμ|διευθυνσ|υποδιευθυνσ)[^ ]*",
+  "τουριστικ[^ ]* αστυνομι[^ ]*", "^τροχαια", "police station", "^police", "πυροσβεστικ[^ ]* (?:σταθμ|υπηρεσι|κλιμακι|διοικησ)[^ ]*",
+  "πυροσβεστει[^ ]*", "fire station", "λιμεναρχει[^ ]*", "λιμενικ[^ ]* (?:σωμα|σταθμ|τμημα|ταμει)[^ ]*", "οργανισμ[^ ]* λιμενοσ",
+  "port authority", "coast guard", "στρατοπεδ[^ ]*", "κψμ", "κ ψ μ", "λεσχη αξιωματικ[^ ]*", "λεσχη (?:αεροποριασ|ναυτικου|στρατου|υπαξιωματικ[^ ]*)",
+  "αεροπορικ[^ ]* βασ[^ ]*", "ναυσταθμ[^ ]*", "ναυτικ[^ ]* βασ[^ ]*", "πολεμικ[^ ]* (?:αεροπορι|ναυτικ)[^ ]*", "air base",
+  "naval base", "^(?:ειρηνοδικει|πρωτοδικει|εφετει|πταισματοδικει|εισαγγελι|δικαστηρι)[^ ]*", "δικαστικ[^ ]* μεγαρ[^ ]*",
+  "κτελ", "κ τ ε λ", "ktel", "^(?:κρατικ[^ ]* )?(?:αεροδρομι|αερολιμεν)[^ ]*(?: [^ ]+){0,3}$", "^(?:παλαι[^ ]* |ενετικ[^ ]* |νεο )?λιμανι (?:[^ ]+ ){0,2}[^ ]+(?:ου|ων|ησ|ασ)",
+  "^[^ ]+ (?:παλαι[^ ]*|ενετικ[^ ]*) λιμανι$", "^(?:the )?(?:old |venetian |new )?port of [^ ]+", "^δεδδηε", "δ ε δ δ η ε",
+  "δημοτικ[^ ]* σχολει[^ ]*", "^(?:[^ ]*[0-9][^ ]* |[^ ]*θεσιο )*(?:(?:ολοημερ|ειδικ|δημοσι|ενιαι)[^ ]* )?νηπιαγωγει[^ ]*",
+  "γυμνασι(?:ο|ου|α|ων)", "λυκει(?:ο|ου|α|ων)", "λυκειον (?:των )?ελληνιδων", "γελ", "γ ε λ", "επαλ", "ε π α λ", "επασ", "ε π α σ",
+  "διεκ", "σαεκ", "σ α ε κ", "ειδικ[^ ]* (?:σχολει|νηπιαγωγει|δημοτικ|γυμνασι|λυκει|επαγγελματικ)[^ ]*", "μουσικ[^ ]* σχολει[^ ]*",
+  "πειραματικ[^ ]* (?:σχολει|δημοτικ)[^ ]*", "public school", "primary school", "high school", "elementary school", "secondary school",
+  "πανεπιστημι[^ ]*", "university", "ελμεπα", "ελ με πα", "τει", "σχολ(?:η|ησ) (?:επιστημων|μηχανικων|γεωπονικ|θετικ|ιατρικ|φιλοσοφικ|κοινωνικ|ανθρωπιστικ)[^ ]*",
+  "φοιτητικ[^ ]* (?:λεσχ|εστι)[^ ]*", "ιερ[^ ]* (?:ναο[^ ]*|μον(?:η|ησ)|μητροπολ[^ ]*|επισκοπ[^ ]*|αρχιεπισκοπ[^ ]*)",
+  "^ι ν (?:αγι|οσι|παναγι|τιμι|μεταμορφ|κοιμησ|ευαγγελισ|αναληψ|γενεσ|υπαπαντ|εισοδι|ζωοδοχ)[^ ]*", "^μητροπολ(?:η|ησ|εωσ)",
+  "^(?:ιερα )?αρχιεπισκοπ[^ ]*", "^ενορι[^ ]*", "ενοριακ[^ ]* (?:κεντρ|ναο|αιθουσ)[^ ]*", "^(?:ιερα |ι )?μον(?:η|ησ) [^ ]+",
+  "συλλογ(?:οσ|ου|ων|οι)", "σωματει[^ ]*", "ομοσπονδι[^ ]*", "επιμελητηρι[^ ]*", "ιδρυμ[^ ]*", "ενωσ[^ ]* (?:γονεων|ραδιοερασιτεχν|συνταξιουχ|αστυνομικ|αξιωματικ|καταναλωτ|ιδιοκτητ|ξενοδοχ|εργαζομεν|εργατ|επαγγελματι|εμπορ|αγρινοφυλακ|φιλων|αποστρατ|δημοσιογραφ|συγγραφ|αναπηρ|τυφλων|κωφων|γυναικων|νεων|κρητων|ποντιων|μικρασιατ)[^ ]*",
+  "(?:ναυτικ|ναυταθλητικ|λαογραφικ|χορευτικ|σκοπευτικ|ιππικ|ιστιοπλοικ|αθλητικ|ορειβατικ|κολυμβητικ|ποδηλατικ|πολιτιστικ|μουσικ|θεατρικ|φιλαρμονικ|καλλιτεχνικ|σκακιστικ|γυμναστικ|φιλοτελικ|φωτογραφικ|περιβαλλοντικ|κυνηγετικ|αλιευτικ|ερασιτεχνικ|μορφωτικ|εξωραιστικ|φυσιολατρικ|πεζοποριακ|καταδυτικ|αυτοκινητιστικ|μοτοσυκλετιστικ|αεραθλητικ|εκπολιτιστικ)[^ ]* (?:[^ ]+ )?(?:ομιλ(?:οσ|ου)|σωματει[^ ]*|λεσχ(?:η|ησ)|συλλογ(?:οσ|ου)|ενωσ(?:η|ησ)|ομαδ(?:α|ασ))",
+  "πολιτιστικ[^ ]* κεντρ[^ ]*", "^ομιλ(?:οσ|ου) (?!εταιρ)[^ ]+", "^αερολεσχ[^ ]*", "aeroclub", "^λεσχη (?:για|των|του|φιλων)",
+  "εθελοντ[^ ]*", "προσκοπ[^ ]*", "^scouts?", "ερυθρ[^ ]* σταυρ[^ ]*", "red cross", "μκο", "μ κ ο", "αμκε", "α μ κ ε", "chamber of commerce",
+  "rotary", "lions club", "(?:εθνικ[^ ]*|παγκρητι[^ ]*|συνεταιριστικ[^ ]*|alpha) τραπεζ[^ ]*", "^τραπεζ[^ ]* (?:πειραιωσ|αττικησ|χανιων|eurobank|alpha|κυπρου|optima)",
+  "(?:alpha|eurobank|optima|attica|piraeus|pancreta|national|cooperative|aegean baltic) bank", "^eurobank", "^atm", "atm$",
+  "^(?:kreta|crete|creta|kriti|chania|hania|heraklion|rethymno|greece|grece|κρητη)(?: (?:kreta|crete|creta|kriti|chania|greece|grece|island|insel|κρητη))+$",
+  "^(?:greece|grece)$", "^free parking"
+];
+/* ...unless the name also says it is a private business: a private school or KEP, a tutoring centre, a shop
+   selling "είδη", or a company form such as ΙΚΕ or ΟΕ. */
+const STILL_COMPANY = [
+  "ιδιωτικ[^ ]*", "φροντιστηρι[^ ]*", "εκπαιδευτηρι[^ ]*", "private", "κτηνιατρ[^ ]*", "ειδη", "ικε", "ι κ ε", "επε", "ε π ε", "οε", "ο ε",
+  "εε", "ε ε", "αβεε", "α β ε ε", "αεβε", "μονοπροσωπ[^ ]*", "ltd", "llc", "gmbh", "ike", "ι σαεκ", "ι ι ε κ", "ιιεκ"
+];
+/* A website on one of these means a public body, a state school, a hospital, a municipal company or a page about
+   a place, not a company. Subdomains count too. */
+const NOT_COMPANY_SITES = [
+  "gov.gr", "sch.gr", "uoc.gr", "hmu.gr", "tuc.gr", "teicrete.gr", "forth.gr", "hcmr.gr", "venizeleio.gr", "pagni.gr", "7ype.gr",
+  "heraklion.gr", "chania.gr", "rethymno.gr", "malevizi.gr", "kissamos.gr", "agiosnikolaos.gr", "hersonissos.gr", "sitia.gr",
+  "ierapetra.gr", "depanal.gr", "portheraklion.gr", "easybike.gr", "explorecrete.com", "wikipedia.org"
+];
+
 const RX = {
   stay: /^(hotel|motel|guest_house|hostel|apartment|chalet|camp_site|caravan_site)$/,
   food: /^(restaurant|cafe|bar|pub|fast_food|ice_cream|biergarten|food_court|nightclub)$/,
@@ -717,17 +771,27 @@ const SOCIAL_HOSTS = [
   [/(^|\.)linkedin\.com$/, 'LinkedIn'],
   [/(^|\.)(youtube\.com|youtu\.be)$/, 'YouTube'],
   [/(^|\.)booking\.com$/, 'Booking.com'],
-  [/(^|\.)airbnb\.[a-z.]+$/, 'Airbnb'],
+  [/(^|\.)(airbnb\.[a-z.]+|abnb\.me)$/, 'Airbnb'],
   [/(^|\.)tripadvisor\.[a-z.]+$/, 'Tripadvisor'],
   [/(^|\.)(e-food\.gr|efood\.gr)$/, 'efood'],
   [/(^|\.)wolt\.com$/, 'Wolt'],
   [/(^|\.)box\.gr$/, 'BOX'],
   [/(^|\.)linktr\.ee$/, 'Linktree'],
-  [/(^|\.)(vrbo\.com|expedia\.[a-z.]+|hotels\.com|agoda\.com|trivago\.[a-z.]+)$/, 'a booking site'],
-  [/(^|\.)(thefork\.[a-z.]+|yelp\.[a-z.]+|foursquare\.com|vrisko\.gr|xo\.gr|11888\.gr)$/, 'a directory'],
-  [/(^|\.)(google\.[a-z.]+|goo\.gl|g\.page)$/, 'Google Maps'],
+  [/(^|\.)(vrbo\.com|expedia\.[a-z.]+|hotels\.com|agoda\.com|trivago\.[a-z.]+|homeaway\.[a-z.]+|fewo-direkt\.de|holidu\.[a-z.]+|hometogo\.[a-z.]+|e-domizil\.[a-z.]+|interhome\.[a-z.]+|novasol\.[a-z.]+|casamundo\.[a-z.]+|reserve-online\.net|webhotelier\.net|i-host\.gr|fresha\.com|treatwell\.[a-z.]+|ebarber\.gr|doctoranytime\.gr)$/, 'a booking site'],
+  [/(^|\.)(thefork\.[a-z.]+|yelp\.[a-z.]+|foursquare\.com|vrisko\.gr|xo\.gr|11888\.gr|agia-galini\.com|gogalini\.com|allinchania\.gr|discoverchania\.gr|aera\.gr|paleochorainfo\.com|crete-web\.gr|cretetravel\.com|greekonline\.gr|epilego-topika\.gr|cyouout\.com|katozakros-accommodation\.com|pitsidia-matala\.com|thevirtualtour\.gr|car\.gr)$/, 'a directory'],
+  [/(^|\.)fagi\.gr$/, 'fagi.gr'],
+  [/(^|\.)etsy\.com$/, 'Etsy'],
+  [/(^|\.)(google\.[a-z.]+|goo\.gl|g\.page|g\.co)$/, 'Google Maps'],
   [/(^|\.)(wa\.me|whatsapp\.com|viber\.com)$/, 'WhatsApp'],
 ];
+/* Email providers sometimes given as the website: not a website at all. */
+const NOT_SITE = /(^|\.)(gmail\.com|googlemail\.com|hotmail\.[a-z.]+|outlook\.[a-z.]+|live\.com|yahoo\.[a-z.]+)$/;
+/* Holiday homes and luggage points run by a platform: they count as part of a chain, found by website or by name. */
+const MANAGED_HOSTS = [
+  [/(^|\.)belvilla\.[a-z.]+$/, 'Belvilla'], [/(^|\.)thinkvilla\.gr$/, 'ThinkVilla'], [/(^|\.)hotelpraxis\.com$/, 'Hotel Praxis'],
+  [/(^|\.)jamesvillas\.co\.uk$/, 'James Villas'], [/(^|\.)stasher\.com$/, 'Stasher'], [/(^|\.)radicalstorage\.com$/, 'Radical Storage'],
+];
+const MANAGED_NAMES = [[/^belvilla\b/i, 'Belvilla'], [/\bby thinkvilla\b/i, 'ThinkVilla'], [/\bby checkin\b/i, 'Checkin']];
 const SOCIAL_TAGS = [
   ['contact:facebook', 'Facebook', 'https://www.facebook.com/'], ['facebook', 'Facebook', 'https://www.facebook.com/'],
   ['contact:instagram', 'Instagram', 'https://www.instagram.com/'], ['instagram', 'Instagram', 'https://www.instagram.com/'],
@@ -812,6 +876,11 @@ function latin(s) {
   return f.replace(/[α-ω]/g, c => GR[c] || c);
 }
 const nameKey = s => fold(s).replace(/[^\p{L}\p{N}]+/gu, '');
+const nameWords = s => fold(s).replace(/[^\p{L}\p{N}]+/gu, ' ').trim();
+const wholeWords = list => new RegExp('(?:^| )(?:' + list.join('|') + ')(?= |$)');
+const NOT_COMPANY_RX = wholeWords(NOT_COMPANY), STILL_COMPANY_RX = wholeWords(STILL_COMPANY);
+const notCompanyName = name => { const w = nameWords(name); return NOT_COMPANY_RX.test(w) && !STILL_COMPANY_RX.test(w); };
+const onSites = (host, list) => list.some(d => host === d || host.endsWith('.' + d));
 
 function haversine(lat1, lon1, lat2, lon2) {
   const R = 6371.0088, rad = Math.PI / 180;
@@ -850,8 +919,9 @@ function excluded(t) {
   if (t.shop && /^(vacant|no|disused|abandoned|closed)$/.test(t.shop)) return true;
   if (t.healthcare && /^(hospital|blood_donation|blood_bank|vaccination_centre|sample_collection)$/.test(t.healthcare)) return true;
   if (t.amenity && /^(hospital|kindergarten|school|university|college|townhall|police|courthouse|social_facility|community_centre|library|place_of_worship)$/.test(t.amenity)) return true;
+  if (t.amenity && /^(bank|atm)$/.test(t.amenity)) return true;
   if (t.disused === 'yes' || t.abandoned === 'yes' || t.opening_hours === 'closed') return true;
-  return false;
+  return !!t.name && notCompanyName(t.name);
 }
 function groupOf(t) {
   const { amenity: a, shop: s, tourism: tr, office: o, craft: c, healthcare: hc, leisure: l } = t;
@@ -885,12 +955,16 @@ function cuisineOf(v) {
 }
 function webOf(t) {
   const sites = [], socials = [];
-  let dead = false;
+  let dead = false, notCompany = false, managed = '';
   for (const v of splitVals(t.website, t['contact:website'], t.url)) {
     const u = toUrl(v);
     if (!u) continue;
     const host = hostOf(u);
     if (DEAD_HOST.test(host)) { dead = true; continue; }
+    if (NOT_SITE.test(host)) continue;
+    if (onSites(host, NOT_COMPANY_SITES)) { notCompany = true; continue; }
+    const platform = MANAGED_HOSTS.find(([re]) => re.test(host));
+    if (platform) managed = platform[1];
     const http = /^http:\/\//i.test(v);
     if (FREE_HOST.test(host)) { sites.push({ url: u.href, host, free: true, http }); continue; }
     const social = SOCIAL_HOSTS.find(([re]) => re.test(host));
@@ -904,13 +978,14 @@ function webOf(t) {
     }
   }
   const site = sites.find(s => !s.free) || sites[0] || null;
-  return { site, sites, socials, dead, bucket: site ? 'site' : socials.length ? 'social' : 'none' };
+  return { site, sites, socials, dead, notCompany, managed, bucket: site ? 'site' : socials.length ? 'social' : 'none' };
 }
 function socialNames(list) {
-  const names = [...new Set(list.map(s => s.label))];
+  const names = [...new Set(list.map(s => s.label.replace(/^a /, '')))];
   if (names.length <= 1) return names[0] || 'social';
   return names.slice(0, -1).join(', ') + ' and ' + names[names.length - 1];
 }
+const withArticle = s => (/^([aeiou]|x\b)/i.test(s) ? 'an ' : 'a ') + s;
 function scoreOf(b) {
   const reasons = [];
   let s = 0;
@@ -919,7 +994,7 @@ function scoreOf(b) {
   if (ck && ck.verdict === 'broken') add(50, `Website doesn't work: ${ck.reason}`);
   else if (ck && ck.redirect) add(40, `Website only forwards to ${ck.redirect}, no real website`);
   else if (b.bucket === 'none') add(50, b.deadSite ? 'Only an old Google business.site page, which shut down in 2024' : 'No website listed');
-  else if (b.bucket === 'social') add(40, `Only a ${socialNames(b.socials)} page, no own website`);
+  else if (b.bucket === 'social') add(40, `Only ${withArticle(socialNames(b.socials))} page, no own website`);
   else {
     // Each problem with the website adds points, up to 50 in all.
     let gap = 0;
@@ -956,12 +1031,16 @@ function normalize(e, c) {
   if (!Number.isFinite(lat) || !Number.isFinite(lon)) return null;
   if (excluded(t)) return null;
   const web = webOf(t);
+  if (web.notCompany) return null;
   const street = [t['addr:street'], t['addr:housenumber']].filter(Boolean).join(' ') || t['addr:place'] || '';
   const city = t['addr:city'] || t['addr:town'] || t['addr:village'] || t['addr:suburb'] || t['addr:hamlet'] || '';
   const postcode = t['addr:postcode'] || '';
   const brand = t.brand || t['brand:el'] || t['brand:en'] || '';
-  // A brand tag that differs from the name ("Coffee Island" on "Coffee Island Ηρακλείου") or a brand Wikidata id means a chain.
-  const chain = !!(t['brand:wikidata'] || (brand && nameKey(brand) !== nameKey(t.name)));
+  // A brand tag that differs from the name ("Coffee Island" on "Coffee Island Ηρακλείου"), a brand Wikidata id, a website
+  // that branches all over Crete share (the weekly build marks those) or a holiday-home platform means a chain.
+  const shared = t['siteradar:chain'] || '';
+  const managed = web.managed || (MANAGED_NAMES.find(([re]) => re.test(t.name)) || [])[1] || '';
+  const chain = !!(t['brand:wikidata'] || shared || managed || (brand && nameKey(brand) !== nameKey(t.name)));
   const b = {
     id: `${e.type}/${e.id}`, osmType: e.type, osmId: e.id,
     source: e.type === 'overture' ? 'overture' : t['overture:id'] ? 'both' : 'osm',
@@ -975,7 +1054,7 @@ function normalize(e, c) {
     email: splitVals(t.email, t['contact:email'])[0] || '',
     hours: t.opening_hours || '',
     site: web.site, sites: web.sites, socials: web.socials, bucket: web.bucket, deadSite: web.dead,
-    chain, brand: chain ? (brand || 'brand') : '',
+    chain, brand: chain ? (brand || shared || managed || 'brand') : '',
     stars: t.stars || '', rooms: t.rooms || '', operator: t.operator || '',
     description: (t.description || '').slice(0, 300),
     visitors: !!t['name:en'] || !!t.tourism,
@@ -989,13 +1068,23 @@ function normalize(e, c) {
   b.hay = makeHay(b);
   return b;
 }
+/* Words many unrelated businesses share: a name made only of these says little about which business it is. */
+const COMMON_WORDS = new Set(('the to ta o i oi tou tis ton kai and of a στο στη στου στησ το τα ο η οι του τησ των και new old new mini market super minimarket supermarket ' +
+  'μινι μαρκετ σουπερ ψιλικα περιπτερο kiosk taverna tavern ταβερνα restaurant εστιατοριο cafe caffe coffee καφε καφετερια καφενειο bar beach pool snack ' +
+  'lounge bistro grill kitchen pizza pizzeria πιτσαρια souvlaki σουβλακι ψητοπωλειο gyros fast food ice cream gelato παγωτο crepe κρεπα bakery φουρνοσ ' +
+  'αρτοποιειο ζαχαροπλαστειο pastry pharmacy φαρμακειο rooms studios apartments apartment villa villas hotel ξενοδοχειο suites house home resort ' +
+  'δωματια διαμερισματα ενοικιαζομενα hair salon κομμωτηριο barber κουρειο beauty nails spa gym γυμναστηριο car cars rent rental travel tours shop ' +
+  'store boutique gifts gift souvenirs jewellery jewelry κοσμηματα wine winery οινοποιειο meze μεζεδοπωλειο ouzeri ουζερι fish ψαροταβερνα seafood ' +
+  'pub club service services office γραφειο center centre κεντρο crete kreta creta κρητη').split(' '));
+const distinctName = s => nameWords(s).split(' ').filter(w => !COMMON_WORDS.has(w)).join('').length >= 5;
 const phoneKey = p => { const d = String(p).replace(/\D/g, ''); return d.length >= 8 ? d.slice(-10) : ''; };
-/* Two entries with the same name are one business when they are within 40 m of each other,
-   or within 500 m and share a phone number or a street address with a house number. */
+/* Two entries with the same name are one business when they are within 40 m of each other, within 150 m when
+   the name is distinctive, or within 500 m and share a phone number or a street address with a house number. */
 function sameBusiness(a, b) {
   const km = haversine(a.lat, a.lon, b.lat, b.lon);
   if (km < 0.04) return true;
   if (km > 0.5) return false;
+  if (km < 0.15 && distinctName(a.name)) return true;
   if (a.street && a.street === b.street && /\d/.test(a.street)) return true;
   const phones = new Set(a.phones.map(phoneKey).filter(Boolean));
   return b.phones.some(p => phones.has(phoneKey(p)));
@@ -2213,7 +2302,7 @@ function emptyDetails() {
     h('p', { text: 'Click a business in the list or on the map to see its contact details, why it scored as a lead, and links to check it on Google.' }),
     h('div', { class: 'key' },
       h('div', {}, h('span', { class: 'dot none' }), h('span', { text: 'No website listed: the best leads. Check on Google first, the map data misses some sites.' })),
-      h('div', {}, h('span', { class: 'dot social' }), h('span', { text: 'Only a Facebook, Instagram or booking page: they are online but own nothing.' })),
+      h('div', {}, h('span', { class: 'dot social' }), h('span', { text: 'Only a Facebook, Instagram, booking or directory page: they are online but own nothing.' })),
       h('div', {}, h('span', { class: 'dot site' }), h('span', { text: 'Has a website: press “Check websites” to find the ones that are broken, slow or not made for phones.' }))));
 }
 function checkSection(b) {
@@ -2768,6 +2857,7 @@ function init() {
   renderHead();
   renderList();
   renderDetails();
+  storedIndex(); // fetch the stored data's index now, so the first search only waits for the address and its cells
 
   $('#searchForm').addEventListener('submit', search);
   $('#address').addEventListener('input', () => { setSearchLabel('Search'); if (state.undo) state.undo = null; });

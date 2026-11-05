@@ -169,19 +169,20 @@ SKIP = {
     'adoption_service', 'amusement_park', 'psychic_advising', 'radio_station', 'visitor_center', 'arts_and_entertainment',
     'sports_and_recreation', 'travel_and_transportation', 'school', 'laboratory', 'package_locker', 'post_office', 'recycling_center',
 }
-# Public schools, kindergartens, councils and associations that slip in under business kinds.
-PUBLIC_NAME = re.compile(
-    r'(δημοτικ[οό] σχολε[ιί]ο|γυμν[αά]σιο|λ[υύ]κειο|νηπιαγωγε[ιί]ο|πανεπιστ[ηή]μιο|δ[ηή]μος |περιφ[εέ]ρεια|ιερ[οό]ς να[οό]ς|'
-    r'εκκλησ[ιί]α|μοναστ[ηή]ρι|μον[ηή] |σ[υύ]λλογος|σωματε[ιί]ο|ε\.?κ\.?φ\.?ε|κ\.?δ\.?α\.?π|σχολικ[οό] [εέ]τος|'
-    r'public school|primary school|high school|kindergarten|municipality|university)', re.I)
+# Microsoft files all sorts of places in Crete under "pharmacy": banks, doctors, removal firms. Such a place counts
+# as a pharmacy only when its name says so.
+PHARMACY_NAME = re.compile(r'φαρμακ|pharma|farmak|apothe', re.I)
 
 
-def tags_for(basic, primary, name):
+def tags_for(basic, primary, name, datasets=()):
     """OpenStreetMap tags for an Overture place, or None when it isn't a business SiteRadar lists.
     The tags carry "overture:category" when the OpenStreetMap tag says less than Overture's own kind,
-    so the app can show "Donut shop" instead of "Restaurant"."""
-    if basic in SKIP or primary in SKIP or not basic or PUBLIC_NAME.search(name or ''):
+    so the app can show "Donut shop" instead of "Restaurant". Names of public bodies, schools, churches and
+    clubs are left out later, with the app's own rules (see build_data.py)."""
+    if basic in SKIP or primary in SKIP or not basic:
         return None
+    if primary == 'pharmacy' and set(datasets) == {'Microsoft'} and not PHARMACY_NAME.search(name or ''):
+        return {'office': 'company'}
     tag = PRIMARY.get(primary)
     exact = bool(tag)
     tags = {}
@@ -249,7 +250,7 @@ def datasets_of(place):
     return {s.get('dataset') for s in place.get('sources') or [] if s and s.get('dataset') and s.get('dataset') != 'Overture'}
 
 
-def element_from(place):
+def element_from(place, digits=7):
     """A SiteRadar element for one Overture place row (a dict from the places parquet), or None."""
     if place.get('operating_status') not in (None, 'open'):
         return None
@@ -261,7 +262,7 @@ def element_from(place):
     if not name:
         return None
     tax = place.get('taxonomy') or {}
-    tags = tags_for(place.get('basic_category'), tax.get('primary'), name)
+    tags = tags_for(place.get('basic_category'), tax.get('primary'), name, datasets_of(place))
     if not tags:
         return None
     box = place.get('bbox') or {}
@@ -297,7 +298,7 @@ def element_from(place):
         out['brand:wikidata'] = brand['wikidata']
     if (brand.get('names') or {}).get('primary'):
         out['brand'] = brand['names']['primary']
-    return {'type': 'overture', 'id': place['id'], 'lat': round(lat, 7), 'lon': round(lon, 7), 'tags': out}
+    return {'type': 'overture', 'id': place['id'], 'lat': round(lat, digits), 'lon': round(lon, digits), 'tags': out}
 
 
 WEB_KEYS = ('website', 'contact:website', 'url')
