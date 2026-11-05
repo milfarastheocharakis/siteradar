@@ -1,4 +1,4 @@
 {"elements":[
-{"type":"overture","id":"17bd8efa-2cf3-4716-b9e1-7aa3947012db","lat":35.239109,"lon":24.3429298,"tags":{"name":"Pietra di Mare","tourism":"hotel","overture:category":"hotel","phone":"+302111023359","website":"https://pietradimare.reserve-online.net/","contact:facebook":"https://www.facebook.com/106028479046769","addr:street":"Πετρές Γερανίου","addr:city":"Réthimnon","addr:postcode":"741 00"}},
-{"type":"overture","id":"bcd6bfac-1c70-42f1-9df7-aae184040c84","lat":35.23946,"lon":24.3427219,"tags":{"name":"Αλωνες","tourism":"guest_house","overture:category":"lodging","contact:facebook":"https://www.facebook.com/486805607999043","addr:city":"Réthimnon"}}
+{"type":"overture","id":"17bd8efa-2cf3-4716-b9e1-7aa3947012db","lat":35.239109,"lon":24.3429298,"tags":{"name":"Pietra di Mare","tourism":"hotel","phone":"+302111023359","website":"https://pietradimare.reserve-online.net/","contact:facebook":"https://www.facebook.com/106028479046769","addr:street":"Πετρές Γερανίου","addr:city":"Réthimnon","addr:postcode":"741 00"}},
+{"type":"overture","id":"bcd6bfac-1c70-42f1-9df7-aae184040c84","lat":35.23946,"lon":24.3427219,"tags":{"name":"Αλωνες","tourism":"guest_house","contact:facebook":"https://www.facebook.com/486805607999043","addr:city":"Réthimnon"}}
 ]}

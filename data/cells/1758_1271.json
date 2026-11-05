@@ -1,6 +1,6 @@
 {"elements":[
 {"type":"node","id":2312669287,"lat":35.1741957,"lon":25.4371566,"tags":{"amenity":"restaurant","name":"Good Morning Lasithi"}},
 {"type":"node","id":6255367546,"lat":35.169544,"lon":25.4387189,"tags":{"amenity":"restaurant","name":"Tavern Afentis"}},
-{"type":"overture","id":"a8ebcc4f-3193-4deb-a77e-efc0d69f170b","lat":35.1696243,"lon":25.4389858,"tags":{"name":"Cave of Zeus shop","shop":"gift","overture:category":"souvenir_store","phone":"+306984617315","contact:facebook":"https://www.facebook.com/115537447816129","email":"stratakis14@gmail.com","addr:city":"Περιφερειακή Ενότητα Λασιθίου","addr:postcode":"720 52"}},
-{"type":"overture","id":"b0c78bab-922f-47ae-a031-b53fdd74d2f6","lat":35.1742134,"lon":25.4371872,"tags":{"name":"Spanis Taverna","amenity":"cafe","overture:category":"cafe","phone":"+306983066487","contact:facebook":"https://www.facebook.com/1569455119742204","addr:street":"Lasithi","addr:city":"Monastiráki"}}
+{"type":"overture","id":"a8ebcc4f-3193-4deb-a77e-efc0d69f170b","lat":35.1696243,"lon":25.4389858,"tags":{"name":"Cave of Zeus shop","shop":"gift","phone":"+306984617315","contact:facebook":"https://www.facebook.com/115537447816129","email":"stratakis14@gmail.com","addr:city":"Περιφερειακή Ενότητα Λασιθίου","addr:postcode":"720 52"}},
+{"type":"overture","id":"b0c78bab-922f-47ae-a031-b53fdd74d2f6","lat":35.1742134,"lon":25.4371872,"tags":{"name":"Spanis Taverna","amenity":"cafe","phone":"+306983066487","contact:facebook":"https://www.facebook.com/1569455119742204","addr:street":"Lasithi","addr:city":"Monastiráki"}}
 ]}

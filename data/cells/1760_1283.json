@@ -1,5 +1,5 @@
 {"elements":[
 {"type":"node","id":13862475399,"lat":35.213904,"lon":25.6686236,"tags":{"brand":"Peugeot","name":"Φρονιμάκης ΑΕ","shop":"car"}},
 {"type":"overture","id":"0f2f4dfe-862f-4d48-9122-673dfdc56250","lat":35.2137985,"lon":25.6688671,"tags":{"name":"Autozervos","shop":"car","overture:category":"used_auto_dealer","phone":"+306980233216","contact:facebook":"https://www.facebook.com/100692859010473","email":"autozervoscars@gmail.com","addr:street":"ΕΟ Αγίου Νικολάου","addr:city":"Περιφερειακή Ενότητα Λασιθίου","addr:postcode":"721 00"}},
-{"type":"overture","id":"d44d242f-3a81-4663-b35f-a2d0601a0dea","lat":35.2142067,"lon":25.6610813,"tags":{"name":"Χρωμοκοσμος","shop":"car_repair","overture:category":"automotive_repair","phone":"+302841025500","website":"http://chromokosmos.gr/","contact:facebook":"https://www.facebook.com/1478631072359477","addr:street":"εξω λακωνια λασιθιου κρητης","addr:city":"Άγιος Νικόλαος","addr:postcode":"72100"}}
+{"type":"overture","id":"d44d242f-3a81-4663-b35f-a2d0601a0dea","lat":35.2142067,"lon":25.6610813,"tags":{"name":"Χρωμοκοσμος","shop":"car_repair","phone":"+302841025500","website":"http://chromokosmos.gr/","contact:facebook":"https://www.facebook.com/1478631072359477","addr:street":"εξω λακωνια λασιθιου κρητης","addr:city":"Άγιος Νικόλαος","addr:postcode":"72100"}}
 ]}

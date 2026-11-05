@@ -1,4 +1,4 @@
 {"elements":[
 {"type":"way","id":1320798744,"center":{"lat":35.3939678,"lon":23.9179923},"tags":{"amenity":"restaurant","cuisine":"greek","name":"To Providi"}},
-{"type":"overture","id":"a9fac772-71d0-438b-bc2a-d6fb95152539","lat":35.3941536,"lon":23.9181118,"tags":{"name":"Καντίνα Προβίδη","amenity":"fast_food","overture:category":"fast_food_restaurant","contact:facebook":"https://www.facebook.com/573362006465154","addr:city":"Karános"}}
+{"type":"overture","id":"a9fac772-71d0-438b-bc2a-d6fb95152539","lat":35.3941536,"lon":23.9181118,"tags":{"name":"Καντίνα Προβίδη","amenity":"fast_food","contact:facebook":"https://www.facebook.com/573362006465154","addr:city":"Karános"}}
 ]}

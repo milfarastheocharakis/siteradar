@@ -1,5 +1,5 @@
 {"elements":[
 {"type":"node","id":7992790791,"lat":35.0408922,"lon":25.9757312,"tags":{"name":"Afroditi Apts","tourism":"motel"}},
-{"type":"overture","id":"837a4662-dcc1-41b0-845f-aacd994bcadc","lat":35.0408173,"lon":25.9627705,"tags":{"name":"Dolce Evita","tourism":"apartment","overture:category":"holiday_rental_home","phone":"+306972546917","contact:facebook":"https://www.facebook.com/104103421368457","email":"tzirvelakisn@gmail.com","addr:city":"Makrygialos Lasithiou"}},
-{"type":"overture","id":"99dd4557-54be-49a0-9668-a59f8b5ea0f5","lat":35.0402756,"lon":25.9733753,"tags":{"name":"Asterisuites","tourism":"hotel","overture:category":"hotel","phone":"+306972622756","website":"http://www.asterisuites.gr/","contact:facebook":"https://www.facebook.com/1135355836612336","email":"info@asterisuites.gr","addr:city":"Μακρύς Γιαλός"}}
+{"type":"overture","id":"837a4662-dcc1-41b0-845f-aacd994bcadc","lat":35.0408173,"lon":25.9627705,"tags":{"name":"Dolce Evita","tourism":"apartment","phone":"+306972546917","contact:facebook":"https://www.facebook.com/104103421368457","email":"tzirvelakisn@gmail.com","addr:city":"Makrygialos Lasithiou"}},
+{"type":"overture","id":"99dd4557-54be-49a0-9668-a59f8b5ea0f5","lat":35.0402756,"lon":25.9733753,"tags":{"name":"Asterisuites","tourism":"hotel","phone":"+306972622756","website":"http://www.asterisuites.gr/","contact:facebook":"https://www.facebook.com/1135355836612336","email":"info@asterisuites.gr","addr:city":"Μακρύς Γιαλός"}}
 ]}

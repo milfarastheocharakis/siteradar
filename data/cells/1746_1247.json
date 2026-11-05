@@ -1,5 +1,5 @@
 {"elements":[
 {"type":"node","id":5249275553,"lat":34.9346075,"lon":24.9482255,"tags":{"amenity":"restaurant","cuisine":"greek","name":"Taverna Lefteris"}},
 {"type":"way","id":422256930,"center":{"lat":34.9347643,"lon":24.9492958},"tags":{"name":"Casa Doria Appartments","tourism":"apartment"}},
-{"type":"overture","id":"a70b37d9-9dc4-42b1-9ec9-7a9ca4077014","lat":34.9325905,"lon":24.9533119,"tags":{"name":"Paralia Loytra","tourism":"hotel","overture:category":"hotel","contact:facebook":"https://www.facebook.com/209072073028992","addr:street":"Loytra Krotos Hraklioy ","addr:city":"Miamoú","addr:postcode":"70009"}}
+{"type":"overture","id":"a70b37d9-9dc4-42b1-9ec9-7a9ca4077014","lat":34.9325905,"lon":24.9533119,"tags":{"name":"Paralia Loytra","tourism":"hotel","contact:facebook":"https://www.facebook.com/209072073028992","addr:street":"Loytra Krotos Hraklioy ","addr:city":"Miamoú","addr:postcode":"70009"}}
 ]}

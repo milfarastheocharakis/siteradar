@@ -11,5 +11,5 @@
 {"type":"way","id":449249603,"center":{"lat":34.9298896,"lon":24.9136402},"tags":{"amenity":"restaurant","cuisine":"regional","name":"Christina's Bistro"}},
 {"type":"way","id":1102313776,"center":{"lat":34.9300353,"lon":24.9135244},"tags":{"name":"Great Eastern Studios","tourism":"guest_house"}},
 {"type":"overture","id":"19782bd6-82ab-4128-b720-0ec17a7c11ef","lat":34.9313354,"lon":24.9146442,"tags":{"name":"Mythos Restaurant Diskos","amenity":"restaurant","overture:category":"restaurant","phone":"+306936709990","contact:facebook":"https://www.facebook.com/807127706129918","addr:city":"Δήμος Γόρτυνας","addr:postcode":"704 00"}},
-{"type":"overture","id":"a451bb68-0eeb-405e-acb4-5d9cc62d109f","lat":34.9309006,"lon":24.9143791,"tags":{"name":"Disco Memory","amenity":"bar","overture:category":"bar","phone":"+306982032885","contact:facebook":"https://www.facebook.com/107587256540686","addr:city":"Δήμος Γόρτυνας","addr:postcode":"704 00"}}
+{"type":"overture","id":"a451bb68-0eeb-405e-acb4-5d9cc62d109f","lat":34.9309006,"lon":24.9143791,"tags":{"name":"Disco Memory","amenity":"bar","phone":"+306982032885","contact:facebook":"https://www.facebook.com/107587256540686","addr:city":"Δήμος Γόρτυνας","addr:postcode":"704 00"}}
 ]}

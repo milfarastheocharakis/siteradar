@@ -23,6 +23,6 @@
 {"type":"way","id":122219245,"center":{"lat":35.2005923,"lon":24.0670434},"tags":{"amenity":"restaurant","name":"Akrogiali"}},
 {"type":"way","id":122219288,"center":{"lat":35.2005662,"lon":24.0662104},"tags":{"amenity":"restaurant","cuisine":"greek","name":"Georgos House","opening_hours":"Mo-Su 08:00-22:00"}},
 {"type":"way","id":503112196,"center":{"lat":35.200494,"lon":24.0797905},"tags":{"addr:postcode":"73011","amenity":"cafe","name":"SCIROCCO CAFE"}},
-{"type":"overture","id":"97cce65a-4231-47fe-aa8c-d7a9282a5785","lat":35.2003937,"lon":24.0799999,"tags":{"name":"Keramos","tourism":"hotel","overture:category":"hotel","contact:facebook":"https://www.facebook.com/264647937428564","addr:street":"\"Loutro Sfakia, Loutro, 73011, Grækenland\"","addr:city":"Σφακιά","addr:postcode":"73011"}},
-{"type":"overture","id":"eb350aa8-1996-48aa-a44e-d1ec6feba160","lat":35.2000351,"lon":24.0791492,"tags":{"name":"Castella Loutro","amenity":"cafe","overture:category":"cafe","phone":"+306986902632","contact:facebook":"https://www.facebook.com/112368084795302","email":"castella.loutro@gmail.com","addr:city":"Sfakiá"}}
+{"type":"overture","id":"97cce65a-4231-47fe-aa8c-d7a9282a5785","lat":35.2003937,"lon":24.0799999,"tags":{"name":"Keramos","tourism":"hotel","contact:facebook":"https://www.facebook.com/264647937428564","addr:street":"\"Loutro Sfakia, Loutro, 73011, Grækenland\"","addr:city":"Σφακιά","addr:postcode":"73011"}},
+{"type":"overture","id":"eb350aa8-1996-48aa-a44e-d1ec6feba160","lat":35.2000351,"lon":24.0791492,"tags":{"name":"Castella Loutro","amenity":"cafe","phone":"+306986902632","contact:facebook":"https://www.facebook.com/112368084795302","email":"castella.loutro@gmail.com","addr:city":"Sfakiá"}}
 ]}

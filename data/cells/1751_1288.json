@@ -1,5 +1,5 @@
 {"elements":[
 {"type":"overture","id":"b70c61df-d429-43d3-a1fd-55cd5e92bc5d","lat":35.0249977,"lon":25.7711067,"tags":{"name":"Αριστοτεχνίες","shop":"yes","overture:category":"shopping","phone":"+306973539890","website":"https://www.aristotexnies.gr/","contact:facebook":"https://www.facebook.com/207371676540850","email":"info@aristotexnies.gr","addr:street":"Βαϊνιά","addr:city":"Ierápetra","addr:postcode":"72200"}},
 {"type":"overture","id":"cb7e52ae-fd05-47ff-9830-b298f9a93c90","lat":35.0249939,"lon":25.775898,"tags":{"name":"Προκοπης","amenity":"restaurant","overture:category":"restaurant","phone":"+306970743367","contact:facebook":"https://www.facebook.com/293682297749997","email":"katpapantonaki2014@gmail.com","addr:city":"Ierápetra"}},
-{"type":"overture","id":"f8628bd1-bf9b-49c7-958d-1b75b550018d","lat":35.0246925,"lon":25.7723675,"tags":{"name":"Koutouki","cuisine":"greek","amenity":"restaurant","overture:category":"greek_restaurant","contact:facebook":"https://www.facebook.com/288127531204771","addr:postcode":"722 00"}}
+{"type":"overture","id":"f8628bd1-bf9b-49c7-958d-1b75b550018d","lat":35.0246925,"lon":25.7723675,"tags":{"name":"Koutouki","cuisine":"greek","amenity":"restaurant","contact:facebook":"https://www.facebook.com/288127531204771","addr:postcode":"722 00"}}
 ]}

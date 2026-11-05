@@ -1,5 +1,5 @@
 {"elements":[
 {"type":"node","id":7757544337,"lat":35.1448436,"lon":24.5180586,"tags":{"name":"Kionia Apartments","phone":"+302832071316","tourism":"hotel","website":"https://www.kionia.com/"}},
 {"type":"way","id":360729607,"center":{"lat":35.1448027,"lon":24.5130848},"tags":{"amenity":"restaurant","cuisine":"seafood;regional;greek","name":"Taverna Agia Fotia","website":"https://www.cretetravel.com/gastronomy_item/taverna-agia-fotini/","contact:facebook":"https://www.facebook.com/126526297443228","email":"agiafotiataverna@gmail.com","phone":"+306974621286","overture:id":"276b3319-698c-4558-95c9-c6bdcb721f24"}},
-{"type":"overture","id":"2e738e7f-e052-47f9-a4d0-044114439aba","lat":35.1520767,"lon":24.5148716,"tags":{"name":"Villas Siriatis","tourism":"apartment","overture:category":"holiday_rental_home","phone":"+306956625055","contact:facebook":"https://www.facebook.com/103885882178491","email":"siriatisvillas@gmail.com","addr:street":"Kerames","addr:city":"Keramés","addr:postcode":"74053"}}
+{"type":"overture","id":"2e738e7f-e052-47f9-a4d0-044114439aba","lat":35.1520767,"lon":24.5148716,"tags":{"name":"Villas Siriatis","tourism":"apartment","phone":"+306956625055","contact:facebook":"https://www.facebook.com/103885882178491","email":"siriatisvillas@gmail.com","addr:street":"Kerames","addr:city":"Keramés","addr:postcode":"74053"}}
 ]}

@@ -1,4 +1,4 @@
 {"elements":[
 {"type":"node","id":993829680,"lat":35.0534604,"lon":25.8832664,"tags":{"amenity":"cafe","name":"Cafenion"}},
-{"type":"overture","id":"3975a2fb-c3a6-43b2-a775-589c3c51faec","lat":35.0536194,"lon":25.8841438,"tags":{"name":"καφενειο σχινοκαψαλα","amenity":"cafe","overture:category":"cafe","contact:facebook":"https://www.facebook.com/307045206802135","addr:city":"Ierápetra"}}
+{"type":"overture","id":"3975a2fb-c3a6-43b2-a775-589c3c51faec","lat":35.0536194,"lon":25.8841438,"tags":{"name":"καφενειο σχινοκαψαλα","amenity":"cafe","contact:facebook":"https://www.facebook.com/307045206802135","addr:city":"Ierápetra"}}
 ]}

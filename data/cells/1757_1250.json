@@ -1,5 +1,5 @@
 {"elements":[
 {"type":"node","id":14177375907,"lat":35.1400882,"lon":25.0019272,"tags":{"amenity":"pharmacy","healthcare":"pharmacy","name":"Farmacia"}},
-{"type":"overture","id":"8cfc2d32-a112-4a1b-a5e1-b28e16af6486","lat":35.1434517,"lon":25.0077305,"tags":{"name":"Elli's Farm family products","shop":"farm","overture:category":"farm","contact:facebook":"https://www.facebook.com/1047663475291570","addr:city":"Αγία Βαρβάρα"}},
-{"type":"overture","id":"ecb184dd-27c3-4316-b91a-e66a5da09596","lat":35.1434593,"lon":25.0077095,"tags":{"name":"Elli's Family","amenity":"cafe","overture:category":"smoothie_juice_bar","phone":"+306976137468","website":"http://www.ellis-farm.gr/","contact:facebook":"https://www.facebook.com/355818334847189","email":"info@ellis-farm.gr","addr:street":"Elli's Farm Family products","addr:city":"Αγία Βαρβάρα","addr:postcode":"70003"}}
+{"type":"overture","id":"8cfc2d32-a112-4a1b-a5e1-b28e16af6486","lat":35.1434517,"lon":25.0077305,"tags":{"name":"Elli's Farm family products","shop":"farm","contact:facebook":"https://www.facebook.com/1047663475291570","addr:city":"Αγία Βαρβάρα"}},
+{"type":"overture","id":"ecb184dd-27c3-4316-b91a-e66a5da09596","lat":35.1434593,"lon":25.0077095,"tags":{"name":"Elli's Family","amenity":"cafe","phone":"+306976137468","website":"http://www.ellis-farm.gr/","contact:facebook":"https://www.facebook.com/355818334847189","email":"info@ellis-farm.gr","addr:street":"Elli's Farm Family products","addr:city":"Αγία Βαρβάρα","addr:postcode":"70003"}}
 ]}

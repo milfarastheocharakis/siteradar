@@ -39,6 +39,6 @@
 {"type":"way","id":122186147,"center":{"lat":35.2308799,"lon":23.9619635},"tags":{"amenity":"doctors","healthcare":"doctor","name":"Ιατρείο"}},
 {"type":"way","id":122186162,"center":{"lat":35.2296343,"lon":23.9604597},"tags":{"name":"Μαλαμάς","shop":"supermarket"}},
 {"type":"way","id":349642716,"center":{"lat":35.2293362,"lon":23.9640363},"tags":{"name":"Camping Agia Roumeli","tourism":"camp_site"}},
-{"type":"overture","id":"75ed5c04-c2bc-4870-a4c0-a37fd68ec0dc","lat":35.2295151,"lon":23.9603462,"tags":{"name":"Agia Roumeli Sfakia - Αγία Ρουμέλη Σφακιά","shop":"travel_agency","overture:category":"travel_service","contact:facebook":"https://www.facebook.com/267005104339","addr:street":"Agia Roumeli","addr:city":"Σφακιά","addr:postcode":"73011"}},
+{"type":"overture","id":"75ed5c04-c2bc-4870-a4c0-a37fd68ec0dc","lat":35.2295151,"lon":23.9603462,"tags":{"name":"Agia Roumeli Sfakia - Αγία Ρουμέλη Σφακιά","shop":"travel_agency","contact:facebook":"https://www.facebook.com/267005104339","addr:street":"Agia Roumeli","addr:city":"Σφακιά","addr:postcode":"73011"}},
 {"type":"overture","id":"c9419c82-3d83-409d-891f-19e0470cbe66","lat":35.2286873,"lon":23.9602795,"tags":{"name":"Daskalogiannis","office":"company","overture:category":"ferry_boat_company","contact:facebook":"https://www.facebook.com/508494626286049","addr:city":"Σφακιά"}}
 ]}

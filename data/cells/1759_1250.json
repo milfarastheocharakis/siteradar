@@ -1,4 +1,4 @@
 {"elements":[
 {"type":"node","id":5181151171,"lat":35.1901257,"lon":25.0146328,"tags":{"name":"Villa Daskalogianni","tourism":"guest_house","website":"https://villadaskalogianni.gr/","contact:facebook":"https://www.facebook.com/1593667854226739","email":"villadaskalogianni@gmail.com","phone":"+302810791764","overture:id":"6cf862ff-021a-41f8-ae69-228b6d3340fc"}},
-{"type":"overture","id":"6371fb91-9957-4593-bf8a-3e34fa09742f","lat":35.1900673,"lon":25.0146656,"tags":{"name":"Villa Kerasia","tourism":"hotel","overture:category":"hotel","phone":"+302810791021","website":"http://www.villa-kerasia.gr/","contact:facebook":"https://www.facebook.com/302707081651","email":"info@villa-kerasia.gr","addr:street":"Βλαχιανά","addr:city":"Ηράκλειο","addr:postcode":"70013"}}
+{"type":"overture","id":"6371fb91-9957-4593-bf8a-3e34fa09742f","lat":35.1900673,"lon":25.0146656,"tags":{"name":"Villa Kerasia","tourism":"hotel","phone":"+302810791021","website":"http://www.villa-kerasia.gr/","contact:facebook":"https://www.facebook.com/302707081651","email":"info@villa-kerasia.gr","addr:street":"Βλαχιανά","addr:city":"Ηράκλειο","addr:postcode":"70013"}}
 ]}

@@ -1,5 +1,5 @@
 {"elements":[
 {"type":"node","id":3741483497,"lat":35.3076935,"lon":23.9175639,"tags":{"amenity":"restaurant","cuisine":"regional","name":"Xyloskalo Restaurant","website":"http://xyloskalo.gr/"}},
 {"type":"way","id":765996804,"center":{"lat":35.3191697,"lon":23.9137844},"tags":{"contact:facebook":"https://www.facebook.com/samaria.village/","contact:mobile":"+30 693 2456017","name":"Samaria Village","tourism":"chalet","email":"samaria-village@outlook.com","phone":"+306932456017","overture:id":"89f746c6-70cf-4df9-9f9b-82eaad38aaea"}},
-{"type":"overture","id":"d6a63504-5d38-487c-8937-e14158978a5f","lat":35.3077431,"lon":23.9176407,"tags":{"name":"Restaurant Xyloskalo","amenity":"cafe","overture:category":"cafe","phone":"+302821067237","website":"http://xyloskalo.gr/","contact:facebook":"https://www.facebook.com/420953777962254","email":"restaurant-xyloskalo@outlook.com","addr:street":"Ομαλός","addr:city":"Omalós","addr:postcode":"73005"}}
+{"type":"overture","id":"d6a63504-5d38-487c-8937-e14158978a5f","lat":35.3077431,"lon":23.9176407,"tags":{"name":"Restaurant Xyloskalo","amenity":"cafe","phone":"+302821067237","website":"http://xyloskalo.gr/","contact:facebook":"https://www.facebook.com/420953777962254","email":"restaurant-xyloskalo@outlook.com","addr:street":"Ομαλός","addr:city":"Omalós","addr:postcode":"73005"}}
 ]}

@@ -1,4 +1,4 @@
 {"elements":[
-{"type":"overture","id":"5d36dcb8-fabf-4a83-9b27-9f03a4ff8b21","lat":35.0671768,"lon":24.788784,"tags":{"name":"Deli drive in cafe","amenity":"cafe","overture:category":"cafe","phone":"+302892051908","contact:facebook":"https://www.facebook.com/150446985666989","email":"giannakakissa@gmail.com","addr:street":"2ο χλμ Τυμπακίου - Μοιρών","addr:city":"Tympáki","addr:postcode":"70200"}},
-{"type":"overture","id":"d1020dfa-7b4f-4092-bb3a-141049d2b526","lat":35.0657387,"lon":24.7928867,"tags":{"name":"Ελαιουργείο ΑΦΟΙ Σαΐτη","shop":"farm","overture:category":"food_and_drink","phone":"+302892051415","contact:facebook":"https://www.facebook.com/103820282135836","email":"elaiasat17@gmail.com"}}
+{"type":"overture","id":"5d36dcb8-fabf-4a83-9b27-9f03a4ff8b21","lat":35.0671768,"lon":24.788784,"tags":{"name":"Deli drive in cafe","amenity":"cafe","phone":"+302892051908","contact:facebook":"https://www.facebook.com/150446985666989","email":"giannakakissa@gmail.com","addr:street":"2ο χλμ Τυμπακίου - Μοιρών","addr:city":"Tympáki","addr:postcode":"70200"}},
+{"type":"overture","id":"d1020dfa-7b4f-4092-bb3a-141049d2b526","lat":35.0657387,"lon":24.7928867,"tags":{"name":"Ελαιουργείο ΑΦΟΙ Σαΐτη","shop":"farm","phone":"+302892051415","contact:facebook":"https://www.facebook.com/103820282135836","email":"elaiasat17@gmail.com"}}
 ]}

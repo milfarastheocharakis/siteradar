@@ -1,5 +1,5 @@
 {"elements":[
 {"type":"node","id":3741483456,"lat":35.1743005,"lon":25.2107158,"tags":{"amenity":"restaurant","name":"Alagni","website":"http://www.villa-alagonia.gr/","contact:facebook":"https://www.facebook.com/580305512346893","phone":"+306976226229","overture:id":"5e115411-36bc-497a-bb6e-ca0a5233c40f"}},
 {"type":"way","id":513608369,"center":{"lat":35.176705,"lon":25.208436},"tags":{"craft":"winery","name":"Λυραράκης"}},
-{"type":"overture","id":"ea1c4257-0edc-43c8-9d30-b84e5450c757","lat":35.1761131,"lon":25.2038383,"tags":{"name":"Alagni Cretan Resort","tourism":"hotel","overture:category":"hotel","phone":"+302103109090","website":"https://www.alagnivillas.gr/","contact:facebook":"https://www.facebook.com/103081269289052","email":"alagnicr@gmail.com","addr:street":"Alagni","addr:city":"Heraklion","addr:postcode":"70300"}}
+{"type":"overture","id":"ea1c4257-0edc-43c8-9d30-b84e5450c757","lat":35.1761131,"lon":25.2038383,"tags":{"name":"Alagni Cretan Resort","tourism":"hotel","phone":"+302103109090","website":"https://www.alagnivillas.gr/","contact:facebook":"https://www.facebook.com/103081269289052","email":"alagnicr@gmail.com","addr:street":"Alagni","addr:city":"Heraklion","addr:postcode":"70300"}}
 ]}

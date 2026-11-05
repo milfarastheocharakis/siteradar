@@ -1,4 +1,4 @@
 {"elements":[
-{"type":"overture","id":"2e34a9b8-2428-45a9-9274-01fd6e3e657a","lat":34.961647,"lon":24.9565849,"tags":{"name":"Loytra Lentas Iraklioy","amenity":"events_venue","overture:category":"music_venue","contact:facebook":"https://www.facebook.com/2048820508735669","addr:street":"Loytra Taverna Lefteris","addr:city":"Κίσσαμος","addr:postcode":"70400"}},
-{"type":"overture","id":"fd1752fc-91d6-41bd-9ee0-89542f28bb77","lat":34.9617424,"lon":24.9565182,"tags":{"name":"Κροτος","amenity":"restaurant","overture:category":"diner","contact:facebook":"https://www.facebook.com/104568605273371","addr:street":"Κρότος","addr:city":"Miamoú","addr:postcode":"700 12"}}
+{"type":"overture","id":"2e34a9b8-2428-45a9-9274-01fd6e3e657a","lat":34.961647,"lon":24.9565849,"tags":{"name":"Loytra Lentas Iraklioy","amenity":"events_venue","contact:facebook":"https://www.facebook.com/2048820508735669","addr:street":"Loytra Taverna Lefteris","addr:city":"Κίσσαμος","addr:postcode":"70400"}},
+{"type":"overture","id":"fd1752fc-91d6-41bd-9ee0-89542f28bb77","lat":34.9617424,"lon":24.9565182,"tags":{"name":"Κροτος","amenity":"restaurant","contact:facebook":"https://www.facebook.com/104568605273371","addr:street":"Κρότος","addr:city":"Miamoú","addr:postcode":"700 12"}}
 ]}

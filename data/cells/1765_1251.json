@@ -1,5 +1,5 @@
 {"elements":[
 {"type":"node","id":4363730112,"lat":35.3073332,"lon":25.0368214,"tags":{"name":"Estate Kares","tourism":"chalet","website":"http://www.estatekares.gr/","contact:facebook":"https://www.facebook.com/1045911495446202","email":"info@estatekares.gr","phone":"+302810823918","overture:id":"742942f8-87a2-4642-9de0-66809d605f46"}},
 {"type":"way","id":255888528,"center":{"lat":35.3155983,"lon":25.0354684},"tags":{"addr:postcode":"71500","name":"Αρόλιθος","name:el":"Αρόλιθος","name:en":"Arolithos Traditional Cretan Village","phone":"+30 281 082 1050","tourism":"hotel","website":"https://www.arolithos.com/","contact:facebook":"https://www.facebook.com/826613507383285","email":"info@arolithos.com","overture:id":"f6bf8e48-1841-4b4c-873a-967fda7ad7d9"}},
-{"type":"overture","id":"34e79d0d-c977-41d8-ac80-01759fa120ca","lat":35.306263,"lon":25.0365086,"tags":{"name":"Κτήμα Καρες","tourism":"hotel","overture:category":"hotel","contact:facebook":"https://www.facebook.com/243873396277027","addr:street":"Καρές"}}
+{"type":"overture","id":"34e79d0d-c977-41d8-ac80-01759fa120ca","lat":35.306263,"lon":25.0365086,"tags":{"name":"Κτήμα Καρες","tourism":"hotel","contact:facebook":"https://www.facebook.com/243873396277027","addr:street":"Καρές"}}
 ]}

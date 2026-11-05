@@ -1,4 +1,4 @@
 {"elements":[
 {"type":"way","id":1431070048,"center":{"lat":35.3450467,"lon":24.9989386},"tags":{"amenity":"restaurant","cuisine":"regional;greek","name":"Doxa Restaurant"}},
-{"type":"overture","id":"848ba291-b08e-4536-90da-00476ba3bd8e","lat":35.3449516,"lon":24.9990597,"tags":{"name":"Ταβέρνα Δόξα","amenity":"cafe","overture:category":"cafe","phone":"+302810521259","contact:facebook":"https://www.facebook.com/115187225922179","email":"p.prinaris@yahoo.gr"}}
+{"type":"overture","id":"848ba291-b08e-4536-90da-00476ba3bd8e","lat":35.3449516,"lon":24.9990597,"tags":{"name":"Ταβέρνα Δόξα","amenity":"cafe","phone":"+302810521259","contact:facebook":"https://www.facebook.com/115187225922179","email":"p.prinaris@yahoo.gr"}}
 ]}

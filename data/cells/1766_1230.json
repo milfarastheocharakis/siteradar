@@ -1,5 +1,5 @@
 {"elements":[
 {"type":"way","id":469740919,"center":{"lat":35.3333378,"lon":24.6164239},"tags":{"amenity":"restaurant","cuisine":"greek","name":"Kapileio","contact:facebook":"https://www.facebook.com/299121394012669","phone":"+306988068941","overture:id":"c2cf41b7-5330-4b84-bcf2-44bc914c6994"}},
 {"type":"way","id":1561322327,"center":{"lat":35.3393509,"lon":24.6199296},"tags":{"addr:city":"Rethymnon","addr:postcode":"74100","amenity":"restaurant","cuisine":"greek","name":"Elaia Restaurant","website":"https://www.kapsalianavillage.gr/restaurants/elaia-restaurant-2/"}},
-{"type":"overture","id":"fb900de0-e893-463d-a265-9fe2c31cfb80","lat":35.3331795,"lon":24.6162071,"tags":{"name":"Villa Anemeli","tourism":"guest_house","overture:category":"lodge","phone":"+306987775184","contact:facebook":"https://www.facebook.com/375875306161926","email":"emi_mavros@hotmail.com","addr:city":"Δήμος Ρεθύμνης","addr:postcode":"741 50"}}
+{"type":"overture","id":"fb900de0-e893-463d-a265-9fe2c31cfb80","lat":35.3331795,"lon":24.6162071,"tags":{"name":"Villa Anemeli","tourism":"guest_house","phone":"+306987775184","contact:facebook":"https://www.facebook.com/375875306161926","email":"emi_mavros@hotmail.com","addr:city":"Δήμος Ρεθύμνης","addr:postcode":"741 50"}}
 ]}

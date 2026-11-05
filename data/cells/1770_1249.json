@@ -1,5 +1,5 @@
 {"elements":[
 {"type":"node","id":5130915627,"lat":35.4091092,"lon":24.9939928,"tags":{"name":"עקרבים 5","shop":"bookmaker"}},
 {"type":"node","id":14255833001,"lat":35.4096119,"lon":24.9940962,"tags":{"name":"Maison Meltem","tourism":"hotel","website":"https://www.maisonmeltem.com/en/","contact:facebook":"https://www.facebook.com/388480571016325","email":"maisonmeltem@gmail.com","phone":"+33611920355","overture:id":"91608382-8e90-447f-930a-798fc417f80b"}},
-{"type":"overture","id":"a62d7929-7cbc-4412-b943-e6138e9216c3","lat":35.4109802,"lon":24.9913177,"tags":{"name":"BlueVedere","tourism":"apartment","overture:category":"holiday_rental_home","phone":"+306956991541","website":"http://bluevedere.com/","contact:facebook":"https://www.facebook.com/1595871483997062","email":"info@bluevedere.com","addr:street":" Αγία Πελαγία","addr:city":"Γάζι","addr:postcode":"71500"}}
+{"type":"overture","id":"a62d7929-7cbc-4412-b943-e6138e9216c3","lat":35.4109802,"lon":24.9913177,"tags":{"name":"BlueVedere","tourism":"apartment","phone":"+306956991541","website":"http://bluevedere.com/","contact:facebook":"https://www.facebook.com/1595871483997062","email":"info@bluevedere.com","addr:street":" Αγία Πελαγία","addr:city":"Γάζι","addr:postcode":"71500"}}
 ]}

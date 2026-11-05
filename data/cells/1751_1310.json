@@ -1,5 +1,5 @@
 {"elements":[
 {"type":"node","id":4456174729,"lat":35.0367846,"lon":26.2160158,"tags":{"name":"Villa Alminra","name:en":"Villa Almyra","operator":"Simpson Travel","rooms":"3","tourism":"chalet"}},
 {"type":"node","id":4456174730,"lat":35.0376875,"lon":26.2162114,"tags":{"name":"Ammonthines Villas","tourism":"chalet"}},
-{"type":"overture","id":"d10bfb9a-4a87-4e51-8db7-c8b993d65543","lat":35.0373726,"lon":26.2161884,"tags":{"name":"Krinakia Villas","tourism":"hotel","overture:category":"hotel","phone":"+306944714986","website":"http://krinakiavillas.gr/","contact:facebook":"https://www.facebook.com/286073038072571","email":"krinakia@hotmail.gr","addr:street":"Xerocambos","addr:city":"Xerocambos","addr:postcode":"72059"}}
+{"type":"overture","id":"d10bfb9a-4a87-4e51-8db7-c8b993d65543","lat":35.0373726,"lon":26.2161884,"tags":{"name":"Krinakia Villas","tourism":"hotel","phone":"+306944714986","website":"http://krinakiavillas.gr/","contact:facebook":"https://www.facebook.com/286073038072571","email":"krinakia@hotmail.gr","addr:street":"Xerocambos","addr:city":"Xerocambos","addr:postcode":"72059"}}
 ]}

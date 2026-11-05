@@ -6,5 +6,5 @@
 {"type":"way","id":1110750058,"center":{"lat":34.9853866,"lon":25.4941007},"tags":{"addr:city":"Sidonia","name":"Almyriki","tourism":"apartment"}},
 {"type":"way","id":1110752836,"center":{"lat":34.9850142,"lon":25.4972908},"tags":{"name":"Σωχωράκης","opening_hours":"Mo-Sa 08:00-14:00, 17:00-17:00; Su 10:00-14:00, 17:00-21:00","shop":"convenience"}},
 {"type":"way","id":1110754235,"center":{"lat":34.9851408,"lon":25.4974877},"tags":{"addr:postcode":"700 04","addr:street":"Ψαρή Φοράδα","name":"Mouzourakis Apartments","tourism":"apartment"}},
-{"type":"overture","id":"e4398c3c-b3bc-40ec-9120-41b9d2a6b14c","lat":34.9849434,"lon":25.4978752,"tags":{"name":"Villa Irida","tourism":"hotel","overture:category":"hotel","phone":"+302895061411","website":"http://www.villairida.gr/","contact:facebook":"https://www.facebook.com/259630754140770","email":"iinfo@villairida.gr","addr:street":"Ψαρή Φοράδα","addr:city":"Heraklion","addr:postcode":"70004"}}
+{"type":"overture","id":"e4398c3c-b3bc-40ec-9120-41b9d2a6b14c","lat":34.9849434,"lon":25.4978752,"tags":{"name":"Villa Irida","tourism":"hotel","phone":"+302895061411","website":"http://www.villairida.gr/","contact:facebook":"https://www.facebook.com/259630754140770","email":"iinfo@villairida.gr","addr:street":"Ψαρή Φοράδα","addr:city":"Heraklion","addr:postcode":"70004"}}
 ]}

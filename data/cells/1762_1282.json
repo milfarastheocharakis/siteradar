@@ -1,7 +1,7 @@
 {"elements":[
 {"type":"node","id":7889677090,"lat":35.2594283,"lon":25.6496006,"tags":{"amenity":"cafe","cuisine":"coffee_shop","name":"ΤΟ ΛΙΜΑΝΙ"}},
 {"type":"way","id":589455815,"center":{"lat":35.2445793,"lon":25.6424226},"tags":{"amenity":"events_venue","name":"Digenis Palace","website":"https://digenis-palace.gr","contact:facebook":"https://www.facebook.com/1218905004859450","email":"digenispalace@gmail.com","phone":"+302841032574","overture:id":"d2a0fed5-21ea-4131-ad82-64365aa0e844"}},
-{"type":"overture","id":"2a6313cf-19e7-464a-9ee6-0412b09ad2a9","lat":35.2592239,"lon":25.6494579,"tags":{"name":"Βολόσυρος","cuisine":"greek","amenity":"restaurant","overture:category":"greek_restaurant","contact:facebook":"https://www.facebook.com/1458604367575937","addr:city":"Νεάπολη"}},
+{"type":"overture","id":"2a6313cf-19e7-464a-9ee6-0412b09ad2a9","lat":35.2592239,"lon":25.6494579,"tags":{"name":"Βολόσυρος","cuisine":"greek","amenity":"restaurant","contact:facebook":"https://www.facebook.com/1458604367575937","addr:city":"Νεάπολη"}},
 {"type":"overture","id":"666be4fd-0f93-4816-af80-8c56152af925","lat":35.2591591,"lon":25.6505013,"tags":{"name":"Στόν Πρόδρομο","amenity":"restaurant","overture:category":"restaurant","phone":"+306937289908","contact:facebook":"https://www.facebook.com/237085426783859","addr:street":"Καστέλλι Φουρνής Λασίθι Καστέλλι Φουρνής","addr:city":"Νεάπολη","addr:postcode":"724 00"}},
 {"type":"overture","id":"cc5a8798-4be6-4ec8-9e47-2708c56f7ab7","lat":35.2592926,"lon":25.6499767,"tags":{"name":"Καστέλι Φουρνής","shop":"pet","overture:category":"animal_or_pet_service","contact:facebook":"https://www.facebook.com/259730077411451","addr:street":"Στον Προδρομο","addr:city":"Νεάπολη"}}
 ]}

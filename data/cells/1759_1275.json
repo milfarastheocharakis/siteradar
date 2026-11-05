@@ -1,4 +1,4 @@
 {"elements":[
 {"type":"node","id":418113527,"lat":35.1804557,"lon":25.503822,"tags":{"amenity":"restaurant","cuisine":"greek","name":"Zorbas","contact:facebook":"https://www.facebook.com/331771054316709","phone":"+302844022174","overture:id":"3a778794-196e-4f92-8cd8-9bbd53a8a27c"}},
-{"type":"overture","id":"452c0c1c-24f0-4e17-aaf1-d72d43da9a8c","lat":35.1823997,"lon":25.5140877,"tags":{"name":"Lasithi Luxury Villa","shop":"wholesale","overture:category":"hotel_supply_service","phone":"+306937412609","website":"http://www.aristidisvillasandhouses.com/","contact:facebook":"https://www.facebook.com/114821051480394","addr:street":"Μέσα Λασίθι","addr:postcode":"72052"}}
+{"type":"overture","id":"452c0c1c-24f0-4e17-aaf1-d72d43da9a8c","lat":35.1823997,"lon":25.5140877,"tags":{"name":"Lasithi Luxury Villa","shop":"wholesale","phone":"+306937412609","website":"http://www.aristidisvillasandhouses.com/","contact:facebook":"https://www.facebook.com/114821051480394","addr:street":"Μέσα Λασίθι","addr:postcode":"72052"}}
 ]}

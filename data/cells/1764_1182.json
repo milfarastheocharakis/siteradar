@@ -1,4 +1,4 @@
 {"elements":[
-{"type":"overture","id":"73b8947c-8d89-4851-8b64-bfa5fd403f76","lat":35.2919579,"lon":23.6452522,"tags":{"name":"Taverna Cafe Voutas","amenity":"cafe","overture:category":"cafe","phone":"+306974484887","contact:facebook":"https://www.facebook.com/103934105252576","addr:city":"Kántanos"}},
-{"type":"overture","id":"c6f93b31-0128-424c-9368-05942d9ac0ea","lat":35.2933197,"lon":23.6438408,"tags":{"name":"Καφεπαντοπωλείο - Βουτάς Χανίων","amenity":"cafe","overture:category":"cafe","phone":"+302823031201","contact:facebook":"https://www.facebook.com/1665726730419050","email":"botonakis88@hotmail.com","addr:street":"ΒΟΥΤΑΣ ΧΑΝΙΩΝ","addr:city":"Chaniá","addr:postcode":"73001"}}
+{"type":"overture","id":"73b8947c-8d89-4851-8b64-bfa5fd403f76","lat":35.2919579,"lon":23.6452522,"tags":{"name":"Taverna Cafe Voutas","amenity":"cafe","phone":"+306974484887","contact:facebook":"https://www.facebook.com/103934105252576","addr:city":"Kántanos"}},
+{"type":"overture","id":"c6f93b31-0128-424c-9368-05942d9ac0ea","lat":35.2933197,"lon":23.6438408,"tags":{"name":"Καφεπαντοπωλείο - Βουτάς Χανίων","amenity":"cafe","phone":"+302823031201","contact:facebook":"https://www.facebook.com/1665726730419050","email":"botonakis88@hotmail.com","addr:street":"ΒΟΥΤΑΣ ΧΑΝΙΩΝ","addr:city":"Chaniá","addr:postcode":"73001"}}
 ]}

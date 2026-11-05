@@ -1,5 +1,5 @@
 {"elements":[
 {"type":"node","id":11935301185,"lat":35.470947,"lon":23.8312815,"tags":{"amenity":"fast_food","cuisine":"coffee_shop;regional","name":"Kafe Cistus"}},
 {"type":"way","id":1446936278,"center":{"lat":35.4677334,"lon":23.8319651},"tags":{"amenity":"cafe","name":"Cafe Athina","name:el":"Kafeneion Athina"}},
-{"type":"overture","id":"05e42784-9aa6-44e8-91d6-01ea9a10642b","lat":35.4758453,"lon":23.8308506,"tags":{"name":"Κίστος-Cistus","shop":"supermarket","overture:category":"grocery_store","phone":"+302824083106","website":"https://sites.google.com/view/pandopoliocistus/startseite","contact:facebook":"https://www.facebook.com/150359528163231","email":"cistuskinsep@gmail.com","addr:street":"Επαρ.Οδ.Μάλεμε-Νέων Ρουματών","addr:city":"Chaniá","addr:postcode":"73002"}}
+{"type":"overture","id":"05e42784-9aa6-44e8-91d6-01ea9a10642b","lat":35.4758453,"lon":23.8308506,"tags":{"name":"Κίστος-Cistus","shop":"supermarket","phone":"+302824083106","website":"https://sites.google.com/view/pandopoliocistus/startseite","contact:facebook":"https://www.facebook.com/150359528163231","email":"cistuskinsep@gmail.com","addr:street":"Επαρ.Οδ.Μάλεμε-Νέων Ρουματών","addr:city":"Chaniá","addr:postcode":"73002"}}
 ]}

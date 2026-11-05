@@ -1,5 +1,5 @@
 {"elements":[
 {"type":"node","id":1504450541,"lat":35.2078571,"lon":25.3428113,"tags":{"amenity":"hospital","healthcare":"hospital","name":"ΚΕΝΤΡΟ ΥΓΕΙΑΣ ΚΑΣΤΕΛΛΙΟΥ ΠΕΔΙΑΔΟΣ"}},
 {"type":"node","id":5989977722,"lat":35.2093214,"lon":25.3413605,"tags":{"addr:housenumber":"50","description":"Rent rooms","mobile":"+30 697 049 7613","name":"Pansion Elena","phone":"+30 2891 031093","tourism":"guest_house"}},
-{"type":"overture","id":"0edc5c3a-5a5c-43da-be26-6c02c841385a","lat":35.2108116,"lon":25.3439922,"tags":{"name":"Minoa Pharmacy","amenity":"pharmacy","overture:category":"pharmacy","phone":"+306977747828","website":"https://makrakipharmacy.gr/","contact:facebook":"https://www.facebook.com/951648781621261","email":"minoapharmacy@gmail.com","addr:street":"Πλατεία","addr:city":"Περιφερειακή Ενότητα Ηρακλείου","addr:postcode":"700 06"}}
+{"type":"overture","id":"0edc5c3a-5a5c-43da-be26-6c02c841385a","lat":35.2108116,"lon":25.3439922,"tags":{"name":"Minoa Pharmacy","amenity":"pharmacy","phone":"+306977747828","website":"https://makrakipharmacy.gr/","contact:facebook":"https://www.facebook.com/951648781621261","email":"minoapharmacy@gmail.com","addr:street":"Πλατεία","addr:city":"Περιφερειακή Ενότητα Ηρακλείου","addr:postcode":"700 06"}}
 ]}

@@ -1,6 +1,6 @@
 {"elements":[
-{"type":"overture","id":"195a82dc-b7fa-4571-b1e0-cc9e778c1399","lat":35.2840729,"lon":25.0594292,"tags":{"name":"Άνω Καλεσα","tourism":"guest_house","overture:category":"lodging","contact:facebook":"https://www.facebook.com/531711116858128","addr:city":"Γάζι"}},
-{"type":"overture","id":"4cf1f37d-eac6-4283-a338-b6c7c6476e8b","lat":35.2863998,"lon":25.0560093,"tags":{"name":"Το Βυζάντιον","amenity":"cafe","overture:category":"coffee_shop","contact:facebook":"https://www.facebook.com/449867162282713","addr:street":"Λεωφόρος 25ης Μαρτίου","addr:city":"Γάζι","addr:postcode":"715 00"}},
-{"type":"overture","id":"a77b3561-c263-41d0-b4b2-5e774cb1a20d","lat":35.2881012,"lon":25.0583076,"tags":{"name":"Kalesa","amenity":"bar","overture:category":"cocktail_bar","contact:facebook":"https://www.facebook.com/2313018735392492","addr:city":"Γάζι"}},
+{"type":"overture","id":"195a82dc-b7fa-4571-b1e0-cc9e778c1399","lat":35.2840729,"lon":25.0594292,"tags":{"name":"Άνω Καλεσα","tourism":"guest_house","contact:facebook":"https://www.facebook.com/531711116858128","addr:city":"Γάζι"}},
+{"type":"overture","id":"4cf1f37d-eac6-4283-a338-b6c7c6476e8b","lat":35.2863998,"lon":25.0560093,"tags":{"name":"Το Βυζάντιον","amenity":"cafe","contact:facebook":"https://www.facebook.com/449867162282713","addr:street":"Λεωφόρος 25ης Μαρτίου","addr:city":"Γάζι","addr:postcode":"715 00"}},
+{"type":"overture","id":"a77b3561-c263-41d0-b4b2-5e774cb1a20d","lat":35.2881012,"lon":25.0583076,"tags":{"name":"Kalesa","amenity":"bar","contact:facebook":"https://www.facebook.com/2313018735392492","addr:city":"Γάζι"}},
 {"type":"overture","id":"d86ae481-33a2-482d-9dfd-f61e9d44d38a","lat":35.2879524,"lon":25.0568924,"tags":{"name":"Μεζεδοπωλειο Σεϊρι","amenity":"restaurant","overture:category":"restaurant","phone":"+306937203200","contact:facebook":"https://www.facebook.com/563986673981099","addr:street":"Κατω Καλεσσα Κάτω Καλεσσα","addr:city":"Γάζι","addr:postcode":"715 00"}}
 ]}

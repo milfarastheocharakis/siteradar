@@ -1,5 +1,5 @@
 {"elements":[
 {"type":"node","id":11047077344,"lat":35.3303107,"lon":23.8368572,"tags":{"addr:street":"Agia Irini Gorge","name":"Porofarago","phone":"+306973728618","rooms":"3","tourism":"hotel"}},
 {"type":"way","id":735230175,"center":{"lat":35.3302458,"lon":23.8368254},"tags":{"addr:street":"Agia Irini Gorge","amenity":"restaurant","cuisine":"regional","name":"Porofarogo","opening_hours":"Mo-Su 08:00-23:00","phone":"+30 697 372 8618"}},
-{"type":"overture","id":"619937f1-f3f5-4b2c-a2c1-c561fe9c52fc","lat":35.3301048,"lon":23.8370457,"tags":{"name":"Μελίδεων","shop":"supermarket","overture:category":"grocery_store","phone":"+306984174070","website":"http://www.melideon.gr/","contact:facebook":"https://www.facebook.com/102434381255165","email":"info@melideon.gr","addr:city":"Δήμος Καντάνου-Σέλινου","addr:postcode":"730 09"}}
+{"type":"overture","id":"619937f1-f3f5-4b2c-a2c1-c561fe9c52fc","lat":35.3301048,"lon":23.8370457,"tags":{"name":"Μελίδεων","shop":"supermarket","phone":"+306984174070","website":"http://www.melideon.gr/","contact:facebook":"https://www.facebook.com/102434381255165","email":"info@melideon.gr","addr:city":"Δήμος Καντάνου-Σέλινου","addr:postcode":"730 09"}}
 ]}

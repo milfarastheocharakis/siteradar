@@ -1,4 +1,4 @@
 {"elements":[
 {"type":"overture","id":"31c6f944-351f-49bf-a2fc-5f63fbf35101","lat":35.4608459,"lon":24.161108,"tags":{"name":"Almy Seaside","amenity":"restaurant","overture:category":"restaurant","phone":"+306976212788","contact:facebook":"https://www.facebook.com/367816790083298","addr:street":"κολατσος","addr:city":"Δήμος Αποκορώνου","addr:postcode":"73003"}},
-{"type":"overture","id":"e768102d-9b6e-4d77-9d3a-1a828f898e8c","lat":35.4608421,"lon":24.1611271,"tags":{"name":"Ellotis Beach","tourism":"hotel","overture:category":"hotel","contact:facebook":"https://www.facebook.com/101972544925300","addr:street":"Unnamed Road","addr:city":"Περιφέρεια Κρήτης","addr:postcode":"730 03"}}
+{"type":"overture","id":"e768102d-9b6e-4d77-9d3a-1a828f898e8c","lat":35.4608421,"lon":24.1611271,"tags":{"name":"Ellotis Beach","tourism":"hotel","contact:facebook":"https://www.facebook.com/101972544925300","addr:street":"Unnamed Road","addr:city":"Περιφέρεια Κρήτης","addr:postcode":"730 03"}}
 ]}

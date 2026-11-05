@@ -1,4 +1,4 @@
 {"elements":[
-{"type":"overture","id":"19449955-0dd5-42d0-a0c1-38f7f29384f3","lat":34.9886551,"lon":25.1929359,"tags":{"name":"Εθιανός Πορίστης","amenity":"cafe","overture:category":"coffee_shop","contact:facebook":"https://www.facebook.com/569163336857044","addr:street":"Εθιά","addr:city":"Heraklion","addr:postcode":"70010"}},
-{"type":"overture","id":"f8d29858-7fb8-4259-a0ef-c01e1be8f9ce","lat":34.9887238,"lon":25.1931095,"tags":{"name":"Πορίστης: Παραδοσιακό Καφενείο","amenity":"cafe","overture:category":"cafe","contact:facebook":"https://www.facebook.com/2099383010301598","addr:street":"Εθιά Ηρακλείου ","addr:postcode":"70010"}}
+{"type":"overture","id":"19449955-0dd5-42d0-a0c1-38f7f29384f3","lat":34.9886551,"lon":25.1929359,"tags":{"name":"Εθιανός Πορίστης","amenity":"cafe","contact:facebook":"https://www.facebook.com/569163336857044","addr:street":"Εθιά","addr:city":"Heraklion","addr:postcode":"70010"}},
+{"type":"overture","id":"f8d29858-7fb8-4259-a0ef-c01e1be8f9ce","lat":34.9887238,"lon":25.1931095,"tags":{"name":"Πορίστης: Παραδοσιακό Καφενείο","amenity":"cafe","contact:facebook":"https://www.facebook.com/2099383010301598","addr:street":"Εθιά Ηρακλείου ","addr:postcode":"70010"}}
 ]}
