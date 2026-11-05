@@ -1,0 +1,6 @@
+{"elements":[
+{"type":"node","id":3751360646,"lat":35.1798059,"lon":25.5027307,"tags":{"amenity":"restaurant","cuisine":"greek","name":"Κρυσταλλένια","name:el":"Κρυσταλλένια","name:en":"KRYSTALLENIA","contact:facebook":"https://www.facebook.com/247224095622224","phone":"+302844022510","overture:id":"9aedfa6a-200d-4a54-a037-7a23e0714faf"}},
+{"type":"node","id":5160408772,"lat":35.1755593,"lon":25.5030821,"tags":{"amenity":"restaurant","cuisine":"greek","name":"Δίκτη","name:el":"Δίκτη","name:en":"Dikti","website":"http://www.diktitavern.gr","contact:facebook":"https://www.facebook.com/182897225702524","phone":"+302844031255","overture:id":"708c48a7-2d03-4cbe-ab60-ac6815d19c98"}},
+{"type":"node","id":6742521303,"lat":35.1752082,"lon":25.5030294,"tags":{"amenity":"restaurant","name":"Βιλαέτι"}},
+{"type":"node","id":7042300984,"lat":35.1753204,"lon":25.5033154,"tags":{"name":"Vasilikata","tourism":"guest_house","website":"https://www.vasilikata.gr/","contact:facebook":"https://www.facebook.com/1618205984967172","email":"info@vasilikata.gr","phone":"+306977248456","overture:id":"358293f2-ad0d-474a-bf74-3f81b13c2279"}}
+]}

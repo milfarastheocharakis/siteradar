@@ -1,0 +1,4 @@
+{"elements":[
+{"type":"node","id":305268023,"lat":35.2517481,"lon":23.7196671,"tags":{"amenity":"restaurant","name":"Taverna Sto Scolio","contact:facebook":"https://www.facebook.com/102164293271329","phone":"+302823083001","overture:id":"0400b52b-d9eb-4ea7-bebb-565570f797a1","email":"anichri@otenet.gr"}},
+{"type":"overture","id":"9a31cdbb-b3db-418e-9189-134fe8d43c94","lat":35.2567291,"lon":23.7109356,"tags":{"name":"Parko Toxovolias Artemis Archery","leisure":"fitness_centre","overture:category":"archery_range","phone":"+436604440664","website":"http://www.parkotoxovoliasartemis.com/","contact:facebook":"https://www.facebook.com/513496469056597","email":"k.degenhardt-schmolly@gmx.at","addr:street":"Unnamed Road","addr:city":"Δήμος Καντάνου-Σέλινου","addr:postcode":"730 01"}}
+]}

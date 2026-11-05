@@ -1,0 +1,5 @@
+{"elements":[
+{"type":"node","id":632614919,"lat":35.0973989,"lon":24.6563933,"tags":{"amenity":"fast_food","cuisine":"regional","name":"Georgios Taverna"}},
+{"type":"node","id":6388857554,"lat":35.0973642,"lon":24.6549301,"tags":{"amenity":"restaurant","description":"Traverna & Rooms","name":"Nikos Place","phone":"+302832091001","website":"https://www.aggeorgios.gr/","contact:facebook":"https://www.facebook.com/1438685742934877","email":"info@aggeorgios.gr","overture:id":"ef28b3f9-ad4b-407e-9a3a-efb525adf90e"}},
+{"type":"node","id":9282711438,"lat":35.0975675,"lon":24.6549875,"tags":{"name":"Niko","tourism":"apartment"}}
+]}

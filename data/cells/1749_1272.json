@@ -1,0 +1,13 @@
+{"elements":[
+{"type":"node","id":1800367176,"lat":34.9916105,"lon":25.4542618,"tags":{"amenity":"cafe","name":"Ritrovo","website":"https://linktr.ee/Ritrovo_pizza_cafe","contact:facebook":"https://www.facebook.com/125243754550830","phone":"+302895071383","overture:id":"ba9821e1-1450-44e5-baad-38e7182ae3fc"}},
+{"type":"node","id":1800367179,"lat":34.9918238,"lon":25.4532993,"tags":{"name":"Άριαδνη","tourism":"hotel"}},
+{"type":"node","id":1837342815,"lat":34.9916777,"lon":25.4548819,"tags":{"amenity":"cafe","name":"Σίμος"}},
+{"type":"node","id":8069710280,"lat":34.9917536,"lon":25.4535998,"tags":{"addr:city":"Άρβη","addr:postcode":"700 04","amenity":"restaurant","name":"Σπιτικόν","opening_hours":"Mo-Su 08:00-23:30","phone":"+302895071578","contact:facebook":"https://www.facebook.com/102946489285649","email":"spitikon.2022@gmail.com","overture:id":"f3690411-98fd-4653-9f3e-66774b3e4a31"}},
+{"type":"node","id":8069739008,"lat":34.9915714,"lon":25.4545735,"tags":{"amenity":"restaurant","name":"Το Κύμα"}},
+{"type":"node","id":8069794220,"lat":34.991485,"lon":25.4549822,"tags":{"amenity":"cafe","name":"EN PLO"}},
+{"type":"way","id":865755740,"center":{"lat":34.9917997,"lon":25.4548567},"tags":{"name":"Άρβη","name:el":"Άρβη","name:en":"Arvi","shop":"convenience"}},
+{"type":"way","id":1110767761,"center":{"lat":34.9915327,"lon":25.4556215},"tags":{"amenity":"restaurant","cuisine":"greek","name":"Δίκτανα","name:el":"Δίκτανα","name:en":"Diktina"}},
+{"type":"way","id":1110769147,"center":{"lat":34.9911285,"lon":25.4578597},"tags":{"amenity":"restaurant","name":"Γαλαζια Ακτη","name:el":"Γαλαζια Ακτη","name:en":"Galazia Akti"}},
+{"type":"way","id":1110769148,"center":{"lat":34.9909746,"lon":25.4578228},"tags":{"amenity":"restaurant","name":"Γαλαζια Ακτη","name:el":"Γαλαζια Ακτη","name:en":"Galazia Akti"}},
+{"type":"way","id":1110779524,"center":{"lat":34.9921485,"lon":25.4550927},"tags":{"name":"Μπούσου Σομαράκι","operator":"Φαιστός","shop":"convenience"}}
+]}

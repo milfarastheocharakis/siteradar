@@ -1,0 +1,13 @@
+{"elements":[
+{"type":"node","id":538039798,"lat":35.2539786,"lon":24.1716116,"tags":{"name":"Tsapakis","tourism":"hotel"}},
+{"type":"node","id":3599041323,"lat":35.2547606,"lon":24.1718578,"tags":{"amenity":"pub","name":"Ξιρας","name:el":"Ξιρας","name:en":"Xiras"}},
+{"type":"node","id":3774701974,"lat":35.2540351,"lon":24.1715266,"tags":{"amenity":"restaurant","cuisine":"greek","name":"Kalinorisma"}},
+{"type":"node","id":4822842588,"lat":35.2549935,"lon":24.1721695,"tags":{"amenity":"pub","name":"Δροσια","name:el":"Δροσια","name:en":"Drossia","contact:facebook":"https://www.facebook.com/2194118020833257","phone":"+306975125755","overture:id":"0ef162da-935a-448e-b1c9-5f8c1df41aaa"}},
+{"type":"node","id":4822842589,"lat":35.2544547,"lon":24.1719,"tags":{"amenity":"restaurant","name":"Impros village"}},
+{"type":"node","id":10895768810,"lat":35.2546985,"lon":24.1717828,"tags":{"name":"Tabepna","shop":"supermarket"}},
+{"type":"node","id":13566404001,"lat":35.2547564,"lon":24.1712099,"tags":{"addr:postcode":"73100","name":"Archodiko Villa Imbros","tourism":"apartment"}},
+{"type":"node","id":13566418601,"lat":35.252872,"lon":24.1753045,"tags":{"addr:postcode":"73011","name":"Nomas Home Imbros","tourism":"apartment"}},
+{"type":"way","id":254533419,"center":{"lat":35.2481836,"lon":24.1676653},"tags":{"amenity":"restaurant","contact:mobile":"+30 6973728618","name":"Ποροφάραγγο","tourism":"guest_house","contact:facebook":"https://www.facebook.com/1454359088166113","phone":"+302825095450","overture:id":"5cc96f76-b4db-4812-8d60-afb471aefdc4"}},
+{"type":"overture","id":"3374b81f-cdd6-4e3c-8d2f-d0abeb45fb50","lat":35.2539673,"lon":24.1712799,"tags":{"name":"Villa Nostos","tourism":"hotel","overture:category":"hotel","phone":"+306970298891","contact:facebook":"https://www.facebook.com/111370830222186","email":"villanostos@gmail.com","addr:street":"Ίμπρος, Σφακιά","addr:city":"Chaniá"}},
+{"type":"overture","id":"79b117a1-db1a-45ea-8ce7-2aee731a007a","lat":35.2481537,"lon":24.167614,"tags":{"name":"Ιμπρος Σφακια","shop":"travel_agency","overture:category":"tour_operator","contact:facebook":"https://www.facebook.com/205573206214031","addr:street":"impros sfakia","addr:city":"Sfakiá"}}
+]}

@@ -1,8 +1,0 @@
-{"elements":[
-{"type":"node","id":3547956914,"lat":34.961591,"lon":25.0424895,"tags":{"amenity":"restaurant","cuisine":"regional","name":"Thalori Taverna"}},
-{"type":"node","id":3741504785,"lat":34.9646069,"lon":25.0423117,"tags":{"amenity":"restaurant","cuisine":"greek","name":"Gunnar und Luis Taverne"}},
-{"type":"node","id":3741504786,"lat":34.9645441,"lon":25.0422059,"tags":{"amenity":"restaurant","cuisine":"greek","name":"Taverne von Mro und Adriana"}},
-{"type":"node","id":7049933259,"lat":34.94164,"lon":25.0516086,"tags":{"amenity":"cafe","name":"Γιαλός","name:el":"Γιαλός","name:en":"Gialos"}},
-{"type":"node","id":9942024225,"lat":34.9425556,"lon":25.0510391,"tags":{"amenity":"restaurant","name":"Ζερβός","name:el":"Ζερβός","name:en":"Zervos"}},
-{"type":"way","id":754641196,"center":{"lat":34.9410365,"lon":25.0538295},"tags":{"amenity":"restaurant","building":"yes","name":"Κάβο Πόντα","name:el":"Κάβο Πόντα","name:en":"Cavo Ponta"}}
-]}

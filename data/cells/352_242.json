@@ -1,7 +1,0 @@
-{"elements":[
-{"type":"node","id":2326798940,"lat":35.2379986,"lon":24.2564469,"tags":{"addr:housename":"Wild Herbs of Crete","alt_name":"Little Cafe","amenity":"cafe","cuisine":"greek","name":"Babis Janina Wild Herbs of Crete","outdoor_seating":"yes","phone":"+30 6949092073","tourism":"attraction","website":"https://www.wildherbsofcrete.com/","wheelchair":"limited"}},
-{"type":"node","id":5083727056,"lat":35.2410309,"lon":24.2141569,"tags":{"amenity":"restaurant","contact:phone":"+30 6973629547","name":"Asfendou"}},
-{"type":"node","id":11614901596,"lat":35.2740843,"lon":24.2836236,"tags":{"addr:country":"GR","addr:housenumber":"987","addr:postcode":"74055","addr:street":"ΑΣΗ ΓΩΝΙΑΣ","contact:email":"k.asigonias@kep.gov.gr","contact:phone":"+30 2831340320","contact:website":"https://www.kep.gov.gr/","name":"ΚΕΠ ΑΣΗ ΓΩΝΙΑΣ","name:el":"ΚΕΠ ΑΣΗ ΓΩΝΙΑΣ","office":"government","ref:GR:kepId":"0994"}},
-{"type":"way","id":373576321,"center":{"lat":35.2409961,"lon":24.2603973},"tags":{"addr:city":"Καλλικράτης","addr:postcode":"73011","amenity":"restaurant","building":"yes","cuisine":"regional","int_name":"T' armi tou Kallikrati","name":"Τ' Αρμί του Καλλικράτη","opening_hours":"Mo-Su,PH 09:00-22:30"}},
-{"type":"way","id":1351892187,"center":{"lat":35.2028443,"lon":24.2387143},"tags":{"amenity":"restaurant","building":"yes","cuisine":"coffee_shop;regional","ele":"96.26","int_name":"Vigles","internet_access":"wlan","name":"Βίγλες","phone":"+30 2825 092395"}}
-]}

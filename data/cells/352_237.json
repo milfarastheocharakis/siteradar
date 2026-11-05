@@ -1,9 +1,0 @@
-{"elements":[
-{"type":"node","id":305268023,"lat":35.2517481,"lon":23.7196671,"tags":{"amenity":"restaurant","ele":"188.78","internet_access":"wlan","name":"Taverna Sto Scolio"}},
-{"type":"node","id":4381829589,"lat":35.2953587,"lon":23.7549259,"tags":{"amenity":"restaurant","name":"τα τεμενια","name:el":"τα τεμενια"}},
-{"type":"node","id":13672167301,"lat":35.2922028,"lon":23.7385086,"tags":{"name":"traditional Stone House","tourism":"guest_house"}},
-{"type":"node","id":13672173601,"lat":35.298327,"lon":23.7895589,"tags":{"amenity":"restaurant","name":"The old petrol station meditetanes Restaurant"}},
-{"type":"way","id":203693059,"center":{"lat":35.2369779,"lon":23.720007},"tags":{"amenity":"bar","building":"yes","name":"Beach Bar"}},
-{"type":"way","id":245174423,"center":{"lat":35.2720881,"lon":23.7218629},"tags":{"building":"yes","email":"alfacafenion@aol.com","internet_access":"no","name":"Alfa Hotel","phone":"+30 2823041620","tourism":"hotel"}},
-{"type":"way","id":304986220,"center":{"lat":35.2724113,"lon":23.7199377},"tags":{"addr:place":"Αζογυρές","addr:postcode":"73001","amenity":"cafe","building":"yes","cuisine":"regional","internet_access":"yes","name":"To Kafenio Tou Azogire","name:el":"Το Καφενείο Του Αζωγυρέ","phone":"+30 28230 41620","smoking":"outside","website":"http://azogires-alpha.blogspot.com"}}
-]}

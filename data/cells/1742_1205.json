@@ -1,0 +1,16 @@
+{"elements":[
+{"type":"node","id":1947271649,"lat":34.8586351,"lon":24.1107479,"tags":{"addr:city":"Γαύδος","amenity":"restaurant","name":"Νυχτερίδα"}},
+{"type":"node","id":2422648128,"lat":34.8486692,"lon":24.1189609,"tags":{"amenity":"pub","name":"Litsa"}},
+{"type":"node","id":6839286985,"lat":34.8586003,"lon":24.1107713,"tags":{"addr:city":"Γαύδος","name":"Νυχτερίδα","shop":"supermarket"}},
+{"type":"node","id":6839286987,"lat":34.8582592,"lon":24.110867,"tags":{"amenity":"restaurant","name":"Vailakakis Emmanouil Restaurant","name:el":"Εστιατόριο Βαιλακάκης Εμμανουήλ","name:en":"Vailakakis Emmanouil Restaurant"}},
+{"type":"node","id":6839286989,"lat":34.8587954,"lon":24.1102076,"tags":{"amenity":"restaurant","name":"Κέδρος"}},
+{"type":"node","id":9921010266,"lat":34.8586787,"lon":24.1134242,"tags":{"amenity":"restaurant","name":"Χελώνα","website":"http://www.xelona.gr/","contact:facebook":"https://www.facebook.com/363775040476615","email":"xelona.gavdos@gmail.com","phone":"+306942908663","overture:id":"bc5a7b90-1924-4e98-b56c-2bb914a0fe45"}},
+{"type":"node","id":9921010275,"lat":34.8585261,"lon":24.1117192,"tags":{"amenity":"restaurant","name":"Στην άκρη"}},
+{"type":"node","id":9921010289,"lat":34.8587912,"lon":24.112865,"tags":{"amenity":"restaurant","cuisine":"greek","name":"Το Κύμα"}},
+{"type":"node","id":13924065988,"lat":34.8584195,"lon":24.1103621,"tags":{"addr:city":"Γαύδος","name":"Kiki's Mini market","phone":"+302823041106","shop":"supermarket","website":"https://kikigavdos.gr/"}},
+{"type":"node","id":13924065989,"lat":34.8588707,"lon":24.1099356,"tags":{"amenity":"restaurant","contact:phone":"+30 28230 42181","name":"The 4 brothers","name:el":"τα 4 αδέλφια","name:en":"The 4 brothers"}},
+{"type":"way","id":426143668,"center":{"lat":34.8558873,"lon":24.1100798},"tags":{"amenity":"theatre","name":"Υπαίθριο Θέατρο Γαύδου"}},
+{"type":"overture","id":"101f6c36-7433-4209-a605-0229253431b6","lat":34.84832,"lon":24.1189423,"tags":{"name":"Port of Gavdos - Karaves","office":"company","overture:category":"ferry_boat_company","contact:facebook":"https://www.facebook.com/583846522045252"}},
+{"type":"overture","id":"1214faa7-f110-4923-bba8-7c98b269654f","lat":34.858078,"lon":24.1108055,"tags":{"name":"Ψαροταβέρνα ΤΟ ΣΑΡΑΚΙΝΙΚΟ...","cuisine":"seafood","amenity":"restaurant","overture:category":"seafood_restaurant","website":"http://www.gavdos-crete.com/","contact:facebook":"https://www.facebook.com/116243595084206","email":"gavdosvailakaki@yahoo.com","addr:street":"Γαύδος (Gavdos), Σαρακίνικο (Sarakiniko)","addr:postcode":"73001"}},
+{"type":"overture","id":"e214cd8b-3ae3-48f0-8788-e02adfd8f501","lat":34.8570061,"lon":24.1071949,"tags":{"name":"Consolas Gavdos Studios","tourism":"hotel","overture:category":"hotel","phone":"+306971971364","website":"http://www.gavdostudios.gr/","contact:facebook":"https://www.facebook.com/212118058826928","email":"office@gavdos-online.com","addr:street":"Sarakiniko","addr:city":"Γαύδος","addr:postcode":"730 01"}}
+]}

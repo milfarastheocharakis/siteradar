@@ -1,0 +1,5 @@
+{"elements":[
+{"type":"node","id":3522170979,"lat":35.1235804,"lon":24.607703,"tags":{"amenity":"cafe","name":"Καφενείο"}},
+{"type":"overture","id":"59577f13-805b-449d-876f-bf2f87ef4add","lat":35.1227722,"lon":24.6154289,"tags":{"name":"Καφενείο Ο Πετρές","amenity":"restaurant","overture:category":"restaurant","phone":"+306978151318","contact:facebook":"https://www.facebook.com/648016195867882","email":"melissinakis@hotmail.gr","addr:city":"Περιφέρεια Κρήτης","addr:postcode":"740 53"}},
+{"type":"overture","id":"7e7ed197-5f8b-4558-993d-54e5781be27c","lat":35.1229897,"lon":24.6076183,"tags":{"name":"Villa Saktouris","tourism":"apartment","overture:category":"holiday_rental_home","phone":"+306983661206","website":"http://www.villasaktouris.gr/index.php?langid=52#nav_10513_detail","contact:facebook":"https://www.facebook.com/1869941389713079","email":"villasaktouris@gmail.com","addr:city":"Lampi"}}
+]}

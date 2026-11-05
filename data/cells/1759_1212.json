@@ -1,0 +1,10 @@
+{"elements":[
+{"type":"node","id":2339782460,"lat":35.1821911,"lon":24.2416607,"tags":{"name":"Sunrise","tourism":"hotel"}},
+{"type":"node","id":3770162463,"lat":35.1860091,"lon":24.2473285,"tags":{"amenity":"fast_food","cuisine":"regional","name":"Kantina"}},
+{"type":"way","id":240800665,"center":{"lat":35.1834664,"lon":24.243946},"tags":{"amenity":"restaurant","name":"Akti Tavern & Cafe","contact:facebook":"https://www.facebook.com/1877526358965242","email":"coast.tavern1@gmail.com","phone":"+306973744339","overture:id":"d5d4b9c1-9138-434f-8126-aa59ff584a1f"}},
+{"type":"way","id":356068950,"center":{"lat":35.1839868,"lon":24.2430742},"tags":{"contact:email":"info@paradisos.gr","contact:website":"http://paradisos.gr/","name":"Παράδεισός","name:el":"Παράδεισός","name:en":"Paradisos","phone":"+30 28250 92078","tourism":"apartment","contact:facebook":"https://www.facebook.com/190335457791773","email":"info@paradisos.gr","overture:id":"7dad2463-8439-4340-8f90-829a254b9358"}},
+{"type":"way","id":356068952,"center":{"lat":35.1844519,"lon":24.244861},"tags":{"email":"info@fata-morgana.gr","name":"Fata Morgana","phone":"+30 28250 92077","tourism":"apartment","website":"https://www.fata-morgana.gr/","contact:facebook":"https://www.facebook.com/53927216539","overture:id":"7e5b96b2-a6b8-4518-a96a-01ab18079544"}},
+{"type":"way","id":356076512,"center":{"lat":35.1822198,"lon":24.2416769},"tags":{"amenity":"restaurant","cuisine":"greek","name":"Sunrise"}},
+{"type":"way","id":372573497,"center":{"lat":35.183974,"lon":24.2489778},"tags":{"amenity":"restaurant","cuisine":"regional","name":"Argilos","website":"http://www.argilos-apartments.gr/","contact:facebook":"https://www.facebook.com/856385627783545","email":"info@argilos-apartments.gr","phone":"+306979308365","overture:id":"bb38bfaa-72ae-4254-b78d-b2bec7da4bf8"}},
+{"type":"way","id":740788616,"center":{"lat":35.1909258,"lon":24.2521433},"tags":{"name":"Captain Tom","tourism":"hotel","website":"http://captaintom.gr/","contact:facebook":"https://www.facebook.com/294864107519830","phone":"+306945330224","overture:id":"2a72e805-2d55-4b48-b0b2-9551b62cf79e"}}
+]}

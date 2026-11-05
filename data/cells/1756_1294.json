@@ -1,0 +1,5 @@
+{"elements":[
+{"type":"overture","id":"05a73707-5ead-45be-acf7-47d1fadf97ca","lat":35.1388397,"lon":25.8993683,"tags":{"name":"Λαστρος Σητειας Κρητης","amenity":"restaurant","overture:category":"diner","contact:facebook":"https://www.facebook.com/216323238394948","addr:street":"Lastros","addr:city":"Sitía","addr:postcode":"72057"}},
+{"type":"overture","id":"c9a13a52-5dbf-44a5-b143-753683a19809","lat":35.1385918,"lon":25.899086,"tags":{"name":"Erotokritos","cuisine":"greek","amenity":"restaurant","overture:category":"greek_restaurant","phone":"+306976556623","contact:facebook":"https://www.facebook.com/464720823867123","email":"markos19821@hotmail.com","addr:city":"Δημοτική Ενότητα Σητείας","addr:postcode":"720 57"}},
+{"type":"overture","id":"e3adaea3-ecf5-4657-adad-60e47055aa8f","lat":35.139019,"lon":25.8998165,"tags":{"name":"To kafeneio Lastros","amenity":"cafe","overture:category":"cafe","phone":"+306945491930","contact:facebook":"https://www.facebook.com/1047125965380503","addr:street":"lastros","addr:city":"Sitía"}}
+]}

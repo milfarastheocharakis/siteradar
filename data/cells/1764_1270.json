@@ -1,0 +1,5 @@
+{"elements":[
+{"type":"node","id":13922592301,"lat":35.2956596,"lon":25.4150638,"tags":{"name":"Marimae Apt","tourism":"hotel"}},
+{"type":"overture","id":"334e7b0a-9cf1-4fd3-a8d4-371234ba5da5","lat":35.2981644,"lon":25.4186211,"tags":{"name":"Blue View Villas","tourism":"hotel","overture:category":"hotel","phone":"+306977290629","website":"http://www.blueviewvillas.com/","contact:facebook":"https://www.facebook.com/1856075601148839","email":"blueviewvillas@gmail.com","addr:street":"Parodos Odou Dimokratias","addr:city":"Δημοτική Ενότητα Μαλίων","addr:postcode":"700 07"}},
+{"type":"overture","id":"8b0e4547-ce6c-4231-8e4e-c41f9934f351","lat":35.296936,"lon":25.4190769,"tags":{"name":"Angiespalace","tourism":"guest_house","overture:category":"lodging","contact:facebook":"https://www.facebook.com/235665990208364","addr:street":"Angies palace","addr:city":"Μάλια"}}
+]}

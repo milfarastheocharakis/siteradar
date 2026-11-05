@@ -1,9 +1,0 @@
-{"elements":[
-{"type":"node","id":4374291193,"lat":35.099982,"lon":25.1171802,"tags":{"contact:phone":"+30 28940 51060","contact:website":"http://gavalascretewines.gr/en/","drink:wine":"retail","name":"Gavalas","shop":"alcohol"}},
-{"type":"node","id":9282711420,"lat":35.006254,"lon":25.1551771,"tags":{"amenity":"restaurant","cuisine":"greek","name":"Minas"}},
-{"type":"node","id":9282711422,"lat":35.0106485,"lon":25.133549,"tags":{"amenity":"restaurant","name":"Villagio"}},
-{"type":"node","id":9282711423,"lat":35.0112985,"lon":25.1200591,"tags":{"name":"Creta Market","shop":"supermarket"}},
-{"type":"node","id":9282711424,"lat":35.0111611,"lon":25.1200474,"tags":{"amenity":"cafe","name":"Luigi"}},
-{"type":"node","id":11614901837,"lat":35.0080588,"lon":25.1549152,"tags":{"addr:country":"GR","addr:postcode":"70010","addr:street":"ΠΥΡΓΟΣ","contact:email":"d.asterousion@kep.gov.gr","contact:phone":"+30 2893340129","contact:website":"https://www.kep.gov.gr/","name":"ΚΕΠ ΑΣΤΕΡΟΥΣΙΩΝ","name:el":"ΚΕΠ ΑΣΤΕΡΟΥΣΙΩΝ","office":"government","ref:GR:kepId":"0526"}},
-{"type":"node","id":13236842068,"lat":35.0081553,"lon":25.154538,"tags":{"addr:city":"Πύργος Ηρακλείου","addr:postcode":"70010","contact:phone":"+30 2893022196","contact:website":"http://www.gontes.gr/","description":"Τζάμια - Κορνίζες - Είδη Σκίασης","name":"Γκοντές","name:el":"Γκοντές","name:en":"Gontes","shop":"hardware"}}
-]}

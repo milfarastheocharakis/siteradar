@@ -1,5 +1,0 @@
-{"elements":[
-{"type":"node","id":1750842740,"lat":35.1108867,"lon":24.7601139,"tags":{"name":"Klima","shop":"convenience"}},
-{"type":"node","id":2986003330,"lat":35.1185776,"lon":24.7153354,"tags":{"amenity":"restaurant","cuisine":"greek","indoor_seating":"yes","internet_access":"wlan","name":"Taverna Mavtres","name:en":"Tavern Mandres","outdoor_seating":"yes"}},
-{"type":"way","id":1112733163,"center":{"lat":35.1082981,"lon":24.703327},"tags":{"building":"house","building:levels":"1","height":"3","name":"Galini Rondorf","tourism":"apartment"}}
-]}

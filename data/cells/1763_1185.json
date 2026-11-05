@@ -1,0 +1,4 @@
+{"elements":[
+{"type":"way","id":304986220,"center":{"lat":35.2724113,"lon":23.7199377},"tags":{"addr:place":"Αζογυρές","addr:postcode":"73001","amenity":"cafe","cuisine":"regional","name":"To Kafenio Tou Azogire","name:el":"Το Καφενείο Του Αζωγυρέ","phone":"+30 28230 41620","website":"http://azogires-alpha.blogspot.com"}},
+{"type":"overture","id":"97b20347-3a0e-49cb-84c1-8119ba7419a7","lat":35.2723083,"lon":23.7198067,"tags":{"name":"Alfa Cafe Restaurant","cuisine":"chicken","amenity":"restaurant","overture:category":"chicken_restaurant","website":"https://www.azogires.com/restaurant-cafe/","contact:facebook":"https://www.facebook.com/247667075867620"}}
+]}

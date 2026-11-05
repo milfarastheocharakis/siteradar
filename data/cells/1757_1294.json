@@ -1,0 +1,4 @@
+{"elements":[
+{"type":"node","id":3751331214,"lat":35.1551666,"lon":25.880506,"tags":{"amenity":"restaurant","cuisine":"regional","name":"Πανόραμα","name:el":"Πανόραμα","website":"http://okete.com/page/panorama","contact:facebook":"https://www.facebook.com/481253598604286","phone":"+306977084586","overture:id":"4913cbfa-a037-4278-bf4f-b12f755327a3"}},
+{"type":"overture","id":"4576f6f8-46da-4a30-ae4f-d9c8901ee019","lat":35.1580162,"lon":25.8942833,"tags":{"name":"Taverna Natural","cuisine":"greek","amenity":"restaurant","overture:category":"greek_restaurant","phone":"+306949784659","contact:facebook":"https://www.facebook.com/129083887746066","addr:street":"Σινοσελι","addr:city":"Δημοτική Ενότητα Σητείας","addr:postcode":"720 57"}}
+]}

@@ -1,0 +1,5 @@
+{"elements":[
+{"type":"node","id":4271299198,"lat":35.2132387,"lon":25.5219389,"tags":{"addr:street":"Νεάπολης - Τζερμιάδου","amenity":"restaurant","cuisine":"greek;grill","name":"Marianna"}},
+{"type":"node","id":12307414847,"lat":35.2135216,"lon":25.5219143,"tags":{"addr:floor":"0","addr:street":"Νεάπολης - Οροπεδίου","amenity":"restaurant","cuisine":"regional;greek;grill","name":"Taverna"}},
+{"type":"overture","id":"c276110d-45bf-4828-8aba-5b8ef6e4435e","lat":35.2133141,"lon":25.521574,"tags":{"name":"Μεσα Ποταμοι Λασιθι","amenity":"restaurant","overture:category":"diner","contact:facebook":"https://www.facebook.com/625479224164223","addr:street":"Μέσα Ποταμοί","addr:city":"�?gios Nikólaos","addr:postcode":"720 52"}}
+]}

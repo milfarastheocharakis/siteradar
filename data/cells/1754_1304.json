@@ -1,0 +1,5 @@
+{"elements":[
+{"type":"node","id":2394405036,"lat":35.0816365,"lon":26.0982747,"tags":{"amenity":"restaurant","name":"Taverna"}},
+{"type":"node","id":14182248133,"lat":35.0819922,"lon":26.0985326,"tags":{"amenity":"restaurant","name":"Taverna"}},
+{"type":"overture","id":"c578a1ee-0316-4fed-8558-7839bd79f4c9","lat":35.0819473,"lon":26.0984211,"tags":{"name":"Taverna Marika","amenity":"restaurant","overture:category":"restaurant","phone":"+302843500129","contact:facebook":"https://www.facebook.com/531034793958617","addr:street":"Πλατεῖα Διονυσίου Σολομοῦ","addr:city":"Δημοτική Ενότητα Λεύκης","addr:postcode":"720 59"}}
+]}

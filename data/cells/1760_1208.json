@@ -1,0 +1,12 @@
+{"elements":[
+{"type":"node","id":960689608,"lat":35.2078336,"lon":24.170953,"tags":{"amenity":"restaurant","cuisine":"greek","name":"Imbros"}},
+{"type":"node","id":1297486329,"lat":35.2077043,"lon":24.1727236,"tags":{"amenity":"restaurant","cuisine":"greek","name":"Komitades"}},
+{"type":"node","id":2965349579,"lat":35.208096,"lon":24.1695959,"tags":{"amenity":"restaurant","name":"Ostria"}},
+{"type":"node","id":3620526154,"lat":35.2082094,"lon":24.1672704,"tags":{"amenity":"restaurant","cuisine":"regional","name":"Taverna Zormpas"}},
+{"type":"node","id":3620526156,"lat":35.2078928,"lon":24.1677068,"tags":{"amenity":"restaurant","cuisine":"regional","name":"Taverna Giorgos","tourism":"guest_house"}},
+{"type":"node","id":5220382598,"lat":35.2076584,"lon":24.171865,"tags":{"amenity":"restaurant","cuisine":"greek","name":"Dionysos"}},
+{"type":"node","id":5220388313,"lat":35.2074169,"lon":24.1733197,"tags":{"amenity":"restaurant","cuisine":"greek","name":"Komitades"}},
+{"type":"node","id":5220393174,"lat":35.2081997,"lon":24.170556,"tags":{"amenity":"restaurant","cuisine":"greek","name":"Metelmi"}},
+{"type":"node","id":9987632995,"lat":35.2071843,"lon":24.168373,"tags":{"name":"Saint George","shop":"religion"}},
+{"type":"way","id":240795717,"center":{"lat":35.2034661,"lon":24.1643502},"tags":{"amenity":"restaurant","name":"Ποσειδώνιο","contact:facebook":"https://www.facebook.com/874766465947870","email":"matsa1992@hotmail.com","phone":"+302825091047","overture:id":"604054da-a1b2-4a85-8502-6cb16525fd07"}}
+]}

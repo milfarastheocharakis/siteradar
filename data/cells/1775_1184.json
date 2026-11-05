@@ -1,0 +1,7 @@
+{"elements":[
+{"type":"node","id":601627162,"lat":35.5007905,"lon":23.6949052,"tags":{"amenity":"restaurant","cuisine":"regional","name":"Babis","name:el":"Hippokampos","name:en":"Hippokampos"}},
+{"type":"node","id":601627165,"lat":35.500971,"lon":23.6957816,"tags":{"name":"Appartement Zefyros","tourism":"chalet"}},
+{"type":"node","id":13132809092,"lat":35.5009436,"lon":23.6954707,"tags":{"amenity":"fast_food","cuisine":"greek;ice_cream","name":"Canteen Totem"}},
+{"type":"node","id":13144669206,"lat":35.5013874,"lon":23.6977382,"tags":{"name":"Drapania Beach Marinakis Apartments","tourism":"chalet","website":"http://www.drapaniasbeach.gr"}},
+{"type":"overture","id":"e2e07cef-eb17-4d6f-8cb2-62d180cecadc","lat":35.5008316,"lon":23.6947689,"tags":{"name":"Ippokampos Beach Restaurant","amenity":"cafe","overture:category":"cafe","phone":"+306932225079","website":"http://www.ippokampos-drapanias.gr/","contact:facebook":"https://www.facebook.com/787726718000992","email":"ippokampos.cafe.restaurant@gmail.com","addr:street":"drapanias beach","addr:city":"Μύθημνα","addr:postcode":"73400"}}
+]}

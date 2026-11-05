@@ -1,0 +1,4 @@
+{"elements":[
+{"type":"way","id":667746683,"center":{"lat":35.1920454,"lon":25.0783632},"tags":{"addr:city":"Κυπαρίσσι","amenity":"restaurant","cuisine":"greek","name":"Ταβερνα του Γιάννη","name:el":"Ταβερνα του Γιάννη","name:en":"Yiannis Taverna","opening_hours":"Oct-May, closed in Summer","phone":"+30 281 087 1451","contact:facebook":"https://www.facebook.com/292661451569493","overture:id":"608022f1-65cb-4f64-bd00-77d643d7e08e"}},
+{"type":"overture","id":"c1ed3a1d-7ab9-4d5f-bee1-97a4fb923738","lat":35.1915512,"lon":25.0770874,"tags":{"name":"Φούρνος Αφοί Σωμαράκη","shop":"bakery","overture:category":"bakery","phone":"+302810871400","website":"https://www.fournos-somaraki.gr/","contact:facebook":"https://www.facebook.com/247014922335552","email":"artos.somaraki@gmail.com","addr:street":"Κυπάρισσος 0","addr:city":"Ηράκλειο","addr:postcode":"715 00"}}
+]}

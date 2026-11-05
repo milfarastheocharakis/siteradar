@@ -1,0 +1,5 @@
+{"elements":[
+{"type":"node","id":307485788,"lat":35.3853814,"lon":23.6658113,"tags":{"amenity":"fuel","name":"Silkoil","operator":"Silkoil","shop":"kiosk"}},
+{"type":"node","id":540887539,"lat":35.3811757,"lon":23.6625497,"tags":{"amenity":"restaurant","name":"OI MYLOI"}},
+{"type":"node","id":828058947,"lat":35.3854689,"lon":23.6658725,"tags":{"name":"Mini.Market Myloi","shop":"convenience"}}
+]}

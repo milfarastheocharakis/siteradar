@@ -1,0 +1,14 @@
+{"elements":[
+{"type":"node","id":5749006225,"lat":35.0132455,"lon":25.0002516,"tags":{"amenity":"restaurant","cuisine":"greek","name":"Ιδομενέας","name:el":"Ιδομενέας","name:en":"Idomeneus","phone":"+302893041754"}},
+{"type":"node","id":11935409858,"lat":35.0135987,"lon":25.0005707,"tags":{"name":"Nikitas Barber","shop":"hairdresser"}},
+{"type":"node","id":11935447872,"lat":35.0134098,"lon":25.0004687,"tags":{"name":"Φαιστος Super Market Μακρυγιαννάκη","shop":"supermarket"}},
+{"type":"node","id":11935542945,"lat":35.0133581,"lon":25.0001927,"tags":{"name":"Κρεοπωλείο Γεωργίου Εμμ. Καδιανάκη","shop":"butcher"}},
+{"type":"node","id":11935554968,"lat":35.0138747,"lon":25.0008983,"tags":{"amenity":"cafe","cuisine":"coffee_shop","name":"Καφενείο Νεονάκης"}},
+{"type":"node","id":11935577631,"lat":35.0134892,"lon":25.0004314,"tags":{"amenity":"fast_food","name":"Cafeteria Μενεγάκη"}},
+{"type":"node","id":11935579614,"lat":35.0132449,"lon":25.0002109,"tags":{"amenity":"restaurant","name":"Ταβέρνα - Ουξερί “Η πλατεία“"}},
+{"type":"node","id":11935580008,"lat":35.0135261,"lon":25.000179,"tags":{"amenity":"restaurant","name":"Snack Bar"}},
+{"type":"node","id":11935580299,"lat":35.0140376,"lon":25.0006917,"tags":{"name":"Παραδοσιακό μανάβικο παντοπωλείο Βρυσανάκης","shop":"supermarket"}},
+{"type":"overture","id":"429ab09f-3b1f-4e11-acde-508454a70bac","lat":35.0149918,"lon":25.0009098,"tags":{"name":"Φορολογική Μεσσαράς","office":"financial","overture:category":"financial_service","phone":"+306936512070","contact:facebook":"https://www.facebook.com/321718388309084","email":"forologikimessaras@gmail.com","addr:street":"Βαγιωνιά ","addr:city":"Heraklion","addr:postcode":"70012"}},
+{"type":"overture","id":"57d62749-e5f5-4030-b6f2-a442bf914753","lat":35.0132027,"lon":25.00033,"tags":{"name":"Tsicafe","amenity":"cafe","overture:category":"cafe","phone":"+306974372787","contact:facebook":"https://www.facebook.com/102376345209129","addr:street":"Epar.Od. Platanou - Charaka","addr:city":"Δήμος Γόρτυνας","addr:postcode":"700 12"}},
+{"type":"overture","id":"77733e47-6f3a-4136-b304-ee4b16391ee4","lat":35.0149918,"lon":25.0009098,"tags":{"name":"Τα Τρελα Παπακια","shop":"car","overture:category":"auto_dealer","phone":"+306973051067","contact:facebook":"https://www.facebook.com/110319030559404","email":"tatrelapapakia@yahoo.com","addr:street":"ΒΑΓΙΟΝΙΑ  Δ. ΓΟΡΤΥΝΑΣ","addr:city":"Heraklion","addr:postcode":"70012"}}
+]}

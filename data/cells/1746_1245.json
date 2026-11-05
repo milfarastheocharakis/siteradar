@@ -1,0 +1,15 @@
+{"elements":[
+{"type":"node","id":292033153,"lat":34.9300525,"lon":24.9146573,"tags":{"email":"villatsapaki@her.forthnet.gr","name":"Villa Tsapakis","operator":"Tsapakis","phone":"+30 28920 95378","tourism":"hotel","website":"https://www.villa-tsapakis.gr/"}},
+{"type":"node","id":1110390515,"lat":34.9297772,"lon":24.9144937,"tags":{"amenity":"restaurant","cuisine":"greek","name":"Taverna Odysseas","operator":"Tsapakis","contact:facebook":"https://www.facebook.com/137864499686529","phone":"+302892095266","overture:id":"25a0a6bf-74af-428f-9137-d059c870ac40"}},
+{"type":"node","id":4785724516,"lat":34.9297102,"lon":24.9149868,"tags":{"addr:city":"Dytikos","addr:postcode":"70400","description":"Are you ready for a cretan outdoor adventures?","email":"info@cretan-outdoor-adventures.com","name":"Cretan Outdoor Adventures","phone":"+30 69090 08502","shop":"travel_agency","website":"https://cretan-outdoor-adventures.com/"}},
+{"type":"node","id":4785734018,"lat":34.9297365,"lon":24.9149445,"tags":{"addr:city":"Dytikos","addr:postcode":"70400","amenity":"restaurant","cuisine":"regional","description":"nette kleine Taverne direkt am Meer","name":"Susi's Cafe Relax","opening_hours":"09:00-23:00","phone":"+30 28920 95 240","website":"https://www.facebook.com/Susis-Caf%C3%A9-Relax-163180567074291/?fref=ts"}},
+{"type":"node","id":5249327826,"lat":34.9298483,"lon":24.9142697,"tags":{"amenity":"restaurant","name":"Patisserei Lakuva"}},
+{"type":"node","id":5249333582,"lat":34.929527,"lon":24.9147781,"tags":{"name":"Voula","tourism":"guest_house"}},
+{"type":"node","id":5249377967,"lat":34.9304858,"lon":24.9125546,"tags":{"name":"Sifis","tourism":"guest_house"}},
+{"type":"node","id":5249377968,"lat":34.9299888,"lon":24.9133432,"tags":{"name":"Dytikos Studios","name:en":"Dytikos Studios","tourism":"guest_house"}},
+{"type":"way","id":241052288,"center":{"lat":34.9295049,"lon":24.9147696},"tags":{"amenity":"restaurant","cuisine":"regional","name":"Taverna Voula"}},
+{"type":"way","id":449249603,"center":{"lat":34.9298896,"lon":24.9136402},"tags":{"amenity":"restaurant","cuisine":"regional","name":"Christina's Bistro"}},
+{"type":"way","id":1102313776,"center":{"lat":34.9300353,"lon":24.9135244},"tags":{"name":"Great Eastern Studios","tourism":"guest_house"}},
+{"type":"overture","id":"19782bd6-82ab-4128-b720-0ec17a7c11ef","lat":34.9313354,"lon":24.9146442,"tags":{"name":"Mythos Restaurant Diskos","amenity":"restaurant","overture:category":"restaurant","phone":"+306936709990","contact:facebook":"https://www.facebook.com/807127706129918","addr:city":"Δήμος Γόρτυνας","addr:postcode":"704 00"}},
+{"type":"overture","id":"a451bb68-0eeb-405e-acb4-5d9cc62d109f","lat":34.9309006,"lon":24.9143791,"tags":{"name":"Disco Memory","amenity":"bar","overture:category":"bar","phone":"+306982032885","contact:facebook":"https://www.facebook.com/107587256540686","addr:city":"Δήμος Γόρτυνας","addr:postcode":"704 00"}}
+]}

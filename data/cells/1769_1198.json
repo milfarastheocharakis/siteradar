@@ -1,0 +1,9 @@
+{"elements":[
+{"type":"node","id":1300774637,"lat":35.3858009,"lon":23.9619849,"tags":{"amenity":"restaurant","cuisine":"regional","name":"Ταβερνα Αιμιλιας"}},
+{"type":"node","id":3741483485,"lat":35.3885204,"lon":23.9600403,"tags":{"amenity":"restaurant","name":"Taverna Zourva Rizinia","contact:facebook":"https://www.facebook.com/511099099295773","phone":"+302821067054","overture:id":"0cbb0906-f647-458b-a3fa-bc621c4f76c8"}},
+{"type":"way","id":1318902027,"center":{"lat":35.396497,"lon":23.9676137},"tags":{"amenity":"restaurant","name":"TAVERNA(ABANDONED)"}},
+{"type":"way","id":1318902997,"center":{"lat":35.397371,"lon":23.9669086},"tags":{"name":"HOTEL(ABANDONED)","tourism":"hotel"}},
+{"type":"overture","id":"4fd5897b-29ea-459e-98cf-4ee18cfb735a","lat":35.3855438,"lon":23.9627399,"tags":{"name":"Apirathes","tourism":"hotel","overture:category":"hotel","phone":"+302821067147","website":"http://www.apirathes-zourva.gr/","contact:facebook":"https://www.facebook.com/436471903166280","email":"apiratheszourva@gmail.com","addr:street":"Epar.Od. Fournes-Therissou","addr:city":"Δήμος Πλατανιά","addr:postcode":"730 05"}},
+{"type":"overture","id":"a943be2e-b7c6-4f57-8cef-f924c8490b71","lat":35.3858032,"lon":23.9620399,"tags":{"name":"Ζουρβα-ταβερνα Αιμιλια","cuisine":"greek","amenity":"restaurant","overture:category":"greek_restaurant","contact:facebook":"https://www.facebook.com/197841340307655","addr:street":"Ζούρβα","addr:city":"Zoúrva"}},
+{"type":"overture","id":"c0837b3c-9b1b-47f8-9018-b6958e875406","lat":35.3857727,"lon":23.9619522,"tags":{"name":"Taverna Emelia’s","cuisine":"greek","amenity":"restaurant","overture:category":"greek_restaurant","contact:facebook":"https://www.facebook.com/103348751174413","addr:postcode":"730 05"}}
+]}

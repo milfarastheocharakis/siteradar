@@ -1,0 +1,6 @@
+{"elements":[
+{"type":"way","id":1523404916,"center":{"lat":35.1136777,"lon":24.9883426},"tags":{"addr:place":"Κοινότητα Αγίας Βαρβάρας","amenity":"events_venue","name":"ΚΟΥΛΕΣ Live","name:en":"KOULES Live"}},
+{"type":"overture","id":"744864a6-825f-447d-95f6-d6532dcf506c","lat":35.1146507,"lon":24.9948959,"tags":{"name":"Αρτοποιείο Χασουράκης","shop":"bakery","overture:category":"bakery","phone":"+306940874165","contact:facebook":"https://www.facebook.com/2094134914172827","addr:city":"Δημοτική Ενότητα Αγίας Βαρβάρας","addr:postcode":"700 03"}},
+{"type":"overture","id":"c17104e0-5054-46a0-8f1c-093ada8a69a5","lat":35.1159477,"lon":24.9917297,"tags":{"name":"Patatomania","amenity":"fast_food","overture:category":"fast_food_restaurant","phone":"+306986933901","contact:facebook":"https://www.facebook.com/296051030829058","email":"katerinvalergaki@gmail.com","addr:street":"Ano Moulia","addr:city":"Heraklion"}},
+{"type":"overture","id":"f3352b2e-74aa-4fe0-9e4b-327b6062d34c","lat":35.1144676,"lon":24.9953499,"tags":{"name":"Mini Market '' ΑΓΑΠΗ ''","shop":"supermarket","overture:category":"grocery_store","phone":"+306982000095","contact:facebook":"https://www.facebook.com/102610714832158","email":"ag_api@yahoo.gr","addr:street":"Άνω Μούλια","addr:city":"Ayía Varvára","addr:postcode":"700 03"}}
+]}

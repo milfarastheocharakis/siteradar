@@ -1,0 +1,6 @@
+{"elements":[
+{"type":"node","id":4395882292,"lat":35.4662558,"lon":23.7991959,"tags":{"amenity":"pharmacy","name":"Karavitakis"}},
+{"type":"node","id":6570157072,"lat":35.4671743,"lon":23.7839345,"tags":{"amenity":"restaurant","name":"Ελαίας Θέα","contact:facebook":"https://www.facebook.com/2022475154480503","overture:id":"f7be8d8d-34f1-4354-bfa3-f14083d5c1d6"}},
+{"type":"node","id":11614902076,"lat":35.4670602,"lon":23.7990291,"tags":{"addr:country":"GR","addr:postcode":"73002","addr:street":"ΒΟΥΚΟΛΙΕΣ","contact:email":"d.voukolion@kep.gov.gr","contact:phone":"+30 2824340012","contact:website":"https://www.kep.gov.gr/","name":"ΚΕΠ ΒΟΥΚΟΛΙΩΝ","name:el":"ΚΕΠ ΒΟΥΚΟΛΙΩΝ","office":"government"}},
+{"type":"overture","id":"f9b3c99e-a27c-4315-b037-fe6014c1f788","lat":35.4675598,"lon":23.7926292,"tags":{"name":"Κομψότης","shop":"hairdresser","overture:category":"hair_salon","phone":"+302824031816","contact:facebook":"https://www.facebook.com/1653478621556280","addr:street":"Πλατεία Βουκολιών","addr:city":"Βουκολιές","addr:postcode":"73002"}}
+]}

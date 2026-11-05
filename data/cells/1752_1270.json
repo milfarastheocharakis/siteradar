@@ -1,0 +1,17 @@
+{"elements":[
+{"type":"node","id":4179106311,"lat":35.0537245,"lon":25.4099471,"tags":{"amenity":"cafe","name":"Πλάτανος","contact:facebook":"https://www.facebook.com/1730385027239411","overture:id":"93bb1acb-84d8-44f9-b50e-3c0eff937f88"}},
+{"type":"node","id":10180966149,"lat":35.053818,"lon":25.4085121,"tags":{"amenity":"dentist","healthcare":"dentist","name":"Κονδουλάκη Μαρινέλα"}},
+{"type":"node","id":11614901521,"lat":35.0532374,"lon":25.4078851,"tags":{"addr:country":"GR","addr:postcode":"70004","addr:street":"ΑΝΩ ΒΙΑΝΝΟΣ","contact:email":"d.viannou@kep.gov.gr","contact:phone":"+30 2895340146; +30 2895340147","contact:website":"https://www.kep.gov.gr/","name":"ΚΕΠ ΒΙΑΝΝΟΥ","name:el":"ΚΕΠ ΒΙΑΝΝΟΥ","office":"government"}},
+{"type":"way","id":1112720788,"center":{"lat":35.0536704,"lon":25.4096744},"tags":{"name":"ΑΡΙΑΔΝΗ","operator":"Πετράκης","shop":"convenience"}},
+{"type":"way","id":1112720790,"center":{"lat":35.0538328,"lon":25.4099094},"tags":{"amenity":"restaurant","cuisine":"greek","name":"Ο Μίλος"}},
+{"type":"way","id":1112720791,"center":{"lat":35.0538469,"lon":25.4097815},"tags":{"name":"Νεφέλη","shop":"bakery"}},
+{"type":"way","id":1112732282,"center":{"lat":35.053634,"lon":25.4101832},"tags":{"name":"Σπανάκης","shop":"convenience"}},
+{"type":"way","id":1112732283,"center":{"lat":35.0536152,"lon":25.4104562},"tags":{"amenity":"restaurant","name":"Λουλάκης"}},
+{"type":"way","id":1112732285,"center":{"lat":35.0538074,"lon":25.4091606},"tags":{"name":"Μιχελάκη","operator":"Φαιστός","shop":"convenience","website":"https://www.facebook.com/profile.php?id=100001280777987","contact:facebook":"https://www.facebook.com/199797366852007","phone":"+302895022519","overture:id":"84aea3a1-bad2-4d15-ae9c-0341e4bca56f"}},
+{"type":"way","id":1112732286,"center":{"lat":35.0537635,"lon":25.4085131},"tags":{"amenity":"cafe","name":"Ὀνειρόν"}},
+{"type":"way","id":1112732288,"center":{"lat":35.053742,"lon":25.4082326},"tags":{"amenity":"ice_cream","craft":"confectionery","name":"Ἀδάμης"}},
+{"type":"way","id":1112732296,"center":{"lat":35.0535524,"lon":25.4082264},"tags":{"amenity":"restaurant","name":"Πίτα Βιέννα","contact:facebook":"https://www.facebook.com/105828069792276","phone":"+302895022633","overture:id":"d7ffdc3b-a30d-4bef-a419-71cd2e9a3cb1"}},
+{"type":"overture","id":"3181c2a5-3420-46e5-9f21-8884ce2318d2","lat":35.0542145,"lon":25.409977,"tags":{"name":"Άνω Βιάννος","office":"estate_agent","overture:category":"real_estate_service","contact:facebook":"https://www.facebook.com/107731991379833","addr:city":"Κοινότητα Ἀνω Βιάννου","addr:postcode":"70004"}},
+{"type":"overture","id":"60fdc5dc-147e-4123-b640-4752651dfad8","lat":35.0537987,"lon":25.4097996,"tags":{"name":"Cafe ''Το Όνειρο''","amenity":"cafe","overture:category":"cafe","phone":"+302895022169","contact:facebook":"https://www.facebook.com/1306178936136755","email":"katerina.raptaki@hotmail.com","addr:street":"ΑΝΩ ΒΙΑΝΝΟΣ","addr:city":"Heraklion","addr:postcode":"700 04"}},
+{"type":"overture","id":"9eb4245f-f1a2-40b6-bcf4-25181dd3af01","lat":35.0537987,"lon":25.4097996,"tags":{"name":"Πλαντζουνάς","craft":"painter","overture:category":"painting","phone":"+306907006783","contact:facebook":"https://www.facebook.com/722760338100583","email":"mariannaplantzounaki@gmail.com","addr:street":"ΑΝΩ ΒΙΑΝΝΟΣ","addr:city":"Heraklion","addr:postcode":"70004"}}
+]}

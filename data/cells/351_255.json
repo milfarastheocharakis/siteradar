@@ -1,8 +1,0 @@
-{"elements":[
-{"type":"node","id":418113527,"lat":35.1804557,"lon":25.503822,"tags":{"amenity":"restaurant","cuisine":"greek","name":"Zorbas"}},
-{"type":"node","id":3751360646,"lat":35.1798059,"lon":25.5027307,"tags":{"amenity":"restaurant","cuisine":"greek","name":"Κρυσταλλένια","name:el":"Κρυσταλλένια","name:en":"KRYSTALLENIA"}},
-{"type":"node","id":5160408772,"lat":35.1755593,"lon":25.5030821,"tags":{"amenity":"restaurant","cuisine":"greek","name":"Δίκτη","name:el":"Δίκτη","name:en":"Dikti"}},
-{"type":"node","id":6742521303,"lat":35.1752082,"lon":25.5030294,"tags":{"amenity":"restaurant","name":"Βιλαέτι"}},
-{"type":"node","id":7042300984,"lat":35.1753204,"lon":25.5033154,"tags":{"name":"Vasilikata","tourism":"guest_house"}},
-{"type":"way","id":292712108,"center":{"lat":35.1898035,"lon":25.5221595},"tags":{"amenity":"restaurant","cuisine":"regional","name":"Skapanis"}}
-]}

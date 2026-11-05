@@ -1,0 +1,6 @@
+{"elements":[
+{"type":"node","id":960315420,"lat":35.4016226,"lon":24.6315159,"tags":{"amenity":"cafe","name":"Station Taverna"}},
+{"type":"node","id":13005444923,"lat":35.4047168,"lon":24.6356982,"tags":{"name":"Rustico Bakery","shop":"bakery"}},
+{"type":"way","id":92908768,"center":{"lat":35.4031279,"lon":24.6308115},"tags":{"amenity":"car_wash","brand":"Shell","brand:wikidata":"Q110716465","name":"Shell"}},
+{"type":"overture","id":"4f42106b-9576-4b6f-8da0-90dee75d3428","lat":35.4030952,"lon":24.6309719,"tags":{"name":"Ciao","amenity":"cafe","overture:category":"cafe","phone":"+302834095029","website":"https://g.page/ciao-112?share","contact:facebook":"https://www.facebook.com/189462129308728","addr:street":"15χλμ νέας εθνικής οδού, EO Rethimnou Irakliou","addr:city":"Δήμος Ρεθύμνης","addr:postcode":"740 52"}}
+]}

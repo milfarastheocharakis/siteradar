@@ -1,0 +1,5 @@
+{"elements":[
+{"type":"node","id":10964082123,"lat":35.2201733,"lon":25.4599896,"tags":{"name":"Ceramic","shop":"yes"}},
+{"type":"overture","id":"1c574bc6-d1c9-4530-8972-4abc46508130","lat":35.2300835,"lon":25.4418259,"tags":{"name":"Gonies Pediados, Hersonissos, Crete","tourism":"guest_house","overture:category":"lodging","contact:facebook":"https://www.facebook.com/130655207045040","addr:city":"Χερσόνησος"}},
+{"type":"overture","id":"9843a7fa-117c-4656-968a-3a21482773ec","lat":35.2308502,"lon":25.4415436,"tags":{"name":"Υπάρχω since 1986","amenity":"bar","overture:category":"bar","contact:facebook":"https://www.facebook.com/239043827034961","addr:street":"Γωνιές Πεδιάδος","addr:city":"Χερσόνησος","addr:postcode":"70014"}}
+]}

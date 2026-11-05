@@ -1,9 +1,0 @@
-{"elements":[
-{"type":"node","id":3581165995,"lat":35.5022392,"lon":23.5782394,"tags":{"amenity":"restaurant","name":"Alea","opening_hours":"Mo-Su 11:00-23:00","phone":"+30 2822 041181","website":"http://facebook.com/SnackBarAlea"}},
-{"type":"node","id":3581169875,"lat":35.5018469,"lon":23.5800112,"tags":{"name":"Falasarna bay","phone":"+30 2822041257","tourism":"hotel","website":"https://www.falasarnabay.gr"}},
-{"type":"node","id":3741392190,"lat":35.5019988,"lon":23.5788497,"tags":{"amenity":"restaurant","cuisine":"greek","name":"Sunset Restaurant"}},
-{"type":"node","id":8016977859,"lat":35.5008474,"lon":23.5804103,"tags":{"description":"Nett, unverbauter Seeblick. Eher Zimmervermietung als Hotel","email":"info@petalida-crete.com","internet_access":"no","name":"Petalida","operator":"Family Likakis","phone":"+30 2822 041449","rooms":"20","tourism":"apartment","website":"https://www.petalida-crete.com/index.html"}},
-{"type":"way","id":181399211,"center":{"lat":35.5862277,"lon":23.5991816},"tags":{"amenity":"restaurant","building":"yes","name":"Tavern Jew"}},
-{"type":"way","id":291305848,"center":{"lat":35.5031946,"lon":23.5783568},"tags":{"amenity":"restaurant","name":"Falassarna Orange Blue Bar","website":"http://www.facebook.com/orangebluebar"}},
-{"type":"way","id":295463544,"center":{"lat":35.5826494,"lon":23.5915457},"tags":{"amenity":"bar","building":"yes","name":"Municipal Tavern Balos"}}
-]}

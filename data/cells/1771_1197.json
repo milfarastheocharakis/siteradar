@@ -1,0 +1,5 @@
+{"elements":[
+{"type":"way","id":347960279,"center":{"lat":35.4243415,"lon":23.9411707},"tags":{"amenity":"restaurant","name":"Spitiko Faghto"}},
+{"type":"overture","id":"0f8a63c0-4753-4c0d-b5d9-78db42bfd377","lat":35.4243622,"lon":23.9410496,"tags":{"name":"Taverna Gefyra","cuisine":"greek","amenity":"restaurant","overture:category":"greek_restaurant","phone":"+306984876183","contact:facebook":"https://www.facebook.com/2120457187987091","addr:street":"Epar.Od. Chanion-Omalou","addr:city":"Δήμος Πλατανιά","addr:postcode":"730 05"}},
+{"type":"overture","id":"db81246a-0495-4a28-aa97-8bea339d2281","lat":35.4379158,"lon":23.9404964,"tags":{"name":"Στα μεγάλα μαχαίρια","amenity":"restaurant","overture:category":"restaurant","phone":"+302821077498","contact:facebook":"https://www.facebook.com/2186054078333260","addr:street":"Epar.Od. Chanion-Omalou 84","addr:city":"Μουσούροι","addr:postcode":"730 05"}}
+]}

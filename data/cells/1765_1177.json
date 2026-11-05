@@ -1,0 +1,4 @@
+{"elements":[
+{"type":"node","id":2965334070,"lat":35.3133707,"lon":23.5416161,"tags":{"amenity":"restaurant","cuisine":"greek","name":"Glykeria","website":"https://www.glykeria.com/","contact:facebook":"https://www.facebook.com/37923592611","email":"info@glykeria.com","phone":"+306947949614","overture:id":"a008c5e4-13fd-470e-928f-808013799006"}},
+{"type":"way","id":588566516,"center":{"lat":35.3131475,"lon":23.5418426},"tags":{"contact:phone":"+30 28220 61292","contact:website":"https://www.glykeria.com/","name":"Glykeria","tourism":"hotel"}}
+]}

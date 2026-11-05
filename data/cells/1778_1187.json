@@ -1,0 +1,8 @@
+{"elements":[
+{"type":"node","id":2190034770,"lat":35.5615886,"lon":23.7549204,"tags":{"amenity":"cafe","name":"καφενεíο"}},
+{"type":"node","id":14175794904,"lat":35.5620282,"lon":23.754816,"tags":{"craft":"beekeeper","name":"Bee's World Dorothea","website":"https://linktr.ee/BeesWorldDorothea","contact:facebook":"https://www.facebook.com/312063711980158","email":"beesworlddorothea@gmail.com","phone":"+306940913817","overture:id":"e332d95c-5a6a-4795-bc55-9bf944ee853f"}},
+{"type":"node","id":14175794905,"lat":35.5614641,"lon":23.7549419,"tags":{"amenity":"restaurant","cuisine":"greek;regional","name":"Menies Cafe Restaurant","name:en":"Menies Cafe Restaurant","website":"http://www.menies.gr/","contact:facebook":"https://www.facebook.com/1587934698007041","email":"info@menies.gr","phone":"+306932831504","overture:id":"a84eff0f-fb76-4ceb-ac12-5120a620c38a"}},
+{"type":"node","id":14175794906,"lat":35.5613534,"lon":23.7553244,"tags":{"amenity":"internet_cafe","name":"Internet Cafe Nicolas"}},
+{"type":"way","id":1558370069,"center":{"lat":35.5627252,"lon":23.7555493},"tags":{"name":"Christine Countryside House","rooms":"3","tourism":"apartment","website":"https://www.airbnb.co.uk/rooms/44556290"}},
+{"type":"overture","id":"59e0dd41-4d87-40f8-9916-cfc2312abb8f","lat":35.5616913,"lon":23.7548313,"tags":{"name":"Ροδωπού Κισσάμου","tourism":"guest_house","overture:category":"lodging","contact:facebook":"https://www.facebook.com/582598371774625","addr:street":"ΡΟΔΩΠΟΥ ΚΟΛΥΜΒΑΡΙΟΥ ΔΗΜΟΥ ΠΛΑΤΑΝΙΑ","addr:city":"Κολυμβάρι"}}
+]}

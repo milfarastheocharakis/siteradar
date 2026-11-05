@@ -1,0 +1,6 @@
+{"elements":[
+{"type":"node","id":6331540714,"lat":35.1920004,"lon":24.5630292,"tags":{"amenity":"restaurant","cuisine":"regional","name":"Παραδοσιακό ταβέρνα \"αλλού ποθές\"","name:el":"Παραδοσιακό ταβέρνα \"αλλού ποθές\"","name:en":"traditional tavern \"αλλού ποθές\""}},
+{"type":"node","id":9987591734,"lat":35.1992043,"lon":24.5720623,"tags":{"name":"Flat, no wind","tourism":"camp_site"}},
+{"type":"overture","id":"7c5d675b-abef-451a-9717-a61f3f184d93","lat":35.1919479,"lon":24.5629826,"tags":{"name":"Traditional Cafe Restaurant Allo Pithes","amenity":"restaurant","overture:category":"restaurant","phone":"+306985572219","website":"https://maps.app.goo.gl/3yHYThZgvTAs4YaE8","contact:facebook":"https://www.facebook.com/856130410906377","email":"alloupothes@gmail.com","addr:street":"Πλατεία Γερό πλάτανος","addr:city":"Περιφέρεια Κρήτης","addr:postcode":"740 53"}},
+{"type":"overture","id":"88c8eb64-bc01-4d7f-93cb-f287466b1785","lat":35.186676,"lon":24.5606918,"tags":{"name":"Eleonas Estate","office":"estate_agent","overture:category":"real_estate_service","phone":"+306936697784","website":"https://eleonasestate.gr/","contact:facebook":"https://www.facebook.com/108874745162864","email":"antonisnikolidakis@gmail.com","addr:street":"Κισσός, 740 53 Λάμπη, Ελληνικη Δημοκρατια","addr:city":"Amári","addr:postcode":"740 53"}}
+]}

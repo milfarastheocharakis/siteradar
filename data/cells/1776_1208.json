@@ -1,0 +1,11 @@
+{"elements":[
+{"type":"way","id":839819646,"center":{"lat":35.5327961,"lon":24.1622108},"tags":{"name":"NEX Mini Mart","shop":"supermarket"}},
+{"type":"way","id":839819647,"center":{"lat":35.5325062,"lon":24.1625319},"tags":{"amenity":"food_court","name":"The Anchor","contact:facebook":"https://www.facebook.com/570361230095652","overture:id":"d2e6abaa-60d5-491f-8660-ff960a115cbe"}},
+{"type":"way","id":839819648,"center":{"lat":35.5315641,"lon":24.162536},"tags":{"name":"NEX","shop":"department_store"}},
+{"type":"way","id":839819649,"center":{"lat":35.5323991,"lon":24.1614077},"tags":{"name":"NGIS","tourism":"hotel"}},
+{"type":"way","id":839819650,"center":{"lat":35.5326827,"lon":24.1610175},"tags":{"name":"NGIS","tourism":"hotel"}},
+{"type":"way","id":839819651,"center":{"lat":35.5326951,"lon":24.1602999},"tags":{"name":"NGIS","tourism":"hotel"}},
+{"type":"way","id":839819653,"center":{"lat":35.533001,"lon":24.1608205},"tags":{"name":"NSA Souda Bay HQ","office":"government","contact:facebook":"https://www.facebook.com/297613530945379","overture:id":"bbee6773-f1ca-47d5-b74c-83a559b73cf2"}},
+{"type":"overture","id":"13ab7167-056b-4a0b-919b-ba490a1a0294","lat":35.5325317,"lon":24.162117,"tags":{"name":"Military AutoSource Souda Bay","shop":"car","overture:category":"auto_dealer","phone":"+302821021494","website":"https://militaryautosource.com/location/MAS-Souda-Bay?utm_source=Organic+Social&utm_medium=Facebook&utm_campaign=O_PX_EU_MAS_26-05_Facebook-Souda-Bay-On-Base","contact:facebook":"https://www.facebook.com/1758097107792415","email":"rbeck@militarycars.com","addr:street":"American Naval Base","addr:city":"Περιφέρεια Κρήτης","addr:postcode":"731 00","brand":"Military AutoSource Italy"}},
+{"type":"overture","id":"55cb828b-989d-43bc-89de-6035f600f9af","lat":35.5321274,"lon":24.1619148,"tags":{"name":"Navy Exchange Main","shop":"department_store","overture:category":"department_store","phone":"+302821021533","contact:facebook":"https://www.facebook.com/103304258666425","addr:street":"Epar.Od. Moni Agias Triados-Perivolitsas","addr:city":"Περιφέρεια Κρήτης","addr:postcode":"731 00","brand":"Navy Exchange"}}
+]}

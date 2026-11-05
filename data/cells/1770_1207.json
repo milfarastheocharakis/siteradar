@@ -1,0 +1,8 @@
+{"elements":[
+{"type":"node","id":11258058262,"lat":35.4009856,"lon":24.1509059,"tags":{"name":"Syn market","shop":"supermarket"}},
+{"type":"node","id":11258068162,"lat":35.4011573,"lon":24.1510443,"tags":{"amenity":"pharmacy","description":"location out oft head, not exact geo position","name":"Pharmacy"}},
+{"type":"way","id":1171631132,"center":{"lat":35.4074849,"lon":24.1457037},"tags":{"name":"Despina","shop":"convenience"}},
+{"type":"overture","id":"23ef24d8-c9cc-4120-a553-f1d05771fd02","lat":35.4014206,"lon":24.1509571,"tags":{"name":"Aposperida","amenity":"restaurant","overture:category":"restaurant","phone":"+302825071534","website":"https://aposperida.business.site/","contact:facebook":"https://www.facebook.com/950601951669848","email":"aposperidatavern@gmail.com","addr:street":"Palea EO Chanion Rethimnou","addr:city":"Περιφέρεια Κρήτης","addr:postcode":"730 08"}},
+{"type":"overture","id":"ced69eb9-80be-48da-9386-1d1821f0bd6f","lat":35.4003487,"lon":24.151577,"tags":{"name":"Φαρμακείο Μαλεκάκης Βασίλης","amenity":"pharmacy","overture:category":"pharmacy","phone":"+302825071111","contact:facebook":"https://www.facebook.com/1545557432369253","email":"agioipantespharmacy@gmail.com","addr:street":"Agioi Pantes","addr:city":"Chaniá","addr:postcode":"73008"}},
+{"type":"overture","id":"ddd229e1-ea76-431f-bdf7-3626f60ef19f","lat":35.400383,"lon":24.1514549,"tags":{"name":"Ιωανης Ρουμπ","shop":"deli","overture:category":"delicatessen","contact:facebook":"https://www.facebook.com/682396628812944","email":"blackhole-100023931300267-1520163899@devnull.facebook.com","addr:street":"Άγιοι Πάντες ","addr:city":"Chaniá"}}
+]}

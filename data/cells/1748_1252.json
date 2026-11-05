@@ -1,0 +1,5 @@
+{"elements":[
+{"type":"node","id":3547956914,"lat":34.961591,"lon":25.0424895,"tags":{"amenity":"restaurant","cuisine":"regional","name":"Thalori Taverna","website":"http://www.thalori.com","contact:facebook":"https://www.facebook.com/350561125573464","email":"info@thalori.com","phone":"+302893041762","overture:id":"87887ced-dd84-455d-b911-95f2fe265870"}},
+{"type":"node","id":3741504785,"lat":34.9646069,"lon":25.0423117,"tags":{"amenity":"restaurant","cuisine":"greek","name":"Gunnar und Luis Taverne"}},
+{"type":"node","id":3741504786,"lat":34.9645441,"lon":25.0422059,"tags":{"amenity":"restaurant","cuisine":"greek","name":"Taverne von Mro und Adriana"}}
+]}

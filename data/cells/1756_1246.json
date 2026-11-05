@@ -1,0 +1,5 @@
+{"elements":[
+{"type":"way","id":667757590,"center":{"lat":35.1315775,"lon":24.9248534},"tags":{"addr:city":"Νύβριτος","amenity":"restaurant","cuisine":"greek","description":"very special restaurant, usually a dinner takes 3-5 hours with lots of small seasonal dishes, no order, you eat what the cook is creating for your group - reservation by phone a few days in advance absolutely necessary!","name":"Καφένες","opening_hours":"on request","phone":"+30 2894 031296"}},
+{"type":"overture","id":"5ed71cb2-70b3-4535-a5fb-728ccf09ebb6","lat":35.1317635,"lon":24.9244347,"tags":{"name":"Nivritos Traditional Homes","tourism":"hotel","overture:category":"hotel","phone":"+306983183787","website":"http://www.nivritoshomes.gr/","contact:facebook":"https://www.facebook.com/2445593902119214","email":"info@nivritoshomes.gr","addr:street":"Unnamed Road","addr:city":"Δήμος Γόρτυνας","addr:postcode":"700 02"}},
+{"type":"overture","id":"b974740b-2b5b-4fbd-ac0f-d1237431c0bd","lat":35.1308441,"lon":24.9258099,"tags":{"name":"Νυβριτος","tourism":"guest_house","overture:category":"lodging","contact:facebook":"https://www.facebook.com/262643590439461"}}
+]}

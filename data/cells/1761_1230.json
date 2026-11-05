@@ -1,0 +1,5 @@
+{"elements":[
+{"type":"way","id":1429605068,"center":{"lat":35.2287278,"lon":24.6196046},"tags":{"name":"Wild Nature Eco Lodge Camp","tourism":"camp_site","website":"http://www.wildnature.gr/","contact:facebook":"https://www.facebook.com/1295466997135774","email":"wildnat@otenet.gr","phone":"+302833022888","overture:id":"fbe3a868-68b1-449c-b616-19604c614c7d"}},
+{"type":"overture","id":"7dfbafec-397c-43e1-aab8-28a64c80ffc6","lat":35.2215309,"lon":24.6033516,"tags":{"name":"Mesonisia Krios Villa and  Dias Mountain Chalet","tourism":"apartment","overture:category":"holiday_rental_home","phone":"+306979792606","website":"http://www.villa-krios.gr/","contact:facebook":"https://www.facebook.com/109189106464","addr:street":"Μεσονησια Αμαρι ","addr:city":"Mesonísia","addr:postcode":"74061"}},
+{"type":"overture","id":"ed81a0e2-1542-4d7a-885c-68dbdf0a0a93","lat":35.2204514,"lon":24.6017818,"tags":{"name":"GreenTour Crete","shop":"food","overture:category":"food_and_beverage_store","phone":"6973210610","website":"http://www.greentour.gr/","addr:street":"Mesonisia, Amari","addr:city":"Rethymno","addr:postcode":"74061"}}
+]}

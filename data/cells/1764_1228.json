@@ -1,0 +1,4 @@
+{"elements":[
+{"type":"node","id":11904847341,"lat":35.290938,"lon":24.5600539,"tags":{"addr:city":"Rethymno","addr:street":"Ρεθύμνου-Αμαρίου","amenity":"restaurant","cuisine":"greek","name":"Το Φράγμα","name:el":"Το Φράγμα","name:en":"The Dam","phone":"+306973628887","contact:facebook":"https://www.facebook.com/374896759530901","overture:id":"3ba448e4-8150-48d1-8d2c-2abf370d2f6d"}},
+{"type":"way","id":361633159,"center":{"lat":35.2836383,"lon":24.5705847},"tags":{"amenity":"cafe","contact:facebook":"https://www.facebook.com/profile.php?id=100064064854269","contact:phone":"+30 697 210 5826","name":"Cafe Gidospito","website":"https://gidospito.gr/","overture:id":"8c6990fb-0d6b-4aaa-b23b-21ec165fd970"}}
+]}

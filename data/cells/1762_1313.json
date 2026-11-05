@@ -1,0 +1,6 @@
+{"elements":[
+{"type":"way","id":180929672,"center":{"lat":35.2530083,"lon":26.2652127},"tags":{"amenity":"restaurant","cuisine":"regional","name":"Vai Restaurant","name:en":"Vai Restaurant","phone":"+30 2843061129","website":"http://www.vai-restaurant.gr"}},
+{"type":"way","id":363235311,"center":{"lat":35.2529998,"lon":26.264858},"tags":{"amenity":"cafe","name":"SeaSide Cafe","website":"http://www.vai-restaurant.gr/","contact:facebook":"https://www.facebook.com/397550770354124","email":"silko79@yahoo.com","phone":"+306974766254","overture:id":"6b158e03-77f6-4fe7-bcd1-12fe4c532de1"}},
+{"type":"way","id":1198044643,"center":{"lat":35.2545265,"lon":26.2648516},"tags":{"name":"Natura","shop":"water_sports"}},
+{"type":"way","id":1198044645,"center":{"lat":35.2533026,"lon":26.2650675},"tags":{"amenity":"cafe","name":"SeaSide Cafe - beach tables"}}
+]}

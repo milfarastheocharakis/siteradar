@@ -1,0 +1,7 @@
+{"elements":[
+{"type":"node","id":12125366587,"lat":35.1729038,"lon":24.3988193,"tags":{"amenity":"bar","name":"Kalypso Pool Bar","opening_hours":"10:00-18:00"}},
+{"type":"node","id":12126095939,"lat":35.173327,"lon":24.3996902,"tags":{"name":"Kalypso Mini Market","opening_hours":"Mo-Tu,Fr-Su 09:00-13:00,16:00-20:00; We 09:00-15:00; Th 15:00-20:00","shop":"convenience"}},
+{"type":"node","id":12134595397,"lat":35.172505,"lon":24.399854,"tags":{"amenity":"bar","name":"Kalypso Beach Bar","opening_hours":"10:00-18:00"}},
+{"type":"node","id":12136286400,"lat":35.1729777,"lon":24.3988246,"tags":{"leisure":"fitness_centre","name":"Yoga Shala","website":"https://cretanzeus.com/"}},
+{"type":"way","id":358503666,"center":{"lat":35.1731977,"lon":24.3993301},"tags":{"addr:postcode":"74060","email":"info@kalypsohotels.com","leisure":"beach_resort","name":"Καλυψώ","name:el":"Καλυψώ","name:en":"Kalypso Cretan Village","opening_hours":"24/7","phone":"+30 2832 031296","tourism":"hotel","website":"https://kalypsohotels.com","contact:facebook":"https://www.facebook.com/550293951766330","overture:id":"56856aa2-e4a9-4e54-906b-d187276fa1e0"}}
+]}

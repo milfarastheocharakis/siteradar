@@ -1,0 +1,7 @@
+{"elements":[
+{"type":"way","id":241129541,"center":{"lat":35.3208666,"lon":25.550861},"tags":{"contact:website":"https://www.radissonblu.com/en/resort-milatos","name":"Radisson Blu Luxury Milatos Beach Resort","tourism":"hotel"}},
+{"type":"overture","id":"3f996a41-520d-429b-a5ee-36690d635fdc","lat":35.3206367,"lon":25.5500298,"tags":{"name":"Mosaic","amenity":"restaurant","overture:category":"steakhouse","contact:facebook":"https://www.facebook.com/264094624227671"}},
+{"type":"overture","id":"594d21ec-c0b1-4cd2-901a-0bfa8fb7ebbe","lat":35.3203583,"lon":25.5499687,"tags":{"name":"Imperial Lounge","amenity":"bar","overture:category":"lounge","contact:facebook":"https://www.facebook.com/256634518261073"}},
+{"type":"overture","id":"637d45a6-45ea-45e4-a877-d3e7fb94c3e2","lat":35.3217049,"lon":25.5500221,"tags":{"name":"Bellevue Restaurant","amenity":"restaurant","overture:category":"restaurant","phone":"+302841065000","website":"https://www.radissonblu.com/en/resort-milatos/restaurants","contact:facebook":"https://www.facebook.com/275217372856960","email":"info.milatos@radissonblu.com","addr:city":"Περιφερειακή Ενότητα Λασιθίου","addr:postcode":"724 00"}},
+{"type":"overture","id":"90a1341f-43a1-4ac7-8519-754786b768b0","lat":35.3208199,"lon":25.5498848,"tags":{"name":"Italian Deli","cuisine":"italian","amenity":"restaurant","overture:category":"italian_restaurant","contact:facebook":"https://www.facebook.com/2244996802412125"}}
+]}

@@ -1,0 +1,5 @@
+{"elements":[
+{"type":"overture","id":"646f8b55-4b97-4098-bfdf-0a3b9c277c18","lat":35.174366,"lon":25.08041,"tags":{"name":"Αλέκος Καφέ Μεζεδοπωλείο","amenity":"cafe","overture:category":"coffee_shop","contact:facebook":"https://www.facebook.com/1396683547121624","addr:street":"38 Επαρ.Οδ. Αγίων Παρασκιών - Κασταμoνίτσας","addr:postcode":"70100 "}},
+{"type":"overture","id":"67fb66f1-261b-4623-b4d4-acd44fcb84a5","lat":35.1703262,"lon":25.0879192,"tags":{"name":"Φάρμα Γαλενι","office":"company","overture:category":"livestock_breeder","contact:facebook":"https://www.facebook.com/1993715357544009","addr:street":"ΓΑΛΕΝΙ","addr:city":"Heraklion","addr:postcode":"71500"}},
+{"type":"overture","id":"75d31829-9f59-4f1f-8f63-ed8512ea36ab","lat":35.1708679,"lon":25.0873585,"tags":{"name":"γαλένι","shop":"farm","overture:category":"farm","phone":"+302818107737","website":"http://www.galeni.gr/","contact:facebook":"https://www.facebook.com/896480317099674","email":"info@galeni.gr","addr:street":"γαλένι","addr:city":"Heraklion","addr:postcode":"71500"}}
+]}

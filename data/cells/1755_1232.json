@@ -1,0 +1,5 @@
+{"elements":[
+{"type":"node","id":9282711437,"lat":35.1025112,"lon":24.656685,"tags":{"name":"Villa Xylia","tourism":"apartment","website":"https://www.airbnb.com/rooms/11253443"}},
+{"type":"way","id":1421396485,"center":{"lat":35.1010488,"lon":24.6582053},"tags":{"addr:city":"Agia Galini","addr:postcode":"74053","contact:email":"admin@drak.gr","name":"Petres Luxury Villas","operator":"Petres Luxury Villas","phone":"+30 694 442 6541","tourism":"chalet","website":"https://www.petresvillas.gr/"}},
+{"type":"overture","id":"ed80984f-5de9-48af-8caf-f44a6cdffbaf","lat":35.1003685,"lon":24.6571693,"tags":{"name":"Φανουργιάκης","shop":"bakery","overture:category":"bakery","phone":"+302844031796","contact:facebook":"https://www.facebook.com/2241243469460130","addr:city":"Λάμπη"}}
+]}

@@ -1,0 +1,8 @@
+{"elements":[
+{"type":"node","id":10152471420,"lat":35.1664276,"lon":25.4823048,"tags":{"amenity":"cafe","name":"Maria","contact:facebook":"https://www.facebook.com/872115319482575","phone":"+306977777777","overture:id":"a7a04cdb-24ce-4b33-8ba9-ff047937047a"}},
+{"type":"way","id":297987580,"center":{"lat":35.1663909,"lon":25.4825877},"tags":{"amenity":"restaurant","cuisine":"greek","name":"Μαρία","name:el":"Μαρία","name:en":"Maria"}},
+{"type":"way","id":933409819,"center":{"lat":35.1666989,"lon":25.4821185},"tags":{"amenity":"restaurant","cuisine":"greek","name":"Τό Συνάφι τοῦ Κριτσώτη","name:el":"Τό Συνάφι τοῦ Κριτσώτη","name:en":"To Synafi tou Kritsoti","contact:facebook":"https://www.facebook.com/103409391505752","overture:id":"0f3541ab-a6f9-4eb6-812a-105b3cca9292"}},
+{"type":"way","id":1109748285,"center":{"lat":35.1678921,"lon":25.4842489},"tags":{"name":"Maria","tourism":"hotel"}},
+{"type":"way","id":1109754433,"center":{"lat":35.1664901,"lon":25.4831508},"tags":{"amenity":"restaurant","name":"Διας","name:el":"Διας","name:en":"Dias"}},
+{"type":"overture","id":"f4f01fec-5733-469f-af71-57de6767cde3","lat":35.1658821,"lon":25.4842377,"tags":{"name":"Zeppelin Club","amenity":"bar","overture:category":"bar","contact:facebook":"https://www.facebook.com/182973019038653","addr:city":"Περιφερειακή Ενότητα Λασιθίου","addr:postcode":"720 52"}}
+]}

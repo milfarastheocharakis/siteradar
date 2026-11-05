@@ -1,0 +1,4 @@
+{"elements":[
+{"type":"node","id":8182715311,"lat":35.2308087,"lon":24.0182497,"tags":{"amenity":"cafe","cuisine":"bistro","name":"Alonia","website":"https://www.alonia.gr/","contact:facebook":"https://www.facebook.com/953968338006336","email":"ageorgedakis@yahoo.gr","phone":"+306938792695","overture:id":"d7fa5129-7280-43a2-8c5d-5a6f2078688f"}},
+{"type":"way","id":879605392,"center":{"lat":35.2309098,"lon":24.0181189},"tags":{"name":"Alonia","tourism":"guest_house","website":"https://www.alonia.gr/"}}
+]}

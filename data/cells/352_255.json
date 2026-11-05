@@ -1,9 +1,0 @@
-{"elements":[
-{"type":"node","id":4271299198,"lat":35.2132387,"lon":25.5219389,"tags":{"addr:street":"Νεάπολης - Τζερμιάδου","amenity":"restaurant","cuisine":"greek;grill","diet:vegan":"no","diet:vegetarian":"yes","name":"Marianna","outdoor_seating":"yes"}},
-{"type":"node","id":4330492911,"lat":35.292174,"lon":25.5123831,"tags":{"amenity":"restaurant","cuisine":"greek;grill","name":"Aetos"}},
-{"type":"node","id":4667288989,"lat":35.2847379,"lon":25.5415522,"tags":{"addr:street":"Ηράκλειο - Άγιος Νικόλαος","amenity":"fast_food","cuisine":"burger;greek;breakfast;grill;mediterranean","int_name":"SELINARI","internet_access":"wlan","name":"ΨΗΤΟΠΩΛΕΙΟ ΣΕΛΗΝΑΡΙ","opening_hours":"Mo-Su 08:00-22:00","phone":"+30 693 697 3423"}},
-{"type":"node","id":5632215921,"lat":35.2069113,"lon":25.592178,"tags":{"amenity":"restaurant","name":"Snack Bar Vangelis"}},
-{"type":"node","id":5711950621,"lat":35.2727387,"lon":25.5640363,"tags":{"amenity":"cafe","cuisine":"greek;international;coffee_shop;grill","name":"Καφε Μεζεδοπολειο"}},
-{"type":"node","id":5711950622,"lat":35.2727577,"lon":25.5640061,"tags":{"amenity":"cafe","cuisine":"greek;international","name":"Ο Κυβερνιτης"}},
-{"type":"node","id":12307414847,"lat":35.2135216,"lon":25.5219143,"tags":{"addr:floor":"0","addr:street":"Νεάπολης - Οροπεδίου","amenity":"restaurant","cuisine":"regional;greek;grill","diet:vegan":"no","diet:vegetarian":"yes","internet_access":"no","name":"Taverna","outdoor_seating":"yes","wheelchair":"yes"}}
-]}

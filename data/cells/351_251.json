@@ -1,6 +1,0 @@
-{"elements":[
-{"type":"node","id":4899048163,"lat":35.1982824,"lon":25.1810325,"tags":{"addr:city":"Choudetsi","addr:postcode":"70100","craft":"winery","email":"info@tamiolakiswines.gr","name":"Rhous Tamiolakis Winery","opening_hours":"Mo-Fr 10:00-16:00; Sa-Su on request","phone":"+30 2810 742083"}},
-{"type":"node","id":4899089669,"lat":35.1809218,"lon":25.1966578,"tags":{"addr:city":"Meleses","addr:postcode":"70300","craft":"winery","email":"info@paterianakis.gr","name":"Domaine Paterianakis","operator":"Family business","phone":"+30 2810 226674","website":"https://www.paterianakis.gr/"}},
-{"type":"node","id":4899359248,"lat":35.1925197,"lon":25.1797594,"tags":{"addr:city":"Χουδέτσι","amenity":"restaurant","cuisine":"regional;greek;traditional;mediterranean","name":"Taverna Roussos","outdoor_seating":"yes","phone":"+30 2810 742 189"}},
-{"type":"node","id":13725835307,"lat":35.1929904,"lon":25.1803747,"tags":{"addr:place":"Χουδέτσι  Μελεσών","amenity":"restaurant","cuisine":"regional","diet:gluten_free":"yes","diet:meat":"yes","diet:mediterranean":"yes","diet:vegetarian":"yes","name":"Οι Αγάπες","opening_hours":"Mo-Su 09:00-21:00","phone":"+302810743198","stars":"4","wheelchair":"yes"}}
-]}

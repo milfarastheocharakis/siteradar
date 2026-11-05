@@ -1,0 +1,5 @@
+{"elements":[
+{"type":"way","id":405303172,"center":{"lat":35.1609352,"lon":25.649574},"tags":{"leisure":"sports_centre","name":"Γήπεδο Κριτσάς «Νικόλαος Πάγκαλος»"}},
+{"type":"way","id":442953228,"center":{"lat":35.1782063,"lon":25.6538567},"tags":{"name":"the archeological site of lato","opening_hours":"We-Mo 08:00-15:00","shop":"ticket"}},
+{"type":"overture","id":"136a101c-5dd9-4428-967b-0ea01e828f71","lat":35.1666985,"lon":25.6499996,"tags":{"name":"Παιδικός Σταθμός Κριτσάς","amenity":"childcare","overture:category":"day_care_preschool","contact:facebook":"https://www.facebook.com/303671716809719","addr:city":"Άγιος Νικόλαος"}}
+]}

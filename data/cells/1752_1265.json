@@ -1,0 +1,5 @@
+{"elements":[
+{"type":"overture","id":"262d60fe-d480-4205-adbe-1f4193dc6fdd","lat":35.0530396,"lon":25.3053493,"tags":{"name":"Κοινότητα Σκινιά","office":"company","overture:category":"professional_service","phone":"+306944556131","contact:facebook":"https://www.facebook.com/107971954063697","addr:street":"Σκινιάς, Αρκαλοχώρι, Κρήτη, Ελληνικη Δημοκρατια","addr:city":"Arkalochóri","addr:postcode":"703 00"}},
+{"type":"overture","id":"a39200e6-8921-444e-874a-b89e47b231d8","lat":35.0534325,"lon":25.3003807,"tags":{"name":"Καφενείο \"ο Σταύρος\", Σκινιας, Αρκαλοχωρι","amenity":"cafe","overture:category":"cafe","phone":"+302891091364","contact:facebook":"https://www.facebook.com/340805109390698","addr:city":"Arkalochóri"}},
+{"type":"overture","id":"f3f1d47b-1746-421e-acf5-c260a53afdbc","lat":35.0547638,"lon":25.3032703,"tags":{"name":"Ford Motor Ελλάς","shop":"car","overture:category":"auto_dealer","phone":"+302810382340","contact:facebook":"https://www.facebook.com/327489084308796","addr:street":"ΟΔΟΣ Ρ', Ηράκλειο","addr:city":"Herákleion","addr:postcode":"714 08","brand":"Ford Motor Company"}}
+]}

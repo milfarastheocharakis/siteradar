@@ -1,7 +1,0 @@
-{"elements":[
-{"type":"way","id":189457256,"center":{"lat":35.2144857,"lon":24.7111307},"tags":{"amenity":"restaurant","building":"yes","cuisine":"greek","name":"Windy Place"}},
-{"type":"way","id":189460400,"center":{"lat":35.2123036,"lon":24.7129742},"tags":{"building":"yes","name":"Windy place","phone":"08330 41000","tourism":"guest_house"}},
-{"type":"way","id":559254603,"center":{"lat":35.2083663,"lon":24.7024672},"tags":{"amenity":"restaurant","building":"yes","cuisine":"regional;greek","name":"Η Στροφή Της Γεύσης","name:el":"Η Στροφή Της Γεύσης","name:en":"The Taste Turn"}},
-{"type":"way","id":1451136713,"center":{"lat":35.2294003,"lon":24.7042132},"tags":{"amenity":"cafe","building":"yes","name":"Kafeneion  Doukiani","name:en":"\"Where Friends Meet\""}},
-{"type":"way","id":1451137024,"center":{"lat":35.2296005,"lon":24.7040797},"tags":{"amenity":"cafe","building":"yes","name":"Kaafeneion"}}
-]}

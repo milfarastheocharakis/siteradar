@@ -1,6 +1,0 @@
-{"elements":[
-{"type":"node","id":305073057,"lat":35.3237157,"lon":23.7210487,"tags":{"amenity":"restaurant","ele":"332.9798584","name":"Taverna O Mylos","wpt_description":"25-SEP-07 13:02:41"}},
-{"type":"node","id":4395913269,"lat":35.377663,"lon":23.7317313,"tags":{"amenity":"pub","indoor_seating":"yes","name":"Eukaliptos","outdoor_seating":"yes"}},
-{"type":"node","id":11614902156,"lat":35.326972,"lon":23.7408362,"tags":{"addr:country":"GR","addr:postcode":"73004","addr:street":"ΚΑΝΤΑΝΟΣ","contact:email":"d.kantanou@kep.gov.gr","contact:phone":"+30 2823340210; +30 2823083110","contact:website":"https://www.kep.gov.gr/","name":"ΚΕΠ ΚΑΝΤΑΝΟΥ","name:el":"ΚΕΠ ΚΑΝΤΑΝΟΥ","office":"government","ref:GR:kepId":"0769"}},
-{"type":"way","id":347959289,"center":{"lat":35.312976,"lon":23.7933721},"tags":{"amenity":"restaurant","building":"yes","cuisine":"greek","name":"Cafe Magganari Taverna"}}
-]}

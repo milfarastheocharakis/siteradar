@@ -1,0 +1,6 @@
+{"elements":[
+{"type":"node","id":6257940985,"lat":35.1674571,"lon":25.9886688,"tags":{"name":"Mini Market","shop":"convenience"}},
+{"type":"node","id":11982905709,"lat":35.1674956,"lon":25.988431,"tags":{"amenity":"restaurant","name":"Mrs.Rose"}},
+{"type":"node","id":11982905710,"lat":35.16751,"lon":25.988242,"tags":{"amenity":"restaurant","name":"Το Καπηλειό"}},
+{"type":"node","id":12124272601,"lat":35.1659678,"lon":25.9875314,"tags":{"name":"Ferienhaus FEWO","tourism":"chalet"}}
+]}
