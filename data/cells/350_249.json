@@ -1,0 +1,9 @@
+{"elements":[
+{"type":"node","id":2953768683,"lat":35.0552689,"lon":24.9105866,"tags":{"name":"ΑΛΦΑΧΡΩΜ - Αφοι Ζωγραφακοι Ο.Ε.","office":"company"}},
+{"type":"node","id":3805498276,"lat":35.0621285,"lon":24.9479713,"tags":{"addr:city":"Gortina","amenity":"cafe","name":"Gortyna Snack-Cafe","phone":"+30 2892 027197"}},
+{"type":"node","id":7645411735,"lat":35.049999,"lon":24.9028781,"tags":{"addr:postcode":"704 00","brand":"Lidl","brand:wikidata":"Q151954","brand:wikipedia":"en:Lidl","name":"Lidl","opening_hours":"Mo-Sa 07:45-21:00; Su,PH off","payment:cash":"yes","payment:credit_cards":"yes","payment:mastercard":"yes","payment:visa":"yes","shop":"supermarket"}},
+{"type":"node","id":10029315240,"lat":35.0570427,"lon":24.9447947,"tags":{"amenity":"restaurant","name":"Ancient Gortyna"}},
+{"type":"node","id":11614901657,"lat":35.058324,"lon":24.962417,"tags":{"addr:country":"GR","addr:housenumber":"1","addr:postcode":"70012","addr:street":"ΑΝΤΟΝΙΝΟ ΝΤΙ ΒΙΤΑ","contact:email":"d.gortynas@kep.gov.gr","contact:phone":"+30 2892031490; +30 2892340345","contact:website":"https://www.kep.gov.gr/","name":"ΚΕΠ ΓΟΡΤΥΝΑΣ","name:el":"ΚΕΠ ΓΟΡΤΥΝΑΣ","office":"government","ref:GR:kepId":"0680"}},
+{"type":"way","id":1020579544,"center":{"lat":35.0525386,"lon":24.9143159},"tags":{"brand":"Toyota","brand:wikidata":"Q53268","brand:wikipedia":"en:Toyota","building":"yes","name":"Ε. ΚΥΡΙΑΚΑΚΗΣ Α.Ε.","shop":"car_repair"}},
+{"type":"way","id":1558471390,"center":{"lat":35.0558575,"lon":24.9440265},"tags":{"amenity":"restaurant","building":"yes","cuisine":"regional;greek","name":"Messara"}}
+]}

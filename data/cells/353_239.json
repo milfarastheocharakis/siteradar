@@ -1,0 +1,19 @@
+{"elements":[
+{"type":"node","id":538052545,"lat":35.3965458,"lon":23.9413961,"tags":{"name":"Nicolo","tourism":"hotel"}},
+{"type":"node","id":1300774637,"lat":35.3858009,"lon":23.9619849,"tags":{"amenity":"restaurant","cuisine":"regional","int_name":"Emilia's Tavern","name":"Ταβερνα Αιμιλιας"}},
+{"type":"node","id":3741483485,"lat":35.3885204,"lon":23.9600403,"tags":{"amenity":"restaurant","name":"Taverna Zourva Rizinia"}},
+{"type":"node","id":3741483497,"lat":35.3076935,"lon":23.9175639,"tags":{"amenity":"restaurant","cuisine":"regional","name":"Xyloskalo Restaurant","website":"http://xyloskalo.gr/"}},
+{"type":"node","id":6881095919,"lat":35.3442355,"lon":23.9047278,"tags":{"amenity":"restaurant","contact:mobile":"+30 6977647905","contact:phone":"+30 28210 67590","contact:website":"https://neos-omalos.gr/","email":"info@neos-omalos.gr","internet_access":"wlan","name":"Νέος Ομαλός","name:el":"Νέος Ομαλός","name:en":"Neos Omalos"}},
+{"type":"node","id":6881095920,"lat":35.3443394,"lon":23.9048405,"tags":{"contact:mobile":"+30 6977647905","contact:phone":"+30 28210 67590","contact:website":"https://neos-omalos.gr/","email":"info@neos-omalos.gr","internet_access":"wlan","name":"Νέος Ομαλός","name:el":"Νέος Ομαλός","name:en":"Neos Omalos","rooms":"26","tourism":"hotel"}},
+{"type":"node","id":6881095921,"lat":35.343624,"lon":23.9049129,"tags":{"amenity":"restaurant","contact:website":"https://www.exari.gr/","name":"Εξάρι","name:el":"Εξάρι","name:en":"Exari"}},
+{"type":"node","id":6881095922,"lat":35.3436677,"lon":23.9049491,"tags":{"contact:website":"https://www.exari.gr/","name":"Εξάρι","name:el":"Εξάρι","name:en":"Exari","rooms":"24","tourism":"hotel"}},
+{"type":"node","id":6881095923,"lat":35.3418031,"lon":23.9026498,"tags":{"internet_access":"wlan","name":"Το Ελληνικό","name:el":"Το Ελληνικό","name:en":"To Elliniko","tourism":"guest_house"}},
+{"type":"node","id":6881095924,"lat":35.3417872,"lon":23.902623,"tags":{"amenity":"restaurant","internet_access":"wlan","name":"Το Ελληνικό","name:el":"Το Ελληνικό","name:en":"To Elliniko"}},
+{"type":"node","id":6881095925,"lat":35.3419831,"lon":23.9010774,"tags":{"contact:phone":"+30 2821 067169","contact:website":"http://omalosvillage.gr/","name":"Omalos village","tourism":"chalet"}},
+{"type":"node","id":11977937640,"lat":35.3966625,"lon":23.9411824,"tags":{"addr:city":"Λάκκοι","addr:postcode":"730 05","amenity":"cafe","email":"renakats75@gmail.com","name":"Fylenia's","opening_hours":"Mo-Su 07:30-23:30","phone":"+302821067232"}},
+{"type":"way","id":122173792,"center":{"lat":35.3436258,"lon":23.9044719},"tags":{"amenity":"restaurant","building":"yes","name":"Gigilos Omalos","tourism":"hotel"}},
+{"type":"way","id":765996804,"center":{"lat":35.3191697,"lon":23.9137844},"tags":{"alt_name":"Agriorodo","contact:facebook":"https://www.facebook.com/samaria.village/","contact:mobile":"+30 693 2456017","name":"Samaria Village","tourism":"chalet"}},
+{"type":"way","id":1318902027,"center":{"lat":35.396497,"lon":23.9676137},"tags":{"amenity":"restaurant","building":"yes","name":"TAVERNA(ABANDONED)"}},
+{"type":"way","id":1318902997,"center":{"lat":35.397371,"lon":23.9669086},"tags":{"building":"yes","name":"HOTEL(ABANDONED)","tourism":"hotel"}},
+{"type":"way","id":1320798744,"center":{"lat":35.3939678,"lon":23.9179923},"tags":{"amenity":"restaurant","building":"yes","cuisine":"greek","name":"To Providi"}}
+]}

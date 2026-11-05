@@ -1,0 +1,17 @@
+{"elements":[
+{"type":"node","id":649561574,"lat":35.2008776,"lon":24.4019448,"tags":{"name":"Stefanos Village Hotel","tourism":"hotel"}},
+{"type":"node","id":4413453390,"lat":35.2837699,"lon":24.4981348,"tags":{"amenity":"restaurant","cuisine":"greek;mediterranean","name":"Goules","name:el":"Γουλές","name:en":"Tavern Goules","opening_hours":"Mo-Fr 14:00-22:00; Sa-Su 12:00-23:00"}},
+{"type":"node","id":6871564986,"lat":35.2902491,"lon":24.4690281,"tags":{"name":"Brink’s Brewery","shop":"beverages"}},
+{"type":"node","id":8079036210,"lat":35.2003316,"lon":24.4018869,"tags":{"name":"Felicity Apartments","tourism":"apartment"}},
+{"type":"node","id":8365326281,"lat":35.2359838,"lon":24.4263678,"tags":{"name":"Kourmoulis (Ariadni)","shop":"supermarket"}},
+{"type":"node","id":9987588263,"lat":35.2187901,"lon":24.4863167,"tags":{"name":"Near stream","tourism":"camp_site"}},
+{"type":"node","id":11254965220,"lat":35.2338757,"lon":24.4210054,"tags":{"amenity":"restaurant","name":"Cretan Aroma","phone":"+30 6979029483"}},
+{"type":"node","id":11614901406,"lat":35.2445849,"lon":24.4524067,"tags":{"addr:country":"GR","addr:postcode":"74053","addr:street":"ΚΟΞΑΡΕ ΑΓΙΟΥ ΒΑΣΙΛΕΙΟΥ","contact:email":"d.foinika@kep.gov.gr","contact:phone":"+30 2832051310; +30 2832351310","contact:website":"https://www.kep.gov.gr/","name":"ΚΕΠ ΦΟΙΝΙΚΑ","name:el":"ΚΕΠ ΦΟΙΝΙΚΑ","office":"government","ref:GR:kepId":"0535"}},
+{"type":"node","id":11614902026,"lat":35.2452076,"lon":24.4525563,"tags":{"addr:country":"GR","addr:housenumber":"0","addr:postcode":"74053","addr:street":"ΣΠΗΛΙ","contact:email":"d.labis@kep.gov.gr","contact:phone":"+30 2832022311","contact:website":"https://www.kep.gov.gr/","name":"ΚΕΠ ΣΠΗΛΙΟΥ","name:el":"ΚΕΠ ΣΠΗΛΙΟΥ","office":"government","ref:GR:kepId":"0660"}},
+{"type":"node","id":12128968832,"lat":35.201933,"lon":24.4204593,"tags":{"name":"''Stavio'' Stone houses for holidays","tourism":"hotel","website":"https://www.villas-studios-crete.com"}},
+{"type":"node","id":12143674110,"lat":35.200121,"lon":24.4180968,"tags":{"addr:city":"Mariou","addr:housenumber":"116","addr:postcode":"740 60","addr:street":"Epar.Od. Dichalostratou-Leukogias","amenity":"restaurant","cuisine":"greek","name":"Το Μπριζολάκι","opening_hours":"Mo-Su 11:00-23:30","phone":"+306980095520","takeaway":"yes","toilets":"yes","wheelchair":"yes"}},
+{"type":"node","id":14323798470,"lat":35.2862938,"lon":24.4698993,"tags":{"amenity":"fast_food","cuisine":"greek","drive_through":"no","name":"COFFEE BUS","outdoor_seating":"yes","payment:cash":"yes","payment:credit_cards":"yes","payment:debit_cards":"yes","phone":"+30 698 744 2444","takeaway":"yes","website":"https://www.instagram.com/_coffee_bus_palio_kteo?cplk=MXRrbGhyYzE3eDljbQ==","wheelchair":"yes"}},
+{"type":"way","id":356855642,"center":{"lat":35.2625151,"lon":24.4800925},"tags":{"amenity":"restaurant","building":"yes","cuisine":"greek","name":"Taverna Pirgos"}},
+{"type":"way","id":541308971,"center":{"lat":35.2369397,"lon":24.430056},"tags":{"amenity":"restaurant","building":"yes","cuisine":"regional;greek","delivery":"no","name":"Taverna Ifigenia","outdoor_seating":"yes"}},
+{"type":"way","id":1239216606,"center":{"lat":35.2294308,"lon":24.4752722},"tags":{"amenity":"restaurant","building":"yes","cuisine":"regional","name":"Ο Μύλος του Νικόλα","name:el":"Ο Μύλος του Νικόλα","name:en":"O Milos tou Nikola","phone":"+30 2832051543"}}
+]}

@@ -1,0 +1,19 @@
+{"elements":[
+{"type":"node","id":5935233351,"lat":34.8200186,"lon":24.0974217,"tags":{"amenity":"cafe","name":"Tripiti Café","opening_hours:signed":"no"}},
+{"type":"node","id":5935236003,"lat":34.8667692,"lon":24.0921872,"tags":{"changing_table":"no","int_name":"Pavlis","level":"0","name":"Mini Market Παυλής","shop":"convenience","toilets":"yes","toilets:access":"yes","toilets:wheelchair":"no","wheelchair":"no"}},
+{"type":"node","id":5935237130,"lat":34.8671554,"lon":24.0915461,"tags":{"amenity":"restaurant","cuisine":"balkan;international","internet_access":"no","level":"0","name":"Αϊ Γιάννης","outdoor_seating":"yes","takeaway":"yes","toilets":"yes","toilets:access":"yes","toilets:wheelchair":"no","wheelchair":"no"}},
+{"type":"node","id":5935897815,"lat":34.8652807,"lon":24.0922187,"tags":{"name":"Sofia Rooms","tourism":"guest_house"}},
+{"type":"node","id":5935925120,"lat":34.8347918,"lon":24.0863485,"tags":{"amenity":"restaurant","changing_table":"no","changing_table:fee":"no","cuisine":"greek","level":"0","name":"Το Στέκι της Γωγώς","name:el":"Το Στέκι της Γωγώς","name:en":"Gogo's place","outdoor_seating":"yes","takeaway":"no","toilets:access":"customers","toilets:wheelchair":"no"}},
+{"type":"node","id":5940143125,"lat":34.8343531,"lon":24.086658,"tags":{"amenity":"restaurant","cuisine":"regional","name":"Princess hotel"}},
+{"type":"node","id":5940683896,"lat":34.8385806,"lon":24.0696979,"tags":{"craft":"gardener","name":"Frankodiana"}},
+{"type":"node","id":5941985171,"lat":34.8347208,"lon":24.0858544,"tags":{"amenity":"restaurant","cuisine":"regional","int_name":"Rakopagida","name":"Ρακοπαγίδα"}},
+{"type":"node","id":6839283189,"lat":34.8346493,"lon":24.085806,"tags":{"int_name":"Ragopagida","name":"Ρακοπαγίδα","shop":"supermarket"}},
+{"type":"node","id":9965519120,"lat":34.8668142,"lon":24.0921316,"tags":{"amenity":"bar","changing_table":"no","changing_table:fee":"no","internet_access":"wlan","internet_access:fee":"no","level":"0","name":"Λιβυκόν","outdoor_seating":"yes","smoking":"outside","toilets":"yes","toilets:access":"yes","toilets:wheelchair":"no","wheelchair":"limited"}},
+{"type":"node","id":9965519123,"lat":34.8350831,"lon":24.0844201,"tags":{"amenity":"clinic","healthcare":"clinic","name":"Περιφερειακό Ιατρείο Γαύδου"}},
+{"type":"node","id":9965523834,"lat":34.8660467,"lon":24.0961274,"tags":{"amenity":"restaurant","changing_table":"no","int_name":"Livas","level":"0","name":"Λίβας","takeaway":"yes","toilets:access":"yes","wheelchair":"limited"}},
+{"type":"node","id":9965523835,"lat":34.8667904,"lon":24.0920125,"tags":{"changing_table":"no","level":"0","name":"Mini Market Άι Γιάννης","shop":"convenience","toilets":"no","toilets:wheelchair":"no","wheelchair":"limited"}},
+{"type":"node","id":11614902268,"lat":34.8346264,"lon":24.086275,"tags":{"addr:country":"GR","addr:postcode":"73001","addr:street":"ΚΑΣΤΡΙ ΓΑΥΔΟΥ","contact:email":"k.gavdou@kep.gov.gr","contact:phone":"+30 2823043031","contact:website":"https://www.kep.gov.gr/","name":"ΚΕΠ ΓΑΥΔΟΥ","name:el":"ΚΕΠ ΓΑΥΔΟΥ","office":"government","ref:GR:kepId":"0995"}},
+{"type":"way","id":628639414,"center":{"lat":34.8343468,"lon":24.0865743},"tags":{"building":"yes","name":"Princess hotel","tourism":"hotel"}},
+{"type":"way","id":628640087,"center":{"lat":34.8378605,"lon":24.0898909},"tags":{"building":"detached","internet_access":"wlan","name":"Kalypso appartments","rooms":"5","tourism":"apartment","website":"https://www.kalypsoapartments.com"}},
+{"type":"way","id":718442959,"center":{"lat":34.8359943,"lon":24.0871639},"tags":{"addr:street":"risky way","amenity":"cafe","building":"yes","name":"Ο φούρνος της Στέλλας","name:el":"Ο φούρνος της Στέλλας","name:en":"Stella's bakery","shop":"bakery"}}
+]}

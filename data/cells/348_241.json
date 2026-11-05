@@ -1,0 +1,16 @@
+{"elements":[
+{"type":"node","id":1947271649,"lat":34.8586351,"lon":24.1107479,"tags":{"addr:city":"Γαύδος","amenity":"restaurant","name":"Νυχτερίδα"}},
+{"type":"node","id":2422648128,"lat":34.8486692,"lon":24.1189609,"tags":{"amenity":"pub","name":"Litsa"}},
+{"type":"node","id":6533255286,"lat":34.8319943,"lon":24.110388,"tags":{"amenity":"restaurant","cuisine":"greek","name":"ταβέρνα ΠΑΝΟΡΑΜΑ","name:el":"ταβέρνα ΠΑΝΟΡΑΜΑ"}},
+{"type":"node","id":6839286985,"lat":34.8586003,"lon":24.1107713,"tags":{"addr:city":"Γαύδος","name":"Νυχτερίδα","shop":"supermarket"}},
+{"type":"node","id":6839286987,"lat":34.8582592,"lon":24.110867,"tags":{"amenity":"restaurant","name":"Vailakakis Emmanouil Restaurant","name:el":"Εστιατόριο Βαιλακάκης Εμμανουήλ","name:en":"Vailakakis Emmanouil Restaurant"}},
+{"type":"node","id":6839286989,"lat":34.8587954,"lon":24.1102076,"tags":{"amenity":"restaurant","name":"Κέδρος"}},
+{"type":"node","id":7847478510,"lat":34.8323294,"lon":24.1009422,"tags":{"addr:city":"Γαύδος","addr:hamlet":"Σγουδιανά","addr:postcode":"73001","name":"Μετόχι","name:el":"Μετόχι","name:en":"Metochi Gavdos","tourism":"guest_house"}},
+{"type":"node","id":9921010266,"lat":34.8586787,"lon":24.1134242,"tags":{"amenity":"restaurant","name":"Χελώνα","outdoor_seating":"yes"}},
+{"type":"node","id":9921010275,"lat":34.8585261,"lon":24.1117192,"tags":{"amenity":"restaurant","name":"Στην άκρη"}},
+{"type":"node","id":9921010289,"lat":34.8587912,"lon":24.112865,"tags":{"amenity":"restaurant","cuisine":"greek","name":"Το Κύμα","outdoor_seating":"yes"}},
+{"type":"node","id":13924065988,"lat":34.8584195,"lon":24.1103621,"tags":{"addr:city":"Γαύδος","name":"Kiki's Mini market","phone":"+302823041106","shop":"supermarket","website":"https://kikigavdos.gr/"}},
+{"type":"node","id":13924065989,"lat":34.8588707,"lon":24.1099356,"tags":{"amenity":"restaurant","contact:phone":"+30 28230 42181","name":"The 4 brothers","name:el":"τα 4 αδέλφια","name:en":"The 4 brothers"}},
+{"type":"way","id":426143668,"center":{"lat":34.8558873,"lon":24.1100798},"tags":{"amenity":"theatre","building":"yes","name":"Υπαίθριο Θέατρο Γαύδου","theatre:type":"open_air"}},
+{"type":"way","id":635222560,"center":{"lat":34.8323733,"lon":24.101161},"tags":{"amenity":"restaurant","building":"yes","cuisine":"regional;greek;ice_cream","name":"Μετόχι","name:el":"Μετόχι","name:en":"Metochi Gavdos"}}
+]}

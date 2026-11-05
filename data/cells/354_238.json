@@ -1,0 +1,11 @@
+{"elements":[
+{"type":"node","id":4282113641,"lat":35.4495254,"lon":23.8876404,"tags":{"email":"info@manousakiswinery.com","fax":"+30 28210 78788","internet_access":"wlan","internet_access:fee":"customers","name":"Manousakis Winery","phone":"+30 28210 78787","shop":"wine","toilets":"yes","website":"https://www.manousakiswinery.com/"}},
+{"type":"node","id":5038963521,"lat":35.4871551,"lon":23.8256719,"tags":{"addr:postcode":"73002","amenity":"biergarten","internet_access":"wlan","name":"Χάρμα","opening_hours":"Apr 15-Nov 30 10:30-20:00"}},
+{"type":"node","id":6490091885,"lat":35.4369105,"lon":23.8437169,"tags":{"addr:street":"Πολεμάρχι - Νέα Ρούματα","amenity":"restaurant","name":"BougainVillea","name:en":"BougainVillea"}},
+{"type":"node","id":9943102177,"lat":35.4793271,"lon":23.8098538,"tags":{"amenity":"restaurant","changing_table":"no","cuisine":"greek","name":"Ο Κήπος της Φροσύνης","opening_hours":"Mo-Sa 14:30-23:00; Su 13:30-23:00","outdoor_seating":"yes","phone":"+30 698 660 1049","reservation":"yes","toilets":"yes","toilets:access":"customers","toilets:wheelchair":"no","wheelchair":"yes"}},
+{"type":"node","id":11935243332,"lat":35.461482,"lon":23.8423302,"tags":{"leisure":"horse_riding","name":"(Abandoned)Deres Horse Riding Centre"}},
+{"type":"node","id":11935301185,"lat":35.470947,"lon":23.8312815,"tags":{"amenity":"fast_food","cuisine":"coffee_shop;regional","drive_through":"no","fast_food":"cafeteria","name":"Kafe Cistus"}},
+{"type":"way","id":461488614,"center":{"lat":35.4912034,"lon":23.836173},"tags":{"landuse":"commercial","name":"Athina Luxury Villas","tourism":"hotel"}},
+{"type":"way","id":1285234253,"center":{"lat":35.4301407,"lon":23.8900492},"tags":{"building":"yes","leisure":"sports_centre","name":"SKINES RANGE ASOX","sport":"shooting"}},
+{"type":"way","id":1446936278,"center":{"lat":35.4677334,"lon":23.8319651},"tags":{"amenity":"cafe","building":"yes","name":"Cafe Athina","name:el":"Kafeneion Athina","outdoor_seating":"yes"}}
+]}

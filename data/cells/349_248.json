@@ -1,0 +1,7 @@
+{"elements":[
+{"type":"node","id":8870140217,"lat":34.9392773,"lon":24.8128604,"tags":{"amenity":"restaurant","cuisine":"local","internet_access":"wlan","name":"ΤΑΒΕΡΝΑ ΚΑΡΑΒΟΒΡΥΣΗ","name:el":"Ταβερνα Καραβοβρυση","name:en":"Taverna Karavovrisi","phone":"+302892097028"}},
+{"type":"node","id":13235081788,"lat":34.9587285,"lon":24.8783197,"tags":{"name":"AGROδηγός","operator":"Κατσιρντάκη Δέσποινα","shop":"agrarian"}},
+{"type":"node","id":13467341601,"lat":34.931125,"lon":24.8012713,"tags":{"amenity":"restaurant","internet_access":"wlan","name":"Panorama"}},
+{"type":"node","id":13470155901,"lat":34.985116,"lon":24.8503059,"tags":{"amenity":"restaurant","name":"ΚΑΦΕΝΕΙΟΝ"}},
+{"type":"way","id":360974811,"center":{"lat":34.9340921,"lon":24.8053716},"tags":{"amenity":"restaurant","building":"yes","cuisine":"greek","name":"Taverna Gorgona"}}
+]}

@@ -1,0 +1,7 @@
+{"elements":[
+{"type":"node","id":741703502,"lat":35.2008991,"lon":25.2579069,"tags":{"contact:phone":"+30 2891 041073","craft":"pottery","name":"Pottery Workshop - Ploumakis George","website":"https://www.cretan-ceramics-pots.gr/"}},
+{"type":"node","id":8362497689,"lat":35.2383244,"lon":25.2094386,"tags":{"amenity":"cafe","name":"Καμπαέτι","name:el":"Καμπαέτι","name:en":"Kampaéti"}},
+{"type":"node","id":11614901897,"lat":35.2119513,"lon":25.2078316,"tags":{"addr:country":"GR","addr:postcode":"70100","addr:street":"ΠΕΖΑ","contact:email":"d.nikoukazantzaki@kep.gov.gr","contact:phone":"+30 2813401126; +30 2813401120","contact:website":"https://www.kep.gov.gr/","name":"ΚΕΠ ΝΙΚΟΥ ΚΑΖΑΝΤΖΑΚΗ","name:el":"ΚΕΠ ΝΙΚΟΥ ΚΑΖΑΝΤΖΑΚΗ","office":"government","ref:GR:kepId":"0401"}},
+{"type":"node","id":11614902052,"lat":35.2573466,"lon":25.2369393,"tags":{"addr:country":"GR","addr:postcode":"70008","addr:street":"ΕΠΙΣΚΟΠΗ","contact:email":"d.episkopis@kep.gov.gr","contact:phone":"+30 2813400707","contact:website":"https://www.kep.gov.gr/","name":"ΚΕΠ ΕΠΙΣΚΟΠΗΣ","name:el":"ΚΕΠ ΕΠΙΣΚΟΠΗΣ","office":"government","ref:GR:kepId":"0528"}},
+{"type":"node","id":12789572161,"lat":35.2696907,"lon":25.2410631,"tags":{"addr:city":"Σταμνοί","addr:postcode":"70008","amenity":"restaurant","cuisine":"greek","name":"Παραδοσιακή Ταβέρνα Κοσμάς","name:en":"Kosmas Traditional Taverna","opening_hours":"Tu-Su 13:00-22:00","outdoor_seating":"yes","phone":"+30 2810 771525","smoking":"outside"}}
+]}

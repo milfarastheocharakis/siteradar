@@ -1,0 +1,20 @@
+{"elements":[
+{"type":"node","id":1460969612,"lat":35.1998599,"lon":24.0781799,"tags":{"amenity":"restaurant","cuisine":"regional","name":"Stratis"}},
+{"type":"node","id":1464116815,"lat":35.1986559,"lon":24.0786261,"tags":{"amenity":"restaurant","cuisine":"regional","internet_access":"wlan","internet_access:fee":"no","name":"Blue House"}},
+{"type":"node","id":1464116818,"lat":35.1985762,"lon":24.0787509,"tags":{"amenity":"cafe","internet_access":"wlan","internet_access:fee":"no","name":"Café Loutro"}},
+{"type":"node","id":1464116820,"lat":35.1983375,"lon":24.0791199,"tags":{"amenity":"cafe","internet_access":"wlan","internet_access:fee":"no","name":"Daskalogiannis","tourism":"hotel"}},
+{"type":"node","id":1464116825,"lat":35.1993305,"lon":24.078411,"tags":{"name":"Hotel Porto Loutro on the Beach","tourism":"hotel","website":"https://www.hotelportoloutro.com"}},
+{"type":"node","id":1464116829,"lat":35.1988051,"lon":24.0786058,"tags":{"name":"Loutro Bay Fashion Shop","shop":"clothes"}},
+{"type":"node","id":1464116831,"lat":35.1985263,"lon":24.0789078,"tags":{"name":"Loutro Market","payment:cash":"yes","payment:credit_cards":"yes","payment:debit_cards":"yes","shop":"convenience"}},
+{"type":"node","id":1464116835,"lat":35.1984206,"lon":24.0789307,"tags":{"amenity":"restaurant","cuisine":"regional","email":"madareshotel@gmail.com","int_name":"Madares","name":"Μαδαρες","phone":"+302825091166"}},
+{"type":"node","id":1464116836,"lat":35.199978,"lon":24.0787561,"tags":{"addr:city":"Loutró","amenity":"restaurant","cuisine":"regional","name":"Notos","phone":"+30 693 249 0907","tourism":"guest_house"}},
+{"type":"node","id":1464116837,"lat":35.1981965,"lon":24.0794833,"tags":{"amenity":"cafe","email":"info@sifishotel-loutro.com","name":"Sifis","phone":"+30 28250 91346","tourism":"guest_house","website":"http://www.sifishotel-loutro.com"}},
+{"type":"node","id":4344118091,"lat":35.1963108,"lon":24.0581122,"tags":{"amenity":"restaurant","cuisine":"greek","email":"marmara1@outlook.com.gr","internet_access":"wlan","name":"Ταβέρνα - Marmara Beach","phone":"+302825772299;+306942201456","website":"https://christomos.gr/en/sfakia"}},
+{"type":"node","id":5216912703,"lat":35.1998888,"lon":24.0721423,"tags":{"amenity":"restaurant","cuisine":"greek","name":"The Old Phoenix","website":"https://www.old-phoenix.com/index.htm"}},
+{"type":"node","id":6750790258,"lat":35.1979694,"lon":24.0794558,"tags":{"name":"Hotel Porto Loutro on the Hill","tourism":"hotel","website":"https://www.hotelportoloutro.com"}},
+{"type":"node","id":9799072583,"lat":35.1983938,"lon":24.0789789,"tags":{"contact:facebook":"madareshotelloutroofficial","name":"Hotel Maderes","tourism":"hotel"}},
+{"type":"node","id":9799072584,"lat":35.198352,"lon":24.0792723,"tags":{"amenity":"restaurant","name":"Christina's Cafe"}},
+{"type":"node","id":9799072586,"lat":35.198551,"lon":24.0787704,"tags":{"name":"Loutro Holidays","tourism":"hotel"}},
+{"type":"node","id":12128082649,"lat":35.1990137,"lon":24.0782198,"tags":{"email":"molos.loutro@gmail.com","name":"Molos Apartments","phone":"+30 2825 091009; +30 697 482 5337; +30 698 369 2134","tourism":"apartment"}},
+{"type":"node","id":13760663801,"lat":35.1984278,"lon":24.0998707,"tags":{"name":"Wild camping spots","tourism":"camp_site"}}
+]}

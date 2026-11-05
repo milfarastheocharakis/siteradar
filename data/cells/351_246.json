@@ -1,0 +1,12 @@
+{"elements":[
+{"type":"node","id":631954189,"lat":35.1265715,"lon":24.6540136,"tags":{"amenity":"cafe","name":"O Platanos"}},
+{"type":"node","id":3522170979,"lat":35.1235804,"lon":24.607703,"tags":{"amenity":"cafe","name":"Καφενείο","smoking":"yes"}},
+{"type":"node","id":4118547889,"lat":35.101542,"lon":24.6978009,"tags":{"addr:housenumber":"740","addr:street":"Agios Vasileios","email":"info@villamaxine.com","internet_access":"wlan","name":"Hotel Villa Maxine","phone":"+30 2832 091530","tourism":"hotel"}},
+{"type":"node","id":4201570692,"lat":35.1017969,"lon":24.6974994,"tags":{"internet_access":"wlan","name":"Hotel Maxine","tourism":"hotel"}},
+{"type":"node","id":4455224790,"lat":35.1049836,"lon":24.690023,"tags":{"amenity":"restaurant","cuisine":"greek","name":"Charlie's Place"}},
+{"type":"node","id":9282711437,"lat":35.1025112,"lon":24.656685,"tags":{"name":"Villa Xylia","tourism":"apartment","website":"https://www.airbnb.com/rooms/11253443"}},
+{"type":"way","id":776943088,"center":{"lat":35.1089243,"lon":24.6713166},"tags":{"air_conditioning":"yes","contact:phone":"+30 698 870 5011","contact:website":"http://www.apartmentsalexena.com/","internet_access":"yes","internet_access:fee":"no","name":"Apartments Alexena","number_of_apartments":"5","swimming_pool":"inground","tourism":"apartment","wheelchair":"limited"}},
+{"type":"way","id":776950400,"center":{"lat":35.1061104,"lon":24.6744852},"tags":{"addr:city":"Agia Galini","addr:postcode":"74056","breakfast":"yes","contact:email":"info@LENIKOS.com","contact:phone":"+30 6978 331238","contact:website":"https://www.lenikos.com","name":"Lenikos Resort","tourism":"apartment"}},
+{"type":"way","id":1241769062,"center":{"lat":35.1078494,"lon":24.6788154},"tags":{"name":"Harakas Apartments","tourism":"apartment"}},
+{"type":"way","id":1421396485,"center":{"lat":35.1010488,"lon":24.6582053},"tags":{"addr:city":"Agia Galini","addr:postcode":"74053","building":"house","contact:email":"admin@drak.gr","internet_access":"wlan","internet_access:fee":"no","name":"Petres Luxury Villas","operator":"Petres Luxury Villas","phone":"+30 694 442 6541","tourism":"chalet","website":"https://www.petresvillas.gr/"}}
+]}

@@ -1,0 +1,8 @@
+{"elements":[
+{"type":"node","id":982718071,"lat":35.0934002,"lon":25.6843499,"tags":{"amenity":"restaurant","cuisine":"regional","name":"Tavern Pitopoulis"}},
+{"type":"node","id":1826444894,"lat":35.0131914,"lon":25.6684343,"tags":{"highway":"bus_stop","name":"Palio Sxoleio","shop":"convenience"}},
+{"type":"node","id":5641539809,"lat":35.0071087,"lon":25.6045074,"tags":{"internet_access":"wlan","internet_access:fee":"no","name":"Sarikampos Beach","operator":"Mina Vouvakis","tourism":"hotel","website":"http://www.sarikamposbeach.gr"}},
+{"type":"node","id":12319123056,"lat":35.0146627,"lon":25.686545,"tags":{"addr:street":"Γρά Λυγιά - Ανατολή","amenity":"cafe","name":"Cacao Cafe","outdoor_seating":"yes","phone":"+30 2842 028309"}},
+{"type":"way","id":182529033,"center":{"lat":35.0143161,"lon":25.675486},"tags":{"leisure":"sports_centre","name":"Γήπεδον Γρα-Λυγιᾶς","sport":"soccer"}},
+{"type":"way","id":1076873980,"center":{"lat":35.0535285,"lon":25.6498902},"tags":{"amenity":"restaurant","description":"Traditional tavern with incredible view","diet:vegan":"yes","diet:vegetarian":"yes","indoor_seating":"yes","name":"Δρυγιές - Drygiés","opening_hours":"Jun-Sep PH,Mo-Su 13:00-23:30; Apr-May PH,Sa,Su 13:00-23:30","outdoor_seating":"yes","phone":"+306977573593","smoking":"outside","wheelchair":"yes"}}
+]}

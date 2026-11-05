@@ -1,0 +1,7 @@
+{"elements":[
+{"type":"node","id":13822261335,"lat":34.9916627,"lon":25.5330505,"tags":{"name":"Mini Market","operator":"Μαρια Γεωργιου Ζαχαρακι","phone":"+30 2895061317","shop":"convenience"}},
+{"type":"way","id":1111872189,"center":{"lat":34.9915879,"lon":25.5327143},"tags":{"amenity":"bar","building":"yes","disused":"yes","name":"Sophokles"}},
+{"type":"way","id":1111872190,"center":{"lat":34.9912971,"lon":25.5348377},"tags":{"amenity":"restaurant","building":"yes","name":"Βρέξει Λιάσει","name:el":"Βρέξει Λιάσει","name:en":"Vrexi Liasi"}},
+{"type":"way","id":1111880688,"center":{"lat":34.9915287,"lon":25.5328384},"tags":{"amenity":"restaurant","building":"yes","name":"Stefania"}},
+{"type":"way","id":1111880690,"center":{"lat":34.9915284,"lon":25.5330574},"tags":{"amenity":"restaurant","building":"yes","cuisine":"greek","name":"Lambros"}}
+]}

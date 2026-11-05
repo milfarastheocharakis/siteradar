@@ -1,0 +1,8 @@
+{"elements":[
+{"type":"node","id":5009261879,"lat":35.305108,"lon":24.9283081,"tags":{"amenity":"cafe","name":"Cafe"}},
+{"type":"node","id":5085834421,"lat":35.3819368,"lon":24.9582401,"tags":{"amenity":"restaurant","internet_access":"wlan","name":"Ταβερνα Γιαχδεμι","name:el":"Tabepna Гiasemi","name:en":"Taverna Giasemi"}},
+{"type":"node","id":11080825956,"lat":35.3834695,"lon":24.9178317,"tags":{"amenity":"cafe","name":"Smile streat cafe"}},
+{"type":"node","id":11113766405,"lat":35.3453374,"lon":24.9741596,"tags":{"addr:postcode":"71500","addr:street":"Palea EO Rethymnou-Irakliou","amenity":"restaurant","cuisine":"greek","name":"Πλαγιά","name:el":"Πλαγιά - Φάνης Κοκκινάκης","name:en":"Plagia - Fanis Kokkinakis","operator":"Fanis Kokkinakis","phone":"+30 281 052 1131"}},
+{"type":"way","id":453786782,"center":{"lat":35.385528,"lon":24.951095},"tags":{"amenity":"pub","building":"yes","name":"Cafeneion El Greco"}},
+{"type":"way","id":1431070048,"center":{"lat":35.3450467,"lon":24.9989386},"tags":{"amenity":"restaurant","building":"yes","cuisine":"regional;greek","name":"Doxa Restaurant"}}
+]}

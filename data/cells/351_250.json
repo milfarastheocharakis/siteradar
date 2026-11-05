@@ -1,0 +1,13 @@
+{"elements":[
+{"type":"node","id":804578323,"lat":35.1905141,"lon":25.0865098,"tags":{"amenity":"theatre","name":"Θέατρο τον Αγρόν","name:el":"Θέατρο τον Αγρόν"}},
+{"type":"node","id":4446736948,"lat":35.1560694,"lon":25.039323,"tags":{"addr:city":"Άγιος Θωμάς","amenity":"restaurant","cuisine":"regional","name":"Αγροικίες"}},
+{"type":"node","id":5181151171,"lat":35.1901257,"lon":25.0146328,"tags":{"name":"Villa Daskalogianni","tourism":"guest_house"}},
+{"type":"node","id":11614901446,"lat":35.1363551,"lon":25.0013367,"tags":{"addr:country":"GR","addr:postcode":"70003","addr:street":"ΑΓ ΒΑΡΒΑΡΑ","contact:email":"d.agvarvaras-irakleiou@kep.gov.gr","contact:phone":"+30 2894022846; +30 2894340027","contact:website":"https://www.kep.gov.gr/","name":"ΚΕΠ ΑΓΙΑΣ ΒΑΡΒΑΡΑΣ","name:el":"ΚΕΠ ΑΓΙΑΣ ΒΑΡΒΑΡΑΣ","office":"government","ref:GR:kepId":"0827"}},
+{"type":"node","id":11614901628,"lat":35.1890519,"lon":25.031751,"tags":{"addr:country":"GR","addr:housenumber":"80","addr:postcode":"70011","addr:street":"ΤΣΑΓΚΑΡΑΝΤΩΝΗ ΞΕΝΑΚΗ","contact:email":"d.palianis@kep.gov.gr","contact:phone":"+30 2813400810","contact:website":"https://www.kep.gov.gr/","name":"ΚΕΠ ΠΑΛΙΑΝΗΣ","name:el":"ΚΕΠ ΠΑΛΙΑΝΗΣ","office":"government","ref:GR:kepId":"0775"}},
+{"type":"node","id":14177346175,"lat":35.137869,"lon":25.0026479,"tags":{"amenity":"cafe","name":"Bar Gusto Coffee time"}},
+{"type":"node","id":14177369534,"lat":35.1397597,"lon":25.001995,"tags":{"amenity":"restaurant","cuisine":"regional;greek","name":"Taberna Kamaras"}},
+{"type":"node","id":14177371211,"lat":35.1392456,"lon":25.0026668,"tags":{"amenity":"cafe","name":"Caffe and mezze"}},
+{"type":"node","id":14177375907,"lat":35.1400882,"lon":25.0019272,"tags":{"amenity":"pharmacy","healthcare":"pharmacy","name":"Farmacia"}},
+{"type":"node","id":14177385478,"lat":35.1372544,"lon":25.0013892,"tags":{"amenity":"cafe","name":"Kifi expsresso bar"}},
+{"type":"way","id":667746683,"center":{"lat":35.1920454,"lon":25.0783632},"tags":{"addr:city":"Κυπαρίσσι","amenity":"restaurant","building":"retail","cuisine":"greek","name":"Ταβερνα του Γιάννη","name:el":"Ταβερνα του Γιάννη","name:en":"Yiannis Taverna","opening_hours":"Oct-May, closed in Summer","phone":"+30 281 087 1451"}}
+]}

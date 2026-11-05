@@ -1,0 +1,8 @@
+{"elements":[
+{"type":"node","id":6881095950,"lat":35.3288982,"lon":23.8841821,"tags":{"amenity":"cafe","cuisine":"bistro","description":"Simple rooms available","name":"Η Μηλιά","name:el":"Η Μηλιά","name:en":"I Milia","outdoor_seating":"yes"}},
+{"type":"node","id":11047077344,"lat":35.3303107,"lon":23.8368572,"tags":{"addr:street":"Agia Irini Gorge","internet_access":"yes","internet_access:fee":"no","name":"Porofarago","phone":"+306973728618","rooms":"3","tourism":"hotel"}},
+{"type":"node","id":11614901703,"lat":35.3110757,"lon":23.8001184,"tags":{"addr:country":"GR","addr:postcode":"73009","addr:street":"ΚΑΜΠΑΝΟΣ ΧΑΝΙΩΝ","contact:email":"d.anatolselinou@kep.gov.gr","contact:website":"https://www.kep.gov.gr/","name":"ΚΕΠ ΑΝΑΤΟΛΙΚΟΥ ΣΕΛΙΝΟΥ","name:el":"ΚΕΠ ΑΝΑΤΟΛΙΚΟΥ ΣΕΛΙΝΟΥ","office":"government","ref:GR:kepId":"0621"}},
+{"type":"node","id":13566338301,"lat":35.334405,"lon":23.8847219,"tags":{"addr:postcode":"37005","name":"Mike Omalos Houses","tourism":"guest_house","website":"https://www.booking.com/Share-HJ1klk"}},
+{"type":"node","id":14142941102,"lat":35.3794434,"lon":23.8244526,"tags":{"amenity":"restaurant","cuisine":"greek","name":"Μπομπολάκης","name:en":"Mpompolakis","phone":"+302821077742"}},
+{"type":"way","id":735230175,"center":{"lat":35.3302458,"lon":23.8368254},"tags":{"addr:street":"Agia Irini Gorge","amenity":"restaurant","building":"yes","cuisine":"regional","diet:local":"yes","diet:mediterranean":"yes","diet:vegan":"yes","diet:vegetarian":"yes","internet_access":"yes","name":"Porofarogo","opening_hours":"Mo-Su 08:00-23:00","phone":"+30 697 372 8618"}}
+]}

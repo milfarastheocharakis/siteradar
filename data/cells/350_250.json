@@ -1,0 +1,15 @@
+{"elements":[
+{"type":"node","id":5749006225,"lat":35.0132455,"lon":25.0002516,"tags":{"amenity":"restaurant","cuisine":"greek","name":"Ιδομενέας","name:el":"Ιδομενέας","name:en":"Idomeneus","phone":"+302893041754","wheelchair":"no"}},
+{"type":"node","id":6727617285,"lat":35.0430667,"lon":25.0939317,"tags":{"amenity":"cafe","internet_access":"wlan","name":"Зоракс","name:en":"Zoraks"}},
+{"type":"node","id":11614901571,"lat":35.0436557,"lon":25.0946103,"tags":{"addr:country":"GR","addr:housenumber":"1","addr:postcode":"70016","addr:street":"ΚΕΝΤΡΙΚΟΣ ΔΡΟΜΟΣ ΑΣΗΜΙΟΥ","contact:email":"d.kofina@kep.gov.gr","contact:phone":"+30 2893340233","contact:website":"https://www.kep.gov.gr/","name":"ΚΕΠ ΚΟΦΙΝΑ","name:el":"ΚΕΠ ΚΟΦΙΝΑ","office":"government","ref:GR:kepId":"0774"}},
+{"type":"node","id":11935409858,"lat":35.0135987,"lon":25.0005707,"tags":{"name":"Nikitas Barber","shop":"hairdresser"}},
+{"type":"node","id":11935447872,"lat":35.0134098,"lon":25.0004687,"tags":{"name":"Φαιστος Super Market Μακρυγιαννάκη","shop":"supermarket"}},
+{"type":"node","id":11935542945,"lat":35.0133581,"lon":25.0001927,"tags":{"name":"Κρεοπωλείο Γεωργίου Εμμ. Καδιανάκη","shop":"butcher"}},
+{"type":"node","id":11935554968,"lat":35.0138747,"lon":25.0008983,"tags":{"amenity":"cafe","cuisine":"coffee_shop","name":"Καφενείο Νεονάκης"}},
+{"type":"node","id":11935577631,"lat":35.0134892,"lon":25.0004314,"tags":{"amenity":"fast_food","fast_food":"cafeteria","name":"Cafeteria Μενεγάκη"}},
+{"type":"node","id":11935579614,"lat":35.0132449,"lon":25.0002109,"tags":{"amenity":"restaurant","name":"Ταβέρνα - Ουξερί “Η πλατεία“"}},
+{"type":"node","id":11935580008,"lat":35.0135261,"lon":25.000179,"tags":{"amenity":"restaurant","name":"Snack Bar"}},
+{"type":"node","id":11935580299,"lat":35.0140376,"lon":25.0006917,"tags":{"name":"Παραδοσιακό μανάβικο παντοπωλείο Βρυσανάκης","shop":"supermarket"}},
+{"type":"node","id":12386212182,"lat":35.0465446,"lon":25.0982007,"tags":{"name":"Daskalakis","shop":"supermarket"}},
+{"type":"node","id":13714467101,"lat":35.0434411,"lon":25.0929599,"tags":{"amenity":"restaurant","name":"BioPetrino","phone":"+30 2893 031630"}}
+]}

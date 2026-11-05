@@ -1,0 +1,17 @@
+{"elements":[
+{"type":"node","id":4174343409,"lat":35.2042838,"lon":26.2704751,"tags":{"amenity":"restaurant","cuisine":"greek","name":"Ταβέρνα Τ' Ανέδιασμα","name:el":"Ταβέρνα Τ' Ανέδιασμα","name:en":"Tavern Anediasma"}},
+{"type":"node","id":4174353991,"lat":35.2143935,"lon":26.2671599,"tags":{"amenity":"restaurant","cuisine":"cretan traditional cusine","name":"Άλιαής","name:el":"Άλιαής","name:en":"Aliaes"}},
+{"type":"node","id":4473108665,"lat":35.2496863,"lon":26.2512316,"tags":{"amenity":"restaurant","cuisine":"greek","name":"Μετόχι","name:el":"Μετόχι","name:en":"Metochi Tavern"}},
+{"type":"node","id":4919639021,"lat":35.2062532,"lon":26.2698526,"tags":{"amenity":"bar","name":"Surf Beach Bar","opening_hours":"Mo-Su 07:00-19:00","website":"https://www.surfbeachbar.gr"}},
+{"type":"node","id":9109387057,"lat":35.2227067,"lon":26.2709878,"tags":{"amenity":"restaurant","name":"Maridatis","opening_hours":"Mo-Su 12:30-21:30"}},
+{"type":"node","id":9109419273,"lat":35.2203329,"lon":26.2686979,"tags":{"name":"Flamingo Colour Valley House","phone":"+30 69 7464 0974","tourism":"chalet","website":"https://cretewindsurfing.com/"}},
+{"type":"node","id":9779232045,"lat":35.211614,"lon":26.2656508,"tags":{"addr:street":"Κουρεμένος 723 00, Grèce","name":"Kyma Luxury Studios","tourism":"guest_house"}},
+{"type":"node","id":10783782270,"lat":35.210487,"lon":26.2657228,"tags":{"addr:city":"palekastro","addr:postcode":"72300","addr:street":"kouremenos","addr:unit":"Fotini apartments","email":"karanikos@gmail.com","internet_access":"yes","internet_access:fee":"no","name":"Fotini Apartments","operator":"Karanikos Ioannis","phone":"+306973337791","rooms":"5","tourism":"apartment","website":"WWW.KOUREMENOSBAY.COM"}},
+{"type":"node","id":10973988705,"lat":35.2165886,"lon":26.2709894,"tags":{"amenity":"fast_food","fast_food":"cafeteria","name":"Port bar café"}},
+{"type":"way","id":180929672,"center":{"lat":35.2530083,"lon":26.2652127},"tags":{"amenity":"restaurant","building":"yes","cuisine":"regional","indoor_seating":"no","name":"Vai Restaurant","name:en":"Vai Restaurant","outdoor_seating":"yes","phone":"+30 2843061129","website":"http://www.vai-restaurant.gr"}},
+{"type":"way","id":363235311,"center":{"lat":35.2529998,"lon":26.264858},"tags":{"amenity":"cafe","building":"cafe","name":"SeaSide Cafe"}},
+{"type":"way","id":415860515,"center":{"lat":35.2120268,"lon":26.2665835},"tags":{"cooking":"yes","internet_access":"wlan","name":"Kouremenos Beach Apartments","number_of_apartments":"5","phone":"+30 6932356825","tourism":"hotel"}},
+{"type":"way","id":415860520,"center":{"lat":35.2122696,"lon":26.2669473},"tags":{"amenity":"restaurant","building":"yes","name":"Grandes"}},
+{"type":"way","id":1198044643,"center":{"lat":35.2545265,"lon":26.2648516},"tags":{"building":"yes","name":"Natura","shop":"water_sports"}},
+{"type":"way","id":1198044645,"center":{"lat":35.2533026,"lon":26.2650675},"tags":{"amenity":"cafe","building":"yes","indoor_seating":"no","name":"SeaSide Cafe - beach tables","outdoor_seating":"yes"}}
+]}

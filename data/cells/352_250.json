@@ -1,0 +1,17 @@
+{"elements":[
+{"type":"node","id":790077050,"lat":35.2343075,"lon":25.0293752,"tags":{"amenity":"cafe","name":"Frankfurt Main","wheelchair":"limited"}},
+{"type":"node","id":790077062,"lat":35.2334097,"lon":25.0287197,"tags":{"name":"Μελισσάνθη","shop":"bakery"}},
+{"type":"node","id":5157479696,"lat":35.2340251,"lon":25.0321876,"tags":{"name":"Vergis Epavlis","tourism":"hotel","website":"https://www.v-epavlis.com/index.html"}},
+{"type":"node","id":7227025372,"lat":35.2713942,"lon":25.0601108,"tags":{"beds":"8","internet_access":"yes","internet_access:fee":"no","name":"Villa Ginger","smoking":"outside","tourism":"chalet"}},
+{"type":"node","id":7824999037,"lat":35.2486216,"lon":25.0258308,"tags":{"amenity":"restaurant","cuisine":"regional","name":"Στην Πλατεία"}},
+{"type":"node","id":7824999038,"lat":35.2487616,"lon":25.0263308,"tags":{"amenity":"cafe","name":"Το Αρκάδι"}},
+{"type":"node","id":9412250835,"lat":35.2987663,"lon":25.0871333,"tags":{"brand":"Toyota","brand:wikidata":"Q53268","name":"ΠΑΠΑΚΑΛΙΑΤΗΣ ΑΕ","service":"dealer;repair","shop":"car"}},
+{"type":"node","id":9846044989,"lat":35.2162928,"lon":25.050478,"tags":{"amenity":"cafe","name":"Tzoros"}},
+{"type":"node","id":11614901615,"lat":35.231897,"lon":25.028466,"tags":{"addr:country":"GR","addr:postcode":"70013","addr:street":"Τ.Κ.ΑΓΙΟΥ ΜΥΡΩΝΑ (ΔΕΝ ΥΠΑΡΧΕΙ ΟΔΟΣ)","contact:email":"d.gorgolainis@kep.gov.gr","contact:phone":"+30 2813400031; +30 2813400033","contact:website":"https://www.kep.gov.gr/","name":"ΚΕΠ ΓΟΡΓΟΛΑΪΝΗ","name:el":"ΚΕΠ ΓΟΡΓΟΛΑΪΝΗ","office":"government","ref:GR:kepId":"0227"}},
+{"type":"node","id":11614902133,"lat":35.2963747,"lon":25.0189544,"tags":{"addr:country":"GR","addr:postcode":"71500","addr:street":"ΤΥΛΙΣΟΣ","contact:email":"d.tylisou@kep.gov.gr","contact:phone":"+30 2813403723","contact:website":"https://www.kep.gov.gr/","name":"ΚΕΠ ΤΥΛΙΣΟΥ","name:el":"ΚΕΠ ΤΥΛΙΣΟΥ","office":"government","ref:GR:kepId":"0988"}},
+{"type":"node","id":11737688622,"lat":35.2997542,"lon":25.0173836,"tags":{"addr:city":"Τύλισος","addr:postcode":"71500","addr:street":"Τύλισος","name":"Δημοτική Πινακοθήκη Μαλεβιζίου","tourism":"gallery"}},
+{"type":"node","id":12251379223,"lat":35.2089372,"lon":25.035832,"tags":{"addr:street":"Σίβα Δήμου Παλιανής","craft":"winery","name":"Silva Daskalaki winery","phone":"+30 2810 792021","website":"https://www.silvawines.gr/"}},
+{"type":"way","id":96128933,"center":{"lat":35.2543922,"lon":25.0640272},"tags":{"building":"yes","name":"Μαλεβιζώτικα","phone":"+30 281 072 1770","shop":"bakery"}},
+{"type":"way","id":623115478,"center":{"lat":35.2904633,"lon":25.0624048},"tags":{"amenity":"clinic","building":"yes","healthcare":"clinic","healthcare:speciality":"dialysis","name":"ΜΕΣΟΓΕΙΟΣ","name:el":"ΜΕΣΟΓΕΙΟΣ","name:en":"MESOGEIOS"}},
+{"type":"way","id":667751210,"center":{"lat":35.2149881,"lon":25.0496818},"tags":{"addr:city":"Δαφνές","addr:postcode":"70011","craft":"winery","name":"Δουλουφάκης Οινοποιείο","phone":"+30 281 079 2017"}}
+]}

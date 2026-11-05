@@ -1,0 +1,23 @@
+{"elements":[
+{"type":"node","id":773828904,"lat":35.3100927,"lon":23.5373799,"tags":{"amenity":"restaurant","cuisine":"regional","diet:vegan":"no","diet:vegetarian":"no","internet_access":"wlan","internet_access:fee":"no","name":"Kochilas"}},
+{"type":"node","id":2918790128,"lat":35.358064,"lon":23.5623267,"tags":{"amenity":"restaurant","cuisine":"greek","name":"ΜΕΛΤΕΜΙ","name:el":"ΜΕΛΤΕΜΙ","name:en":"Meltemi","opening_hours":"Mo-Su 09:00-21:00","outdoor_seating":"yes"}},
+{"type":"node","id":2965334070,"lat":35.3133707,"lon":23.5416161,"tags":{"amenity":"restaurant","cuisine":"greek","name":"Glykeria","website":"https://www.glykeria.com/"}},
+{"type":"node","id":3645165556,"lat":35.358493,"lon":23.593248,"tags":{"name":"Iris market","shop":"convenience","wheelchair":"no"}},
+{"type":"node","id":3645165579,"lat":35.3112918,"lon":23.5380785,"tags":{"name":"Nireides Apartments","phone":"+30 697 582 8834","tourism":"hotel","website":"https://nireides.com/"}},
+{"type":"node","id":3645165599,"lat":35.310287,"lon":23.535705,"tags":{"amenity":"restaurant","name":"Stellas"}},
+{"type":"node","id":3645165600,"lat":35.311025,"lon":23.535861,"tags":{"amenity":"restaurant","name":"Taverna sun set"}},
+{"type":"node","id":4296757990,"lat":35.3117096,"lon":23.5379564,"tags":{"amenity":"restaurant","name":"Antigone"}},
+{"type":"node","id":4339643594,"lat":35.3636083,"lon":23.5980803,"tags":{"amenity":"restaurant","internet_access":"wlan","name":"Lefteris taverna"}},
+{"type":"node","id":5918603494,"lat":35.3100463,"lon":23.537528,"tags":{"internet_access":"wlan","internet_access:fee":"no","name":"Rooms Kochilas","tourism":"guest_house"}},
+{"type":"node","id":6697083085,"lat":35.3637732,"lon":23.597748,"tags":{"amenity":"restaurant","cuisine":"greek;grill;breakfast;pizza","internet_access":"wlan","name":"Taverna Panorama","name:en":"Panorama"}},
+{"type":"node","id":9105185407,"lat":35.364493,"lon":23.536707,"tags":{"addr:housenumber":"730 12","addr:street":"Livadia","description":"Tiny little house, studio style, one room with double bed and cooking corner, separate toilet and shower. nice outdoor room","guest_house":"guest_house","internet_access":"yes","internet_access:fee":"customers","name":"Casa D'armaros","rooms":"1","tourism":"guest_house"}},
+{"type":"node","id":13173245748,"lat":35.3582896,"lon":23.5932298,"tags":{"name":"Hedgehog","shop":"fashion_accessories","wheelchair":"no"}},
+{"type":"node","id":13200042911,"lat":35.3906085,"lon":23.5743307,"tags":{"amenity":"restaurant","image:menu":"533c0869-88fb-44bd-9dce-20ac7faccdd7","name":"Lefteris Rooms&Tavern"}},
+{"type":"node","id":14173683775,"lat":35.3707763,"lon":23.5362339,"tags":{"contact:website":"https://www.thereverycrete.com/","name":"The Revery","stars":"5","tourism":"hotel"}},
+{"type":"way","id":422675080,"center":{"lat":35.3304102,"lon":23.5597158},"tags":{"addr:street":"Kephale - Khrusoskalitsa, Chrisoskalitissa","amenity":"restaurant","building":"yes","name":"Taverna Stomio\nStomio"}},
+{"type":"way","id":588566516,"center":{"lat":35.3131475,"lon":23.5418426},"tags":{"contact:phone":"+30 28220 61292","contact:website":"https://www.glykeria.com/","landuse":"commercial","name":"Glykeria","tourism":"hotel"}},
+{"type":"way","id":626946346,"center":{"lat":35.3102284,"lon":23.5374706},"tags":{"alt_name":"Stavroulaki","amenity":"restaurant","building":"yes","cuisine":"regional","name":"Isichi Gonia"}},
+{"type":"way","id":634419842,"center":{"lat":35.3711428,"lon":23.5562858},"tags":{"building":"yes","name":"PefkoPetro","tourism":"guest_house"}},
+{"type":"way","id":634421744,"center":{"lat":35.3907798,"lon":23.5735179},"tags":{"amenity":"restaurant","building":"yes","cuisine":"regional;traditional_taverna","name":"The West","name:en":"The West"}},
+{"type":"way","id":722349530,"center":{"lat":35.3646734,"lon":23.5966516},"tags":{"building":"yes","name":"Velanos villas","tourism":"apartment"}}
+]}

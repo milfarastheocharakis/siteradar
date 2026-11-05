@@ -1,0 +1,13 @@
+{"elements":[
+{"type":"node","id":3822947957,"lat":35.4018781,"lon":24.9554061,"tags":{"amenity":"restaurant","cuisine":"greek","int_name":"Orange","name":"Όραντζ"}},
+{"type":"node","id":3822947958,"lat":35.4019328,"lon":24.9556208,"tags":{"amenity":"restaurant","cuisine":"greek","int_name":"Plaitis","name":"Πλαΐτης"}},
+{"type":"node","id":3822948392,"lat":35.4020509,"lon":24.9559426,"tags":{"amenity":"restaurant","cuisine":"greek","int_name":"Faros","name":"Φάρος"}},
+{"type":"node","id":3822954280,"lat":35.4023986,"lon":24.9567126,"tags":{"amenity":"restaurant","cuisine":"greek","int_name":"Dolphin","name":"Ντόλφιν"}},
+{"type":"node","id":3822956393,"lat":35.4017404,"lon":24.9554411,"tags":{"int_name":"Orange","name":"Όραντζ","tourism":"hotel"}},
+{"type":"node","id":4775895051,"lat":35.4021654,"lon":24.9526161,"tags":{"addr:city":"Fodele","addr:postcode":"71500","addr:street":"in Fodele Beach Resort","description":"Cycling Adventure Holidays, MountainBike Tours & Rentals. Road bikes, Routes and Riding Plans, Custom Cycling Tours & Training Camps.","email":"info@joyride.bike","name":"JoyRide.bike in Fodele Beach","opening_hours":"09:00 - 21:00","operator":"JoyRide Cycling Crete","phone":"+30 6906903223","service:bicycle:bicycle":"yes","service:bicycle:ebike":"yes","service:bicycle:mtb":"yes","service:bicycle:pump":"no","service:bicycle:rental":"yes","service:bicycle:repair":"yes","service:bicycle:sales":"yes","shop":"bicycle","website":"https://joyride.bike"}},
+{"type":"node","id":5130915627,"lat":35.4091092,"lon":24.9939928,"tags":{"name":"עקרבים 5","shop":"bookmaker"}},
+{"type":"node","id":12108655757,"lat":35.4031931,"lon":24.9580861,"tags":{"amenity":"restaurant","cuisine":"greek","name":"Opou Vastaxi","toilets:wheelchair":"no","wheelchair":"limited"}},
+{"type":"node","id":14255833001,"lat":35.4096119,"lon":24.9940962,"tags":{"name":"Maison Meltem","tourism":"hotel","website":"https://www.maisonmeltem.com/en/"}},
+{"type":"way","id":217325246,"center":{"lat":35.4020754,"lon":24.9518093},"tags":{"name":"Fodele Beach & Water Park Holiday Resort","tourism":"hotel"}},
+{"type":"way","id":356324343,"center":{"lat":35.4007093,"lon":24.9552115},"tags":{"amenity":"restaurant","building":"yes","internet_access":"no","name":"Taverna Katrin","outdoor_seating":"yes","wheelchair":"yes"}}
+]}

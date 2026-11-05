@@ -1,0 +1,22 @@
+{"elements":[
+{"type":"node","id":1800367176,"lat":34.9916105,"lon":25.4542618,"tags":{"amenity":"cafe","name":"Ritrovo"}},
+{"type":"node","id":1800367179,"lat":34.9918238,"lon":25.4532993,"tags":{"int_name":"Ariadni Hotel Arvi","name":"Άριαδνη","tourism":"hotel"}},
+{"type":"node","id":1837342815,"lat":34.9916777,"lon":25.4548819,"tags":{"amenity":"cafe","int_name":"Simos","name":"Σίμος"}},
+{"type":"node","id":8069710280,"lat":34.9917536,"lon":25.4535998,"tags":{"addr:city":"Άρβη","addr:postcode":"700 04","amenity":"restaurant","int_name":"Spitikon","name":"Σπιτικόν","opening_hours":"Mo-Su 08:00-23:30","phone":"+302895071578"}},
+{"type":"node","id":8069739008,"lat":34.9915714,"lon":25.4545735,"tags":{"amenity":"restaurant","int_name":"Kima","name":"Το Κύμα"}},
+{"type":"node","id":8069794220,"lat":34.991485,"lon":25.4549822,"tags":{"amenity":"cafe","name":"EN PLO"}},
+{"type":"node","id":8069801055,"lat":34.9906157,"lon":25.4393262,"tags":{"name":"Κολύμποι","tourism":"apartment"}},
+{"type":"node","id":8071211862,"lat":34.9895625,"lon":25.4287142,"tags":{"name":"Beach House Arvi","tourism":"apartment"}},
+{"type":"node","id":14081897601,"lat":34.9847393,"lon":25.4979102,"tags":{"amenity":"restaurant","cuisine":"greek","internet_access":"wlan","name":"Ταβέρνα Μάνος-Τζένη","name:en":"Manos - Tzeni Tavern & Cafe","opening_hours":"Mo-Su 08:00-00:00","outdoor_seating":"yes","phone":"+30 2895 061333","self_service":"no"}},
+{"type":"way","id":865755740,"center":{"lat":34.9917997,"lon":25.4548567},"tags":{"building":"yes","name":"Άρβη","name:el":"Άρβη","name:en":"Arvi","shop":"convenience","wikidata":"Q25162422"}},
+{"type":"way","id":1110746460,"center":{"lat":34.9847744,"lon":25.4983998},"tags":{"amenity":"restaurant","building":"yes","cuisine":"greek","name":"Κουφογιάννης"}},
+{"type":"way","id":1110746462,"center":{"lat":34.9846506,"lon":25.4986822},"tags":{"building":"yes","name":"Sindonia beach","tourism":"apartment"}},
+{"type":"way","id":1110746463,"center":{"lat":34.9845812,"lon":25.4988386},"tags":{"building":"yes","name":"Eirini","tourism":"apartment"}},
+{"type":"way","id":1110750058,"center":{"lat":34.9853866,"lon":25.4941007},"tags":{"addr:city":"Sidonia","building":"yes","name":"Almyriki","tourism":"apartment"}},
+{"type":"way","id":1110752836,"center":{"lat":34.9850142,"lon":25.4972908},"tags":{"building":"yes","name":"Σωχωράκης","opening_hours":"Mo-Sa 08:00-14:00, 17:00-17:00; Su 10:00-14:00, 17:00-21:00","shop":"convenience"}},
+{"type":"way","id":1110754235,"center":{"lat":34.9851408,"lon":25.4974877},"tags":{"addr:postcode":"700 04","addr:street":"Ψαρή Φοράδα","building":"yes","name":"Mouzourakis Apartments","tourism":"apartment"}},
+{"type":"way","id":1110767761,"center":{"lat":34.9915327,"lon":25.4556215},"tags":{"amenity":"restaurant","building":"yes","cuisine":"greek","name":"Δίκτανα","name:el":"Δίκτανα","name:en":"Diktina"}},
+{"type":"way","id":1110769147,"center":{"lat":34.9911285,"lon":25.4578597},"tags":{"amenity":"restaurant","building":"yes","name":"Γαλαζια Ακτη","name:el":"Γαλαζια Ακτη","name:en":"Galazia Akti"}},
+{"type":"way","id":1110769148,"center":{"lat":34.9909746,"lon":25.4578228},"tags":{"amenity":"restaurant","building":"yes","name":"Γαλαζια Ακτη","name:el":"Γαλαζια Ακτη","name:en":"Galazia Akti"}},
+{"type":"way","id":1110779524,"center":{"lat":34.9921485,"lon":25.4550927},"tags":{"building":"yes","name":"Μπούσου Σομαράκι","operator":"Φαιστός","shop":"convenience"}}
+]}

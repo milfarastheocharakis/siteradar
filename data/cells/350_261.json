@@ -1,0 +1,4 @@
+{"elements":[
+{"type":"node","id":5061520328,"lat":35.0740461,"lon":26.1396558,"tags":{"amenity":"restaurant","name":"ΟΒΕΛΙΣΤΗΡΙΟ","name:el":"ΟΒΕΛΙΣΤΗΡΙΟ","name:en":"OBELISTER"}},
+{"type":"node","id":11614901924,"lat":35.0749217,"lon":26.1407807,"tags":{"addr:country":"GR","addr:postcode":"72059","addr:street":"ΖΗΡΟΣ","contact:email":"d.lefkis@kep.gov.gr","contact:phone":"+30 2843340000","contact:website":"https://www.kep.gov.gr/","name":"ΚΕΠ ΛΕΥΚΗΣ","name:el":"ΚΕΠ ΛΕΥΚΗΣ","office":"government","ref:GR:kepId":"0449"}}
+]}

@@ -1,0 +1,17 @@
+{"elements":[
+{"type":"node","id":418391725,"lat":35.0480796,"lon":25.4894731,"tags":{"amenity":"restaurant","cuisine":"greek","name":"Aphrodite"}},
+{"type":"node","id":4166453635,"lat":35.0473323,"lon":25.4889548,"tags":{"amenity":"restaurant","cuisine":"greek","name":"Taverna Omalos","outdoor_seating":"yes"}},
+{"type":"node","id":4179106311,"lat":35.0537245,"lon":25.4099471,"tags":{"amenity":"cafe","name":"Πλάτανος"}},
+{"type":"node","id":10180966149,"lat":35.053818,"lon":25.4085121,"tags":{"amenity":"dentist","healthcare":"dentist","name":"Κονδουλάκη Μαρινέλα"}},
+{"type":"node","id":11614901521,"lat":35.0532374,"lon":25.4078851,"tags":{"addr:country":"GR","addr:postcode":"70004","addr:street":"ΑΝΩ ΒΙΑΝΝΟΣ","contact:email":"d.viannou@kep.gov.gr","contact:phone":"+30 2895340146; +30 2895340147","contact:website":"https://www.kep.gov.gr/","name":"ΚΕΠ ΒΙΑΝΝΟΥ","name:el":"ΚΕΠ ΒΙΑΝΝΟΥ","office":"government","ref:GR:kepId":"0821"}},
+{"type":"way","id":473425984,"center":{"lat":35.0447064,"lon":25.4920628},"tags":{"area":"yes","email":"info@akrosoreon-crete.gr","name":"Akros Oreon","tourism":"hotel","website":"https://akrosoreon-crete.gr/"}},
+{"type":"way","id":1112720788,"center":{"lat":35.0536704,"lon":25.4096744},"tags":{"building":"yes","name":"ΑΡΙΑΔΝΗ","operator":"Πετράκης","shop":"convenience"}},
+{"type":"way","id":1112720790,"center":{"lat":35.0538328,"lon":25.4099094},"tags":{"amenity":"restaurant","building":"yes","cuisine":"greek","name":"Ο Μίλος"}},
+{"type":"way","id":1112720791,"center":{"lat":35.0538469,"lon":25.4097815},"tags":{"building":"yes","name":"Νεφέλη","shop":"bakery"}},
+{"type":"way","id":1112732282,"center":{"lat":35.053634,"lon":25.4101832},"tags":{"building":"yes","name":"Σπανάκης","shop":"convenience"}},
+{"type":"way","id":1112732283,"center":{"lat":35.0536152,"lon":25.4104562},"tags":{"amenity":"restaurant","building":"yes","name":"Λουλάκης"}},
+{"type":"way","id":1112732285,"center":{"lat":35.0538074,"lon":25.4091606},"tags":{"building":"yes","name":"Μιχελάκη","operator":"Φαιστός","shop":"convenience"}},
+{"type":"way","id":1112732286,"center":{"lat":35.0537635,"lon":25.4085131},"tags":{"amenity":"cafe","building":"yes","name":"Ὀνειρόν"}},
+{"type":"way","id":1112732288,"center":{"lat":35.053742,"lon":25.4082326},"tags":{"amenity":"ice_cream","building":"yes","craft":"confectionery","name":"Ἀδάμης"}},
+{"type":"way","id":1112732296,"center":{"lat":35.0535524,"lon":25.4082264},"tags":{"amenity":"restaurant","building":"yes","name":"Πίτα Βιέννα"}}
+]}

@@ -1,0 +1,4 @@
+{"elements":[
+{"type":"node","id":4283640192,"lat":35.4062004,"lon":24.8479329,"tags":{"amenity":"restaurant","cuisine":"greek","name":"Taverna"}},
+{"type":"way","id":489162078,"center":{"lat":35.4089967,"lon":24.8727533},"tags":{"amenity":"restaurant","building":"yes","cuisine":"traditional;mediterranean","name":"Αλυκή"}}
+]}

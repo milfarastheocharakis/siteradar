@@ -1,0 +1,6 @@
+{"elements":[
+{"type":"node","id":527358383,"lat":35.3008933,"lon":25.7270399,"tags":{"amenity":"restaurant","name":"Taverna Spinalonga","website":"https://www.tavernaspinalonga.com/"}},
+{"type":"node","id":3741483470,"lat":35.3000163,"lon":25.7275091,"tags":{"amenity":"restaurant","name":"Marias Terverna"}},
+{"type":"node","id":3741483482,"lat":35.3002037,"lon":25.7273881,"tags":{"amenity":"restaurant","name":"Taverna Spinalonga"}},
+{"type":"way","id":852668693,"center":{"lat":35.3010359,"lon":25.7229033},"tags":{"name":"Cayo Exclusive Resort & Spa","stars":"5","tourism":"hotel"}}
+]}

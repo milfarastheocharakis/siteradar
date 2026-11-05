@@ -1,0 +1,14 @@
+{"elements":[
+{"type":"node","id":2256161644,"lat":35.0244613,"lon":26.0158833,"tags":{"addr:city":"Makry-Gialos","addr:postcode":"720 59","alt_name":"Η Σπηλιά του Δράκου.","amenity":"restaurant","cuisine":"regional","int_name":"Dragon's Cave","name":"Dragon's Cave","phone":"+30 2843 051494"}},
+{"type":"node","id":2283556615,"lat":35.0272597,"lon":26.0078841,"tags":{"name":"Ville du Soleil","tourism":"guest_house"}},
+{"type":"node","id":2394405036,"lat":35.0816365,"lon":26.0982747,"tags":{"amenity":"restaurant","name":"Taverna"}},
+{"type":"node","id":6917329685,"lat":35.0188469,"lon":26.0304552,"tags":{"amenity":"restaurant","name":"Stayosa"}},
+{"type":"node","id":6917329785,"lat":35.0190005,"lon":26.0309128,"tags":{"amenity":"restaurant","name":"Oasis"}},
+{"type":"node","id":6917329885,"lat":35.019289,"lon":26.0306454,"tags":{"name":"Kalo Nero Apartments","tourism":"chalet"}},
+{"type":"node","id":8036377994,"lat":35.0735916,"lon":26.0465497,"tags":{"amenity":"restaurant","name":"Tavern"}},
+{"type":"node","id":13050882457,"lat":35.0747637,"lon":26.0460957,"tags":{"amenity":"restaurant","name":"εσοστράτι"}},
+{"type":"node","id":13626955593,"lat":35.013693,"lon":26.0923691,"tags":{"amenity":"cafe","name":"Cafe Giou"}},
+{"type":"node","id":14051824001,"lat":35.0117848,"lon":26.0937193,"tags":{"amenity":"restaurant","name":"Taverna Seretis"}},
+{"type":"node","id":14182248133,"lat":35.0819922,"lon":26.0985326,"tags":{"amenity":"restaurant","name":"Taverna"}},
+{"type":"way","id":276327726,"center":{"lat":35.0304125,"lon":26.002703},"tags":{"building":"yes","layer":"-1","name":"Lagada Resort","tourism":"hotel"}}
+]}

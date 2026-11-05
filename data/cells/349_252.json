@@ -1,0 +1,9 @@
+{"elements":[
+{"type":"node","id":1912865183,"lat":34.9858221,"lon":25.2871571,"tags":{"name":"Μάρκετ χαλαμπαλακης","shop":"kiosk"}},
+{"type":"node","id":1912865186,"lat":34.9862133,"lon":25.2938626,"tags":{"name":"Niovi Hotel","tourism":"hotel"}},
+{"type":"node","id":1912874663,"lat":34.9844179,"lon":25.2813313,"tags":{"name":"Edelweiss","tourism":"guest_house"}},
+{"type":"node","id":5198663622,"lat":34.9845211,"lon":25.2854593,"tags":{"addr:city":"Τσούτσουρος","name":"Μαραγκακης","shop":"supermarket"}},
+{"type":"node","id":6504223386,"lat":34.9848056,"lon":25.2829959,"tags":{"internet_access":"wlan","name":"Hotel Appollon","tourism":"hotel"}},
+{"type":"node","id":13789451701,"lat":34.9869166,"lon":25.2885029,"tags":{"amenity":"cafe","contact:phone":"+30 2891092464","delivery":"no","name":"Kαφε το Περασμα","opening_hours":"Mo-Su 07:00-19:00","outdoor_seating":"yes","takeaway":"yes","toilets":"yes","wheelchair":"no"}},
+{"type":"node","id":14156657519,"lat":34.9861536,"lon":25.2903538,"tags":{"addr:postcode":"701 00","addr:street":"Main Street","amenity":"restaurant","cuisine":"fish;greek;seafood","name":"Sarakina Fish Tavern","opening_hours":"Mo-Su 10:00-00:00","phone":"+30 2891 092233","website":"https://sarakina.gr/"}}
+]}

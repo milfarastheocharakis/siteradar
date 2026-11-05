@@ -1,0 +1,10 @@
+{"elements":[
+{"type":"node","id":6797346319,"lat":35.0000518,"lon":25.3775567,"tags":{"name":"Xenos","tourism":"apartment"}},
+{"type":"node","id":6797346324,"lat":35.000623,"lon":25.3744829,"tags":{"name":"Despoina","tourism":"apartment"}},
+{"type":"node","id":6797347804,"lat":35.0006758,"lon":25.3752472,"tags":{"name":"HARA'S apartments","tourism":"apartment"}},
+{"type":"node","id":8071099049,"lat":35.0003774,"lon":25.3753377,"tags":{"name":"Panorama Apartments","tourism":"apartment"}},
+{"type":"node","id":9282711415,"lat":35.0010226,"lon":25.3768127,"tags":{"name":"Studio Eftihia","operator":"Somarakis Michalis","phone":"+30 2895051284","tourism":"apartment","website":"https://www.studioseftihia.gr/el"}},
+{"type":"node","id":12388063803,"lat":35.0309776,"lon":25.3796577,"tags":{"amenity":"restaurant","name":"Amalia"}},
+{"type":"way","id":813157650,"center":{"lat":35.0975725,"lon":25.3853102},"tags":{"building":"yes","name":"αριάδνη Supermarket","shop":"supermarket"}},
+{"type":"way","id":1112715606,"center":{"lat":35.0530708,"lon":25.3918532},"tags":{"amenity":"restaurant","building":"yes","name":"Διαβάτης"}}
+]}

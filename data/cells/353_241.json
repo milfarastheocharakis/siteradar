@@ -1,0 +1,13 @@
+{"elements":[
+{"type":"node","id":3734361666,"lat":35.3795669,"lon":24.1989646,"tags":{"name":"ΑΦΟΙ ΣΤΑΜΑΤΑΚΗ","shop":"bakery"}},
+{"type":"node","id":3741483494,"lat":35.370321,"lon":24.1496845,"tags":{"amenity":"restaurant","name":"Tzitzifia"}},
+{"type":"node","id":4129096630,"lat":35.3154601,"lon":24.1994718,"tags":{"amenity":"cafe","contact:facebook":"https://www.facebook.com/%CE%9A%CE%B1%CF%86%CE%B5-%CE%A4%CE%B1%CE%B2%CE%B5%CF%81%CE%BD%CE%B1-%CE%A0%CE%B5%CF%84%CF%81%CE%B9%CF%84%CE%B7%CF%82-127428680657955/","cuisine":"bistro","name":"Πετρίτης","name:el":"Πετρίτης","name:en":"Petritis"}},
+{"type":"node","id":4377965589,"lat":35.3604711,"lon":24.1742795,"tags":{"contact:facebook":"https://www.facebook.com/Vafes-Lotus-Art-Shop-182191861829004/","name":"Lotus Art Shop","shop":"general","website":"https://lotusvafes.wordpress.com/"}},
+{"type":"node","id":7467235919,"lat":35.3590045,"lon":24.1735711,"tags":{"contact:facebook":"https://www.facebook.com/pg/Vardis-Villa-111333017095176/","name":"Vardis Villa","phone":"+30 2841 041591","tourism":"chalet"}},
+{"type":"node","id":8089830152,"lat":35.3152182,"lon":24.1996126,"tags":{"amenity":"cafe","contact:facebook":"https://www.facebook.com/katerinaskiosk/","cuisine":"bistro","name":"Katerina's Kiosk"}},
+{"type":"node","id":11614901535,"lat":35.3815401,"lon":24.1440933,"tags":{"addr:country":"GR","addr:housenumber":"1","addr:postcode":"73008","addr:street":"ΦΡΕ","contact:email":"d.fre@kep.gov.gr","contact:phone":"+30 2825340700","contact:website":"https://www.kep.gov.gr/","name":"ΚΕΠ ΦΡΕ","name:el":"ΚΕΠ ΦΡΕ","office":"government","ref:GR:kepId":"0170"}},
+{"type":"node","id":12911026489,"lat":35.396262,"lon":24.1565071,"tags":{"name":"Τυροκομικά Γιαννουλισ","shop":"cheese"}},
+{"type":"way","id":438983856,"center":{"lat":35.361954,"lon":24.1760877},"tags":{"addr:city":"Vafes","addr:postcode":"73007","building":"house","capacity":"18","internet_access":"yes","name":"Chrysallis Ecolodge","number_of_apartments":"3","rooms":"Many","tourism":"apartment","website":"http://chrysallis-ecolodge.gr/"}},
+{"type":"way","id":1225948569,"center":{"lat":35.3992712,"lon":24.1334887},"tags":{"addr:city":"Paidochori","addr:postcode":"730 08","building":"yes","name":"LIODOSIFIS MANSION","tourism":"chalet"}},
+{"type":"way","id":1408605412,"center":{"lat":35.3736939,"lon":24.1458357},"tags":{"amenity":"restaurant","building":"yes","cuisine":"greek","diet:local":"yes","name":"To Rizitiko","phone":"+30 2825 071222"}}
+]}

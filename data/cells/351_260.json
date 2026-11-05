@@ -1,0 +1,6 @@
+{"elements":[
+{"type":"node","id":1323520156,"lat":35.1945758,"lon":26.0880271,"tags":{"name":"METAXAKIS FURNITURE - ΜΕΤΑΞΑΚΗΣ ΕΠΙΠΛΑ","shop":"doityourself"}},
+{"type":"node","id":6899395187,"lat":35.1791231,"lon":26.0968701,"tags":{"amenity":"restaurant","name":"EROTOKRITOS"}},
+{"type":"node","id":6899436385,"lat":35.178702,"lon":26.0958776,"tags":{"amenity":"restaurant","name":"I Plateia"}},
+{"type":"node","id":9109429123,"lat":35.179186,"lon":26.0969788,"tags":{"amenity":"restaurant","int_name":"Aeroinon","name":"Αέροινον","phone":"+30 698 358 1695"}}
+]}

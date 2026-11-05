@@ -1,0 +1,16 @@
+{"elements":[
+{"type":"node","id":3220593173,"lat":35.1235192,"lon":25.8583639,"tags":{"amenity":"restaurant","name":"Ντάκος"}},
+{"type":"node","id":3751331214,"lat":35.1551666,"lon":25.880506,"tags":{"amenity":"restaurant","cuisine":"regional","int_name":"Panorama","name":"Πανόραμα","name:el":"Πανόραμα"}},
+{"type":"node","id":6032796480,"lat":35.1100206,"lon":25.8045321,"tags":{"amenity":"restaurant","description":"beach side resturant open till at least end of October","name":"beach resturant"}},
+{"type":"node","id":6032796481,"lat":35.1100655,"lon":25.804424,"tags":{"amenity":"cafe","name":"Cafe"}},
+{"type":"node","id":7687964709,"lat":35.1096429,"lon":25.8056818,"tags":{"amenity":"restaurant","cuisine":"greek","int_name":"Porto Kanaki","internet_access":"wlan","name":"Πόρτο Κανάκη","name:el":"Πόρτο Κανάκη","name:en":"Porto Kanaki","phone":"+30 2842 093231"}},
+{"type":"node","id":7737894162,"lat":35.1546206,"lon":25.8799799,"tags":{"amenity":"restaurant","name":"Πλάτανος"}},
+{"type":"node","id":8503553939,"lat":35.1231817,"lon":25.8575489,"tags":{"name":"Παντοπωλείο Τελώνη Ιωάννα","name:el":"Παντοπωλείο Τελώνη Ιωάννα","name:en":"Pantopolion Teloni Ioanna","shop":"convenience"}},
+{"type":"node","id":8503553944,"lat":35.1230697,"lon":25.857348,"tags":{"name":"Kritika Edesmata","name:el":"Κρητικά Ἑδέσματα","name:en":"Kritika Edesmata","shop":"pastry"}},
+{"type":"node","id":9083538821,"lat":35.1101544,"lon":25.8040996,"tags":{"amenity":"cafe","name":"Αερικό","outdoor_seating":"yes","wheelchair":"no"}},
+{"type":"node","id":11225363661,"lat":35.1516063,"lon":25.8619778,"tags":{"addr:city":"Kavousi","amenity":"restaurant","name":"Tholos Beach","phone":"+30 2842 094793"}},
+{"type":"node","id":11225363684,"lat":35.1537151,"lon":25.8613751,"tags":{"amenity":"restaurant","cuisine":"greek","name":"Petros Kantina"}},
+{"type":"way","id":252041916,"center":{"lat":35.1079048,"lon":25.8012378},"tags":{"name":"The INSTAP East Crete Study Center","office":"research"}},
+{"type":"way","id":309005894,"center":{"lat":35.1152562,"lon":25.8611779},"tags":{"amenity":"restaurant","building":"yes","changing_table":"no","changing_table:fee":"no","name":"Ελιάνθη","outdoor_seating":"yes","reservation":"no","takeaway":"no","wheelchair":"no"}},
+{"type":"way","id":309005902,"center":{"lat":35.1226279,"lon":25.8580493},"tags":{"building":"yes","name":"Λιανός","shop":"convenience"}}
+]}

@@ -1,0 +1,5 @@
+{"elements":[
+{"type":"node","id":269502228,"lat":35.3146168,"lon":24.8377866,"tags":{"addr:postcode":"74051","addr:street":"Axos Mylopotamou","email":"info@cretenatural.com","name":"Enagron","name:en":"Enagron Ecotourism Village","phone":"+30 28340 61611","tourism":"hotel","website":"https://www.enagron.gr/"}},
+{"type":"node","id":5143015376,"lat":35.3431443,"lon":24.8710138,"tags":{"addr:city":"Drosia","addr:postcode":"740 54","amenity":"restaurant","cuisine":"greek","name":"Taverna Flouris","phone":"+30 2834 071202"}},
+{"type":"way","id":768276623,"center":{"lat":35.3939608,"lon":24.8807762},"tags":{"blind":"no","building":"yes","fitness_station":"yes","leisure":"fitness_centre","name":"Γυμναστήριο Αθλητικού Συλλόγου Σισών","sport":"fitness","wheelchair":"limited"}}
+]}

@@ -1,0 +1,19 @@
+{"elements":[
+{"type":"node","id":3594400944,"lat":35.2342393,"lon":24.6295312,"tags":{"amenity":"restaurant","cuisine":"regional","name":"Moskhovolis","outdoor_seating":"yes"}},
+{"type":"node","id":4297198894,"lat":35.2442379,"lon":24.660886,"tags":{"addr:street":"Αγίας Φωτεινής - Ζαρού","email":"info@panakron.com","internet_access":"wlan","name":"Panakron","name:el":"Πάνακρον","operator":"marpoly","phone":"+302833022120","tourism":"hotel","website":"https://www.panakron.com/"}},
+{"type":"node","id":4448939272,"lat":35.2574952,"lon":24.643144,"tags":{"name":"Aravanes","tourism":"guest_house"}},
+{"type":"node","id":9987549267,"lat":35.2133081,"lon":24.6077093,"tags":{"name":"Gerakari","shop":"supermarket"}},
+{"type":"node","id":9987603999,"lat":35.2111137,"lon":24.6039283,"tags":{"name":"Flat under apple tree","tourism":"camp_site"}},
+{"type":"node","id":9987620174,"lat":35.2171759,"lon":24.6262878,"tags":{"name":"Good","tourism":"camp_site"}},
+{"type":"node","id":11251066175,"lat":35.2140525,"lon":24.6092216,"tags":{"amenity":"restaurant","name":"Αψιδα"}},
+{"type":"node","id":11252373773,"lat":35.214073,"lon":24.6096476,"tags":{"amenity":"bar","name":"Ταβερνα Γερακαρι","phone":"+30 2833 051013"}},
+{"type":"node","id":11614901820,"lat":35.2539977,"lon":24.630385,"tags":{"addr:country":"GR","addr:postcode":"74061","addr:street":"ΦΟΥΡΦΟΥΡΑΣ","contact:email":"d.kouriton@kep.gov.gr","contact:phone":"+30 2833340116","contact:website":"https://www.kep.gov.gr/","name":"ΚΕΠ ΑΜΑΡΙΟΥ","name:el":"ΚΕΠ ΑΜΑΡΙΟΥ","office":"government","ref:GR:kepId":"0304"}},
+{"type":"node","id":11614901849,"lat":35.2534367,"lon":24.6312913,"tags":{"addr:country":"GR","addr:postcode":"74061","addr:street":"ΑΓΙΑ ΦΩΤΕΙΝΗ","contact:email":"d.syvritou@kep.gov.gr","contact:phone":"+30 2833022070","contact:website":"https://www.kep.gov.gr/","name":"ΚΕΠ ΑΜΑΡΙΟΥ","name:el":"ΚΕΠ ΑΜΑΡΙΟΥ","office":"government","ref:GR:kepId":"0745"}},
+{"type":"node","id":12009138315,"lat":35.2554435,"lon":24.6336317,"tags":{"addr:place":"Αγία Φωτεινή","name":"Κέντρο Υγείας Αγίας Φωτεινής Αμαρίου (Ε.Σ.Υ)","shop":"yes"}},
+{"type":"node","id":12009140839,"lat":35.2542357,"lon":24.6342518,"tags":{"addr:place":"Αγία Φωτεινή","name":"Amari Bikes Ενοικιάσεις ποδηλάτων δρόμου, βουνού, και ηλεκτρικών","rental":"yes","shop":"yes"}},
+{"type":"node","id":12009178890,"lat":35.2538047,"lon":24.6334099,"tags":{"addr:place":"Αγία Φωτεινή","name":"Φαρμακείο Πετροπούλου","shop":"yes"}},
+{"type":"node","id":14188854001,"lat":35.2265993,"lon":24.6502284,"tags":{"name":"Amari Villas","tourism":"chalet","website":"https://www.tripadvisor.com/Hotel_Review-g12665073-d19339605-Reviews-Amari_Villas-Amari_Rethymnon_Prefecture_Crete.html"}},
+{"type":"node","id":14202054340,"lat":35.2264251,"lon":24.6507599,"tags":{"amenity":"cafe","int_name":"Cafenio","name":"Καφενείο"}},
+{"type":"way","id":1190239131,"center":{"lat":35.2380573,"lon":24.6311171},"tags":{"air_conditioning":"yes","bar":"yes","building":"yes","email":"eliamerwnas@yahoo.gr","height":"8","internet_access":"yes","internet_access:fee":"no","mobile":"+306932487804","name":"Elia Meronas Village","payment:american_express":"yes","payment:cash":"yes","payment:credit_cards":"yes","payment:mastercard":"yes","phone":"+302833022229","phone:mobile":"+306983960509","rooms":"6","tourism":"hotel","website":"https://eliameronas.gr/"}},
+{"type":"way","id":1429605068,"center":{"lat":35.2287278,"lon":24.6196046},"tags":{"name":"Wild Nature Eco Lodge Camp","tourism":"camp_site"}}
+]}
