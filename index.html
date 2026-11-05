@@ -589,8 +589,8 @@ textarea.note:focus-visible { outline: 2px solid var(--accent); outline-offset: 
 </dialog>
 
 <footer class="foot">
-  <span>Business data and map © <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener noreferrer">OpenStreetMap contributors</a> (ODbL).</span>
-  <span>OpenStreetMap misses some businesses and websites, so check on Google before you call.</span>
+  <span>Business data © <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener noreferrer">OpenStreetMap contributors</a> (ODbL) and <a href="https://docs.overturemaps.org/attribution/" target="_blank" rel="noopener noreferrer">Overture Maps Foundation</a> (data from Meta, Microsoft and others, CDLA Permissive 2.0). Map © OpenStreetMap contributors.</span>
+  <span>The map data misses some businesses and websites, so check on Google before you call.</span>
   <span>Website checks by Google PageSpeed Insights.</span>
   <span>Your notes, follow-ups, checks and Google key stay in this browser only.</span>
 </footer>
@@ -867,14 +867,18 @@ function groupOf(t) {
   return 'other';
 }
 function categoryOf(t) {
+  // Businesses from Overture Maps carry its own kind ("wedding_planning"), which says more than a broad tag.
+  const ov = t['overture:category'];
   for (const k of KEY_ORDER) {
     const raw = t[k];
     if (!raw) continue;
     const v = String(raw).split(';')[0];
+    const known = LABELS[k] && LABELS[k][v];
+    if (ov && (!known || v === 'company')) return ov === 'shopping' ? 'Shop' : pretty(ov);
     if (v === 'yes') return { office: 'Office', shop: 'Shop', craft: 'Craft business', healthcare: 'Health practice', amenity: 'Business', tourism: 'Tourism business', leisure: 'Leisure business' }[k];
-    return (LABELS[k] && LABELS[k][v]) || pretty(v);
+    return known || pretty(v);
   }
-  return 'Business';
+  return ov ? pretty(ov) : 'Business';
 }
 function cuisineOf(v) {
   if (!v) return '';
@@ -961,6 +965,7 @@ function normalize(e, c) {
   const chain = !!(t['brand:wikidata'] || (brand && nameKey(brand) !== nameKey(t.name)));
   const b = {
     id: `${e.type}/${e.id}`, osmType: e.type, osmId: e.id,
+    source: e.type === 'overture' ? 'overture' : t['overture:id'] ? 'both' : 'osm',
     name: String(t.name).trim(),
     nameEn: t['name:en'] && fold(t['name:en']) !== fold(t.name) ? t['name:en'] : '',
     lat, lon,
@@ -976,7 +981,8 @@ function normalize(e, c) {
     description: (t.description || '').slice(0, 300),
     visitors: !!t['name:en'] || !!t.tourism,
     distance: haversine(c.lat, c.lon, lat, lon),
-    richness: Object.keys(t).length,
+    // Of two copies of a business, keep the OpenStreetMap one, which people can correct.
+    richness: Object.keys(t).length + (e.type === 'overture' ? 0 : 1000),
     inMuni: null,
     webBucket: web.bucket,
   };
@@ -1107,7 +1113,7 @@ function municipalityQuery(lat, lon) {
 
 /* =========================================================
    Stored business data: data/ next to the app holds Crete's businesses and municipality
-   boundaries, rebuilt every Monday from OpenStreetMap. A search inside it needs no map-data server.
+   boundaries, rebuilt every Monday from OpenStreetMap and Overture Maps. A search inside it needs no map-data server.
    ========================================================= */
 const DATA_DIR = 'data/';
 let dataIndex;                 // undefined: not loaded yet; null: no stored data here; otherwise the index
@@ -1165,7 +1171,8 @@ async function storedElements(idx, box, keep, signal) {
   const files = await untilAbort(Promise.all(storedCells(idx, ...box).map(k => storedFile(`cells/${k}.json`))), signal);
   const elements = [];
   for (const j of files) for (const el of j.elements || []) { const [lat, lon] = pointOf(el); if (keep(lat, lon)) elements.push(el); }
-  return { elements, osmDate: idx.osmDate || '' };
+  const release = idx.overture && /^\d{4}-\d{2}-\d{2}/.exec(String(idx.overture.release || ''));
+  return { elements, osmDate: idx.osmDate || '', overtureDate: release ? `${release[0]}T12:00:00Z` : '' };
 }
 /* The stored businesses within `km` of `c`, or null when the circle isn't fully inside the stored area. */
 async function storedCircle(c, km, signal) {
@@ -1778,7 +1785,7 @@ async function loadBusinesses(signal) {
   state.results = dedupe(list);
   state.byId = new Map(state.results.map(b => [b.id, b]));
   rememberDone();
-  state.loaded = { lat: c.lat, lon: c.lon, radiusKm: state.radiusKm, mode: muni ? 'muni' : 'radius', muniId: muni ? muni.id : null, dataDate: json.osmDate || '' };
+  state.loaded = { lat: c.lat, lon: c.lon, radiusKm: state.radiusKm, mode: muni ? 'muni' : 'radius', muniId: muni ? muni.id : null, dataDate: json.osmDate || '', overtureDate: json.overtureDate || '' };
   state.insideOnly = false; $('#insideOnly').checked = false;
   if (muni) for (const b of state.results) b.inMuni = true;
   else state.muni = null;
@@ -1990,7 +1997,7 @@ function renderHead() {
       h('b', { text: fmtInt(none) }), broken ? ' with no working website, ' : ' with no website listed, ',
       h('b', { text: fmtInt(social) }), weak ? ' with only a social or booking page, ' : ' with only a social or booking page.',
       ...(weak ? [h('b', { text: fmtInt(weak) }), ' with a weak website.'] : []),
-      ...(state.loaded.dataDate ? [h('span', { class: 'data-date', text: ` OpenStreetMap data of ${fmtDataDate(state.loaded.dataDate)}.` })] : []),
+      ...(state.loaded.dataDate ? [h('span', { class: 'data-date', text: ` OpenStreetMap data of ${fmtDataDate(state.loaded.dataDate)}${state.loaded.overtureDate ? ` and Overture Maps data of ${fmtDataDate(state.loaded.overtureDate)}` : ''}.` })] : []),
     ]);
     renderDoneLine(areaAll);
   } else { sum.hidden = true; $('#doneLine').hidden = true; }
@@ -2079,7 +2086,7 @@ function renderList() {
       ? (!Object.keys(state.leads).length ? 'No saved leads yet. Open a business and mark it as a good lead, or write a note, and it will show up here.'
         : state.leadStatus === 'due' ? 'No follow-ups are due. Set a follow-up date when you open a business.' : 'No saved leads match this filter.')
       : (state.results.length ? 'No businesses match these filters.'
-        : state.loaded.mode === 'muni' ? 'OpenStreetMap has no businesses in this municipality.' : `OpenStreetMap has no businesses within ${fmtRadius(state.radiusKm)} of this point. Try a bigger radius.`);
+        : state.loaded.mode === 'muni' ? 'No businesses found in this municipality.' : `No businesses found within ${fmtRadius(state.radiusKm)} of this point. Try a bigger radius.`);
     list.replaceChildren(h('li', { class: 'empty' }, h('p', { text: msg }),
       state.tab === 'results' && state.results.length ? h('button', { type: 'button', class: 'btn small', onclick: clearFilters, text: 'Clear filters' }) : null));
   } else {
@@ -2181,11 +2188,14 @@ function closeDetails() {
 function link(href, label, cls, iconPath) {
   return h('a', { class: cls || 'btn', href, target: '_blank', rel: 'noopener noreferrer' }, iconPath ? icon(iconPath) : null, label);
 }
+const SOURCE_LABEL = { osm: 'OpenStreetMap', overture: 'Overture Maps', both: 'OpenStreetMap and Overture Maps' };
+// Leads saved before v0.5 have no source: they are all from OpenStreetMap.
+const sourceOf = b => b.source || (b.osmType === 'overture' ? 'overture' : 'osm');
 const urls = {
   gmaps: b => `https://www.google.com/maps/search/${encodeURIComponent(String(b.name).replace(/\//g, ' '))}/@${b.lat.toFixed(6)},${b.lon.toFixed(6)},18z`,
   google: b => `https://www.google.com/search?q=${encodeURIComponent(`"${b.name}" ${b.city || (AREAS[$('#area').value] || {}).query || ''}`.trim())}`,
   directions: b => `https://www.google.com/maps/dir/?api=1&destination=${b.lat.toFixed(6)},${b.lon.toFixed(6)}`,
-  osm: b => `https://www.openstreetmap.org/${b.osmType}/${b.osmId}`,
+  osm: b => sourceOf(b) === 'overture' ? '' : `https://www.openstreetmap.org/${b.osmType}/${b.osmId}`,
   speed: u => `https://pagespeed.web.dev/report?url=${encodeURIComponent(u)}`,
   history: host => `https://web.archive.org/web/*/${host}`,
 };
@@ -2203,7 +2213,7 @@ function emptyDetails() {
     h('h2', { text: 'Business details' }),
     h('p', { text: 'Click a business in the list or on the map to see its contact details, why it scored as a lead, and links to check it on Google.' }),
     h('div', { class: 'key' },
-      h('div', {}, h('span', { class: 'dot none' }), h('span', { text: 'No website listed: the best leads. Check on Google first, OpenStreetMap misses some sites.' })),
+      h('div', {}, h('span', { class: 'dot none' }), h('span', { text: 'No website listed: the best leads. Check on Google first, the map data misses some sites.' })),
       h('div', {}, h('span', { class: 'dot social' }), h('span', { text: 'Only a Facebook, Instagram or booking page: they are online but own nothing.' })),
       h('div', {}, h('span', { class: 'dot site' }), h('span', { text: 'Has a website: press “Check websites” to find the ones that are broken, slow or not made for phones.' }))));
 }
@@ -2312,7 +2322,7 @@ function renderDetails() {
     link(urls.directions(b), 'Directions', 'btn', ICON.route),
     b.site ? link(urls.speed(b.site.url), 'Test site speed', 'btn', ICON.gauge) : null,
     b.site ? link(urls.history(b.site.host), 'Site history', 'btn', ICON.clock) : null,
-    link(urls.osm(b), 'OpenStreetMap', 'btn', ICON.map));
+    urls.osm(b) ? link(urls.osm(b), 'OpenStreetMap', 'btn', ICON.map) : null);
 
   const statusBtns = h('div', { class: 'status-btns', role: 'group', 'aria-label': 'Lead status' },
     STATUSES.map(([k, label]) => h('button', {
@@ -2343,9 +2353,15 @@ function renderDetails() {
     h('p', { class: 'sub', text: state.leads[b.id] && state.leads[b.id].updated ? `Saved ${new Date(state.leads[b.id].updated).toLocaleString('en-GB', { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' })}` : 'Mark it, add a note or set a follow-up date. It shows up under My leads.' }),
     statusBtns, follow, note, h('p', { class: 'saved', id: 'savedMsg', 'aria-live': 'polite' }));
 
-  const source = h('p', { class: 'd-source' },
-    'From OpenStreetMap', live ? '' : ' (saved copy)', '. It misses some websites and phones, so use “Check on Google” before you call. Wrong details? ',
-    link(urls.osm(b), 'Fix them on OpenStreetMap', ' '), '.');
+  const from = sourceOf(b);
+  const source = from === 'overture'
+    ? h('p', { class: 'd-source' },
+      'From Overture Maps', live ? '' : ' (saved copy)', ', which gathers business listings from Facebook pages and other sources. ',
+      'Details can be out of date, so use “Check on Google” before you call.')
+    : h('p', { class: 'd-source' },
+      SOURCE_LABEL[from] ? `From ${SOURCE_LABEL[from]}` : 'From OpenStreetMap', live ? '' : ' (saved copy)',
+      `. ${from === 'both' ? 'They miss' : 'It misses'} some websites and phones, so use “Check on Google” before you call. Wrong details? `,
+      link(urls.osm(b), 'Fix them on OpenStreetMap', ' '), '.');
 
   box.replaceChildren(h('div', { class: 'd-body' }, head, score, facts, actions, checkSection(b), leadBox, source));
   if (typing) {
@@ -2632,7 +2648,7 @@ function setTab(tab, render = true) {
 function exportRows() {
   const items = state.tab === 'results' ? state.filtered : leadItems();
   const muniName = state.muni ? state.muni.name : '';
-  const header = ['Name', 'English name', 'Type', 'Group', 'Web presence', 'Website', 'Website check', 'Speed (phone)', 'Online pages', 'Lead score', 'Distance (km)', 'Phone', 'Email', 'Address', 'Opening hours', 'Municipality', 'Status', 'Follow up', 'Note', 'Google Maps', 'OpenStreetMap', 'Latitude', 'Longitude'];
+  const header = ['Name', 'English name', 'Type', 'Group', 'Web presence', 'Website', 'Website check', 'Speed (phone)', 'Online pages', 'Lead score', 'Distance (km)', 'Phone', 'Email', 'Address', 'Opening hours', 'Municipality', 'Status', 'Follow up', 'Note', 'Google Maps', 'OpenStreetMap', 'Data from', 'Latitude', 'Longitude'];
   const rows = items.map(b => {
     const l = state.leads[b.id] || {};
     const live = state.byId.has(b.id);
@@ -2642,7 +2658,7 @@ function exportRows() {
       (b.socials || []).map(s => s.url).join(' '), b.score, live ? Math.round(b.distance * 100) / 100 : '',
       (b.phones || []).join(', '), b.email || '', b.address || '', b.hours || '',
       live && state.muni ? (b.inMuni ? muniName : `Outside ${muniName}`) : '',
-      STATUS_LABEL[l.status || 'new'], l.due || '', l.note || '', urls.gmaps(b), urls.osm(b), b.lat, b.lon,
+      STATUS_LABEL[l.status || 'new'], l.due || '', l.note || '', urls.gmaps(b), urls.osm(b), SOURCE_LABEL[sourceOf(b)] || '', b.lat, b.lon,
     ];
   });
   return { header, rows };
@@ -2690,7 +2706,7 @@ async function exportXlsx() {
     const X = await loadXlsx();
     const { header, rows } = exportRows();
     const ws = X.utils.aoa_to_sheet([header, ...rows]);
-    const widths = [34, 26, 20, 18, 26, 32, 40, 12, 32, 10, 12, 20, 26, 38, 26, 24, 16, 12, 40, 22, 22, 11, 11];
+    const widths = [34, 26, 20, 18, 26, 32, 40, 12, 32, 10, 12, 20, 26, 38, 26, 24, 16, 12, 40, 22, 22, 18, 11, 11];
     ws['!cols'] = widths.map(w => ({ wch: w }));
     if (ws['!ref']) ws['!autofilter'] = { ref: ws['!ref'] };
     const linkCols = [header.indexOf('Website'), header.indexOf('Google Maps'), header.indexOf('OpenStreetMap')];

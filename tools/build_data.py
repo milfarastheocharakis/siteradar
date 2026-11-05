@@ -1,15 +1,19 @@
 #!/usr/bin/env python3
 """Build SiteRadar's business data files from an osmium GeoJSONSeq export of OpenStreetMap.
 
-Usage: build_data.py <export.geojsonseq> <index.html> <out dir> <OpenStreetMap timestamp>
+Usage: build_data.py <export.geojsonseq> <index.html> <out dir> <OpenStreetMap timestamp> [<overture.parquet> <Overture release>]
 
 Writes, replacing what was there:
   <out>/index.json          the area covered, the data date, the cells and the municipalities
-  <out>/cells/<a>_<o>.json  the businesses in each 0.1-degree cell, in the Overpass JSON shape the app reads
+  <out>/cells/<a>_<o>.json  the businesses in each 0.02-degree cell, in the Overpass JSON shape the app reads
   <out>/munis/<id>.json     each municipality's boundary, in the Overpass "out geom" shape
+  <out>/LICENSE.txt         where the data comes from and its licences (the Overture licence must travel with the data)
 
 The kinds of places kept are read from the app itself (Q_AMENITY, Q_TOURISM, Q_LEISURE), so the
 files hold exactly what the app's live map-data query would return.
+
+With an Overture Maps places file (see fetch_overture.py), its businesses are added too: those OpenStreetMap
+already has give it their missing website, social pages and phone, and the rest are added as "overture" elements.
 """
 import json
 import math
@@ -19,11 +23,16 @@ import shutil
 import sys
 from datetime import datetime, timezone
 
-CELL = 0.1                          # degrees; the app uses the same size
+from overture import licence_text
+
+CELL = 0.02                         # degrees; the app reads it from index.json
+FACTOR = round(1 / CELL)
 BBOX = (34.75, 23.45, 35.75, 26.35)  # south, west, north, east: Crete and Gavdos
 SIMPLIFY = 0.0001                   # degrees (about 10 m) for municipality boundaries
-DROP_TAG = re.compile(r'^(source(:.*)?|note(:.*)?|fixme|FIXME|check_date(:.*)?|survey:date|mapillary|image|wikimedia_commons)$')
-KEEP_NAMES = {'name', 'name:en', 'name:el'}
+# Only the tags the app reads, to keep the files small.
+KEEP_TAG = re.compile(r'^(name(:en|:el)?|shop|amenity|tourism|office|craft|healthcare|leisure|cuisine|addr:.*|phone|mobile|email|website|url'
+                      r'|facebook|instagram|contact:.*|brand(:wikidata|:en|:el)?|operator(:type)?|opening_hours|stars|rooms|description'
+                      r'|disused|abandoned|overture:.*)$')
 
 
 def app_lists(html):
@@ -88,7 +97,7 @@ def centre(geom):
 
 
 def cell_of(lat, lon):
-    return f'{math.floor(lat * 10)}_{math.floor(lon * 10)}'
+    return f'{math.floor(lat * FACTOR)}_{math.floor(lon * FACTOR)}'
 
 
 def simplify(ring, tol):
@@ -119,13 +128,9 @@ def simplify(ring, tol):
 
 
 def trim_tags(tags):
-    out = {}
-    for k, v in tags.items():
-        if k.startswith('@') or DROP_TAG.match(k):
-            continue
-        if k.startswith('name:') and k not in KEEP_NAMES:
-            continue
-        out[k] = v
+    out = {k: v for k, v in tags.items() if KEEP_TAG.match(k)}
+    if 'description' in out:
+        out['description'] = str(out['description'])[:300]
     return out
 
 
@@ -137,9 +142,10 @@ def write_elements(path, elements):
 
 
 def main():
-    if len(sys.argv) != 5:
+    if len(sys.argv) not in (5, 7):
         sys.exit(__doc__)
-    src, html_path, out, osm_date = sys.argv[1:]
+    src, html_path, out, osm_date = sys.argv[1:5]
+    overture_file, overture_release = (sys.argv[5:7] + [None, None])[:2]
     q = app_lists(open(html_path, encoding='utf-8').read())
     south, west, north, east = BBOX
 
@@ -175,13 +181,33 @@ def main():
             el['tags'] = trim_tags(tags)
             businesses[ref] = el
 
+    overture_info = None
+    if overture_file:
+        import pyarrow.parquet as pq
+        from overture import element_from, merge
+        from overture import datasets_of
+        found, datasets = [], set()
+        for place in pq.read_table(overture_file).to_pylist():
+            el = element_from(place)
+            if el and south <= el['lat'] <= north and west <= el['lon'] <= east and is_business(el['tags'], q):
+                el['tags'] = trim_tags(el['tags'])
+                found.append(el)
+                datasets |= datasets_of(place)
+        if len(found) < int(os.environ.get('MIN_OVERTURE', '1000')):
+            sys.exit(f'Only {len(found)} Overture businesses: has the Overture format changed? Refusing to publish')
+        fresh, merged = merge(list(businesses.values()), found)
+        for el in fresh:
+            businesses[('overture', el['id'])] = el
+        overture_info = {'release': overture_release, 'kept': len(found), 'added': len(fresh), 'merged': merged}
+        print(f'Overture {overture_release}: {len(found)} businesses, {merged} already in OpenStreetMap, {len(fresh)} added')
+
     for sub in ('cells', 'munis'):
         shutil.rmtree(os.path.join(out, sub), ignore_errors=True)
         os.makedirs(os.path.join(out, sub))
 
-    order = {'node': 0, 'way': 1, 'relation': 2}
+    order = {'node': 0, 'way': 1, 'relation': 2, 'overture': 3}
     cells = {}
-    for (typ, oid), el in sorted(businesses.items(), key=lambda kv: (order[kv[0][0]], kv[0][1])):
+    for (typ, oid), el in sorted(businesses.items(), key=lambda kv: (order[kv[0][0]], str(kv[0][1]).zfill(20))):
         lat = el.get('lat', el.get('center', {}).get('lat'))
         lon = el.get('lon', el.get('center', {}).get('lon'))
         cells.setdefault(cell_of(lat, lon), []).append(el)
@@ -211,11 +237,14 @@ def main():
         'cell': CELL,
         'bbox': list(BBOX),
         'cells': {k: len(v) for k, v in sorted(cells.items())},
+        'overture': overture_info,
         'munis': muni_index,
     }
     with open(os.path.join(out, 'index.json'), 'w', encoding='utf-8') as f:
         json.dump(index, f, ensure_ascii=False, indent=1)
         f.write('\n')
+    with open(os.path.join(out, 'LICENSE.txt'), 'w', encoding='utf-8') as f:
+        f.write(licence_text(overture_release, datasets) if overture_info else licence_text())
     print(f'{len(businesses)} businesses in {len(cells)} cells, {len(munis)} municipalities, OpenStreetMap {osm_date}')
     if len(businesses) < int(os.environ.get('MIN_BUSINESSES', '1000')) or not munis:
         sys.exit('Too little data: refusing to publish it')

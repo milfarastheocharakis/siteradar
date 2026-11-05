@@ -27,9 +27,11 @@ Optional: limit the key to the PageSpeed Insights API, and to the website `https
 
 ## Where the data comes from
 
-- Businesses: [OpenStreetMap](https://www.openstreetmap.org/copyright) (© OpenStreetMap contributors, ODbL). OpenStreetMap misses some businesses and websites, so check on Google before you call.
-  - Crete is stored in `data/` next to the app, so searches there are instant and don't depend on the busy public map-data servers. A GitHub Actions workflow (`.github/workflows/data.yml`, free for a public repo) rebuilds it every Monday from the [Geofabrik](https://download.geofabrik.de/europe/greece.html) extract of Greece. The search summary shows the date of the data. To rebuild now: Actions → Refresh business data → Run workflow.
-  - Outside Crete, the app asks the Overpass API live (three public servers; if one is slow, it asks the next).
+- Businesses: [OpenStreetMap](https://www.openstreetmap.org/copyright) (© OpenStreetMap contributors, ODbL) and, in Crete, [Overture Maps](https://docs.overturemaps.org/guides/places/) (Overture Maps Foundation, data from Meta, Microsoft and others, [CDLA Permissive 2.0](https://cdla.dev/permissive-2-0/)). Both miss some businesses and websites, so check on Google before you call.
+  - Crete is stored in `data/` next to the app, so searches there are instant and don't depend on the busy public map-data servers. A GitHub Actions workflow (`.github/workflows/data.yml`, free for a public repo) rebuilds it every Monday from the [Geofabrik](https://download.geofabrik.de/europe/greece.html) extract of Greece and the latest monthly Overture Maps release. The search summary shows the date of each. To rebuild now: Actions → Refresh business data → Run workflow.
+  - Overture's places come mostly from Facebook business pages, so they hold many small businesses OpenStreetMap lacks. When both have the same business, the OpenStreetMap entry stays and takes the website, social pages and phone it was missing from Overture. Each business's details say where it came from. Places from Foursquare are left out, because their licence would need extra files next to the data.
+  - `data/LICENSE.txt` says where the data comes from and holds the Overture licence, which must travel with the data.
+  - Outside Crete, the app asks the Overpass API live (three public servers; if one is slow, it asks the next). That is OpenStreetMap only.
 - Addresses: Nominatim, with Photon as a backup.
 - Map: OpenStreetMap's own map tiles (free, no key). In dark mode the app darkens them.
 - Website checks: Google PageSpeed Insights.
