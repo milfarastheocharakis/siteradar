@@ -291,7 +291,7 @@ def main():
         found, datasets = [], set()
         for place in pq.read_table(overture_file).to_pylist():
             el = element_from(place, DIGITS)
-            if el and south <= el['lat'] <= north and west <= el['lon'] <= east and is_business(el['tags'], q) and not not_company(el['tags'], q):
+            if el and south <= el['lat'] <= north and west <= el['lon'] <= east and is_business(el['tags'], q):
                 el['tags'] = trim_tags(el['tags'])
                 found.append(el)
                 datasets |= datasets_of(place)
@@ -300,8 +300,15 @@ def main():
         fresh, merged = merge(list(businesses.values()), found)
         for el in fresh:
             businesses[('overture', el['id'])] = el
-        overture_info = {'release': overture_release, 'kept': len(found), 'added': len(fresh), 'merged': merged}
-        print(f'Overture {overture_release}: {len(found)} businesses, {merged} already in OpenStreetMap, {len(fresh)} added')
+        # Only now, so that an OpenStreetMap business whose Overture twin has a public website (gov.gr and the
+        # like) takes that website and goes too, instead of staying behind as a business with no website.
+        public = [ref for ref, el in businesses.items() if not_company(el['tags'], q)]
+        for ref in public:
+            del businesses[ref]
+        added = sum(1 for ref in businesses if ref[0] == 'overture')
+        overture_info = {'release': overture_release, 'kept': len(found), 'added': added, 'merged': merged}
+        print(f'Overture {overture_release}: {len(found)} businesses, {merged} already in OpenStreetMap, {added} added; '
+              f'{len(public)} left out as not companies ({sum(1 for ref in public if ref[0] != "overture")} from OpenStreetMap)')
 
     chains = mark_chains(list(businesses.values()))
     print(f'{len(chains)} websites shared by chains: {sum(1 for el in businesses.values() if "siteradar:chain" in el["tags"])} businesses marked')

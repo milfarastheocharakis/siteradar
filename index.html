@@ -718,10 +718,12 @@ const NOT_COMPANY = [
   "^(?:greece|grece)$", "^free parking"
 ];
 /* ...unless the name also says it is a private business: a private school or KEP, a tutoring centre, a shop
-   selling "είδη", or a company form such as ΙΚΕ or ΟΕ. */
+   selling "είδη", a café or restaurant (such as "Νομαρχία Café"), or a company form such as ΙΚΕ or ΟΕ. */
 const STILL_COMPANY = [
   "ιδιωτικ[^ ]*", "φροντιστηρι[^ ]*", "εκπαιδευτηρι[^ ]*", "private", "κτηνιατρ[^ ]*", "ειδη", "ικε", "ι κ ε", "επε", "ε π ε", "οε", "ο ε",
-  "εε", "ε ε", "αβεε", "α β ε ε", "αεβε", "μονοπροσωπ[^ ]*", "ltd", "llc", "gmbh", "ike", "ι σαεκ", "ι ι ε κ", "ιιεκ"
+  "εε", "ε ε", "αβεε", "α β ε ε", "αεβε", "μονοπροσωπ[^ ]*", "ltd", "llc", "gmbh", "ike", "ι σαεκ", "ι ι ε κ", "ιιεκ",
+  "cafe[^ ]*", "caffe[^ ]*", "coffee", "καφε[^ ]*", "bar", "restaurant", "εστιατορι[^ ]*", "ταβερν[^ ]*", "taverna", "snack[^ ]*",
+  "pizz[^ ]*", "κυλικει[^ ]*", "canteen"
 ];
 /* A website on one of these means a public body, a state school, a hospital, a municipal company or a page about
    a place, not a company. Subdomains count too. */
