@@ -1,4 +1,4 @@
 {"elements":[
-{"type":"node","id":9109387057,"lat":35.2227067,"lon":26.2709878,"tags":{"amenity":"restaurant","name":"Maridatis","opening_hours":"Mo-Su 12:30-21:30","website":"http://www.maridatis.gr/","contact:facebook":"https://www.facebook.com/137488106269819","email":"maridatis@yahoo.com","phone":"+302843061055","overture:id":"b2425abf-33f3-4ba0-bbc5-16531ddb225a"}},
-{"type":"node","id":9109419273,"lat":35.2203329,"lon":26.2686979,"tags":{"name":"Flamingo Colour Valley House","phone":"+30 69 7464 0974","tourism":"chalet","website":"https://cretewindsurfing.com/"}}
+{"type":"node","id":9109387057,"lat":35.22271,"lon":26.27099,"tags":{"amenity":"restaurant","name":"Maridatis","opening_hours":"Mo-Su 12:30-21:30","website":"http://www.maridatis.gr/","contact:facebook":"https://www.facebook.com/137488106269819","email":"maridatis@yahoo.com","phone":"+302843061055","overture:id":"b2425abf-33f3-4ba0-bbc5-16531ddb225a"}},
+{"type":"node","id":9109419273,"lat":35.22033,"lon":26.2687,"tags":{"name":"Flamingo Colour Valley House","phone":"+30 69 7464 0974","tourism":"chalet","website":"https://cretewindsurfing.com/"}}
 ]}

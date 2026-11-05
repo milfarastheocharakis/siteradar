@@ -1,4 +1,3 @@
 {"elements":[
-{"type":"node","id":11614901924,"lat":35.0749217,"lon":26.1407807,"tags":{"addr:country":"GR","addr:postcode":"72059","addr:street":"ΖΗΡΟΣ","contact:email":"d.lefkis@kep.gov.gr","contact:phone":"+30 2843340000","contact:website":"https://www.kep.gov.gr/","name":"ΚΕΠ ΛΕΥΚΗΣ","name:el":"ΚΕΠ ΛΕΥΚΗΣ","office":"government"}},
-{"type":"overture","id":"c37a3140-421b-4623-88eb-f775d7a9f6ef","lat":35.0682831,"lon":26.1428776,"tags":{"name":"ζηρος σητειας","amenity":"restaurant","overture:category":"restaurant","contact:facebook":"https://www.facebook.com/174228939387793","addr:street":"ΖΗΡΟΣ","addr:city":"Λευκή","addr:postcode":"72059"}}
+{"type":"overture","id":"c37a3140-421b-4623-88eb-f775d7a9f6ef","lat":35.06828,"lon":26.14288,"tags":{"name":"ζηρος σητειας","amenity":"restaurant","overture:category":"restaurant","contact:facebook":"https://www.facebook.com/174228939387793","addr:street":"ΖΗΡΟΣ","addr:city":"Λευκή","addr:postcode":"72059"}}
 ]}

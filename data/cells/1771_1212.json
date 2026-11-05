@@ -1,4 +1,4 @@
 {"elements":[
-{"type":"node","id":1067811639,"lat":35.4252524,"lon":24.2584319,"tags":{"amenity":"cafe","name":"Omprógyalos"}},
-{"type":"node","id":5804449055,"lat":35.4251149,"lon":24.2589374,"tags":{"name":"Бухта осьминогов","tourism":"camp_site"}}
+{"type":"node","id":1067811639,"lat":35.42525,"lon":24.25843,"tags":{"amenity":"cafe","name":"Omprógyalos"}},
+{"type":"node","id":5804449055,"lat":35.42511,"lon":24.25894,"tags":{"name":"Бухта осьминогов","tourism":"camp_site"}}
 ]}

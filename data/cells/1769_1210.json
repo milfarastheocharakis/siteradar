@@ -1,5 +1,5 @@
 {"elements":[
-{"type":"node","id":9282711446,"lat":35.3810628,"lon":24.2187748,"tags":{"name":"Parisaki Apartments","tourism":"apartment","website":"https://www.booking.com/hotel/gr/parisaki-3.de.html"}},
-{"type":"node","id":9282711447,"lat":35.3834877,"lon":24.2151311,"tags":{"name":"Villa Kalamitsi","phone":"+306975822021","tourism":"apartment","website":"https://villakalamitsi.gr/"}},
-{"type":"node","id":13160084275,"lat":35.3823336,"lon":24.2193461,"tags":{"addr:place":"Καλαμίτσι Αλεξάνδρου","addr:postcode":"73008","email":"hatzmak@gmail.com","name":"Kalamitsi maisonette","operator":"Emmanouel Chatzidakis","phone":"+306974037647","rooms":"2","tourism":"apartment","website":"https://www.booking.com/hotel/gr/kalamitsi-2-floor-apartment.el.html"}}
+{"type":"node","id":9282711446,"lat":35.38106,"lon":24.21877,"tags":{"name":"Parisaki Apartments","tourism":"apartment","website":"https://www.booking.com/hotel/gr/parisaki-3.de.html"}},
+{"type":"node","id":9282711447,"lat":35.38349,"lon":24.21513,"tags":{"name":"Villa Kalamitsi","phone":"+306975822021","tourism":"apartment","website":"https://villakalamitsi.gr/"}},
+{"type":"node","id":13160084275,"lat":35.38233,"lon":24.21935,"tags":{"addr:place":"Καλαμίτσι Αλεξάνδρου","addr:postcode":"73008","email":"hatzmak@gmail.com","name":"Kalamitsi maisonette","operator":"Emmanouel Chatzidakis","phone":"+306974037647","rooms":"2","tourism":"apartment","website":"https://www.booking.com/hotel/gr/kalamitsi-2-floor-apartment.el.html"}}
 ]}

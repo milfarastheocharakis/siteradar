@@ -1,4 +1,4 @@
 {"elements":[
-{"type":"node","id":14110295656,"lat":35.1902644,"lon":25.2259116,"tags":{"addr:city":"Αστρίτσι","addr:postcode":"70300","amenity":"restaurant","name":"Το στέκι του Λαμπούζου","opening_hours":"Mo-Su 09:00-22:00"}},
-{"type":"overture","id":"53373cde-b018-4047-8edf-d4d140f08be5","lat":35.1910095,"lon":25.2224236,"tags":{"name":"Ταβέρνα Κατω Βρύση","cuisine":"greek","amenity":"restaurant","phone":"+306979110324","contact:facebook":"https://www.facebook.com/1194565760681441","addr:street":"Κάτω βρύση","addr:city":"Αποκεντρωμένη Διοίκηση Κρήτης","addr:postcode":"703 00"}}
+{"type":"node","id":14110295656,"lat":35.19026,"lon":25.22591,"tags":{"addr:city":"Αστρίτσι","addr:postcode":"70300","amenity":"restaurant","name":"Το στέκι του Λαμπούζου","opening_hours":"Mo-Su 09:00-22:00"}},
+{"type":"overture","id":"53373cde-b018-4047-8edf-d4d140f08be5","lat":35.19101,"lon":25.22242,"tags":{"name":"Ταβέρνα Κατω Βρύση","cuisine":"greek","amenity":"restaurant","phone":"+306979110324","contact:facebook":"https://www.facebook.com/1194565760681441","addr:street":"Κάτω βρύση","addr:city":"Αποκεντρωμένη Διοίκηση Κρήτης","addr:postcode":"703 00"}}
 ]}

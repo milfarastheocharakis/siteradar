@@ -1,4 +1,4 @@
 {"elements":[
-{"type":"node","id":7047508830,"lat":34.9350383,"lon":24.9828725,"tags":{"amenity":"restaurant","cuisine":"greek","name":"Ο Μαθιός","name:el":"Ο Μαθιός","name:en":"Mathios"}},
-{"type":"node","id":7047566746,"lat":34.9360636,"lon":24.9822067,"tags":{"amenity":"restaurant","name":"Ηρακλής"}}
+{"type":"node","id":7047508830,"lat":34.93504,"lon":24.98287,"tags":{"amenity":"restaurant","cuisine":"greek","name":"Ο Μαθιός","name:el":"Ο Μαθιός","name:en":"Mathios"}},
+{"type":"node","id":7047566746,"lat":34.93606,"lon":24.98221,"tags":{"amenity":"restaurant","name":"Ηρακλής"}}
 ]}

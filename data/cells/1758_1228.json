@@ -1,5 +1,5 @@
 {"elements":[
-{"type":"node","id":2796211338,"lat":35.1789204,"lon":24.5738689,"tags":{"amenity":"restaurant","cuisine":"regional","name":"Ταβέρνα Αγαμέμνωn","name:el":"Ταβέρνα Αγαμέμνωn","name:en":"Tavern Agamemnon","contact:facebook":"https://www.facebook.com/2245565792381770","phone":"+302832061540","overture:id":"2e46ddc9-6bf1-415e-95d7-bb67272c136c"}},
-{"type":"node","id":3741483455,"lat":35.1787225,"lon":24.5748037,"tags":{"amenity":"restaurant","name":"Agamemnon"}},
-{"type":"overture","id":"c18b05b5-a1db-48e8-a408-d00459dd0347","lat":35.179039,"lon":24.5739059,"tags":{"name":"Κεντροχωρι","shop":"travel_agency","contact:facebook":"https://www.facebook.com/415367531838413","addr:city":"Amári"}}
+{"type":"node","id":2796211338,"lat":35.17892,"lon":24.57387,"tags":{"amenity":"restaurant","cuisine":"regional","name":"Ταβέρνα Αγαμέμνωn","name:el":"Ταβέρνα Αγαμέμνωn","name:en":"Tavern Agamemnon","contact:facebook":"https://www.facebook.com/2245565792381770","phone":"+302832061540","overture:id":"2e46ddc9-6bf1-415e-95d7-bb67272c136c"}},
+{"type":"node","id":3741483455,"lat":35.17872,"lon":24.5748,"tags":{"amenity":"restaurant","name":"Agamemnon"}},
+{"type":"overture","id":"c18b05b5-a1db-48e8-a408-d00459dd0347","lat":35.17904,"lon":24.57391,"tags":{"name":"Κεντροχωρι","shop":"travel_agency","contact:facebook":"https://www.facebook.com/415367531838413","addr:city":"Amári"}}
 ]}

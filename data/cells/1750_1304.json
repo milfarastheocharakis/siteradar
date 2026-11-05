@@ -1,5 +1,5 @@
 {"elements":[
-{"type":"node","id":13626955593,"lat":35.013693,"lon":26.0923691,"tags":{"amenity":"cafe","name":"Cafe Giou"}},
-{"type":"node","id":14051824001,"lat":35.0117848,"lon":26.0937193,"tags":{"amenity":"restaurant","name":"Taverna Seretis","contact:facebook":"https://www.facebook.com/126677387894830","phone":"+302843052262","overture:id":"ed938f98-a7d5-4455-944d-c08e44d2949a"}},
-{"type":"overture","id":"142fea22-ed2a-4982-887e-12377e050e2a","lat":35.0144653,"lon":26.0916882,"tags":{"name":"Boggi Cafe and Appartments","tourism":"hotel","phone":"+306973557985","contact:facebook":"https://www.facebook.com/1730568963892688","email":"giorgosmariakatapoti@yahoo.gr","addr:city":"Δημοτική Ενότητα Λεύκης","addr:postcode":"720 59"}}
+{"type":"node","id":13626955593,"lat":35.01369,"lon":26.09237,"tags":{"amenity":"cafe","name":"Cafe Giou"}},
+{"type":"node","id":14051824001,"lat":35.01178,"lon":26.09372,"tags":{"amenity":"restaurant","name":"Taverna Seretis","contact:facebook":"https://www.facebook.com/126677387894830","phone":"+302843052262","overture:id":"ed938f98-a7d5-4455-944d-c08e44d2949a"}},
+{"type":"overture","id":"142fea22-ed2a-4982-887e-12377e050e2a","lat":35.01447,"lon":26.09169,"tags":{"name":"Boggi Cafe and Appartments","tourism":"hotel","phone":"+306973557985","contact:facebook":"https://www.facebook.com/1730568963892688","email":"giorgosmariakatapoti@yahoo.gr","addr:city":"Δημοτική Ενότητα Λεύκης","addr:postcode":"720 59"}}
 ]}

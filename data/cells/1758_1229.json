@@ -1,5 +1,5 @@
 {"elements":[
-{"type":"node","id":2951345892,"lat":35.1662426,"lon":24.5811868,"tags":{"amenity":"cafe","cuisine":"regional","name":"Cafe & Restaurant Stelios"}},
-{"type":"overture","id":"53735312-d0dc-44bd-9e89-6427cc2e52d5","lat":35.1645508,"lon":24.583065,"tags":{"name":"Akoumia - Rethymno - Crete","tourism":"hotel","contact:facebook":"https://www.facebook.com/358868180801002","addr:street":"Δημος Αγιου Βασιλειου","addr:city":"Réthimnon"}},
-{"type":"overture","id":"8297c814-13c4-4b5d-9a40-bba7b94c605b","lat":35.1658897,"lon":24.5815792,"tags":{"name":"Akoumiapartments","tourism":"hotel","phone":"+306972711887","website":"https://sites.google.com/view/akoumiapartments/","contact:facebook":"https://www.facebook.com/219229868693698","email":"dimvoy@gmail.com","addr:street":"AKOYMIA- dimvoy@gmail.com","addr:city":"Réthimnon","addr:postcode":"74053"}}
+{"type":"node","id":2951345892,"lat":35.16624,"lon":24.58119,"tags":{"amenity":"cafe","cuisine":"regional","name":"Cafe & Restaurant Stelios"}},
+{"type":"overture","id":"53735312-d0dc-44bd-9e89-6427cc2e52d5","lat":35.16455,"lon":24.58307,"tags":{"name":"Akoumia - Rethymno - Crete","tourism":"hotel","contact:facebook":"https://www.facebook.com/358868180801002","addr:street":"Δημος Αγιου Βασιλειου","addr:city":"Réthimnon"}},
+{"type":"overture","id":"8297c814-13c4-4b5d-9a40-bba7b94c605b","lat":35.16589,"lon":24.58158,"tags":{"name":"Akoumiapartments","tourism":"hotel","phone":"+306972711887","website":"https://sites.google.com/view/akoumiapartments/","contact:facebook":"https://www.facebook.com/219229868693698","email":"dimvoy@gmail.com","addr:street":"AKOYMIA- dimvoy@gmail.com","addr:city":"Réthimnon","addr:postcode":"74053"}}
 ]}

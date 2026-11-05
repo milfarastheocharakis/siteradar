@@ -1,4 +1,4 @@
 {"elements":[
-{"type":"node","id":304573607,"lat":35.4160327,"lon":23.6425477,"tags":{"amenity":"pub","name":"Kafenion Sirikari"}},
-{"type":"overture","id":"0c2dd964-75db-48a4-9ffb-4b976871ff6e","lat":35.4163399,"lon":23.6423607,"tags":{"name":"Kastania Apartments","tourism":"hotel","phone":"+306945895522","website":"http://www.kastaniaapartments.com/","contact:facebook":"https://www.facebook.com/252046195158853","addr:street":"Σιρικάκι","addr:city":"Sirikári","addr:postcode":"73400"}}
+{"type":"node","id":304573607,"lat":35.41603,"lon":23.64255,"tags":{"amenity":"pub","name":"Kafenion Sirikari"}},
+{"type":"overture","id":"0c2dd964-75db-48a4-9ffb-4b976871ff6e","lat":35.41634,"lon":23.64236,"tags":{"name":"Kastania Apartments","tourism":"hotel","phone":"+306945895522","website":"http://www.kastaniaapartments.com/","contact:facebook":"https://www.facebook.com/252046195158853","addr:street":"Σιρικάκι","addr:city":"Sirikári","addr:postcode":"73400"}}
 ]}

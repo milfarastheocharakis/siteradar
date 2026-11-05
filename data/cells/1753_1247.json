@@ -1,4 +1,4 @@
 {"elements":[
-{"type":"node","id":3805498276,"lat":35.0621285,"lon":24.9479713,"tags":{"addr:city":"Gortina","amenity":"cafe","name":"Gortyna Snack-Cafe","phone":"+30 2892 027197"}},
-{"type":"overture","id":"a6f322ca-c350-4db7-8968-782240dac36d","lat":35.0777206,"lon":24.9414825,"tags":{"name":"Zacharioudakis Winery","craft":"winery","phone":"+302892096226","website":"http://www.zacharioudakis.com/","contact:facebook":"https://www.facebook.com/170260249735020","email":"info@zacharioudakis.com","addr:city":"Κοινότητα Ρουφά","addr:postcode":"704 00"}}
+{"type":"node","id":3805498276,"lat":35.06213,"lon":24.94797,"tags":{"addr:city":"Gortina","amenity":"cafe","name":"Gortyna Snack-Cafe","phone":"+30 2892 027197"}},
+{"type":"overture","id":"a6f322ca-c350-4db7-8968-782240dac36d","lat":35.07772,"lon":24.94148,"tags":{"name":"Zacharioudakis Winery","craft":"winery","phone":"+302892096226","website":"http://www.zacharioudakis.com/","contact:facebook":"https://www.facebook.com/170260249735020","email":"info@zacharioudakis.com","addr:city":"Κοινότητα Ρουφά","addr:postcode":"704 00"}}
 ]}

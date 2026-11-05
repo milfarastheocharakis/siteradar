@@ -1,5 +1,5 @@
 {"elements":[
-{"type":"node","id":3817396502,"lat":35.0263855,"lon":24.8128705,"tags":{"amenity":"restaurant","cuisine":"greek","name":"Ταβέρνα Στροφή"}},
-{"type":"overture","id":"01a45694-33d5-426b-a4aa-b5aee26fbcae","lat":35.0208092,"lon":24.8073425,"tags":{"name":"Villa Olea with eco Pool - Entire Place","tourism":"apartment","contact:facebook":"https://www.facebook.com/104059465681804","addr:city":"Timpaki"}},
-{"type":"overture","id":"59d11e9a-b3ac-41ad-8f3b-63b070749d64","lat":35.0263939,"lon":24.8128548,"tags":{"name":"Κτήμα Μαθιουδάκη-Κέντρο εκδηλώσεων","amenity":"restaurant","overture:category":"restaurant","phone":"+306971817576","contact:facebook":"https://www.facebook.com/127538154574744","email":"ktimamathioudaki@gmail.com","addr:street":"Σίβας","addr:city":"Heraklion","addr:postcode":"70200"}}
+{"type":"node","id":3817396502,"lat":35.02639,"lon":24.81287,"tags":{"amenity":"restaurant","cuisine":"greek","name":"Ταβέρνα Στροφή"}},
+{"type":"overture","id":"01a45694-33d5-426b-a4aa-b5aee26fbcae","lat":35.02081,"lon":24.80734,"tags":{"name":"Villa Olea with eco Pool - Entire Place","tourism":"apartment","contact:facebook":"https://www.facebook.com/104059465681804","addr:city":"Timpaki"}},
+{"type":"overture","id":"59d11e9a-b3ac-41ad-8f3b-63b070749d64","lat":35.02639,"lon":24.81285,"tags":{"name":"Κτήμα Μαθιουδάκη-Κέντρο εκδηλώσεων","amenity":"restaurant","overture:category":"restaurant","phone":"+306971817576","contact:facebook":"https://www.facebook.com/127538154574744","email":"ktimamathioudaki@gmail.com","addr:street":"Σίβας","addr:city":"Heraklion","addr:postcode":"70200"}}
 ]}

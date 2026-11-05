@@ -1,4 +1,4 @@
 {"elements":[
-{"type":"way","id":1560831102,"center":{"lat":35.3399018,"lon":24.620067},"tags":{"addr:city":"Kapsaliana","amenity":"bar","name":"Levanda Pool Bar"}},
-{"type":"overture","id":"32015b3a-ed95-43c7-9ffb-ad0ac5a34fa3","lat":35.3393707,"lon":24.6201077,"tags":{"name":"Kapsaliana Village Hotel","tourism":"hotel","phone":"+302831083400","website":"http://www.kapsalianavillage.gr/","contact:facebook":"https://www.facebook.com/429312693821837","email":"info@kapsalianavillage.gr","addr:street":"ΚΑΨΑΛΙΑΝΑ 0","addr:city":"Αρκάδι","addr:postcode":"741 50"}}
+{"type":"way","id":1560831102,"center":{"lat":35.3399,"lon":24.62007},"tags":{"addr:city":"Kapsaliana","amenity":"bar","name":"Levanda Pool Bar"}},
+{"type":"overture","id":"32015b3a-ed95-43c7-9ffb-ad0ac5a34fa3","lat":35.33937,"lon":24.62011,"tags":{"name":"Kapsaliana Village Hotel","tourism":"hotel","phone":"+302831083400","website":"http://www.kapsalianavillage.gr/","contact:facebook":"https://www.facebook.com/429312693821837","email":"info@kapsalianavillage.gr","addr:street":"ΚΑΨΑΛΙΑΝΑ 0","addr:city":"Αρκάδι","addr:postcode":"741 50"}}
 ]}

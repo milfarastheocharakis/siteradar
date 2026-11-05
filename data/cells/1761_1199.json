@@ -1,4 +1,4 @@
 {"elements":[
-{"type":"node","id":3807495181,"lat":35.2235233,"lon":23.9997131,"tags":{"amenity":"cafe","name":"Saint Paul"}},
-{"type":"overture","id":"d3a5f64a-9707-4bc4-930f-fb7e0c25e27b","lat":35.2235641,"lon":23.9997864,"tags":{"name":"Άγιος Παύλος","cuisine":"breakfast_and_brunch","amenity":"restaurant","phone":"+306992319458","contact:facebook":"https://www.facebook.com/1476955455650425","addr:street":"Unnamed Road","addr:city":"Δήμος Σφακίων","addr:postcode":"730 11"}}
+{"type":"node","id":3807495181,"lat":35.22352,"lon":23.99971,"tags":{"amenity":"cafe","name":"Saint Paul"}},
+{"type":"overture","id":"d3a5f64a-9707-4bc4-930f-fb7e0c25e27b","lat":35.22356,"lon":23.99979,"tags":{"name":"Άγιος Παύλος","cuisine":"breakfast_and_brunch","amenity":"restaurant","phone":"+306992319458","contact:facebook":"https://www.facebook.com/1476955455650425","addr:street":"Unnamed Road","addr:city":"Δήμος Σφακίων","addr:postcode":"730 11"}}
 ]}

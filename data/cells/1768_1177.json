@@ -1,5 +1,5 @@
 {"elements":[
-{"type":"way","id":634419842,"center":{"lat":35.3711428,"lon":23.5562858},"tags":{"name":"PefkoPetro","tourism":"guest_house"}},
-{"type":"overture","id":"2cdccfc9-7a3c-465b-8924-9c646e5b5956","lat":35.3777924,"lon":23.5438805,"tags":{"name":"Keramoti Villas","tourism":"hotel","phone":"+306983609884","website":"http://www.keramoti-villas.com/","contact:facebook":"https://www.facebook.com/567625126614411","email":"keramotivillas@yahoo.gr","addr:street":"Keramoti","addr:city":"Ινναχώριο","addr:postcode":"73012"}},
-{"type":"overture","id":"c1b2df7a-9453-45d0-9b2e-44dcc9c252bc","lat":35.3636436,"lon":23.5576305,"tags":{"name":"Petroula's Orange Juice Bar","amenity":"bar","phone":"+306938744882","contact:facebook":"https://www.facebook.com/100286899070410","email":"czerniawskabeata78@gmail.com","addr:city":"Δήμος Κισσάμου","addr:postcode":"730 12"}}
+{"type":"way","id":634419842,"center":{"lat":35.37114,"lon":23.55629},"tags":{"name":"PefkoPetro","tourism":"guest_house"}},
+{"type":"overture","id":"2cdccfc9-7a3c-465b-8924-9c646e5b5956","lat":35.37779,"lon":23.54388,"tags":{"name":"Keramoti Villas","tourism":"hotel","phone":"+306983609884","website":"http://www.keramoti-villas.com/","contact:facebook":"https://www.facebook.com/567625126614411","email":"keramotivillas@yahoo.gr","addr:street":"Keramoti","addr:city":"Ινναχώριο","addr:postcode":"73012"}},
+{"type":"overture","id":"c1b2df7a-9453-45d0-9b2e-44dcc9c252bc","lat":35.36364,"lon":23.55763,"tags":{"name":"Petroula's Orange Juice Bar","amenity":"bar","phone":"+306938744882","contact:facebook":"https://www.facebook.com/100286899070410","email":"czerniawskabeata78@gmail.com","addr:city":"Δήμος Κισσάμου","addr:postcode":"730 12"}}
 ]}

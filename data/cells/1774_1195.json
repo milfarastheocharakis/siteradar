@@ -1,4 +1,4 @@
 {"elements":[
-{"type":"node","id":4290034200,"lat":35.4962686,"lon":23.9069681,"tags":{"addr:postcode":"730 14","addr:street":"Βόρειος Οδικός Άξονας Κρήτης","amenity":"restaurant","cuisine":"greek;Cretan","email":"info@drakiana.com","name":"Drakiana restaurant","opening_hours":"Mo off; Tu-Su 10:00-23:00","phone":"+30 28210 61677","website":"https://drakiana.gr","contact:facebook":"https://www.facebook.com/151147968298902","overture:id":"7266b6b0-8bec-4fcf-9a63-5dfc2bdc4c20"}},
-{"type":"node","id":4470940489,"lat":35.4930551,"lon":23.9029765,"tags":{"name":"Villa orgoni","name:el":"Villa orgoni","name:en":"Villa orgoni","tourism":"hotel"}}
+{"type":"node","id":4290034200,"lat":35.49627,"lon":23.90697,"tags":{"addr:postcode":"730 14","addr:street":"Βόρειος Οδικός Άξονας Κρήτης","amenity":"restaurant","cuisine":"greek;Cretan","email":"info@drakiana.com","name":"Drakiana restaurant","opening_hours":"Mo off; Tu-Su 10:00-23:00","phone":"+30 28210 61677","website":"https://drakiana.gr","contact:facebook":"https://www.facebook.com/151147968298902","overture:id":"7266b6b0-8bec-4fcf-9a63-5dfc2bdc4c20"}},
+{"type":"node","id":4470940489,"lat":35.49306,"lon":23.90298,"tags":{"name":"Villa orgoni","name:el":"Villa orgoni","name:en":"Villa orgoni","tourism":"hotel"}}
 ]}

@@ -1,4 +1,4 @@
 {"elements":[
-{"type":"node","id":14142941102,"lat":35.3794434,"lon":23.8244526,"tags":{"amenity":"restaurant","cuisine":"greek","name":"Μπομπολάκης","name:en":"Mpompolakis","phone":"+302821077742"}},
-{"type":"overture","id":"3ba16929-4b02-45b4-b2c3-6796c9789c0f","lat":35.3793755,"lon":23.8249321,"tags":{"name":"Καφενείο Πάνδροσος","amenity":"restaurant","overture:category":"restaurant","phone":"+306978111955","contact:facebook":"https://www.facebook.com/852875875100151","addr:street":"Epar.Od. Chanion - Sougias","addr:city":"Δήμος Πλατανιά","addr:postcode":"730 05"}}
+{"type":"node","id":14142941102,"lat":35.37944,"lon":23.82445,"tags":{"amenity":"restaurant","cuisine":"greek","name":"Μπομπολάκης","name:en":"Mpompolakis","phone":"+302821077742"}},
+{"type":"overture","id":"3ba16929-4b02-45b4-b2c3-6796c9789c0f","lat":35.37938,"lon":23.82493,"tags":{"name":"Καφενείο Πάνδροσος","amenity":"restaurant","overture:category":"restaurant","phone":"+306978111955","contact:facebook":"https://www.facebook.com/852875875100151","addr:street":"Epar.Od. Chanion - Sougias","addr:city":"Δήμος Πλατανιά","addr:postcode":"730 05"}}
 ]}

@@ -1,10 +1,10 @@
 {"elements":[
-{"type":"node","id":3635998153,"lat":35.5206039,"lon":23.8865007,"tags":{"amenity":"cafe","name":"Thea's coffee bar"}},
-{"type":"node","id":3635998154,"lat":35.520822,"lon":23.8849769,"tags":{"amenity":"cafe","name":"Thea's coffee shop"}},
-{"type":"node","id":13208881414,"lat":35.5202217,"lon":23.8893066,"tags":{"name":"Baladinos Apartments","tourism":"apartment","website":"http://www.baladinosapartments.gr/","contact:facebook":"https://www.facebook.com/53243992549","phone":"+302821061484","overture:id":"aec396be-366b-4674-b93b-fd5dd3922faf"}},
-{"type":"way","id":401579656,"center":{"lat":35.5200813,"lon":23.88479},"tags":{"addr:city":"Γεράνι","name":"Atlantica","tourism":"hotel"}},
-{"type":"way","id":761770262,"center":{"lat":35.5204239,"lon":23.8822652},"tags":{"addr:city":"Γεράνι","name":"Lito","tourism":"hotel"}},
-{"type":"overture","id":"4d350f37-506a-4743-a93a-f57bb50e83d2","lat":35.5209541,"lon":23.8822899,"tags":{"name":"Lito Pool Bar and Restaurant","amenity":"restaurant","overture:category":"restaurant","phone":"+302821061109","website":"https://maps.app.goo.gl/vP859A5fqRVWii8XA","contact:facebook":"https://www.facebook.com/691710494019052","email":"litorestaurantbar@gmail.com","addr:street":"Παραλία","addr:city":"Πλατανιάς","addr:postcode":"730 14"}},
-{"type":"overture","id":"b4ccabab-26d0-44a4-a2d9-7d8414806046","lat":35.5204277,"lon":23.8858395,"tags":{"name":"Kreeta - Gerani","tourism":"hotel","contact:facebook":"https://www.facebook.com/106774122746110","addr:city":"Πλατανιάς"}},
-{"type":"overture","id":"ed9e0b8d-dc1c-4dcc-947e-f61f2926c474","lat":35.5205154,"lon":23.8857536,"tags":{"name":"Taverna","cuisine":"greek","amenity":"restaurant","contact:facebook":"https://www.facebook.com/529107504228445","addr:city":"Πλατανιάς"}}
+{"type":"node","id":3635998153,"lat":35.5206,"lon":23.8865,"tags":{"amenity":"cafe","name":"Thea's coffee bar"}},
+{"type":"node","id":3635998154,"lat":35.52082,"lon":23.88498,"tags":{"amenity":"cafe","name":"Thea's coffee shop"}},
+{"type":"node","id":13208881414,"lat":35.52022,"lon":23.88931,"tags":{"name":"Baladinos Apartments","tourism":"apartment","website":"http://www.baladinosapartments.gr/","contact:facebook":"https://www.facebook.com/53243992549","phone":"+302821061484","overture:id":"aec396be-366b-4674-b93b-fd5dd3922faf"}},
+{"type":"way","id":401579656,"center":{"lat":35.52008,"lon":23.88479},"tags":{"addr:city":"Γεράνι","name":"Atlantica","tourism":"hotel"}},
+{"type":"way","id":761770262,"center":{"lat":35.52042,"lon":23.88227},"tags":{"addr:city":"Γεράνι","name":"Lito","tourism":"hotel"}},
+{"type":"overture","id":"4d350f37-506a-4743-a93a-f57bb50e83d2","lat":35.52095,"lon":23.88229,"tags":{"name":"Lito Pool Bar and Restaurant","amenity":"restaurant","overture:category":"restaurant","phone":"+302821061109","website":"https://maps.app.goo.gl/vP859A5fqRVWii8XA","contact:facebook":"https://www.facebook.com/691710494019052","email":"litorestaurantbar@gmail.com","addr:street":"Παραλία","addr:city":"Πλατανιάς","addr:postcode":"730 14"}},
+{"type":"overture","id":"b4ccabab-26d0-44a4-a2d9-7d8414806046","lat":35.52043,"lon":23.88584,"tags":{"name":"Kreeta - Gerani","tourism":"hotel","contact:facebook":"https://www.facebook.com/106774122746110","addr:city":"Πλατανιάς"}},
+{"type":"overture","id":"ed9e0b8d-dc1c-4dcc-947e-f61f2926c474","lat":35.52052,"lon":23.88575,"tags":{"name":"Taverna","cuisine":"greek","amenity":"restaurant","contact:facebook":"https://www.facebook.com/529107504228445","addr:city":"Πλατανιάς"}}
 ]}

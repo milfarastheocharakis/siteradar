@@ -1,8 +1,8 @@
 {"elements":[
-{"type":"node","id":5935236003,"lat":34.8667692,"lon":24.0921872,"tags":{"name":"Mini Market Παυλής","shop":"convenience"}},
-{"type":"node","id":5935237130,"lat":34.8671554,"lon":24.0915461,"tags":{"amenity":"restaurant","cuisine":"balkan;international","name":"Αϊ Γιάννης"}},
-{"type":"node","id":5935897815,"lat":34.8652807,"lon":24.0922187,"tags":{"name":"Sofia Rooms","tourism":"guest_house","website":"http://sofiaroomsgavdos.com/","contact:facebook":"https://www.facebook.com/1022674444444593","phone":"+306947003533","overture:id":"2b4289b1-6b61-478e-915b-3f232746a5c0"}},
-{"type":"node","id":9965519120,"lat":34.8668142,"lon":24.0921316,"tags":{"amenity":"bar","name":"Λιβυκόν","contact:facebook":"https://www.facebook.com/141711356037676","phone":"+302823042522","overture:id":"027bf634-6419-450e-a8fa-c54ffb3e0542"}},
-{"type":"node","id":9965523834,"lat":34.8660467,"lon":24.0961274,"tags":{"amenity":"restaurant","name":"Λίβας"}},
-{"type":"node","id":9965523835,"lat":34.8667904,"lon":24.0920125,"tags":{"name":"Mini Market Άι Γιάννης","shop":"convenience"}}
+{"type":"node","id":5935236003,"lat":34.86677,"lon":24.09219,"tags":{"name":"Mini Market Παυλής","shop":"convenience"}},
+{"type":"node","id":5935237130,"lat":34.86716,"lon":24.09155,"tags":{"amenity":"restaurant","cuisine":"balkan;international","name":"Αϊ Γιάννης"}},
+{"type":"node","id":5935897815,"lat":34.86528,"lon":24.09222,"tags":{"name":"Sofia Rooms","tourism":"guest_house","website":"http://sofiaroomsgavdos.com/","contact:facebook":"https://www.facebook.com/1022674444444593","phone":"+306947003533","overture:id":"2b4289b1-6b61-478e-915b-3f232746a5c0"}},
+{"type":"node","id":9965519120,"lat":34.86681,"lon":24.09213,"tags":{"amenity":"bar","name":"Λιβυκόν","contact:facebook":"https://www.facebook.com/141711356037676","phone":"+302823042522","overture:id":"027bf634-6419-450e-a8fa-c54ffb3e0542"}},
+{"type":"node","id":9965523834,"lat":34.86605,"lon":24.09613,"tags":{"amenity":"restaurant","name":"Λίβας"}},
+{"type":"node","id":9965523835,"lat":34.86679,"lon":24.09201,"tags":{"name":"Mini Market Άι Γιάννης","shop":"convenience"}}
 ]}

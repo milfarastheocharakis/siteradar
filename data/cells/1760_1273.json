@@ -1,4 +1,4 @@
 {"elements":[
-{"type":"node","id":4382568090,"lat":35.2198516,"lon":25.460053,"tags":{"addr:street":"Kera, Chersonissos","amenity":"restaurant","cuisine":"greek","email":"food@nikitaverna.gr","name":"Taverna Niki","name:el":"Taberna Niki","operator":"Marazaki Niki","phone":"+302897051204","website":"http://www.nikitaverna.gr","contact:facebook":"https://www.facebook.com/182266695744200","overture:id":"85b1715c-f664-4897-8335-2c34e8d9add0"}},
-{"type":"node","id":10964023573,"lat":35.2198012,"lon":25.4603535,"tags":{"name":"Kera Gifts","shop":"yes"}}
+{"type":"node","id":4382568090,"lat":35.21985,"lon":25.46005,"tags":{"addr:street":"Kera, Chersonissos","amenity":"restaurant","cuisine":"greek","email":"food@nikitaverna.gr","name":"Taverna Niki","name:el":"Taberna Niki","operator":"Marazaki Niki","phone":"+302897051204","website":"http://www.nikitaverna.gr","contact:facebook":"https://www.facebook.com/182266695744200","overture:id":"85b1715c-f664-4897-8335-2c34e8d9add0"}},
+{"type":"node","id":10964023573,"lat":35.2198,"lon":25.46035,"tags":{"name":"Kera Gifts","shop":"yes"}}
 ]}

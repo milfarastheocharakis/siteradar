@@ -1,4 +1,4 @@
 {"elements":[
-{"type":"node","id":8940447643,"lat":35.3936387,"lon":24.2484505,"tags":{"amenity":"restaurant","cuisine":"greek","name":"Ταβέρνα Βιβλιοθήκη","name:el":"Ταβέρνα Βιβλιοθήκη","name:en":"Tavern Library","phone":"+30 69 74 43 05 00"}},
-{"type":"overture","id":"078a4580-8f47-4d9f-a351-a92e9c399759","lat":35.3921585,"lon":24.247263,"tags":{"name":"Achuzat Amatist","office":"company","overture:category":"professional_service","phone":"+306985766919","contact:facebook":"https://www.facebook.com/106185731071862","addr:street":"Epar.Od. Litsardas-Likotinara","addr:city":"Περιφέρεια Κρήτης","addr:postcode":"731 00"}}
+{"type":"node","id":8940447643,"lat":35.39364,"lon":24.24845,"tags":{"amenity":"restaurant","cuisine":"greek","name":"Ταβέρνα Βιβλιοθήκη","name:el":"Ταβέρνα Βιβλιοθήκη","name:en":"Tavern Library","phone":"+30 69 74 43 05 00"}},
+{"type":"overture","id":"078a4580-8f47-4d9f-a351-a92e9c399759","lat":35.39216,"lon":24.24726,"tags":{"name":"Achuzat Amatist","office":"company","overture:category":"professional_service","phone":"+306985766919","contact:facebook":"https://www.facebook.com/106185731071862","addr:street":"Epar.Od. Litsardas-Likotinara","addr:city":"Περιφέρεια Κρήτης","addr:postcode":"731 00"}}
 ]}

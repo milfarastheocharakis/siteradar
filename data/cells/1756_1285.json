@@ -1,4 +1,4 @@
 {"elements":[
-{"type":"node","id":4271302296,"lat":35.1282382,"lon":25.719725,"tags":{"name":"Athina Villas","tourism":"hotel"}},
-{"type":"overture","id":"44e16e26-867e-43ce-a4be-4edc57806a22","lat":35.1332703,"lon":25.7175064,"tags":{"name":"Εξοχικό","amenity":"restaurant","overture:category":"restaurant","phone":"+306972162029","contact:facebook":"https://www.facebook.com/103526942004358","email":"exohiko2021@gmail.com","addr:street":"Βαθύ Κριτσάς","addr:city":"�?gios Nikólaos","addr:postcode":"72100"}}
+{"type":"node","id":4271302296,"lat":35.12824,"lon":25.71973,"tags":{"name":"Athina Villas","tourism":"hotel"}},
+{"type":"overture","id":"44e16e26-867e-43ce-a4be-4edc57806a22","lat":35.13327,"lon":25.71751,"tags":{"name":"Εξοχικό","amenity":"restaurant","overture:category":"restaurant","phone":"+306972162029","contact:facebook":"https://www.facebook.com/103526942004358","email":"exohiko2021@gmail.com","addr:street":"Βαθύ Κριτσάς","addr:city":"�?gios Nikólaos","addr:postcode":"72100"}}
 ]}

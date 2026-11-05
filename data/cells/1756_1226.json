@@ -1,4 +1,4 @@
 {"elements":[
-{"type":"node","id":3741483496,"lat":35.1386085,"lon":24.5289037,"tags":{"amenity":"restaurant","name":"Villa Maria","website":"http://www.ligres.eu/","contact:facebook":"https://www.facebook.com/1518199935103188","email":"mariavillaligres@gmail.com","phone":"+306988363598","overture:id":"30fef38d-fe0e-4196-8831-53d1bd571ca1"}},
-{"type":"node","id":4454594189,"lat":35.1378841,"lon":24.5301679,"tags":{"amenity":"restaurant","cuisine":"regional;greek;mediterranean","name":"Ligres Beach","phone":"+30 6974234509","website":"http://ligres.gr/","contact:facebook":"https://www.facebook.com/175124189218000","overture:id":"37a54615-3b68-4237-b68d-a89efd4b476c"}}
+{"type":"node","id":3741483496,"lat":35.13861,"lon":24.5289,"tags":{"amenity":"restaurant","name":"Villa Maria","website":"http://www.ligres.eu/","contact:facebook":"https://www.facebook.com/1518199935103188","email":"mariavillaligres@gmail.com","phone":"+306988363598","overture:id":"30fef38d-fe0e-4196-8831-53d1bd571ca1"}},
+{"type":"node","id":4454594189,"lat":35.13788,"lon":24.53017,"tags":{"amenity":"restaurant","cuisine":"regional;greek;mediterranean","name":"Ligres Beach","phone":"+30 6974234509","website":"http://ligres.gr/","contact:facebook":"https://www.facebook.com/175124189218000","overture:id":"37a54615-3b68-4237-b68d-a89efd4b476c"}}
 ]}

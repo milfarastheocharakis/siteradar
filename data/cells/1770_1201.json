@@ -1,4 +1,4 @@
 {"elements":[
-{"type":"node","id":3771988517,"lat":35.4087453,"lon":24.0225651,"tags":{"amenity":"restaurant","cuisine":"greek","name":"Tzaneris & Archontissa","opening_hours":"May-Sep: Mo-Su 12:00-21:00;Oct-Apr: Sa-Su 12:00-21:00","website":"http://www.tzaneris-archontissa.gr/","contact:facebook":"https://www.facebook.com/168937443764484","email":"tzanerisarchontissa@gmail.com","phone":"+306973210847","overture:id":"ebcacb23-0325-4d42-a368-d7fa88b08edb"}},
-{"type":"node","id":13923554000,"lat":35.4083495,"lon":24.0211803,"tags":{"amenity":"cafe","cuisine":"ice_cream;juice;coffee","name":"Τα γλυκά της Αρχόντισσας","name:el":"Τα γλυκά της Αρχόντισσας","name:en":"Sweets of Archontissa"}}
+{"type":"node","id":3771988517,"lat":35.40875,"lon":24.02257,"tags":{"amenity":"restaurant","cuisine":"greek","name":"Tzaneris & Archontissa","opening_hours":"May-Sep: Mo-Su 12:00-21:00;Oct-Apr: Sa-Su 12:00-21:00","website":"http://www.tzaneris-archontissa.gr/","contact:facebook":"https://www.facebook.com/168937443764484","email":"tzanerisarchontissa@gmail.com","phone":"+306973210847","overture:id":"ebcacb23-0325-4d42-a368-d7fa88b08edb"}},
+{"type":"node","id":13923554000,"lat":35.40835,"lon":24.02118,"tags":{"amenity":"cafe","cuisine":"ice_cream;juice;coffee","name":"Τα γλυκά της Αρχόντισσας","name:el":"Τα γλυκά της Αρχόντισσας","name:en":"Sweets of Archontissa"}}
 ]}

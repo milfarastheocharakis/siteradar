@@ -1,4 +1,4 @@
 {"elements":[
-{"type":"node","id":804578323,"lat":35.1905141,"lon":25.0865098,"tags":{"amenity":"theatre","name":"Θέατρο τον Αγρόν","name:el":"Θέατρο τον Αγρόν"}},
-{"type":"overture","id":"b8e6c230-cfbf-4817-9088-258d04dfe52e","lat":35.1890526,"lon":25.0999737,"tags":{"name":"Φυτώριο Αμπέλου Γιαλιτάκης Λεωνίδας","shop":"agrarian","phone":"+306984320224","website":"http://www.fitorio-gialitakis.gr/","contact:facebook":"https://www.facebook.com/536136406584360","email":"gialitak@gmail.com","addr:street":"Προφητης Ηλίας  θέση : Μενεξές","addr:city":"Ηράκλειο","addr:postcode":"71500"}}
+{"type":"node","id":804578323,"lat":35.19051,"lon":25.08651,"tags":{"amenity":"theatre","name":"Θέατρο τον Αγρόν","name:el":"Θέατρο τον Αγρόν"}},
+{"type":"overture","id":"b8e6c230-cfbf-4817-9088-258d04dfe52e","lat":35.18905,"lon":25.09997,"tags":{"name":"Φυτώριο Αμπέλου Γιαλιτάκης Λεωνίδας","shop":"agrarian","phone":"+306984320224","website":"http://www.fitorio-gialitakis.gr/","contact:facebook":"https://www.facebook.com/536136406584360","email":"gialitak@gmail.com","addr:street":"Προφητης Ηλίας  θέση : Μενεξές","addr:city":"Ηράκλειο","addr:postcode":"71500"}}
 ]}

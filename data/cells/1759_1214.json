@@ -1,5 +1,4 @@
 {"elements":[
-{"type":"node","id":4344142290,"lat":35.1830689,"lon":24.2998184,"tags":{"addr:street":"Παραλία Περιστερές, Grecia","amenity":"restaurant","name":"Καντίνα του Μανώλη\nPeristeres Beach","opening_hours":"Mo-Su 09:00-00:00","phone":"+30 693 755 4059","contact:facebook":"https://www.facebook.com/516431785103233","overture:id":"9f56b98c-f601-4dfb-b265-9966b6604110"}},
-{"type":"node","id":6691868585,"lat":35.1807887,"lon":24.2932728,"tags":{"amenity":"restaurant","cuisine":"greek","name":"ταβέρνα ΑΝΝΑ","name:el":"ταβέρνα ΑΝΝΑ"}},
-{"type":"overture","id":"ecc9ce24-b4bb-46a2-b99a-48d3ddaea06d","lat":35.1861382,"lon":24.2999973,"tags":{"name":"The Land of olive","amenity":"restaurant","overture:category":"restaurant","phone":"+306972262102","contact:facebook":"https://www.facebook.com/274545479075887","addr:street":"Ροδακινο ","addr:city":"Réthimnon","addr:postcode":"74053"}}
+{"type":"node","id":4344142290,"lat":35.18307,"lon":24.29982,"tags":{"addr:street":"Παραλία Περιστερές, Grecia","amenity":"restaurant","name":"Καντίνα του Μανώλη\nPeristeres Beach","opening_hours":"Mo-Su 09:00-00:00","phone":"+30 693 755 4059","contact:facebook":"https://www.facebook.com/516431785103233","overture:id":"9f56b98c-f601-4dfb-b265-9966b6604110"}},
+{"type":"node","id":6691868585,"lat":35.18079,"lon":24.29327,"tags":{"amenity":"restaurant","cuisine":"greek","name":"ταβέρνα ΑΝΝΑ","name:el":"ταβέρνα ΑΝΝΑ"}}
 ]}

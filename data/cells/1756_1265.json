@@ -1,4 +1,4 @@
 {"elements":[
-{"type":"way","id":1465530955,"center":{"lat":35.122133,"lon":25.3021748},"tags":{"craft":"winery","name":"Οινοποιείο"}},
-{"type":"overture","id":"6aea3090-df9e-4174-ad07-1984c2d79f5c","lat":35.1221237,"lon":25.3023186,"tags":{"name":"Haralabakis Winery","craft":"winery","phone":"+306980170410","website":"http://www.haralabakis.wine/","contact:facebook":"https://www.facebook.com/2015015875450939","email":"info@haralabakis.wine","addr:city":"Αρκαλοχώρι","addr:postcode":"703 00"}}
+{"type":"way","id":1465530955,"center":{"lat":35.12213,"lon":25.30217},"tags":{"craft":"winery","name":"Οινοποιείο"}},
+{"type":"overture","id":"6aea3090-df9e-4174-ad07-1984c2d79f5c","lat":35.12212,"lon":25.30232,"tags":{"name":"Haralabakis Winery","craft":"winery","phone":"+306980170410","website":"http://www.haralabakis.wine/","contact:facebook":"https://www.facebook.com/2015015875450939","email":"info@haralabakis.wine","addr:city":"Αρκαλοχώρι","addr:postcode":"703 00"}}
 ]}

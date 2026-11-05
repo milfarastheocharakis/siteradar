@@ -1,7 +1,7 @@
 {"elements":[
-{"type":"node","id":6917329685,"lat":35.0188469,"lon":26.0304552,"tags":{"amenity":"restaurant","name":"Stayosa"}},
-{"type":"node","id":6917329785,"lat":35.0190005,"lon":26.0309128,"tags":{"amenity":"restaurant","name":"Oasis","contact:facebook":"https://www.facebook.com/667186306814824","overture:id":"61b93979-7e41-4c21-be07-356352225365"}},
-{"type":"node","id":6917329885,"lat":35.019289,"lon":26.0306454,"tags":{"name":"Kalo Nero Apartments","tourism":"chalet"}},
-{"type":"overture","id":"4ac45f59-28d4-4fbb-84fa-599c942a3308","lat":35.0188904,"lon":26.0281963,"tags":{"name":"Kalo nero Apts","tourism":"hotel","contact:facebook":"https://www.facebook.com/404137339932331","email":"kaloneroapts@gmail.com","addr:street":"Καλό Νερό Μακρύ Γιαλού Σητείας","addr:city":"Sitía","addr:postcode":"72059"}},
-{"type":"overture","id":"fa405f32-0ef7-46c0-8e60-2a67fe0347cd","lat":35.0189323,"lon":26.0308456,"tags":{"name":"ISALO Villa","tourism":"apartment","phone":"+306939099392","website":"http://www.isalo.gr/","contact:facebook":"https://www.facebook.com/104599895255690","email":"isalovillacrete@gmail.com","addr:street":"Eparxiaki odos Makrygialou Goudoura","addr:postcode":"72059"}}
+{"type":"node","id":6917329685,"lat":35.01885,"lon":26.03046,"tags":{"amenity":"restaurant","name":"Stayosa"}},
+{"type":"node","id":6917329785,"lat":35.019,"lon":26.03091,"tags":{"amenity":"restaurant","name":"Oasis","contact:facebook":"https://www.facebook.com/667186306814824","overture:id":"61b93979-7e41-4c21-be07-356352225365"}},
+{"type":"node","id":6917329885,"lat":35.01929,"lon":26.03065,"tags":{"name":"Kalo Nero Apartments","tourism":"chalet"}},
+{"type":"overture","id":"4ac45f59-28d4-4fbb-84fa-599c942a3308","lat":35.01889,"lon":26.0282,"tags":{"name":"Kalo nero Apts","tourism":"hotel","contact:facebook":"https://www.facebook.com/404137339932331","email":"kaloneroapts@gmail.com","addr:street":"Καλό Νερό Μακρύ Γιαλού Σητείας","addr:city":"Sitía","addr:postcode":"72059"}},
+{"type":"overture","id":"fa405f32-0ef7-46c0-8e60-2a67fe0347cd","lat":35.01893,"lon":26.03085,"tags":{"name":"ISALO Villa","tourism":"apartment","phone":"+306939099392","website":"http://www.isalo.gr/","contact:facebook":"https://www.facebook.com/104599895255690","email":"isalovillacrete@gmail.com","addr:street":"Eparxiaki odos Makrygialou Goudoura","addr:postcode":"72059"}}
 ]}

@@ -1,5 +1,5 @@
 {"elements":[
-{"type":"node","id":5061520328,"lat":35.0740461,"lon":26.1396558,"tags":{"amenity":"restaurant","name":"ΟΒΕΛΙΣΤΗΡΙΟ","name:el":"ΟΒΕΛΙΣΤΗΡΙΟ","name:en":"OBELISTER"}},
-{"type":"overture","id":"50894db7-e0ec-4feb-a76b-0c5d2794e9f2","lat":35.0748444,"lon":26.1383514,"tags":{"name":"Domaine Economou","craft":"winery","contact:facebook":"https://www.facebook.com/123292478305069","addr:street":"Ziros 72059 Sitia","addr:city":"Λευκή","addr:postcode":"72059"}},
-{"type":"overture","id":"78ca81cc-2bfd-4002-9cc4-02b6a95d10d0","lat":35.0742607,"lon":26.1398258,"tags":{"name":"Ζηρος","craft":"winery","phone":"+3028430","contact:facebook":"https://www.facebook.com/286404994787795","addr:city":"Λευκή"}}
+{"type":"node","id":5061520328,"lat":35.07405,"lon":26.13966,"tags":{"amenity":"restaurant","name":"ΟΒΕΛΙΣΤΗΡΙΟ","name:el":"ΟΒΕΛΙΣΤΗΡΙΟ","name:en":"OBELISTER"}},
+{"type":"overture","id":"50894db7-e0ec-4feb-a76b-0c5d2794e9f2","lat":35.07484,"lon":26.13835,"tags":{"name":"Domaine Economou","craft":"winery","contact:facebook":"https://www.facebook.com/123292478305069","addr:street":"Ziros 72059 Sitia","addr:city":"Λευκή","addr:postcode":"72059"}},
+{"type":"overture","id":"78ca81cc-2bfd-4002-9cc4-02b6a95d10d0","lat":35.07426,"lon":26.13983,"tags":{"name":"Ζηρος","craft":"winery","phone":"+3028430","contact:facebook":"https://www.facebook.com/286404994787795","addr:city":"Λευκή"}}
 ]}

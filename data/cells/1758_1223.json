@@ -1,4 +1,4 @@
 {"elements":[
-{"type":"node","id":649560824,"lat":35.1737184,"lon":24.4670689,"tags":{"amenity":"restaurant","name":"Γέφυρα","opening_hours":"May-Oct: Mo-Su,PH 12:00-19:00 open \"Hot Meals\", May-Oct: Mo-Su,PH 10:00-12:00, 19:00-19:30"}},
-{"type":"node","id":4993558532,"lat":35.1797952,"lon":24.4641417,"tags":{"amenity":"bar","name":"Banana Garden","name:en":"Banana Garden","operator":"Γιάννη","contact:facebook":"https://www.facebook.com/1948016738608529","phone":"+306980265848","overture:id":"54f49005-79a6-4bac-86bb-fbd07feac7a6"}}
+{"type":"node","id":649560824,"lat":35.17372,"lon":24.46707,"tags":{"amenity":"restaurant","name":"Γέφυρα","opening_hours":"May-Oct: Mo-Su,PH 12:00-19:00 open \"Hot Meals\", May-Oct: Mo-Su,PH 10:00-12:00, 19:00-19:30"}},
+{"type":"node","id":4993558532,"lat":35.1798,"lon":24.46414,"tags":{"amenity":"bar","name":"Banana Garden","name:en":"Banana Garden","operator":"Γιάννη","contact:facebook":"https://www.facebook.com/1948016738608529","phone":"+306980265848","overture:id":"54f49005-79a6-4bac-86bb-fbd07feac7a6"}}
 ]}

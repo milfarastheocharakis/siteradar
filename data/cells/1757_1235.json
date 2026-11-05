@@ -1,4 +1,4 @@
 {"elements":[
-{"type":"overture","id":"abcb6410-c9b9-45e6-a92b-091262a68f63","lat":35.155201,"lon":24.7139969,"tags":{"name":"Αγια Παρασκευη Αμαριου","tourism":"guest_house","contact:facebook":"https://www.facebook.com/386493344799316","addr:city":"Amári"}},
-{"type":"overture","id":"f273ced7-aed9-44bc-957a-4cf18c52f142","lat":35.1552391,"lon":24.7146168,"tags":{"name":"Vrachos Villas","tourism":"hotel","phone":"+302832071113","website":"http://www.vrachos.gr/","contact:facebook":"https://www.facebook.com/492759191486802","email":"info@vrachos.gr","addr:street":"Αγία Παρασκευή , Αγίου Βασιλείου Ρέθυμνο","addr:city":"Réthimnon","addr:postcode":"74053"}}
+{"type":"overture","id":"abcb6410-c9b9-45e6-a92b-091262a68f63","lat":35.1552,"lon":24.714,"tags":{"name":"Αγια Παρασκευη Αμαριου","tourism":"guest_house","contact:facebook":"https://www.facebook.com/386493344799316","addr:city":"Amári"}},
+{"type":"overture","id":"f273ced7-aed9-44bc-957a-4cf18c52f142","lat":35.15524,"lon":24.71462,"tags":{"name":"Vrachos Villas","tourism":"hotel","phone":"+302832071113","website":"http://www.vrachos.gr/","contact:facebook":"https://www.facebook.com/492759191486802","email":"info@vrachos.gr","addr:street":"Αγία Παρασκευή , Αγίου Βασιλείου Ρέθυμνο","addr:city":"Réthimnon","addr:postcode":"74053"}}
 ]}

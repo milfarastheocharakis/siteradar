@@ -1,5 +1,5 @@
 {"elements":[
-{"type":"node","id":6871564986,"lat":35.2902491,"lon":24.4690281,"tags":{"name":"Brink’s Brewery","shop":"beverages"}},
-{"type":"node","id":14323798470,"lat":35.2862938,"lon":24.4698993,"tags":{"amenity":"fast_food","cuisine":"greek","name":"COFFEE BUS","phone":"+30 698 744 2444","website":"https://www.instagram.com/_coffee_bus_palio_kteo?cplk=MXRrbGhyYzE3eDljbQ=="}},
-{"type":"overture","id":"609c563b-22d7-4b24-a9b1-cd025a3147a8","lat":35.2993431,"lon":24.4618988,"tags":{"name":"Γηπεδο Αρμενων","leisure":"fitness_centre","contact:facebook":"https://www.facebook.com/1690910134459524","addr:street":"Αρμενοι","addr:city":"Retimo"}}
+{"type":"node","id":6871564986,"lat":35.29025,"lon":24.46903,"tags":{"name":"Brink’s Brewery","shop":"beverages"}},
+{"type":"node","id":14323798470,"lat":35.28629,"lon":24.4699,"tags":{"amenity":"fast_food","cuisine":"greek","name":"COFFEE BUS","phone":"+30 698 744 2444","website":"https://www.instagram.com/_coffee_bus_palio_kteo?cplk=MXRrbGhyYzE3eDljbQ=="}},
+{"type":"overture","id":"609c563b-22d7-4b24-a9b1-cd025a3147a8","lat":35.29934,"lon":24.4619,"tags":{"name":"Γηπεδο Αρμενων","leisure":"fitness_centre","contact:facebook":"https://www.facebook.com/1690910134459524","addr:street":"Αρμενοι","addr:city":"Retimo"}}
 ]}

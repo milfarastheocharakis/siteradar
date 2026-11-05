@@ -1,4 +1,4 @@
 {"elements":[
-{"type":"overture","id":"2927a508-01d2-4435-a79f-c3628e244fa3","lat":35.0348663,"lon":25.4601994,"tags":{"name":"Agios Vasileios","tourism":"hotel","contact:facebook":"https://www.facebook.com/136900353666663","addr:street":"Agios Vasileios","addr:city":"Herákleion","addr:postcode":"700 04"}},
-{"type":"overture","id":"57a3a9bc-36b9-4c5d-8515-9109012c3d6c","lat":35.0396538,"lon":25.4793663,"tags":{"name":"ΠΕΥΚΟΣ ΒΙΑΝΝΩ","shop":"farm","contact:facebook":"https://www.facebook.com/281866338531733","addr:street":"Πεύκος Βιάννου","addr:postcode":"70004"}}
+{"type":"overture","id":"2927a508-01d2-4435-a79f-c3628e244fa3","lat":35.03487,"lon":25.4602,"tags":{"name":"Agios Vasileios","tourism":"hotel","contact:facebook":"https://www.facebook.com/136900353666663","addr:street":"Agios Vasileios","addr:city":"Herákleion","addr:postcode":"700 04"}},
+{"type":"overture","id":"57a3a9bc-36b9-4c5d-8515-9109012c3d6c","lat":35.03965,"lon":25.47937,"tags":{"name":"ΠΕΥΚΟΣ ΒΙΑΝΝΩ","shop":"farm","contact:facebook":"https://www.facebook.com/281866338531733","addr:street":"Πεύκος Βιάννου","addr:postcode":"70004"}}
 ]}

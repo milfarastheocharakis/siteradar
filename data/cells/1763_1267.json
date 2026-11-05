@@ -1,5 +1,5 @@
 {"elements":[
-{"type":"node","id":5696710521,"lat":35.2625674,"lon":25.3579692,"tags":{"amenity":"cafe","cuisine":"greek;grill","name":"Μαρησ","name:el":"Μαρησ","name:en":"Taberna Maris","contact:facebook":"https://www.facebook.com/156229011471858","phone":"+306978774499","overture:id":"edb5ce29-5584-474b-8d7c-1467220171c0"}},
-{"type":"overture","id":"6e516cf9-367d-448a-8188-921ee14a4607","lat":35.2755394,"lon":25.359787,"tags":{"name":"Ξεροκαμαρες","amenity":"restaurant","phone":"+302897305028","contact:facebook":"https://www.facebook.com/291587771643734","addr:city":"Goúves"}},
-{"type":"overture","id":"c9e9e7a7-bf25-4b26-96d5-4724d3a55135","lat":35.2755318,"lon":25.3596649,"tags":{"name":"Ταβερνα Στελιοσ","cuisine":"greek","amenity":"restaurant","contact:facebook":"https://www.facebook.com/486420861835047"}}
+{"type":"node","id":5696710521,"lat":35.26257,"lon":25.35797,"tags":{"amenity":"cafe","cuisine":"greek;grill","name":"Μαρησ","name:el":"Μαρησ","name:en":"Taberna Maris","contact:facebook":"https://www.facebook.com/156229011471858","phone":"+306978774499","overture:id":"edb5ce29-5584-474b-8d7c-1467220171c0"}},
+{"type":"overture","id":"6e516cf9-367d-448a-8188-921ee14a4607","lat":35.27554,"lon":25.35979,"tags":{"name":"Ξεροκαμαρες","amenity":"restaurant","phone":"+302897305028","contact:facebook":"https://www.facebook.com/291587771643734","addr:city":"Goúves"}},
+{"type":"overture","id":"c9e9e7a7-bf25-4b26-96d5-4724d3a55135","lat":35.27553,"lon":25.35966,"tags":{"name":"Ταβερνα Στελιοσ","cuisine":"greek","amenity":"restaurant","contact:facebook":"https://www.facebook.com/486420861835047"}}
 ]}

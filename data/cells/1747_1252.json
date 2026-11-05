@@ -1,5 +1,5 @@
 {"elements":[
-{"type":"node","id":7049933259,"lat":34.94164,"lon":25.0516086,"tags":{"amenity":"cafe","name":"Γιαλός","name:el":"Γιαλός","name:en":"Gialos","website":"http://www.cafegialos.com/","contact:facebook":"https://www.facebook.com/263519537918532","email":"evakimak22@gmail.com","phone":"+306948692742","overture:id":"d85590ad-e493-4406-b49a-0ca56918b560"}},
-{"type":"node","id":9942024225,"lat":34.9425556,"lon":25.0510391,"tags":{"amenity":"restaurant","name":"Ζερβός","name:el":"Ζερβός","name:en":"Zervos"}},
-{"type":"way","id":754641196,"center":{"lat":34.9410365,"lon":25.0538295},"tags":{"amenity":"restaurant","name":"Κάβο Πόντα","name:el":"Κάβο Πόντα","name:en":"Cavo Ponta","website":"https://www.ponta.gr/","contact:facebook":"https://www.facebook.com/482261351853449","email":"epostcv@gmail.com","phone":"+306982916145","overture:id":"9a775259-022f-4ea6-bc3f-982d828225df"}}
+{"type":"node","id":7049933259,"lat":34.94164,"lon":25.05161,"tags":{"amenity":"cafe","name":"Γιαλός","name:el":"Γιαλός","name:en":"Gialos","website":"http://www.cafegialos.com/","contact:facebook":"https://www.facebook.com/263519537918532","email":"evakimak22@gmail.com","phone":"+306948692742","overture:id":"d85590ad-e493-4406-b49a-0ca56918b560"}},
+{"type":"node","id":9942024225,"lat":34.94256,"lon":25.05104,"tags":{"amenity":"restaurant","name":"Ζερβός","name:el":"Ζερβός","name:en":"Zervos"}},
+{"type":"way","id":754641196,"center":{"lat":34.94104,"lon":25.05383},"tags":{"amenity":"restaurant","name":"Κάβο Πόντα","name:el":"Κάβο Πόντα","name:en":"Cavo Ponta","website":"https://www.ponta.gr/","contact:facebook":"https://www.facebook.com/482261351853449","email":"epostcv@gmail.com","phone":"+306982916145","overture:id":"9a775259-022f-4ea6-bc3f-982d828225df"}}
 ]}

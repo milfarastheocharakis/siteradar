@@ -1,4 +1,4 @@
 {"elements":[
-{"type":"node","id":6881095950,"lat":35.3288982,"lon":23.8841821,"tags":{"amenity":"cafe","cuisine":"bistro","description":"Simple rooms available","name":"Η Μηλιά","name:el":"Η Μηλιά","name:en":"I Milia"}},
-{"type":"node","id":13566338301,"lat":35.334405,"lon":23.8847219,"tags":{"addr:postcode":"37005","name":"Mike Omalos Houses","tourism":"guest_house","website":"https://www.booking.com/Share-HJ1klk"}}
+{"type":"node","id":6881095950,"lat":35.3289,"lon":23.88418,"tags":{"amenity":"cafe","cuisine":"bistro","description":"Simple rooms available","name":"Η Μηλιά","name:el":"Η Μηλιά","name:en":"I Milia"}},
+{"type":"node","id":13566338301,"lat":35.3344,"lon":23.88472,"tags":{"addr:postcode":"37005","name":"Mike Omalos Houses","tourism":"guest_house","website":"https://www.booking.com/Share-HJ1klk"}}
 ]}

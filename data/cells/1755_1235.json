@@ -1,5 +1,5 @@
 {"elements":[
-{"type":"node","id":2986003330,"lat":35.1185776,"lon":24.7153354,"tags":{"amenity":"restaurant","cuisine":"greek","name":"Taverna Mavtres","name:en":"Tavern Mandres"}},
-{"type":"way","id":1112733163,"center":{"lat":35.1082981,"lon":24.703327},"tags":{"name":"Galini Rondorf","tourism":"apartment"}},
-{"type":"overture","id":"91c14c5c-393f-48b4-8401-eee0e8862390","lat":35.1170845,"lon":24.705307,"tags":{"name":"Palazzo Greco Villas","tourism":"hotel","phone":"+306948828804","website":"http://www.palazzogrecovillas.com/","contact:facebook":"https://www.facebook.com/496074040522094","email":"stefania@palazzogreco.com","addr:street":"agia galini","addr:city":"Réthimnon","addr:postcode":"74056"}}
+{"type":"node","id":2986003330,"lat":35.11858,"lon":24.71534,"tags":{"amenity":"restaurant","cuisine":"greek","name":"Taverna Mavtres","name:en":"Tavern Mandres"}},
+{"type":"way","id":1112733163,"center":{"lat":35.1083,"lon":24.70333},"tags":{"name":"Galini Rondorf","tourism":"apartment"}},
+{"type":"overture","id":"91c14c5c-393f-48b4-8401-eee0e8862390","lat":35.11708,"lon":24.70531,"tags":{"name":"Palazzo Greco Villas","tourism":"hotel","phone":"+306948828804","website":"http://www.palazzogrecovillas.com/","contact:facebook":"https://www.facebook.com/496074040522094","email":"stefania@palazzogreco.com","addr:street":"agia galini","addr:city":"Réthimnon","addr:postcode":"74056"}}
 ]}

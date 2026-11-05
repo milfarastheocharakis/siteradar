@@ -1,4 +1,4 @@
 {"elements":[
-{"type":"node","id":4812032142,"lat":35.4026371,"lon":24.7486519,"tags":{"amenity":"restaurant","cuisine":"greek","name":"Maria"}},
-{"type":"overture","id":"914fcf0f-6da4-41fd-bf25-fe20f53a9291","lat":35.4027939,"lon":24.7490463,"tags":{"name":"Taverna Exanti","cuisine":"greek","amenity":"restaurant","phone":"+306939527288","website":"https://www.tripadvisor.com/UserReviewEdit-g189421-d21227988-Taverna_Exanti-Rethymnon_Rethymnon_Prefecture_Crete.html","contact:facebook":"https://www.facebook.com/810201375504628","email":"calistratgeorgeta@gmail.com","addr:street":"Peramatos-Exantis District Road, Mylopotamos","addr:city":"Exándis","addr:postcode":"74057"}}
+{"type":"node","id":4812032142,"lat":35.40264,"lon":24.74865,"tags":{"amenity":"restaurant","cuisine":"greek","name":"Maria"}},
+{"type":"overture","id":"914fcf0f-6da4-41fd-bf25-fe20f53a9291","lat":35.40279,"lon":24.74905,"tags":{"name":"Taverna Exanti","cuisine":"greek","amenity":"restaurant","phone":"+306939527288","website":"https://www.tripadvisor.com/UserReviewEdit-g189421-d21227988-Taverna_Exanti-Rethymnon_Rethymnon_Prefecture_Crete.html","contact:facebook":"https://www.facebook.com/810201375504628","email":"calistratgeorgeta@gmail.com","addr:street":"Peramatos-Exantis District Road, Mylopotamos","addr:city":"Exándis","addr:postcode":"74057"}}
 ]}

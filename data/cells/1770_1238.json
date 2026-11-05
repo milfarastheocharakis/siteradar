@@ -1,4 +1,4 @@
 {"elements":[
-{"type":"way","id":239844604,"center":{"lat":35.4102361,"lon":24.7703732},"tags":{"amenity":"restaurant","cuisine":"greek","name":"ΤΑΒΕΡΝΑ ΣΥΝΟΛΑΚΗΣ","contact:facebook":"https://www.facebook.com/321889671266290","phone":"+302834094228","overture:id":"f3ae4ef0-3513-4f0b-b8df-c9d69276fb4f"}},
-{"type":"overture","id":"742c856f-234a-4b84-a02c-1ef5afafb3ca","lat":35.4109077,"lon":24.7785053,"tags":{"name":"Nandana Luxury Villa, an infinite blue experience, By ThinkVilla","tourism":"apartment","phone":"+302831102796","website":"https://www.thinkvilla.gr/","contact:facebook":"https://www.facebook.com/103453525942710","email":"contact@thinkvilla.gr","addr:city":"Γεροπόταμος"}}
+{"type":"way","id":239844604,"center":{"lat":35.41024,"lon":24.77037},"tags":{"amenity":"restaurant","cuisine":"greek","name":"ΤΑΒΕΡΝΑ ΣΥΝΟΛΑΚΗΣ","contact:facebook":"https://www.facebook.com/321889671266290","phone":"+302834094228","overture:id":"f3ae4ef0-3513-4f0b-b8df-c9d69276fb4f"}},
+{"type":"overture","id":"742c856f-234a-4b84-a02c-1ef5afafb3ca","lat":35.41091,"lon":24.77851,"tags":{"name":"Nandana Luxury Villa, an infinite blue experience, By ThinkVilla","tourism":"apartment","phone":"+302831102796","website":"https://www.thinkvilla.gr/","contact:facebook":"https://www.facebook.com/103453525942710","email":"contact@thinkvilla.gr","addr:city":"Γεροπόταμος"}}
 ]}

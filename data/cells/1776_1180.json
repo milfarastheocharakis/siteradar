@@ -1,4 +1,4 @@
 {"elements":[
-{"type":"node","id":13157480322,"lat":35.5254252,"lon":23.6104564,"tags":{"name":"Ticket booth - 1€","shop":"ticket"}},
-{"type":"way","id":295467336,"center":{"lat":35.5220986,"lon":23.6108715},"tags":{"name":"Balos Beach","tourism":"hotel","website":"http://www.balosbeach.gr/","contact:facebook":"https://www.facebook.com/136695389700080","email":"info@balosbeach.gr","phone":"+302822024106","overture:id":"dc7e0d28-f640-4765-8127-1598ce30f52b"}}
+{"type":"node","id":13157480322,"lat":35.52543,"lon":23.61046,"tags":{"name":"Ticket booth - 1€","shop":"ticket"}},
+{"type":"way","id":295467336,"center":{"lat":35.5221,"lon":23.61087},"tags":{"name":"Balos Beach","tourism":"hotel","website":"http://www.balosbeach.gr/","contact:facebook":"https://www.facebook.com/136695389700080","email":"info@balosbeach.gr","phone":"+302822024106","overture:id":"dc7e0d28-f640-4765-8127-1598ce30f52b"}}
 ]}

@@ -1,4 +1,4 @@
 {"elements":[
-{"type":"way","id":489162078,"center":{"lat":35.4089967,"lon":24.8727533},"tags":{"amenity":"restaurant","cuisine":"traditional;mediterranean","name":"Αλυκή","contact:facebook":"https://www.facebook.com/1928911704016245","phone":"+306977006801","overture:id":"e450cc0b-8cf6-4db8-9e67-827dc5684397"}},
-{"type":"overture","id":"8994e214-6ecb-460d-a4f8-8584021be847","lat":35.4097519,"lon":24.8700886,"tags":{"name":"Αλμυριδα Σισσες Γεροποταμου","leisure":"sports_centre","overture:category":"fishing_club","contact:facebook":"https://www.facebook.com/376909729708066","addr:city":"Γεροπόταμος"}}
+{"type":"way","id":489162078,"center":{"lat":35.409,"lon":24.87275},"tags":{"amenity":"restaurant","cuisine":"traditional;mediterranean","name":"Αλυκή","contact:facebook":"https://www.facebook.com/1928911704016245","phone":"+306977006801","overture:id":"e450cc0b-8cf6-4db8-9e67-827dc5684397"}},
+{"type":"overture","id":"8994e214-6ecb-460d-a4f8-8584021be847","lat":35.40975,"lon":24.87009,"tags":{"name":"Αλμυριδα Σισσες Γεροποταμου","leisure":"sports_centre","overture:category":"fishing_club","contact:facebook":"https://www.facebook.com/376909729708066","addr:city":"Γεροπόταμος"}}
 ]}

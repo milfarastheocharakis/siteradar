@@ -1,4 +1,4 @@
 {"elements":[
-{"type":"node","id":4395913269,"lat":35.377663,"lon":23.7317313,"tags":{"amenity":"pub","name":"Eukaliptos"}},
-{"type":"overture","id":"e61370e7-a65f-4b0a-8e2b-32a40b0fbf79","lat":35.3777199,"lon":23.7316952,"tags":{"name":"ΦΛΩΡΙΑ","amenity":"cafe","phone":"+302823022406","contact:facebook":"https://www.facebook.com/201226199973330","addr:street":"Φλώρια, Σέλινο","addr:city":"Kántanos","addr:postcode":"730 04"}}
+{"type":"node","id":4395913269,"lat":35.37766,"lon":23.73173,"tags":{"amenity":"pub","name":"Eukaliptos"}},
+{"type":"overture","id":"e61370e7-a65f-4b0a-8e2b-32a40b0fbf79","lat":35.37772,"lon":23.7317,"tags":{"name":"ΦΛΩΡΙΑ","amenity":"cafe","phone":"+302823022406","contact:facebook":"https://www.facebook.com/201226199973330","addr:street":"Φλώρια, Σέλινο","addr:city":"Kántanos","addr:postcode":"730 04"}}
 ]}

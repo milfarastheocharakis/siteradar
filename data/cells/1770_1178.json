@@ -1,11 +1,11 @@
 {"elements":[
-{"type":"node","id":2918790130,"lat":35.417792,"lon":23.569227,"tags":{"amenity":"cafe","name":"Cati Alo"}},
-{"type":"node","id":2918790131,"lat":35.4178578,"lon":23.5690954,"tags":{"amenity":"restaurant","name":"Cati Alo"}},
-{"type":"node","id":2918790132,"lat":35.4183359,"lon":23.5687739,"tags":{"name":"Mini market","shop":"supermarket"}},
-{"type":"node","id":3603515068,"lat":35.4160247,"lon":23.5622948,"tags":{"addr:city":"Sfinari","amenity":"restaurant","cuisine":"regional;greek;fish","name":"Thalami","phone":"+302822041632","website":"http://www.thalami-kissamos.gr/index.php/en/","contact:facebook":"https://www.facebook.com/508753452583787","overture:id":"c8bb6ebc-4019-4a02-ada2-7d653613828e"}},
-{"type":"node","id":3741392191,"lat":35.4154497,"lon":23.5620262,"tags":{"amenity":"restaurant","cuisine":"greek","name":"Sunset Taverna","opening_hours":"Mo-Su,PH 12:00-21:00"}},
-{"type":"node","id":4365382690,"lat":35.419185,"lon":23.568614,"tags":{"name":"Αντωνης","tourism":"hotel","contact:facebook":"https://www.facebook.com/862243340801246","phone":"+302822041125","overture:id":"9320b50c-a18b-4cf7-90b0-e39e105a3940"}},
-{"type":"node","id":13087053801,"lat":35.4165385,"lon":23.5629354,"tags":{"addr:street":"Σφηνάρι - Κεφαλή","amenity":"restaurant","name":"Captain Fidias","website":"www.captainfidias.com","contact:facebook":"https://www.facebook.com/448875441819729","phone":"+302822041107","overture:id":"68fab28f-78cf-42e0-a73e-ec8d20278aac"}},
-{"type":"overture","id":"25ecdd3d-cc93-4d6d-b7c2-c9ea1999d8e6","lat":35.4176674,"lon":23.5692558,"tags":{"name":"Tzouganos Villa","tourism":"apartment","phone":"+306984473229","website":"http://tzouganosvilla.gr/","contact:facebook":"https://www.facebook.com/103353231127868","addr:city":"Κίσσαμος"}},
-{"type":"overture","id":"42368e18-aa10-48c8-ae04-1b4b08b04328","lat":35.4181747,"lon":23.568409,"tags":{"name":"Cave Lera","leisure":"fitness_centre","overture:category":"rock_climbing_spot","contact:facebook":"https://www.facebook.com/182172469257160","addr:street":"Lera Cave","addr:city":"Κίσσαμος"}}
+{"type":"node","id":2918790130,"lat":35.41779,"lon":23.56923,"tags":{"amenity":"cafe","name":"Cati Alo"}},
+{"type":"node","id":2918790131,"lat":35.41786,"lon":23.5691,"tags":{"amenity":"restaurant","name":"Cati Alo"}},
+{"type":"node","id":2918790132,"lat":35.41834,"lon":23.56877,"tags":{"name":"Mini market","shop":"supermarket"}},
+{"type":"node","id":3603515068,"lat":35.41602,"lon":23.56229,"tags":{"addr:city":"Sfinari","amenity":"restaurant","cuisine":"regional;greek;fish","name":"Thalami","phone":"+302822041632","website":"http://www.thalami-kissamos.gr/index.php/en/","contact:facebook":"https://www.facebook.com/508753452583787","overture:id":"c8bb6ebc-4019-4a02-ada2-7d653613828e"}},
+{"type":"node","id":3741392191,"lat":35.41545,"lon":23.56203,"tags":{"amenity":"restaurant","cuisine":"greek","name":"Sunset Taverna","opening_hours":"Mo-Su,PH 12:00-21:00"}},
+{"type":"node","id":4365382690,"lat":35.41918,"lon":23.56861,"tags":{"name":"Αντωνης","tourism":"hotel","contact:facebook":"https://www.facebook.com/862243340801246","phone":"+302822041125","overture:id":"9320b50c-a18b-4cf7-90b0-e39e105a3940"}},
+{"type":"node","id":13087053801,"lat":35.41654,"lon":23.56294,"tags":{"addr:street":"Σφηνάρι - Κεφαλή","amenity":"restaurant","name":"Captain Fidias","website":"www.captainfidias.com","contact:facebook":"https://www.facebook.com/448875441819729","phone":"+302822041107","overture:id":"68fab28f-78cf-42e0-a73e-ec8d20278aac"}},
+{"type":"overture","id":"25ecdd3d-cc93-4d6d-b7c2-c9ea1999d8e6","lat":35.41767,"lon":23.56926,"tags":{"name":"Tzouganos Villa","tourism":"apartment","phone":"+306984473229","website":"http://tzouganosvilla.gr/","contact:facebook":"https://www.facebook.com/103353231127868","addr:city":"Κίσσαμος"}},
+{"type":"overture","id":"42368e18-aa10-48c8-ae04-1b4b08b04328","lat":35.41817,"lon":23.56841,"tags":{"name":"Cave Lera","leisure":"fitness_centre","overture:category":"rock_climbing_spot","contact:facebook":"https://www.facebook.com/182172469257160","addr:street":"Lera Cave","addr:city":"Κίσσαμος"}}
 ]}

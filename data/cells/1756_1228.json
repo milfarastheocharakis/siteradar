@@ -1,6 +1,6 @@
 {"elements":[
-{"type":"way","id":869826496,"center":{"lat":35.1348401,"lon":24.5646961},"tags":{"name":"Apostolis","tourism":"apartment"}},
-{"type":"way","id":869826497,"center":{"lat":35.1350722,"lon":24.5645759},"tags":{"amenity":"restaurant","name":"Filenia","opening_hours":"12:00 - 22:30","website":"https://fileniatriopetra.gr/","contact:facebook":"https://www.facebook.com/1561671647426000","email":"info@fileniatriopetra.gr","phone":"+306972093646","overture:id":"c893c48f-4d17-4fb6-9805-1d9968d154cf"}},
-{"type":"way","id":869826498,"center":{"lat":35.1346833,"lon":24.5634078},"tags":{"name":"Vroules Stone house","tourism":"chalet"}},
-{"type":"way","id":984907674,"center":{"lat":35.1330831,"lon":24.5673263},"tags":{"name":"Villa Argyro","tourism":"chalet"}}
+{"type":"way","id":869826496,"center":{"lat":35.13484,"lon":24.5647},"tags":{"name":"Apostolis","tourism":"apartment"}},
+{"type":"way","id":869826497,"center":{"lat":35.13507,"lon":24.56458},"tags":{"amenity":"restaurant","name":"Filenia","opening_hours":"12:00 - 22:30","website":"https://fileniatriopetra.gr/","contact:facebook":"https://www.facebook.com/1561671647426000","email":"info@fileniatriopetra.gr","phone":"+306972093646","overture:id":"c893c48f-4d17-4fb6-9805-1d9968d154cf"}},
+{"type":"way","id":869826498,"center":{"lat":35.13468,"lon":24.56341},"tags":{"name":"Vroules Stone house","tourism":"chalet"}},
+{"type":"way","id":984907674,"center":{"lat":35.13308,"lon":24.56733},"tags":{"name":"Villa Argyro","tourism":"chalet"}}
 ]}

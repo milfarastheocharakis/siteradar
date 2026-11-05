@@ -1,5 +1,5 @@
 {"elements":[
-{"type":"node","id":8391145519,"lat":35.0512747,"lon":24.7597395,"tags":{"name":"Villa Ammos","tourism":"apartment"}},
-{"type":"node","id":8391145520,"lat":35.0484295,"lon":24.7576443,"tags":{"name":"Villa Beachside","tourism":"apartment"}},
-{"type":"node","id":8391145521,"lat":35.0486689,"lon":24.7560623,"tags":{"amenity":"restaurant","name":"Taverne","opening_hours":"Tu-Su,PH 09:30-21:00"}}
+{"type":"node","id":8391145519,"lat":35.05127,"lon":24.75974,"tags":{"name":"Villa Ammos","tourism":"apartment"}},
+{"type":"node","id":8391145520,"lat":35.04843,"lon":24.75764,"tags":{"name":"Villa Beachside","tourism":"apartment"}},
+{"type":"node","id":8391145521,"lat":35.04867,"lon":24.75606,"tags":{"amenity":"restaurant","name":"Taverne","opening_hours":"Tu-Su,PH 09:30-21:00"}}
 ]}

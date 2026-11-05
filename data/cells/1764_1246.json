@@ -1,4 +1,4 @@
 {"elements":[
-{"type":"node","id":8342035805,"lat":35.2960945,"lon":24.9289126,"tags":{"addr:city":"Ghonis","amenity":"restaurant","cuisine":"regional","name":"Sklavokampos"}},
-{"type":"overture","id":"376d5096-6bbd-490b-99d5-1ceeccbf420d","lat":35.2959938,"lon":24.9284,"tags":{"name":"Γωνιες Μαλεβιζιου","shop":"supermarket","contact:facebook":"https://www.facebook.com/136417966500987","addr:street":"Γωνιές Μαλεβυζίου","addr:city":"Heraklion"}}
+{"type":"node","id":8342035805,"lat":35.29609,"lon":24.92891,"tags":{"addr:city":"Ghonis","amenity":"restaurant","cuisine":"regional","name":"Sklavokampos"}},
+{"type":"overture","id":"376d5096-6bbd-490b-99d5-1ceeccbf420d","lat":35.29599,"lon":24.9284,"tags":{"name":"Γωνιες Μαλεβιζιου","shop":"supermarket","contact:facebook":"https://www.facebook.com/136417966500987","addr:street":"Γωνιές Μαλεβυζίου","addr:city":"Heraklion"}}
 ]}

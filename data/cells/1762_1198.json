@@ -1,4 +1,4 @@
 {"elements":[
-{"type":"node","id":6873138381,"lat":35.2446109,"lon":23.9661002,"tags":{"amenity":"cafe","name":"Fresh Orange Juice"}},
-{"type":"way","id":733872315,"center":{"lat":35.2453699,"lon":23.9660505},"tags":{"name":"Εξοδος φαραγγιού","shop":"ticket"}}
+{"type":"node","id":6873138381,"lat":35.24461,"lon":23.9661,"tags":{"amenity":"cafe","name":"Fresh Orange Juice"}},
+{"type":"way","id":733872315,"center":{"lat":35.24537,"lon":23.96605},"tags":{"name":"Εξοδος φαραγγιού","shop":"ticket"}}
 ]}

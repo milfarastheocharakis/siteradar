@@ -1,5 +1,5 @@
 {"elements":[
-{"type":"node","id":1386464271,"lat":35.5092737,"lon":23.7215018,"tags":{"name":"European Mediterranean Youth Centre","tourism":"hostel"}},
-{"type":"way","id":124551220,"center":{"lat":35.5087997,"lon":23.7201893},"tags":{"name":"Camping Nopigia","phone":"+30 28220 31111","tourism":"camp_site","website":"https://www.campingnopigia.com/","contact:facebook":"https://www.facebook.com/111833192242232","overture:id":"e68c29b4-ea20-4998-bf31-9251a7a5773c"}},
-{"type":"way","id":124551233,"center":{"lat":35.5096295,"lon":23.7212191},"tags":{"amenity":"theatre","name":"Amphitheatre EMYC"}}
+{"type":"node","id":1386464271,"lat":35.50927,"lon":23.7215,"tags":{"name":"European Mediterranean Youth Centre","tourism":"hostel"}},
+{"type":"way","id":124551220,"center":{"lat":35.5088,"lon":23.72019},"tags":{"name":"Camping Nopigia","phone":"+30 28220 31111","tourism":"camp_site","website":"https://www.campingnopigia.com/","contact:facebook":"https://www.facebook.com/111833192242232","overture:id":"e68c29b4-ea20-4998-bf31-9251a7a5773c"}},
+{"type":"way","id":124551233,"center":{"lat":35.50963,"lon":23.72122},"tags":{"amenity":"theatre","name":"Amphitheatre EMYC"}}
 ]}
