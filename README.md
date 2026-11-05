@@ -7,13 +7,22 @@ Find local businesses in Greece that have no website, only a Facebook or booking
 ## How to use it
 
 1. Pick the municipality, type an address (in Greek or English letters) and a radius, and press **Search**.
-2. The list puts the best leads first. Click a business to see why it scored, its phone and address, and links to Google Maps.
+2. The list puts the businesses most likely to say yes first, with the chance as a percentage on each row (see below). Click a business to see why, its lead score, phone and address, and links to Google Maps.
 3. Mark leads, write notes and set follow-up dates. They show under **My leads**, and the **Follow-up due** filter is your call list.
 4. Tap ✓ on a row when a business **accepted work**, or ✗ when it **didn't want a site**. The next time you search the same area, the businesses you marked (and any marked **Has a good site**) are left out, so the list only shows the ones still to work on. **Show them** brings them back, and they always stay under **My leads**.
 5. Press **Check websites** to test the businesses' websites with Google's free PageSpeed check. This needs your own free Google key (see below).
 6. Export the list to Excel or CSV.
 
 After a search you can also load every business in the whole municipality.
+
+## Chance of a yes
+
+The percentage on each row is an estimate of how likely the business is to say yes when you offer it a website. The list puts the most likely first, and the details show how the number was worked out.
+
+- It starts from the business's web presence: 8% with nothing online, 13% when its website is broken or its free Google page shut down, 14% with only a Facebook, Instagram, booking or directory page, and 1.5% to 12% with a website of its own, depending on the problems the website check found.
+- Then each other thing known about the business raises or lowers the odds: the kind of business (hotels and rooms, tours and rentals most; shops and trades least), paying Booking.com, Airbnb, efood or Wolt a commission, being on two or more social sites, serving visitors, a listed phone and opening hours, a bigger hotel, or being part of a chain.
+- Most first offers end in a no, so the numbers are realistic ones: 5% to 35% is normal, and anything over 25% is a strong lead.
+- It learns from you. Each ✓ (accepted work) and ✗ (didn't want a site) is compared with what the estimate expected, and the estimates move toward your own results, per kind of business once you have marked a few.
 
 ## What it lists
 

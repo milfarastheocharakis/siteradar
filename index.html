@@ -325,6 +325,7 @@ body[data-tab="leads"] .only-results { display: none !important; }
 .reasons li { display: grid; grid-template-columns: 34px minmax(0, 1fr); gap: 4px; }
 .reasons .pts { font-family: var(--mono); font-size: 12.5px; color: var(--muted); padding-top: 1px; }
 .reasons .neg { color: var(--danger); }
+.chance-note { margin: 8px 0 0; font-size: 12px; line-height: 1.35; color: var(--muted); }
 .facts { display: grid; grid-template-columns: 104px minmax(0, 1fr); gap: 9px 12px; margin: 0; font-size: 14.5px; }
 .facts dt { color: var(--muted); font-size: 13px; padding-top: 1px; }
 .facts dd { margin: 0; overflow-wrap: anywhere; display: flex; flex-wrap: wrap; gap: 4px 10px; align-items: baseline; }
@@ -506,7 +507,8 @@ textarea.note:focus-visible { outline: 2px solid var(--accent); outline-offset: 
           <label class="mini only-results"><span>Type</span><select id="groupSel" class="input sm"></select></label>
           <label class="mini only-results"><span>Sort</span>
             <select id="sortSel" class="input sm">
-              <option value="score">Best leads first</option>
+              <option value="chance">Most likely to say yes</option>
+              <option value="score">Highest lead score</option>
               <option value="distance">Nearest first</option>
               <option value="name">Name A–Z</option>
             </select>
@@ -990,7 +992,7 @@ function socialNames(list) {
 const withArticle = s => (/^([aeiou]|x\b)/i.test(s) ? 'an ' : 'a ') + s;
 function scoreOf(b) {
   const reasons = [];
-  let s = 0;
+  let s = 0, siteGap = 0;
   const add = (pts, why) => { s += pts; reasons.push([pts, why]); };
   const ck = b.check;
   if (ck && ck.verdict === 'broken') add(50, `Website doesn't work: ${ck.reason}`);
@@ -1011,6 +1013,7 @@ function scoreOf(b) {
     if (!gap) add(0, tested ? `Website checked: works on phones, speed ${ck.perf == null ? 'unknown' : ck.perf + '/100'}`
       : ck && ck.verdict === 'unknown' ? `Website check didn't finish (${ck.reason}), so open the site to judge it`
       : 'Has its own website: check how old it looks');
+    siteGap = gap;
   }
   add(VALUE[b.group], VALUE_WHY[b.group]);
   if (b.phones.length) add(6, 'Has a phone number');
@@ -1019,7 +1022,134 @@ function scoreOf(b) {
   if (b.hours) add(5, 'Opening hours listed, so likely still trading');
   if (b.visitors) add(5, 'Serves visitors (English name or tourism listing)');
   if (b.chain) add(-40, `Part of a chain or brand (${b.brand}), websites are usually made centrally`);
-  return { score: Math.max(0, Math.min(100, s)), reasons };
+  return { score: Math.max(0, Math.min(100, s)), reasons, gap: siteGap };
+}
+/* =========================================================
+   Chance of a yes
+   ========================================================= */
+/* How likely the business is to say yes when you offer it a website, as a percentage. It starts from how often
+   businesses with the same web presence say yes after a real talk with the owner, then each other thing we know
+   about the business multiplies the odds up or down, the way a bookmaker prices a horse. Most first offers end in
+   a no, so the numbers are honest ones: 5% to 35% is normal, and over 40% is a very good lead. The ✓ and ✗ marks
+   then pull the estimates toward the user's own results. */
+const CHANCE_START = { none: 0.08, lost: 0.13, social: 0.14, unchecked: 0.03, good: 0.015, flawed: 0.03, flawedMax: 0.12 };
+const CHANCE_GROUP = {
+  stay: [1.5, 'Rooms and hotels pay booking sites 15–20% a booking, so a site of their own pays for itself'],
+  experiences: [1.4, 'Tours and rentals are booked online, mostly by visitors'],
+  producers: [1.3, 'Producers can sell online and to visitors'],
+  beauty: [1.25, 'Salons fill their diary with photos and online booking'],
+  health: [1.2, 'Patients look for clinics online first, and clinics have the budget'],
+  trades: [0.85, 'Trades get most of their work by word of mouth'],
+  shops: [0.8, 'Small shops often see less need for a website'],
+  other: [0.75, 'Not clear what kind of business it is'],
+};
+const CHANCE_NOUN = {
+  stay: 'places to stay', food: 'places to eat and drink', experiences: 'tour and activity businesses', producers: 'producers',
+  beauty: 'beauty businesses', health: 'health businesses', trades: 'trades', offices: 'offices', shops: 'shops', other: 'other businesses',
+};
+const COMMISSION = new Set(['Booking.com', 'Airbnb', 'a booking site', 'efood', 'Wolt', 'BOX']);
+const SOCIAL_MEDIA = new Set(['Facebook', 'Instagram', 'TikTok', 'YouTube', 'X', 'LinkedIn']);
+const andList = names => names.length <= 1 ? (names[0] || '') : names.slice(0, -1).join(', ') + ' and ' + names[names.length - 1];
+const chanceMemo = new WeakMap();
+function chanceModel(b) {
+  const ck = b.check;
+  let start, why;
+  if (ck && ck.verdict === 'broken') [start, why] = [CHANCE_START.lost, "its website doesn't work, so they know what they are missing"];
+  else if (ck && ck.redirect) [start, why] = [CHANCE_START.social, `its website only forwards to ${ck.redirect}`];
+  else if (b.bucket === 'none') {
+    [start, why] = b.deadSite ? [CHANCE_START.lost, 'its free Google page shut down in 2024, so they had a site once']
+      : [CHANCE_START.none, 'no website or online pages listed'];
+  } else if (b.bucket === 'social') [start, why] = [CHANCE_START.social, `only ${withArticle(socialNames(b.socials))} page, so they already want to be found online`];
+  else if (b.gap) {
+    start = CHANCE_START.flawed + (CHANCE_START.flawedMax - CHANCE_START.flawed) * Math.min(b.gap, 50) / 50;
+    why = 'has a website with the problems listed under the lead score';
+  } else if (ck && (ck.verdict === 'ok' || ck.verdict === 'weak')) [start, why] = [CHANCE_START.good, 'has a website that works well on phones'];
+  else [start, why] = [CHANCE_START.unchecked, 'has a website: press “Check websites” to find out if it is weak'];
+  const factors = [];
+  const f = (x, text) => factors.push([x, text]);
+  if (CHANCE_GROUP[b.group]) f(...CHANCE_GROUP[b.group]);
+  const labels = (b.socials || []).map(x => x.label);
+  const paid = [...new Set(labels.filter(l => COMMISSION.has(l)))];
+  if (paid.length && b.bucket !== 'site') f(1.25, `Pays ${andList(paid)} a commission, which a site of their own saves`);
+  const media = [...new Set(labels.filter(l => SOCIAL_MEDIA.has(l)))];
+  if (media.length >= 2) f(1.15, `Active on ${andList(media)}, so they care how they look online`);
+  if (b.visitors) f(1.2, 'Serves visitors, who look for businesses online');
+  if ((b.phones || []).length) f(1.1, 'Has a phone, so you can talk to the owner');
+  else if (b.email || labels.length || b.hours) f(0.85, 'No phone listed, so harder to reach');
+  else f(0.6, 'Hardly any details listed: it may have closed');
+  if (b.hours) f(1.1, 'Opening hours listed, so likely still open');
+  if (b.group === 'stay' && (parseInt(b.stars, 10) >= 3 || parseInt(b.rooms, 10) >= 15)) f(1.15, 'A bigger place: more bookings to win back, and a budget for it');
+  if (b.chain) f(0.08, `Part of a chain or brand (${b.brand}): websites are made centrally`);
+  return { start, why, factors };
+}
+const modelOf = b => { let m = chanceMemo.get(b); if (!m) chanceMemo.set(b, m = chanceModel(b)); return m; };
+const withOdds = (p, x) => { const o = p / (1 - p) * x; return o / (1 + o); };
+const modelP = m => m.factors.reduce((p, [x]) => withOdds(p, x), m.start);
+/* The ✓ (accepted work) and ✗ (didn't want a site) marks, against how many yeses the estimates expected for those
+   same businesses. A head start of two expected yeses (one within a kind of business) keeps a few marks from
+   swinging it. */
+let calibCache = null;
+function calibration() {
+  if (calibCache) return calibCache;
+  const all = { yes: 0, n: 0, exp: 0 }, by = {};
+  for (const [id, l] of Object.entries(state.leads)) {
+    if (l.status !== 'customer' && l.status !== 'no') continue;
+    const b = state.byId.get(id) || fromSnap(id, l);
+    if (!b) continue;
+    const p = modelP(modelOf(b));
+    const g = by[b.group] || (by[b.group] = { yes: 0, n: 0, exp: 0 });
+    for (const c of [all, g]) { c.n++; c.exp += p; if (l.status === 'customer') c.yes++; }
+  }
+  return (calibCache = { all, by });
+}
+function calibrationFor(group) {
+  const { all, by } = calibration();
+  if (!all.n) return null;
+  const clamp = x => Math.min(3, Math.max(1 / 3, x));
+  const overall = clamp((all.yes + 2) / (all.exp + 2));
+  const g = by[group];
+  const x = g ? clamp((g.yes + overall) / (g.exp + 1)) : overall;
+  const own = g && g.n >= 3 ? g : all;
+  const what = own === all ? 'businesses' : CHANCE_NOUN[group] || 'businesses';
+  const expected = own.exp < 1 ? 'less than one' : `about ${Math.round(own.exp)}`;
+  return [x, `Your marks so far: ${own.yes} of the ${own.n} ${what} you marked said yes, where the estimates expected ${expected}`];
+}
+function chanceOf(b) {
+  const m = modelOf(b);
+  const lead = state.leads[b.id];
+  const extra = [];
+  if (lead && lead.status === 'lead') extra.push([1.6, 'You marked it a good lead']);
+  const cal = calibrationFor(b.group);
+  if (cal && Math.abs(cal[0] - 1) >= 0.03) extra.push(cal);
+  let p = m.start;
+  const steps = [];
+  for (const [x, why] of [...m.factors, ...extra]) {
+    const q = withOdds(p, x);
+    steps.push([q - p, why]);
+    p = q;
+  }
+  return { p: Math.min(0.9, Math.max(0.005, p)), start: m.start, why: m.why, steps };
+}
+const pctText = p => p < 0.01 ? '<1%' : `${Math.round(p * 100)}%`;
+function chanceClass(p) { return p >= 0.25 ? 'hi' : p >= 0.12 ? 'mid' : 'lo'; }
+function chanceBadge(b, lead) {
+  const st = (lead && lead.status) || 'new';
+  if (DONE.has(st)) return h('span', { class: 'score', text: '–', title: STATUS_LABEL[st] });
+  const p = chanceOf(b).p;
+  return h('span', { class: `score ${chanceClass(p)}`, text: pctText(p), title: 'Chance they say yes to a website (an estimate)' });
+}
+function chanceBox(b, lead) {
+  const ch = chanceOf(b);
+  const done = DONE.has(lead.status || 'new');
+  const pts = d => (d > 0 ? '+' : '−') + Math.max(1, Math.round(Math.abs(d) * 100));
+  return h('div', { class: 'd-score d-chance' },
+    h('div', { class: `ring ${chanceClass(ch.p)}` }, h('strong', { text: pctText(ch.p) }), h('span', { text: done ? 'chance before you marked it' : 'chance they say yes' })),
+    h('div', {},
+      h('ul', { class: 'reasons', 'aria-label': 'How the chance is worked out' },
+        h('li', {}, h('span', { class: 'pts', text: pctText(ch.start) }), h('span', { text: `To start with: ${ch.why}` })),
+        ch.steps.filter(([d]) => Math.abs(d) >= 0.005).map(([d, why]) => h('li', {},
+          h('span', { class: `pts${d < 0 ? ' neg' : ''}`, text: pts(d) }), h('span', { text: why })))),
+      h('p', { class: 'chance-note', text: 'An estimate of how often businesses like this one say yes when you offer them a website. It learns from your ✓ and ✗ marks.' })));
 }
 function makeHay(b) {
   const base = [b.name, b.nameEn, b.category, b.cuisine, b.street, b.city, GROUPS[b.group]].filter(Boolean).join(' ');
@@ -1439,7 +1569,8 @@ function attachCheck(b, ck) {
   // A website that doesn't load counts as no website; one that only forwards to Facebook counts as social only.
   b.bucket = ck && ck.verdict === 'broken' ? 'none' : ck && ck.redirect ? 'social' : b.webBucket;
   const sc = scoreOf(b);
-  b.score = sc.score; b.reasons = sc.reasons;
+  b.score = sc.score; b.reasons = sc.reasons; b.gap = sc.gap;
+  chanceMemo.delete(b);
 }
 
 async function runPsi(url, key, signal) {
@@ -1626,7 +1757,9 @@ const state = {
   leadStatus: 'any',         // the My leads tab keeps its own status filter
   hiddenDone: new Set(),     // marked businesses left out of the list on screen
   showDone: false,           // "Show them" for the current list
-  sort: saved.sort || 'score',
+  // "Most likely to say yes" became the first sort in v3 of the saved form. A browser that still has the old first
+  // sort ("Best leads first") gets the new one once.
+  sort: (saved.v >= 3 ? saved.sort : saved.sort === 'score' ? 'chance' : saved.sort) || 'chance',
   phoneOnly: !!saved.phoneOnly,
   hideChains: saved.hideChains !== false,
   insideOnly: false,
@@ -1768,7 +1901,7 @@ function setStatus(kind, text, actions) {
 }
 function saveForm() {
   store.set(KEYS.form, {
-    v: 2, area: $('#area').value, address: $('#address').value, radius: $('#radius').value,
+    v: 3, area: $('#area').value, address: $('#address').value, radius: $('#radius').value,
     buckets: [...state.buckets], sort: state.sort, phoneOnly: state.phoneOnly, hideChains: state.hideChains,
   });
 }
@@ -1874,6 +2007,7 @@ async function loadBusinesses(signal) {
   stopBatch(); // the websites it was checking belong to the old list
   state.results = dedupe(list);
   state.byId = new Map(state.results.map(b => [b.id, b]));
+  calibCache = null;
   rememberDone();
   state.loaded = { lat: c.lat, lon: c.lon, radiusKm: state.radiusKm, mode: muni ? 'muni' : 'radius', muniId: muni ? muni.id : null, dataDate: json.osmDate || '', overtureDate: json.overtureDate || '' };
   state.insideOnly = false; $('#insideOnly').checked = false;
@@ -1985,7 +2119,12 @@ function checkPasses(b) {
 function sortItems(items) {
   if (state.sort === 'distance') items.sort((a, b) => a.distance - b.distance);
   else if (state.sort === 'name') items.sort((a, b) => a.name.localeCompare(b.name, 'el', { sensitivity: 'base' }));
-  else items.sort((a, b) => b.score - a.score || a.distance - b.distance);
+  else if (state.sort === 'score') items.sort((a, b) => b.score - a.score || a.distance - b.distance);
+  else {
+    // Most likely to say yes first (those already marked done last), then the better lead, then the nearer one.
+    const pc = new Map(items.map(b => [b, DONE.has((state.leads[b.id] || {}).status) ? -1 : Math.round(chanceOf(b).p * 1000)]));
+    items.sort((a, b) => pc.get(b) - pc.get(a) || b.score - a.score || a.distance - b.distance);
+  }
 }
 function applyFilters(resetPage) {
   state.terms = termsOf(state.text);
@@ -2197,8 +2336,8 @@ function rowFor(b) {
   const lead = state.leads[b.id];
   const sub = [b.category, b.street || b.city, state.muni && b.inMuni === false && state.tab === 'results' ? 'outside the municipality' : null].filter(Boolean).join(' · ');
   const right = state.tab === 'leads'
-    ? h('span', { class: 'row-meta' }, h('span', { class: `score ${scoreClass(b.score)}`, text: b.score, title: 'Lead score' }), h('span', { class: 'dist', text: lead && lead.updated ? new Date(lead.updated).toLocaleDateString('en-GB', { day: 'numeric', month: 'short' }) : '' }))
-    : h('span', { class: 'row-meta' }, h('span', { class: `score ${scoreClass(b.score)}`, text: b.score, title: 'Lead score' }), h('span', { class: 'dist', text: fmtKm(b.distance) }));
+    ? h('span', { class: 'row-meta' }, chanceBadge(b, lead), h('span', { class: 'dist', text: lead && lead.updated ? new Date(lead.updated).toLocaleDateString('en-GB', { day: 'numeric', month: 'short' }) : '' }))
+    : h('span', { class: 'row-meta' }, chanceBadge(b, lead), h('span', { class: 'dist', text: fmtKm(b.distance) }));
   const due = lead && lead.due ? dueInfo(lead.due) : null;
   const tags = [
     lead && lead.status && lead.status !== 'new' ? h('span', { class: `badge st-${lead.status}`, text: STATUS_LABEL[lead.status] }) : null,
@@ -2305,7 +2444,8 @@ function emptyDetails() {
     h('div', { class: 'key' },
       h('div', {}, h('span', { class: 'dot none' }), h('span', { text: 'No website listed: the best leads. Check on Google first, the map data misses some sites.' })),
       h('div', {}, h('span', { class: 'dot social' }), h('span', { text: 'Only a Facebook, Instagram, booking or directory page: they are online but own nothing.' })),
-      h('div', {}, h('span', { class: 'dot site' }), h('span', { text: 'Has a website: press “Check websites” to find the ones that are broken, slow or not made for phones.' }))));
+      h('div', {}, h('span', { class: 'dot site' }), h('span', { text: 'Has a website: press “Check websites” to find the ones that are broken, slow or not made for phones.' }))),
+    h('p', { text: 'The percentage on each row is the chance the business says yes to a website. It starts from what businesses like it usually do, and learns from your ✓ and ✗ marks.' }));
 }
 function checkSection(b) {
   if (!b.site) return null;
@@ -2453,7 +2593,7 @@ function renderDetails() {
       `. ${from === 'both' ? 'They miss' : 'It misses'} some websites and phones, so use “Check on Google” before you call. Wrong details? `,
       link(urls.osm(b), 'Fix them on OpenStreetMap', ' '), '.');
 
-  box.replaceChildren(h('div', { class: 'd-body' }, head, score, facts, actions, checkSection(b), leadBox, source));
+  box.replaceChildren(h('div', { class: 'd-body' }, head, chanceBox(b, lead), score, facts, actions, checkSection(b), leadBox, source));
   if (typing) {
     const n = $('#note');
     n.value = typing.value;
@@ -2467,6 +2607,7 @@ function snapshot(b) {
   return rest;
 }
 function setLead(b, patch, quiet) {
+  calibCache = null;
   const cur = state.leads[b.id] || { status: 'new', note: '' };
   const next = { ...cur, ...patch, updated: Date.now(), snap: snapshot(b) };
   if (!next.due) delete next.due;
@@ -2738,14 +2879,14 @@ function setTab(tab, render = true) {
 function exportRows() {
   const items = state.tab === 'results' ? state.filtered : leadItems();
   const muniName = state.muni ? state.muni.name : '';
-  const header = ['Name', 'English name', 'Type', 'Group', 'Web presence', 'Website', 'Website check', 'Speed (phone)', 'Online pages', 'Lead score', 'Distance (km)', 'Phone', 'Email', 'Address', 'Opening hours', 'Municipality', 'Status', 'Follow up', 'Note', 'Google Maps', 'OpenStreetMap', 'Data from', 'Latitude', 'Longitude'];
+  const header = ['Name', 'English name', 'Type', 'Group', 'Web presence', 'Website', 'Website check', 'Speed (phone)', 'Online pages', 'Lead score', 'Chance of a yes (%)', 'Distance (km)', 'Phone', 'Email', 'Address', 'Opening hours', 'Municipality', 'Status', 'Follow up', 'Note', 'Google Maps', 'OpenStreetMap', 'Data from', 'Latitude', 'Longitude'];
   const rows = items.map(b => {
     const l = state.leads[b.id] || {};
     const live = state.byId.has(b.id);
     return [
       b.name, b.nameEn || '', b.category, GROUPS[b.group] || '', presenceLabel(b), b.site ? b.site.url : '',
       checkText(b.check), b.check && b.check.perf != null ? b.check.perf : '',
-      (b.socials || []).map(s => s.url).join(' '), b.score, live ? Math.round(b.distance * 100) / 100 : '',
+      (b.socials || []).map(s => s.url).join(' '), b.score, Math.round(chanceOf(b).p * 100), live ? Math.round(b.distance * 100) / 100 : '',
       (b.phones || []).join(', '), b.email || '', b.address || '', b.hours || '',
       live && state.muni ? (b.inMuni ? muniName : `Outside ${muniName}`) : '',
       STATUS_LABEL[l.status || 'new'], l.due || '', l.note || '', urls.gmaps(b), urls.osm(b), SOURCE_LABEL[sourceOf(b)] || '', b.lat, b.lon,
@@ -2845,7 +2986,7 @@ function restoreForm() {
   const fromLink = params.get('radius');
   let radius = fromLink ?? saved.radius;
   // 11 km was the starting radius before 0.6 km. A browser that still remembers it gets the new start once.
-  if (fromLink == null && saved.v !== 2 && String(radius) === '11') radius = String(DEFAULT_RADIUS_KM);
+  if (fromLink == null && !(saved.v >= 2) && String(radius) === '11') radius = String(DEFAULT_RADIUS_KM);
   if (radius != null && radius !== '') $('#radius').value = radius;
   $('#sortSel').value = state.sort;
   $('#phoneOnly').checked = state.phoneOnly;
@@ -2956,6 +3097,7 @@ function init() {
   window.addEventListener('storage', e => {
     if (e.key === KEYS.leads) {
       state.leads = store.get(KEYS.leads, {}) || {};
+      calibCache = null;
       renderHead(); renderList(); renderMarkers(); renderDetails();
     } else if (e.key === KEYS.settings) {
       state.settings = store.get(KEYS.settings, {}) || {};
